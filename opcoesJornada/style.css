@@ -1,0 +1,188 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #2970db;
+}
+
+.logo {
+  position: absolute;
+  top: 120px;
+  left: 100px;
+  height: 80px;
+  width: 170px;
+  background-color: #f6f6e9;
+  border-radius: 100px;
+}
+
+.tituloJornada {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 130px;
+  color: white;
+  font-family: "Nunito";
+}
+
+.inline {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+.opcoes {
+  width: 400px;
+  background-color: #f6f6e9;
+  padding: 20px;
+  border-radius: 60px;
+  height: 750px;
+  margin: 20px;
+}
+
+.tituloBrisas {
+  text-align: center;
+  font-family: "Nunito";
+  margin-top: -5px;
+}
+
+.tituloPousada {
+  text-align: center;
+  font-family: "Nunito";
+  margin-top: -5px;
+}
+
+.tituloHotel {
+  text-align: center;
+  font-family: "Nunito";
+  margin-top: -5px;
+}
+
+.imgBrisas {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: auto;
+  background-color: white;
+  display: inline-block;
+}
+
+.imgPousada {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: auto;
+  background-color: white;
+  display: inline-block;
+}
+
+.imgHotel {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: auto;
+  background-color: white;
+  display: inline-block;
+}
+
+.infoBranco {
+  background-color: white;
+  padding-bottom: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.infoBrisas {
+  font-family: "Nunito";
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.tituloSuite {
+  font-family: "Nunito";
+  display: flex;
+  margin-top: 5px;
+  margin-left: 32px;
+}
+
+.cancelamento {
+  font-family: "Nunito";
+  display: flex;
+  margin-top: -20px;
+  margin-left: 32px;
+  color: #008037;
+  font-weight: bold;
+}
+
+.resta {
+  font-family: "Nunito";
+  display: flex;
+  margin-top: -30px;
+  margin-left: 32px;
+  color: #ff1616;
+  font-weight: bold;
+}
+
+.bordaDatas {
+  width: 90%;
+  height: 19%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 40px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.datas {
+  width: 550px;
+  height: 100px;
+  min-width: 0;
+  min-height: auto;
+  margin: auto;
+  display: block;
+}
+
+.datasbrisas {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 0;
+  min-height: auto;
+}
+
+.bordaDatasbrisas {
+  background-color: white;
+  padding: 20px;
+  border-radius: 40px;
+  margin-top: 20px;
+  text-align: center;
+  display: block;
+  width: 300px;
+  height: 100px;
+}
+
+.botao input {
+  text-decoration: none;
+  border: none;
+  background-color: #2970db;
+  font-family: "Nunito";
+  border-radius: 20px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: white;
+  padding: 15px 40px;
+  font-weight: bold;
+}
+
+input:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+input:active {
+  transform: scale(0.97);
+}
