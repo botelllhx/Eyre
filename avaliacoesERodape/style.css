@@ -1,0 +1,134 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url("imagens/fundoavaliacoes.png");
+    background-size: 1920px 930px;
+    background-repeat: no-repeat;
+}
+
+.inlineEstrelas {
+    display: flex;
+    align-items: center;
+    background-color: #F1F3F6;
+    border-radius: 20px;
+    margin: 30px 80px;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.imgEstrelas {
+    height: 35px;
+    display: inline-block;
+    margin: 20px;
+}
+
+.tituloAvaliacoes {
+    text-align: center;
+    font-size: 50px;
+    color: black;
+    font-family: "Nunito";
+}
+
+.inlineAvaliacoes {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    margin-top: 70px;
+}
+
+.avaliacoes {
+    width: 330px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px;
+    height: 600px;
+    margin: 20px;
+}
+
+.avaliacaoIndividual {
+    font-family: "Nunito";
+    font-size: 18px;
+    text-align: justify;
+    padding: 25px;
+    font-weight: bold;
+    height: 74%;
+    line-height: 1.5;
+}
+
+.imgAspa {
+    height: 42px;
+    width: 50px;
+    position: relative;
+    left: 11px;
+    padding: 15px;
+}
+
+.fotoENome {
+    display: flex;
+    flex-direction: row;
+}
+
+.imgAvaliador {
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    position: relative;
+    right: 35px;
+}
+
+.nomeAvaliador {
+    margin-left: -25px;
+    font-family: "Nunito";
+    font-weight: 900;
+    font-size: 14px;
+}
+
+
+.fundoClaroRodape {
+    background-color: #F1F3F6;
+    border-radius: 30px;
+    width: 82%;
+    margin: 0 auto;
+    height: 300px;
+}
+
+
+.inlineInfoAdicionais {
+    display: flex;
+    width: 100vw;
+    margin-top: 150px;
+    padding: 30px;
+    margin-left: 50px;
+}
+
+.inlineInfoAdicionais nav {
+    margin-right: 50px;
+}
+
+.inlineInfoAdicionais nav ul {
+    list-style-type: none;
+}
+
+.inlineInfoAdicionais nav ul li {
+    padding: 3px;
+    font-size: 20px;
+    font-family: "Nunito";
+}
+
+.imgLogoEyreRodape {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin-left: 400px;
+    margin-top: -30px;
+}
+
+.FormasPagamento{
+    margin-top: 40px;
+    font-family: "Nunito";
+    text-align: center;
+}
