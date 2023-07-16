@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="./imagens/icon.png" />
+    <script src="./restricao.js"></script>
+    <title>Eyre - Pagamentos</title>
+
+</head>
+
+<body>
+    <div class="fundoBranco">
+        <div class="body">
+
+            <!-- ==========================CABEÇALHO============================ -->
+
+            <div class="cabecalho">
+                <div class="icon-background">
+                    <i class="fa-solid fa-dollar-sign fa-2x"></i>
+                </div>
+                <div class="detalhes">
+                    <h1>Detalhes de Pagamento</h1>
+                </div>
+
+                <style>
+                    .countdown-wrapper {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .countdown-wrapper span {
+                        margin: 0 2px;
+                        padding-inline-start: 10px;
+                        background-color: #2970DB;
+                        width: 30px;
+                        height: 40px;
+                        border-radius: 40%;
+                        font-family: "Nunito";
+                        font-weight: bold;
+                        font-size: 30px;
+                        color: white;
+                    }
+
+                    .countdown-wrapper .colon {
+                        margin: 0 2px;
+                        padding-inline-start: 12px;
+                        width: 20px;
+                        height: 40px;
+                        color: black;
+                        background-color: #F1F3F6;
+                        font-family: "Nunito";
+                        font-weight: bold;
+                    }
+                </style>
+
+                <script>
+                    var minutes = 12;
+                    var seconds = 0;
+
+                    function startTimer() {
+                        var countdown = document.getElementById('countdown');
+                        var interval = setInterval(function () {
+                            countdown.innerHTML = pad(minutes) + ':' + pad(seconds);
+
+                            if (seconds > 0) {
+                                seconds--;
+                            } else {
+                                if (minutes > 0) {
+                                    minutes--;
+                                    seconds = 59;
+                                } else {
+                                    clearInterval(interval);
+                                    countdown.innerHTML = "Tempo encerrado!";
+                                }
+                            }
+                        }, 1000);
+                    }
+
+                    function pad(value) {
+                        return value < 10 ? '0' + value : value;
+                    }
+
+                    window.onload = function () {
+                        startTimer();
+                    };
+                </script>
+                <div class="countdown-wrapper">
+                    <span id="minutes">1</span>
+                    <span id="minutes">2</span>
+                    <span class="colon">:</span>
+                    <span id="seconds">0</span>
+                    <span id="seconds">0</span>
+                </div>
+            </div>
+            <!-- ===========================CARTÃO NUMERO========================= -->
+            <form id="cartaoForm">
+                <div class="cartao">
+                    <h3>Número do Cartão</h3>
+                </div>
+                <div>
+                    <div class="numeroCartao">
+                        <script>
+                            function formatarCartao(event) {
+                                // Obtém o valor atual do campo de texto
+                                let numeroCartao = event.target.value;
+
+                                // Remove todos os caracteres não numéricos
+                                numeroCartao = numeroCartao.replace(/\D/g, '');
+
+                                // Limita o número a 16 dígitos
+                                numeroCartao = numeroCartao.slice(0, 16);
+
+                                // Adiciona traços a cada 4 dígitos
+                                let numeroFormatado = numeroCartao.replace(/(\d{4})(?=\d)/g, '$1-');
+
+                                // Atualiza o valor do campo de texto
+                                event.target.value = numeroFormatado;
+                            }
+
+                            function validarEntrada(event) {
+                                // Obtém o código ASCII do último caractere digitado
+                                let keyCode = event.keyCode || event.which;
+
+                                // Permite apenas números (códigos ASCII entre 48 e 57)
+                                if (keyCode < 48 || keyCode > 57) {
+                                    event.preventDefault();
+                                }
+                            }
+                        </script>
+                        <input type="text" id="cardNumber" placeholder="0000 - 0000 - 0000 - 0000" class="inputNumero"
+                            oninput="formatarCartao(event)" onkeypress="validarEntrada(event)" maxlength="19">
+                    </div>
+                </div>
+
+                <!-- =============================CARTAO DATA DE EXPEDIÇÃO===================================  -->
+                <div>
+                    <div class="data">
+                        <h3>Data de Expedição</h3>
+                    </div>
+
+                    <div class="dataValidade">
+                        <script>
+                            function formatarValidade(event) {
+                                let validade = event.target.value;
+
+                                // Remove todos os caracteres não numéricos
+                                validade = validade.replace(/\D/g, '');
+
+                                // Limita o texto a 4 dígitos
+                                validade = validade.slice(0, 4);
+
+                                // Adiciona uma barra ("/") após os dois primeiros dígitos
+                                if (validade.length >= 2) {
+                                    validade = validade.slice(0, 2) + '/' + validade.slice(2);
+                                }
+
+                                event.target.value = validade;
+                            }
+
+                            function validarValidade(event) {
+                                let keyCode = event.keyCode || event.which;
+
+                                // Impede a digitação de letras e caracteres especiais
+                                if ((keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (keyCode >= 33 && keyCode <= 47) || (keyCode >= 58 && keyCode <= 64) || (keyCode >= 91 && keyCode <= 96) || (keyCode >= 123 && keyCode <= 126)) {
+                                    event.preventDefault();
+                                }
+                            }
+                        </script>
+                        <input type="text" id="validade" placeholder="MM/AA" class="inputData"
+                            oninput="formatarValidade(event)" onkeypress="validarValidade(event)">
+                    </div>
+
+                </div>
+
+                <!-- /* =============================CARTAO CVV=============================================== */ -->
+
+                <div class="cvv">
+                    <h3>CVV</h3>
+                </div>
+                <div>
+                    <div class="codigoCVV">
+                        <input type="text" id="cvv" placeholder="123" class="inputCVV" maxlength="3"
+                            onkeypress="validarEntrada(event)">
+                    </div>
+                </div>
+
+
+                <!-- /* ============================CARTAO NOME======================================= */ -->
+
+                <div class="nome">
+                    <h3>Nome no Cartão</h3>
+                </div>
+                <div>
+                    <div class="nomeCartao">
+                        <input type="text" id="cardName" placeholder="Nalysson Luis" class="inputNome"
+                            oninput="formatarNome(event)" onkeypress="validarDigitacao(event)">
+                    </div>
+                </div>
+            </form>
+            <!-- /* ===============================CONFIRMAR==================================== */ -->
+
+            <div>
+                <button class="botao">
+                    Confirmar
+                </button>
+            </div>
+
+            <!-- ==========================VALOR A PAGAR========================== -->
+
+            <div class="fundoAzul2">
+                <div class="pagando">
+                    <h3>Você está pagando</h3>
+                </div>
+                <div class="fundoBrancoValor">
+                </div>
+                <div class="valor">
+                    <h1>R$600,00</h1>
+                </div>
+                <div class="hospedagem">
+                    <h3>Hospedagem</h3>
+                    <img class="check1" src="./imagens/check.png">
+                </div>
+                <div class="transporte">
+                    <h3>Transporte</h3>
+                    <img class="check2" src="./imagens/check.png">
+                </div>
+                <div class="reembolso">
+                    <h3>Reembolso garantido</h3>
+                    <img class="check3" src="./imagens/check.png">
+                </div>
+            </div>
+
+            <!-- ============================ACABOU============================== -->
+
+        </div>
+    </div>
+</body>
+
+</html>

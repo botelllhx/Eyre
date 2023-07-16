@@ -6,7 +6,6 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="icon" href="./imagens/logoEyre.png" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
-  <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
@@ -35,7 +34,7 @@
         <img src="./imagens/brisasdatas.png" class="datasbrisas" />
       </div>
       <div class="botao">
-        <input type="button" value="QUERO SABER MAIS" />
+        <a href="../pacote/index.html"><input type="button" value="QUERO SABER MAIS" /></a>
       </div>
     </div>
     <div class="opcoes">
@@ -80,7 +79,67 @@
         <input type="button" value="QUERO SABER MAIS" />
       </div>
     </div>
-  </div>
+    <div id="loading" class="loading-overlay">
+      <div class="loading-spinner">
+        <img src="./imagens/logoAnimada.gif" alt="Loading" />
+        <div class="loading-text">Carregando</div>
+      </div>
+    </div>
+
+    <script>
+      // Antes de fazer a requisição
+      document.getElementById('loading').style.display = 'block';
+
+      // Fazer a requisição usando fetch
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            // A requisição foi bem-sucedida
+            return response.json();
+          } else {
+            // A requisição falhou
+            throw new Error('Erro na requisição: ' + response.status);
+          }
+        })
+        .then(function (data) {
+
+          // Manipular a resposta do servidor
+
+          console.log('Resposta do servidor:', data);
+
+          // Substituir as informações dos parágrafos dos cards
+          
+          var card1Info = 'Estúdio de luxo • 2 banheiros • 1 cozinha • 30m²<br />4 camas (3 de solteiro, 1 de casal).';
+          var card2Info = 'Suíte Executiva • 2 quartos • 1 sala • 2 banheiros<br />1 cama de casal, 2 camas de solteiro.';
+          var card3Info = 'Apartamento Familiar • 3 quartos • 2 banheiros • 100m²<br />5 camas (2 de casal, 3 de solteiro).';
+
+          var card1 = document.getElementsByClassName('opcoes')[0];
+          var card2 = document.getElementsByClassName('opcoes')[1];
+          var card3 = document.getElementsByClassName('opcoes')[2];
+
+          setTimeout(function () {
+            card1.getElementsByClassName('infoBrisas')[0].innerHTML = card1Info;
+            card2.getElementsByClassName('infoBrisas')[0].innerHTML = card2Info;
+            card3.getElementsByClassName('infoBrisas')[0].innerHTML = card3Info;
+
+            // Depois de receber a resposta do servidor
+            document.getElementById('loading').style.display = 'none';
+          }, 5000); // Aguarde 5 segundos (5000 milissegundos) antes de ocultar a tela de loading
+        })
+        .catch(function (error) {
+          // Tratar erros ocorridos durante a requisição
+          console.error('Erro:', error);
+
+          // Em caso de erro, também é necessário esconder a tela de loading
+          document.getElementById('loading').style.display = 'none';
+        });
+    </script>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>

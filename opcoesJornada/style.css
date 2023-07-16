@@ -9,18 +9,18 @@ body {
 
 .logo {
   position: absolute;
-  top: 120px;
-  left: 100px;
+  top: 20px;
+  left: 192px;
   height: 80px;
   width: 170px;
-  background-color: #f6f6e9;
+  background-color: #F1F3F6;
   border-radius: 100px;
 }
 
 .tituloJornada {
   text-align: center;
-  font-size: 60px;
-  margin-top: 130px;
+  font-size: 40px;
+  margin-top: 30px;
   color: white;
   font-family: "Nunito";
 }
@@ -29,15 +29,16 @@ body {
   display: flex;
   width: 100vw;
   justify-content: center;
+  margin-top: -22px;
 }
 
 .opcoes {
   width: 400px;
-  background-color: #f6f6e9;
+  background-color: #F1F3F6;
   padding: 20px;
   border-radius: 60px;
-  height: 750px;
-  margin: 20px;
+  height: 780px;
+  margin: 15px;
 }
 
 .tituloBrisas {
@@ -98,6 +99,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 2px;
+  margin: 15px 30px;
 }
 
 .tituloSuite {
@@ -105,11 +107,13 @@ body {
   display: flex;
   margin-top: 5px;
   margin-left: 32px;
+  margin: 15px 30px;
 }
 
 .cancelamento {
   font-family: "Nunito";
   display: flex;
+  margin: 15px 15px;
   margin-top: -20px;
   margin-left: 32px;
   color: #008037;
@@ -131,7 +135,7 @@ body {
   background-color: white;
   padding: 20px;
   border-radius: 40px;
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,10 +176,14 @@ body {
   border-radius: 20px;
   display: flex;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 15px;
   color: white;
   padding: 15px 40px;
   font-weight: bold;
+}
+
+.botao a {
+  text-decoration: none;
 }
 
 input:hover {
@@ -185,4 +193,55 @@ input:hover {
 
 input:active {
   transform: scale(0.97);
+}
+
+/* loading */
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-spinner img {
+  width: 200px;
+  height: 200px;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Nunito";
+}
+
+.loading-text::after {
+  content: '...';
+  animation: loading-text-animation 1.2s infinite steps(3);
+}
+
+@keyframes loading-text-animation {
+  0% {
+    content: '.';
+  }
+  33% {
+    content: '..';
+  }
+  66% {
+    content: '...';
+  }
 }

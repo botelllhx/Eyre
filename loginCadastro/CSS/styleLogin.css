@@ -1,0 +1,151 @@
+body {
+    background-color: #1877F2;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.logo {
+    background-color: #ffffff;
+    height: 80px;
+    width: 170px;
+    border-radius: 100px;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Nunito';
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.word {
+    display: inline;
+    margin-right: 15px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 350px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Nunito';
+    cursor: pointer;
+}
+
+.centralizarBotao {
+    text-align: center;
+}
+
+.botao {
+    font-family: 'Nunito';
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #1877F2;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.centralizarBotao:hover {
+    animation: vibrating 0.3s infinite;
+}
+
+h3 {
+    color: #fff;
+    font-family: 'Nunito';
+}
+
+.icones {
+    height: 50px;
+    width: 50px;
+    margin-right: 13px;
+}
+
+@keyframes vibrating {
+    0% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(-3deg);
+    }
+
+    50% {
+        transform: rotate(3deg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+.password-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.password-container input[type="password"] {
+    width: 350px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Nunito';
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-container.show-password input[type="text"] {
+    width: 350px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Nunito';
+    cursor: pointer;
+}

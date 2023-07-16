@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="imagens/logoEyre.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="CSS/styleLogin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Eyre - Login</title>
+</head>
+
+<body>
+  <div class="centro">
+    <div>
+      <img src="imagens/logo.png" class="logo" />
+    </div>
+
+    <div class="container">
+      <h1 class="word">LOGIN</h1>
+      <a href="cadastro.html">
+        <h1 class="word" style="opacity: 0.6;">CADASTRO</h1>
+      </a>
+    </div>
+
+    <form id="login_form" onsubmit="event.preventDefault()">
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder="E-mail" required>
+      </div>
+      <div class="password-container">
+        <input type="password" id="password" placeholder="Senha" maxlength="12" required>
+        <span class="toggle-password" onclick="togglePasswordVisibility('password', 'eye-icon')">
+          <i id="eye-icon" class="fa fa-eye"></i>
+        </span>
+      </div>
+      <div class="centralizarBotao">
+        <button class="botao" onclick="login()">ENTRAR</button>
+      </div>
+    </form>
+
+    <div>
+      <h3>ou</h3>
+    </div>
+
+    <div>
+      <a href="https://accounts.google.com/AccountChooser/identifier?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=AccountChooser"
+        target="_blank">
+        <img src="imagens/logoGoogle.png" class="icones" />
+      </a>
+      <a href="https://www.facebook.com/?stype=lo&jlou=Afc-sY-xisnJGLd8jaEt5LkeXz04YLCpvQmPgAE7u7Z-8sjAuN1sXGrJc_9F3SzqHFxuubrZWtfIXkqGwdhHsKeQxwy4mBV_hMcFxrMh-HGn7Q&smuh=51812&lh=Ac_P9YPF3TA1va-dUKg"
+        target="_blank">
+        <img src="imagens/logoFacebook.png" class="icones" />
+      </a>
+    </div>
+
+    <script>
+      function login() {
+        var dados = {
+          email: document.getElementById("email").value,
+          senha: document.getElementById("password").value
+        };
+
+        // REQUISIÇÃO
+
+        fetch("https://jsonplaceholder.typicode.com/posts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dados)
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("Erro na requisição: " + response.status);
+            }
+          })
+          .then(data => {
+            console.log(data);
+
+            // Exibe mensagem de sucesso
+
+            alert("Login realizado com sucesso!");
+
+            // Armazena o email no local storage
+
+            localStorage.setItem('email', dados.email);
+
+            // Redireciona para a página inicial
+
+            window.location.href = "../index.html";
+          })
+          .catch(error => {
+            console.error(error);
+            alert("Ocorreu um erro durante o login. Por favor, tente novamente mais tarde.");
+          });
+      }
+
+      window.onload = function () {
+        var email = localStorage.getItem('email');
+
+        if (email) {
+          document.getElementById('login-button').textContent = 'Olá, ' + email;
+        }
+      };
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(window).on('load', function () {
+        $('body').css('opacity', '1');
+      });
+    </script>
+    <script src="./JavaScript/eyre.js"></script>
+  </div>
+</body>
+
+</html>

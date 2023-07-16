@@ -1,0 +1,464 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background-image: url('./imagens/fundogrande.png');
+    background-size: 1920px 900px;
+    background-repeat: no-repeat;
+}
+
+.logoELogin {
+    display: flex;
+    align-items: center;
+    background-color: #F1F3F6;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    justify-content: center;
+    width: 1903px;
+    height: 90px;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    left: 167px;
+    height: 220px;
+    width: 220px;
+}
+
+.login {
+    position: absolute;
+    left: 150vh;
+    height: 45px;
+    width: 45px;
+    margin-top: -25px;
+}
+
+.entrarOuCadastrar {
+    font-family: "Nunito";
+    color: #2970DB;
+    position: absolute;
+    left: 156vh;
+}
+
+.entrarOuCadastrar a {
+    text-decoration: none;
+}
+
+.entrarOuCadastrar a:visited {
+    color: #2970DB;
+}
+
+.textoConvidativo {
+    position: absolute;
+    left: 300px;
+    color: white;
+    font-size: 60px;
+    padding: 30px;
+    font-family: 'Nunito', sans-serif;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin-top: 160px;
+    letter-spacing: 1px;
+}
+
+.divBotaoComecar {
+    margin-top: 510px;
+    position: relative;
+    left: 300px;
+}
+
+.divBotaoComecar a {
+    text-decoration: none;
+}
+
+.botaoComecar {
+    padding: 15px 60px;
+    background-color: #2970DB;
+    color: white;
+    border: none;
+    border-radius: 70px;
+    font-size: 22px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    width: 400px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.botaoComecar:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #007FFF;
+    transition: all .5s;
+    border-radius: 70px;
+    z-index: -1;
+}
+
+.botaoComecar:hover:before {
+    width: 100%;
+}
+
+.botaoComecar:hover {
+    opacity: 0.9;
+}
+
+.botaoComecar:active {
+    transform: scale(0.97);
+}
+
+#fundoClaro {
+    background-color: #F1F3F6;
+    margin-top: 10%;
+    padding: 120px;
+    border-radius: 25px 25px 0 0;
+}
+
+.fundoBranco {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 800px;
+    padding-left: 50px;
+    border-radius: 50px;
+    background-color: white;
+    font-family: "Nunito";
+    align-content: space-between;
+}
+
+.tituloDestino {
+    text-align: center;
+    font-size: 60px;
+    width: 800px;
+    position: relative;
+    display: block;
+    margin-left: 10px;
+    margin-top: 400px;
+
+}
+
+input,
+select {
+    background-color: white;
+    border: 5px solid #2970DB;
+    border-radius: 40px;
+    color: black;
+    cursor: pointer;
+    display: block;
+    font-size: 45px;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+    width: 50%;
+}
+
+
+.botaoOrcamento {
+    font-size: 30px;
+    font-family: "Nunito";
+    padding: 15px;
+}
+
+.botaoOrcamento::placeholder {
+    font-weight: bold;
+
+}
+
+.botaoLugar {
+    font-size: 30px;
+    font-family: "Nunito";
+    width: 55%;
+    color: #696969;
+
+}
+
+.divBotaoJornadas {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.botaoJornadas {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2970DB;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 40px;
+    font-size: 30px;
+    font-family: "Nunito", sans-serif;
+    text-align: center;
+    width: 50%;
+}
+
+.botaoJornadas:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.botaoJornadas:active {
+    transform: scale(0.97);
+}
+
+#linkArrombado {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.dinheiro {
+    height: 30px;
+    width: 30px;
+}
+
+.lugar {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+}
+
+.calendario {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+}
+
+.dica {
+    color: #696969;
+    display: block;
+    font-size: 30px;
+    position: relative;
+    text-align: center;
+    font-family: "Nunito";
+    margin-top: 100px;
+}
+
+.lampada {
+    height: 30px;
+    width: 30px;
+}
+
+.paisagem {
+    height: 370px;
+    width: 600px;
+    border-radius: 50px;
+    margin: 20px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.paisagem:hover {
+    opacity: 0.5;
+}
+
+.esquerda {
+    margin-top: -350px;
+}
+
+
+.rodape {
+    background-image: url("imagens/fundoavaliacoes.png");
+    background-size: 1920px 930px;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-y: hidden;
+}
+
+.inlineEstrelas {
+    display: flex;
+    align-items: center;
+    background-color: #F1F3F6;
+    border-radius: 20px;
+    margin: 30px 80px;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.imgEstrelas {
+    height: 35px;
+    display: inline-block;
+    margin: 20px;
+}
+
+.tituloAvaliacoes {
+    text-align: center;
+    font-size: 50px;
+    color: black;
+    font-family: "Nunito";
+}
+
+.inlineAvaliacoes {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    margin-top: 70px;
+}
+
+.avaliacoes {
+    width: 330px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px;
+    height: 600px;
+    margin: 20px;
+}
+
+.avaliacaoIndividual {
+    font-family: "Nunito";
+    font-size: 18px;
+    text-align: justify;
+    padding: 25px;
+    font-weight: bold;
+    height: 74%;
+    line-height: 1.5;
+}
+
+.imgAspa {
+    height: 42px;
+    width: 50px;
+    position: relative;
+    left: 11px;
+    padding: 15px;
+}
+
+.fotoENome {
+    display: flex;
+    flex-direction: row;
+}
+
+.imgAvaliador {
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    position: relative;
+    right: 35px;
+}
+
+.nomeAvaliador {
+    margin-left: -25px;
+    font-family: "Nunito";
+    font-weight: 900;
+    font-size: 14px;
+}
+
+
+.fundoClaroRodape {
+    background-color: #F1F3F6;
+    border-radius: 30px;
+    width: 82%;
+    margin: 0 auto;
+    height: 300px;
+}
+
+
+.inlineInfoAdicionais {
+    display: flex;
+    width: 100vw;
+    margin-top: 150px;
+    padding: 30px;
+    margin-left: 50px;
+    overflow-x: auto;
+}
+
+.inlineInfoAdicionais nav {
+    margin-right: 50px;
+}
+
+.inlineInfoAdicionais nav ul {
+    list-style-type: none;
+}
+
+.inlineInfoAdicionais nav ul li {
+    padding: 3px;
+    font-size: 20px;
+    font-family: "Nunito";
+}
+
+.imgLogoEyreRodape {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    margin-left: 480px;
+}
+
+.formasPagamento {
+    margin-top: 40px;
+    font-family: "Nunito";
+    text-align: center;
+}
+
+.centralizarImgBandeirasCartao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.imgBandeirasCartao {
+    max-width: 25%;
+
+}
+
+.linhaHorizontal {
+    stroke-width: 1px;
+    fill: none;
+    stroke-linecap: round;
+    width: 97.188em;
+    margin: 27px;
+    margin-left: 173px;
+}
+
+.alinharEmail {
+    position: relative;
+    left: 94em;
+}
+
+.email {
+    font-family: "Nunito";
+    opacity: 0.5;
+}
+
+.conecteConosco {
+    font-family: "Nunito";
+    text-align: center;
+}
+
+.inlineRedesSociais {
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+}
+
+.inlineRedesSociais img {
+    display: inline-block;
+    width: 4%;
+    height: auto;
+    margin: 10px
+}
+
+.alinharEndereco {
+    padding: 50px;
+}
+
+.endereco {
+    font-family: "Nunito";
+    text-align: center;
+    opacity: 0.5;
+}

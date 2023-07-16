@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="./home/imagens/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./home/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/fontawesome.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/solid.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/brands.min.css" />
+  <link rel="icon" href="./home/imagens/logoEyre.png" type="image/x-icon" />
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eyre - Viagens acessíveis</title>
+</head>
+
+<body>
+  <div class="body">
+    <div class="logoELogin">
+      <img src="./home/imagens/logo.png" class="logo" />
+      <a href="./loginCadastro/login.html"><img src="./home/imagens/login.png" class="login" /></a>
+      <div class="entrarOuCadastrar" id="entrarOuCadastrar">
+        <a href="./loginCadastro/login.html">
+          <h3>Entre ou cadastre-se</h3>
+        </a>
+      </div>
+    </div>
+    <div class="textoConvidativo">
+      <p>
+        Deseja fazer uma viagem acessível e <br />
+        personalizada? Então você veio ao <br />
+        lugar certo!
+      </p>
+    </div>
+    <div class="divBotaoComecar">
+      <a href="#fundoClaro" id="scrollButton"><button class="botaoComecar">CLIQUE PARA COMEÇAR</button></a>
+    </div>
+  </div>
+
+  <div id="fundoClaro">
+    <div class="fundoBranco">
+      <div class="esquerda">
+        <h1 class="tituloDestino">Encontre o seu destino</h1>
+
+        <form id="formularioViagem" onsubmit="enviarRequisicao(event)">
+
+          <input class="botaoOrcamento" type="text" id="orcamento" name="preco" placeholder="QUAL SEU ORÇAMENTO?"
+            oninput="formatarMoeda(this);" />
+
+          <select class="botaoLugar" id="destino" name="lugar">
+            <option value="" disabled selected>
+              Destino
+            </option>
+            <!-- <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option> -->
+            <option value="Salvador, BA">Bahia</option>
+            <!-- <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option> -->
+            <option value="Belo Horizonte, MG">Minas Gerais</option>
+            <!-- <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option> -->
+            <option value="Rio de Janeiro, RJ">Rio de Janeiro</option>
+            <!-- <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option> -->
+            <option value="São Paulo, SP">São Paulo</option>
+            <!-- <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option> -->
+          </select>
+          <div class="div-father">
+            <div class="input-group-1">
+              <input type="text" id="calendario" name="calendario" class="DateInput" placeholder="Data de ida" />
+
+              <style>
+                .DateInput {
+                  text-overflow: ellipsis;
+                  font-family: "Nunito";
+                  color: #000000;
+                  border-radius: 40px;
+                  font-size: 30px;
+                  text-align: center;
+                }
+
+                .ui-datepicker {
+                  font-family: "Nunito";
+                  font-size: 20px;
+                }
+
+                .ui-datepicker-header {
+                  background-color: #2970db;
+                  border-radius: 10px;
+                  color: #000000;
+                }
+
+                .ui-datepicker-prev:hover,
+                .ui-datepicker-next:hover {
+                  background-color: #2970db;
+                  color: #ffffff;
+                }
+
+                .ui-state-default,
+                .ui-widget-content .ui-state-default,
+                .ui-widget-header .ui-state-default {
+                  background-color: #ffffff;
+                  border: none;
+                  color: #2970db;
+                }
+
+                .ui-state-active,
+                .ui-widget-content .ui-state-active,
+                .ui-widget-header .ui-state-active {
+                  background-color: #2970db;
+                  border: none;
+                  color: #000000;
+                }
+
+                .ui-state-highlight,
+                .ui-widget-content .ui-state-highlight,
+                .ui-widget-header .ui-state-highlight {
+                  background-color: #2970db;
+                  border: none;
+                  color: #000000;
+                }
+
+                .ui-datepicker-calendar td a {
+                  color: #000000;
+                }
+
+                .ui-datepicker-calendar td a:hover {
+                  color: #2970db;
+                }
+              </style>
+            </div>
+            <div class="input-group-2">
+              <input type="text" id="calendario2" name="calendario" class="DateInput2" placeholder="Data de volta" />
+
+              <style>
+                .DateInput2 {
+                  text-overflow: ellipsis;
+                  font-family: "Nunito";
+                  color: #000000;
+                  border-radius: 40px;
+                  font-size: 30px;
+                  text-align: center;
+                }
+              </style>
+            </div>
+            <div class="divBotaoJornadas">
+              <button type="submit" class="botaoJornadas">BUSCAR JORNADAS</button>
+            </div>
+        </form>
+      </div>
+
+
+
+    </div>
+    <div class="direita">
+      <div class="dica">
+        Gostaria de uma dica de lugar para visitar?
+        <img src="./home/imagens/lampada.png" class="lampada" />
+        <img class="paisagem" id="minha-imagem" src="./home/imagens/paisagem.jpg" onmouseover="trocaImagem()"
+          onmouseout="retornaImagem()" />
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="rodape">
+    <div class="inlineEstrelas">
+      <img src="./home/imagens/estrelas.png" class="imgEstrelas">
+      <h1 class="tituloAvaliacoes">Avaliações</h1>
+      <img src="./home/imagens/estrelas.png" class="imgEstrelas">
+    </div>
+    <div class="inlineAvaliacoes">
+      <div class="avaliacoes">
+        <div>
+          <img src="./home/imagens/aspa.png" class="imgAspa">
+        </div>
+        <p class="avaliacaoIndividual">Eu sou uma pessoa muito organizada e gosto de ter o controle sobre meu
+          orçamento
+          de
+          viagem. A Eyre me permitiu definir o meu orçamento e encontrar opções que cabiam dentro dele. Tudo foi
+          perfeito, desde a reserva até o pouso. Obrigado por uma viagem inesquecível!</p>
+        <div class="fotoENome">
+          <img src="./home/imagens/rafael.jpg" class="imgAvaliador">
+          <p class="nomeAvaliador">RAFAEL,</br>
+            MINHA CIDADE, MG</p>
+        </div>
+      </div>
+      <div class="avaliacoes">
+        <div>
+          <img src="./home/imagens/aspa.png" class="imgAspa">
+        </div>
+        <p class="avaliacaoIndividual">Eu usei a Eyre para planejar minhas férias recentes e fiquei surpreso com a
+          quantidade de opções disponíveis dentro do meu orçamento. A viagem foi incrível e eu recomendo este site
+          a qualquer pessoa procurando por viagens acessíveis.</p>
+        <div class="fotoENome">
+          <img src="./home/imagens/kaik.jpg" class="imgAvaliador">
+          <p class="nomeAvaliador">KAIK,</br>
+            BELO HORIZONTE, MG</p>
+        </div>
+      </div>
+      <div class="avaliacoes">
+        <div>
+          <img src="./home/imagens/aspa.png" class="imgAspa">
+        </div>
+        <p class="avaliacaoIndividual">Eu já usei outros sites de viagens antes, mas este é de longe o melhor quando
+          se
+          trata de pacotes baseados em um orçamento. Adorei a flexibilidade de ser capaz de definir meu orçamento
+          e encontrar opções que cabiam dentro dele. A equipe de atendimento ao cliente também foi incrível e me
+          ajudou com todas as minhas perguntas e preocupações.</p>
+        <div class="fotoENome">
+          <img src="./home/imagens/allan.jpg" class="imgAvaliador">
+          <p class="nomeAvaliador">ALLAN,</br>
+            CONTAGEM, MG</p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="fundoClaroRodape">
+        <div class="inlineInfoAdicionais">
+          <nav>
+            <ul>
+              <li>Países</li>
+              <li>Regiões</li>
+              <li>Cidades</li>
+              <li>Bairros</li>
+              <li>Aeroportos</li>
+              <li>Hotéis</li>
+              <li>Locais de interesse</li>
+            </ul>
+          </nav>
+          <nav>
+            <ul>
+              <li>Casas e apartamentos</a></li>
+              <li>Apartamentos</a></li>
+              <li>Resorts</a></li>
+              <li>Villas</a></li>
+              <li>Hostels</a></li>
+              <li>Cama e Cafés (B&Bs)</a></li>
+              <li>Casas de hóspedes</a></li>
+            </ul>
+          </nav>
+          <nav>
+            <ul>
+              <li>Latam</a></li>
+              <li>Azul</a></li>
+              <li>Gol</a></li>
+              <li>United</a></li>
+            </ul>
+          </nav>
+          <div>
+            <img src="./home/imagens/logoEyreRodape.png" class="imgLogoEyreRodape">
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="formasPagamento">Formas de pagamento</h2>
+      </div>
+      <div class="centralizarImgBandeirasCartao">
+        <img src="./home/imagens/bandeirasCartao.png" class="imgBandeirasCartao">
+      </div>
+      <hr class="linhaHorizontal">
+      <div class="alinharEmail">
+        <h2 class="email">eyre@contact.com.br</h2>
+      </div>
+      <div>
+        <h2 class="conecteConosco">CONECTE-SE CONOSCO</h2>
+      </div>
+      <div class="inlineRedesSociais">
+        <img src="./home/imagens/instagram.png">
+        <img src="./home/imagens/twitter.png">
+        <img src="./home/imagens/linkedin.png">
+        <img src="./home/imagens/facebook.png">
+      </div>
+      <div class="alinharEndereco">
+        <h3 class="endereco">Eyre Viagens Ltda, CNPJ: 00.000.000/0001-00, Rua Paineiras, 1300 - Eldorado, CEP
+          30.000-000,
+          Contagem/MG.</h3>
+      </div>
+    </footer>
+  </div>
+  <script>
+    function enviarRequisicao(event) {
+      event.preventDefault();
+
+      // Capturar os valores dos campos do formulário
+      var orcamento = document.getElementById('orcamento').value;
+      var destino = document.getElementById('destino').value;
+      var dataIda = document.getElementById('calendario').value;
+      var dataVolta = document.getElementById('calendario2').value;
+
+      // Construir o objeto de dados para a requisição
+      var data = {
+        orcamento: orcamento,
+        destino: destino,
+        dataIda: dataIda,
+        dataVolta: dataVolta
+      };
+
+      // Fazer a requisição usando fetch
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(function (response) {
+          if (response.ok) {
+
+            // A requisição foi bem-sucedida
+
+            return response.json();
+          } else {
+
+            // A requisição falhou
+
+            throw new Error('Erro na requisição: ' + response.status);
+          }
+        })
+        .then(function (data) {
+
+          // Manipular a resposta do servidor
+
+          console.log('Resposta do servidor:', data);
+
+          // Fazer algo com a resposta, como atualizar a página ou exibir uma mensagem de sucesso
+
+          // Redirecionar para outra página
+          window.location.href = '../opcoesJornada/index.html';
+
+        })
+        .catch(function (error) {
+
+          // Tratar erros ocorridos durante a requisição
+
+          console.error('Erro:', error);
+        });
+
+      // Limpar os campos do formulário (opcional)
+
+      document.getElementById('formularioViagem').reset();
+    }
+
+  </script>
+  <script>
+    window.onload = function () {
+      var email = localStorage.getItem('email');
+
+      if (email) {
+        document.getElementById('entrarOuCadastrar').innerHTML = '<h3>Olá, ' + email + '</h3>';
+      }
+    };
+  </script>
+  <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+  <script type="text/javascript" src="./home/script.js"></script>
+</body>
+
+</html>
