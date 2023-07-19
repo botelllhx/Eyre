@@ -6,149 +6,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    <link rel="icon" href="imagens/logoEyre.png" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" type="image/png" href="./imagens/icon.png" />
-    <script src="./restricao.js"></script>
+    <script src="./funcoes.js"></script>
     <title>Eyre - Pagamentos</title>
 
 </head>
 
 <body>
-    <div class="fundoBranco">
-        <div class="body">
+    <div id="fundoBrancoPrincipal" class="fundoBranco">
+        <div id="corpoCodigo" class="body">
 
             <!-- ==========================CABEÇALHO============================ -->
 
-            <div class="cabecalho">
-                <div class="icon-background">
-                    <i class="fa-solid fa-dollar-sign fa-2x"></i>
+            <div id="cabecaCodigo" class="cabecalho">
+                <div id="estilizacaoCifrao" class="icon-background">
+                    <i id="cifrao" class="fa-solid fa-dollar-sign fa-2x"></i>
                 </div>
-                <div class="detalhes">
+                <div id="fraseDetalhes" class="detalhes">
                     <h1>Detalhes de Pagamento</h1>
                 </div>
-
-                <style>
-                    .countdown-wrapper {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-
-                    .countdown-wrapper span {
-                        margin: 0 2px;
-                        padding-inline-start: 10px;
-                        background-color: #2970DB;
-                        width: 30px;
-                        height: 40px;
-                        border-radius: 40%;
-                        font-family: "Nunito";
-                        font-weight: bold;
-                        font-size: 30px;
-                        color: white;
-                    }
-
-                    .countdown-wrapper .colon {
-                        margin: 0 2px;
-                        padding-inline-start: 12px;
-                        width: 20px;
-                        height: 40px;
-                        color: black;
-                        background-color: #F1F3F6;
-                        font-family: "Nunito";
-                        font-weight: bold;
-                    }
-                </style>
-
-                <script>
-                    var minutes = 12;
-                    var seconds = 0;
-
-                    function startTimer() {
-                        var countdown = document.getElementById('countdown');
-                        var interval = setInterval(function () {
-                            countdown.innerHTML = pad(minutes) + ':' + pad(seconds);
-
-                            if (seconds > 0) {
-                                seconds--;
-                            } else {
-                                if (minutes > 0) {
-                                    minutes--;
-                                    seconds = 59;
-                                } else {
-                                    clearInterval(interval);
-                                    countdown.innerHTML = "Tempo encerrado!";
-                                }
-                            }
-                        }, 1000);
-                    }
-
-                    function pad(value) {
-                        return value < 10 ? '0' + value : value;
-                    }
-
-                    window.onload = function () {
-                        startTimer();
-                    };
-                </script>
-                <div class="countdown-wrapper">
-                    <span id="minutes">1</span>
-                    <span id="minutes">2</span>
-                    <span class="colon">:</span>
-                    <span id="seconds">0</span>
-                    <span id="seconds">0</span>
+                <div id="countdown" class="countdown-container">
+                    <span id="countdownTempo">12:00</span>
                 </div>
             </div>
-            <!-- ===========================CARTÃO NUMERO========================= -->
-            <form id="cartaoForm">
-                <div class="cartao">
-                    <h3>Número do Cartão</h3>
-                </div>
-                <div>
-                    <div class="numeroCartao">
-                        <script>
-                            function formatarCartao(event) {
-                                // Obtém o valor atual do campo de texto
-                                let numeroCartao = event.target.value;
 
-                                // Remove todos os caracteres não numéricos
-                                numeroCartao = numeroCartao.replace(/\D/g, '');
+            <!-- =========================== CARTÃO NUMERO ========================= -->
+            <div id="creditCard-form" class="paymant-form">
+                <div id="numeroCartaoDivUm">
+                    <div id="cartaoNumeroDivDois" class="cartao">
+                        <h3>Número do Cartão</h3>
+                    </div>
+                    <div id="numeroCartaoDivTres">
+                        <div id="funcaoCartaoNumeroDivQuatro" class="numeroCartao">
+                            <script>
+                                function formatarCartao(event) {
+                                    // Obtém o valor atual do campo de texto
+                                    let numeroCartao = event.target.value;
 
-                                // Limita o número a 16 dígitos
-                                numeroCartao = numeroCartao.slice(0, 16);
+                                    // Remove todos os caracteres não numéricos
+                                    numeroCartao = numeroCartao.replace(/\D/g, '');
 
-                                // Adiciona traços a cada 4 dígitos
-                                let numeroFormatado = numeroCartao.replace(/(\d{4})(?=\d)/g, '$1-');
+                                    // Limita o número a 16 dígitos
+                                    numeroCartao = numeroCartao.slice(0, 16);
 
-                                // Atualiza o valor do campo de texto
-                                event.target.value = numeroFormatado;
-                            }
+                                    // Adiciona traços a cada 4 dígitos
+                                    let numeroFormatado = numeroCartao.replace(/(\d{4})(?=\d)/g, '$1-');
 
-                            function validarEntrada(event) {
-                                // Obtém o código ASCII do último caractere digitado
-                                let keyCode = event.keyCode || event.which;
-
-                                // Permite apenas números (códigos ASCII entre 48 e 57)
-                                if (keyCode < 48 || keyCode > 57) {
-                                    event.preventDefault();
+                                    // Atualiza o valor do campo de texto
+                                    event.target.value = numeroFormatado;
                                 }
-                            }
-                        </script>
-                        <input type="text" id="cardNumber" placeholder="0000 - 0000 - 0000 - 0000" class="inputNumero"
-                            oninput="formatarCartao(event)" onkeypress="validarEntrada(event)" maxlength="19">
+
+                                function validarEntrada(event) {
+                                    // Obtém o código ASCII do último caractere digitado
+                                    let keyCode = event.keyCode || event.which;
+
+                                    // Permite apenas números (códigos ASCII entre 48 e 57)
+                                    if (keyCode < 48 || keyCode > 57) {
+                                        event.preventDefault();
+                                    }
+                                }
+                            </script>
+                            <input type="text" id="cardNumberInputUm" placeholder="0000 - 0000 - 0000 - 0000"
+                                class="inputNumero" oninput="formatarCartao(event)" onkeypress="validarEntrada(event)"
+                                maxlength="19">
+                        </div>
                     </div>
                 </div>
-
-                <!-- =============================CARTAO DATA DE EXPEDIÇÃO===================================  -->
-                <div>
-                    <div class="data">
+                <!-- ============================= CARTAO DATA DE EXPEDIÇÃO ===================================  -->
+                <div id="cartaoDataDivCinco">
+                    <div id="dataCartaoDivSeis" class="data">
                         <h3>Data de Expedição</h3>
                     </div>
 
-                    <div class="dataValidade">
+                    <div id="dataCartaoDivSete" class="dataValidade">
                         <script>
                             function formatarValidade(event) {
                                 let validade = event.target.value;
@@ -176,37 +111,168 @@
                                 }
                             }
                         </script>
-                        <input type="text" id="validade" placeholder="MM/AA" class="inputData"
+                        <input type="text" id="validadeInputDois" placeholder="MM/AA" class="inputData"
                             oninput="formatarValidade(event)" onkeypress="validarValidade(event)">
                     </div>
-
                 </div>
+                <!-- /* ============================= CARTAO CVV ================================ */ -->
+                <div id="cartaoCvvDivOito">
+                    <div id="cvvCartaoDivNove" class="cvv">
+                        <h3>CVV</h3>
+                    </div>
 
-                <!-- /* =============================CARTAO CVV=============================================== */ -->
-
-                <div class="cvv">
-                    <h3>CVV</h3>
-                </div>
-                <div>
-                    <div class="codigoCVV">
-                        <input type="text" id="cvv" placeholder="123" class="inputCVV" maxlength="3"
+                    <div class="codigoCvvDivDez">
+                        <input type="text" id="cvvInputTres" placeholder="123" class="inputCVV" maxlength="3"
                             onkeypress="validarEntrada(event)">
                     </div>
+
+
                 </div>
+                <!-- /* ============================ CARTAO NOME ============================ */ -->
+                <div id="cartaoTitularDivOnze">
+                    <div id="cartaoTitularDivDoze" class="nome">
+                        <h3>Nome no Cartão</h3>
+                    </div>
 
-
-                <!-- /* ============================CARTAO NOME======================================= */ -->
-
-                <div class="nome">
-                    <h3>Nome no Cartão</h3>
-                </div>
-                <div>
-                    <div class="nomeCartao">
-                        <input type="text" id="cardName" placeholder="Nalysson Luis" class="inputNome"
+                    <div id="cartaoTitularDivTreze" class="nomeCartao">
+                        <input type="text" id="cardNameInputQuatro" placeholder="Nalysson Luiz" class="inputNome"
                             oninput="formatarNome(event)" onkeypress="validarDigitacao(event)">
                     </div>
+
                 </div>
-            </form>
+
+                <!-- ================================== PARCELAMENTO =========================== -->
+                <div id="parcelarValoresDivQuatorze">
+                    <div id="parcelarValoresDivQuinze" class="parcelamento">
+                        <h3>Parcelamento</h3>
+                    </div>
+
+                    <div id="parcelarValoresDivDezesseis" class="parcelar">
+                        <div id="parcelarValoresDivDezessete">
+                            <div id="parcelarValoresDivDezoito" class="parcelamento">
+                                <h3>Parcelamento</h3>
+                            </div>
+
+                            <div id="parcelarValoresDivDezenove" class="parcelar">
+                                <select id="parcelas" name="parcelas" class="inputParcelar" onchange="atualizarTotal()">
+                                    <option value="1">1x</option>
+                                    <option value="2">2x</option>
+                                    <option value="3">3x</option>
+                                    <option value="4">4x</option>
+                                    <option value="5">5x</option>
+                                    <option value="6">6x</option>
+                                    <option value="7">7x</option>
+                                    <option value="8">8x</option>
+                                    <option value="9">9x</option>
+                                    <option value="10">10x</option>
+                                    <option value="11">11x</option>
+                                    <option value="12">12x</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- =================================CARTAO DEB/CRE======================================= -->
+
+            <div id="selecionarPagamentoDivVinte" class="selecionar">
+
+                <button onclick="showPaymentForm('creditCard')" id="pagamentoCartaoBotaoUm"
+                    class="cartaoTipo selecionadoA selecionadoC">
+                    <div id="pagamentoCartaoImgDivVinteUm">
+                        <img src="./imagens/cartao.PNG" class="imgCartao">
+                    </div>
+                    <div id="cartaoDivVinteDois" class="palavraCartao">
+                        Cartão
+                    </div>
+                </button>
+
+                <!-- =====================================PIX======================================= -->
+                <div id="pagamentoPixDivVinteTres">
+                    <button onclick="showPaymentForm('pix')" id="pagamentoPixBotaoDois" class="pagPix selecionadoC">
+                        <div id="pagamentoPixImgDivVinteQuatro">
+                            <img src="./imagens/pix.PNG" class="imgPix">
+                        </div>
+                        <div id="pixDivVinteCinco" class="palavraPix">
+                            Pix
+                        </div>
+                    </button>
+                </div>
+                <div id="pix-form" class="payment-form">
+                    <div id="fundoBrancoDoisDivVinteSeis" class="fundoBranco2">
+                        <div id="escaneiePixDivVinteSete" class="escaneie">
+                            <h4>Escaneie o QR Code Pix</h4>
+                        </div>
+                        <div id="pagamentoPixImgDivVinteOito">
+                            <img src="./imagens/qrcode.jpg" class="qrcode">
+                        </div>
+                        <div id="copiarPixDivVinteNove" class="copie">
+                            <h4>Ou copie e cole no seu aplicativo!</h4>
+                        </div>
+
+                        <button type="button" id="copiarPixBotaoTres" class="verPix" onclick="copiarCodigoPix()">
+                            <div id="codigoPixDivTrinta" class="codPix">
+                                <h3 id="codigoPix">4MX2V0PZR0X6Q2Q6XM6U2K1KKI4MFVPIBHQ</h3>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- ==========================================BOLETO===================================== -->
+                <div id="pagamentoBoletoDivTrintaUm">
+                    <button onclick="showPaymentForm('boleto')" id="pagamentoBoletoBotaoQuatro"
+                        class="pagBoleto selecionadoC">
+                        <div id="pagamentoBoletoImgDivTrintaDois">
+                            <img src="./imagens/boleto.PNG" class="imgBoleto">
+                        </div>
+                        <div id="boletoDivTrintaTres" class="palavraBoleto">
+                            Boleto
+                        </div>
+                    </button>
+                </div>
+                <div id="boleto-form" class="payment-form">
+                    <div id="fundoBrancoTresDivTrintaQuatro" class="fundoBranco3">
+                        <div id="useDivTrintaCinco" class="use">
+                            <h4>Use este código de barras e pague o boleto pelo celular:</h4>
+                            <img src="./imagens/codBarras.jpg" class="imgCodBarras">
+                        </div>
+                        <div class="codBoleto">
+                            <h4 id="codigoBarras">2189494618949846515648916654896463166888</h4>
+                        </div>
+                        <div class="vencimento">
+                            <h3>Vencimento: 03/10/2023</h3>
+                        </div>
+                        <div>
+                            <button type="button" class="ver" onclick="copiarCodigoBarras()">
+                                <div class="verBoleto">
+                                    <h3>Ver boleto</h3>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================================== TROCA DE COR ====================================== -->
+            
+            <script>
+                const botoes = document.querySelectorAll('.selecionadoC')
+
+                botoes.forEach(selecionadoC => {
+                    selecionadoC.addEventListener('click', () => {
+                        const botaoSelecionado = document.querySelector('.selecionadoA');
+                        botaoSelecionado.classList.remove('selecionadoA')
+
+                        selecionadoC.classList.add('selecionadoA');
+                    })
+                })
+            </script>
+
             <!-- /* ===============================CONFIRMAR==================================== */ -->
 
             <div>
@@ -224,7 +290,7 @@
                 <div class="fundoBrancoValor">
                 </div>
                 <div class="valor">
-                    <h1>R$600,00</h1>
+                    <h1>R$1.500,00</h1>
                 </div>
                 <div class="hospedagem">
                     <h3>Hospedagem</h3>
