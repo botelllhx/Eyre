@@ -17,20 +17,20 @@
   </div>
   <div class="inline">
     <div class="opcoes">
-      <h2 class="tituloBrisas">Brisas do Farol</h2>
+      <h2 class="tituloBrisas" id="titulo">Brisas do Farol</h2>
       <div class="infoBranco">
-        <img src="./imagens/brisasdofarol.jpg" class="imgBrisas" />
-        <h2 class="tituloSuite">Suíte</h2>
-        <p class="infoBrisas">
+        <img src="./imagens/brisasdofarol.jpg" class="imgBrisas" id="imagemHospedagem" />
+        <h2 class="tituloSuite" id="tipoQuarto">Suíte</h2>
+        <p class="infoBrisas" id="descricaoQuarto">
           Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²<br />
           3 camas (2 de solteiro, 1 de casal).
         </p>
         <br />
-        <p class="cancelamento">Cancelamento grátis</p>
+        <p class="cancelamento" id="listExtras">Cancelamento grátis</p>
         <br />
-        <p class="resta">Resta 1 unidade por esse preço no nosso site</p>
+        <p class="resta" id="quantidadeReservas">Resta 1 unidade por esse preço no nosso site</p>
       </div>
-      <div class="bordaDatas">
+      <div class="bordaDatas" id="existeVooOnibus">
         <img src="./imagens/brisasdatas.png" class="datasbrisas" />
       </div>
       <div class="botao">
@@ -38,20 +38,20 @@
       </div>
     </div>
     <div class="opcoes">
-      <h2 class="tituloPousada">Pousada Bicho do Mar</h2>
+      <h2 class="tituloPousada" id="titulo2">Pousada Bicho do Mar</h2>
       <div class="infoBranco">
-        <img src="./imagens/pousadabichodomar.jpg" class="imgPousada" />
-        <h2 class="tituloSuite">Suíte Superior</h2>
-        <p class="infoBrisas">
+        <img src="./imagens/pousadabichodomar.jpg" class="imgPousada" id="imagemHospedagem2" />
+        <h2 class="tituloSuite" id="tipoQuarto2">Suíte Superior</h2>
+        <p class="infoBrisas" id="descricaoQuarto2">
           Suíte privativa • 1 quarto • 1 sala • 1 banheiro<br />
           1 cama de casal.
         </p>
         <br />
-        <p class="cancelamento">Café da manhã incluído</p>
+        <p class="cancelamento" id="listExtras2">Café da manhã incluído</p>
         <br />
-        <p class="resta">Resta 1 unidade por esse preço no nosso site</p>
+        <p class="resta" id="quantidadeReservas2">Resta 1 unidade por esse preço no nosso site</p>
       </div>
-      <div class="bordaDatas">
+      <div class="bordaDatas" id="existeVooOnibus2">
         <img src="./imagens/pousadasdatas.png" class="datas" />
       </div>
       <div class="botao">
@@ -59,20 +59,20 @@
       </div>
     </div>
     <div class="opcoes">
-      <h2 class="tituloHotel">Hotel da Canoa</h2>
+      <h2 class="tituloHotel" id="titulo3">Hotel da Canoa</h2>
       <div class="infoBranco">
-        <img src="./imagens/hoteldacanoa.jpg" class="imgHotel" />
-        <h2 class="tituloSuite">Quarto Duplo Standard</h2>
-        <p class="infoBrisas">
+        <img src="./imagens/hoteldacanoa.jpg" class="imgHotel" id="imagemHospedagem3" />
+        <h2 class="tituloSuite" id="tipoQuarto3">Quarto Duplo Standard</h2>
+        <p class="infoBrisas" id="descricaoQuarto3">
           1 cama de casal grande • 1 banheiro • 450 m&nbsp&nbsp<br />
           da praia.
         </p>
         <br />
-        <p class="cancelamento">Café da manhã incluído</p>
+        <p class="cancelamento" id="listExtras3">Café da manhã incluído</p>
         <br />
-        <p class="resta">Resta 1 unidade por esse preço no nosso site</p>
+        <p class="resta" id="quantidadeReservas3">Resta 1 unidade por esse preço no nosso site</p>
       </div>
-      <div class="bordaDatas">
+      <div class="bordaDatas" id="existeVooOnibus3">
         <img src="./imagens/hotelcanoa.png" class="datas" />
       </div>
       <div class="botao">
@@ -112,20 +112,67 @@
 
           console.log('Resposta do servidor:', data);
 
-          // Substituir as informações dos parágrafos dos cards
-          
-          var card1Info = 'Estúdio de luxo • 2 banheiros • 1 cozinha • 30m²<br />4 camas (3 de solteiro, 1 de casal).';
-          var card2Info = 'Suíte Executiva • 2 quartos • 1 sala • 2 banheiros<br />1 cama de casal, 2 camas de solteiro.';
-          var card3Info = 'Apartamento Familiar • 3 quartos • 2 banheiros • 100m²<br />5 camas (2 de casal, 3 de solteiro).';
+          // Substituir as informações dos cards
 
           var card1 = document.getElementsByClassName('opcoes')[0];
           var card2 = document.getElementsByClassName('opcoes')[1];
           var card3 = document.getElementsByClassName('opcoes')[2];
 
           setTimeout(function () {
-            card1.getElementsByClassName('infoBrisas')[0].innerHTML = card1Info;
-            card2.getElementsByClassName('infoBrisas')[0].innerHTML = card2Info;
-            card3.getElementsByClassName('infoBrisas')[0].innerHTML = card3Info;
+
+            var data = {
+              card1: {
+                id: 1,
+                titulo: "Brisas do Farol",
+                tipoQuarto: "", // Vazio neste exemplo
+                descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²<br />3 camas (2 de solteiro, 1 de casal).",
+                listExtras: "Cancelamento grátis",
+                quantidadeReservas: "Resta 1 unidade por esse preço no nosso site",
+                imagemHospedagem: "./imagens/brisasdofarol.jpg"
+              },
+              card2: {
+                id: 2,
+                titulo: "Pousada Bicho do Mar",
+                tipoQuarto: "Suíte Superior",
+                descricaoQuarto: "Suíte privativa • 1 quarto • 1 sala • 1 banheiro<br />1 cama de casal.",
+                listExtras: "Café da manhã incluído",
+                quantidadeReservas: "Resta 1 unidade por esse preço no nosso site",
+                imagemHospedagem: "./imagens/pousadabichodomar.jpg"
+              },
+              card3: {
+                id: 3,
+                titulo: "Hotel da Canoa",
+                tipoQuarto: "Quarto Duplo Standard",
+                descricaoQuarto: "1 cama de casal grande • 1 banheiro • 450 m da praia.",
+                listExtras: "Café da manhã incluído",
+                quantidadeReservas: "Resta 1 unidade por esse preço no nosso site",
+                imagemHospedagem: "./imagens/hoteldacanoa.jpg"
+              }
+            };
+
+            // Card 1
+            document.getElementById('titulo').innerHTML = data.card1.titulo;
+            document.getElementById('tipoQuarto').innerHTML = data.card1.tipoQuarto !== "" ? data.card1.tipoQuarto : "Tipo não especificado";
+            document.getElementById('descricaoQuarto').innerHTML = data.card1.descricaoQuarto;
+            document.getElementById('listExtras').innerHTML = data.card1.listExtras;
+            document.getElementById('quantidadeReservas').innerHTML = data.card1.quantidadeReservas;
+            document.getElementById('imagemHospedagem').src = data.card1.imagemHospedagem;
+
+            // Card 2
+            document.getElementById('titulo2').innerHTML = data.card2.titulo;
+            document.getElementById('tipoQuarto2').innerHTML = data.card2.tipoQuarto !== "" ? data.card2.tipoQuarto : "Tipo não especificado";
+            document.getElementById('descricaoQuarto2').innerHTML = data.card2.descricaoQuarto;
+            document.getElementById('listExtras2').innerHTML = data.card2.listExtras;
+            document.getElementById('quantidadeReservas2').innerHTML = data.card2.quantidadeReservas;
+            document.getElementById('imagemHospedagem2').src = data.card2.imagemHospedagem;
+
+            // Card 3
+            document.getElementById('titulo3').innerHTML = data.card3.titulo;
+            document.getElementById('tipoQuarto3').innerHTML = data.card3.tipoQuarto !== "" ? data.card3.tipoQuarto : "Tipo não especificado";
+            document.getElementById('descricaoQuarto3').innerHTML = data.card3.descricaoQuarto;
+            document.getElementById('listExtras3').innerHTML = data.card3.listExtras;
+            document.getElementById('quantidadeReservas3').innerHTML = data.card3.quantidadeReservas;
+            document.getElementById('imagemHospedagem3').src = data.card3.imagemHospedagem;
 
             // Depois de receber a resposta do servidor
             document.getElementById('loading').style.display = 'none';
@@ -138,6 +185,7 @@
           // Em caso de erro, também é necessário esconder a tela de loading
           document.getElementById('loading').style.display = 'none';
         });
+
     </script>
     <script type="text/javascript" src="script.js"></script>
 </body>
