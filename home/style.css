@@ -318,7 +318,16 @@ select {
     border-radius: 30px;
     height: 600px;
     margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    /* Adiciona a propriedade de transição para o efeito suave */
 }
+
+.avaliacoes:hover {
+    transform: translateY(-10px) scale(1.05);
+    /* Traduz e aumenta a escala do card ao passar o mouse */
+}
+
 
 .avaliacaoIndividual {
     font-family: "Nunito";
@@ -461,4 +470,32 @@ select {
     font-family: "Nunito";
     text-align: center;
     opacity: 0.5;
+}
+
+/* rolagem */
+
+/* Adiciona uma largura e cor de fundo para a barra de rolagem */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 1px;
+    background-color: #F1F3F6;
+}
+
+/* Estiliza o "rastro" da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background-color: #A6A6A6;
+    border-radius: 20px;
+}
+
+/* Estiliza o canto da barra de rolagem */
+::-webkit-scrollbar-corner {
+    background-color: #F1F3F6;
+}
+
+/* Adiciona uma largura e cor de fundo para a barra de rolagem no Firefox */
+/* Este estilo é aplicado ao Firefox versão 64+ */
+/* Para outras versões, pode ser necessário utilizar extensões específicas do Firefox */
+* {
+    scrollbar-color: #2970db #F1F3F6;
+    scrollbar-width: thin;
 }
