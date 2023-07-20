@@ -20,7 +20,7 @@ body {
 .tituloJornada {
   text-align: center;
   font-size: 40px;
-  margin-top: 30px;
+  margin-top: 20px;
   color: white;
   font-family: "Nunito";
 }
@@ -29,7 +29,7 @@ body {
   display: flex;
   width: 100vw;
   justify-content: center;
-  margin-top: -22px;
+  margin-top: -12px;
 }
 
 .opcoes {
@@ -39,6 +39,12 @@ body {
   border-radius: 60px;
   height: 780px;
   margin: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s; /* Adiciona a propriedade de transição para o efeito suave */
+}
+
+.opcoes:hover {
+  transform: translateY(-10px) scale(1.05); /* Traduz e aumenta a escala do card ao passar o mouse */
 }
 
 .tituloBrisas {
