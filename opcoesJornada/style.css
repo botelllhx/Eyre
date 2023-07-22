@@ -40,11 +40,13 @@ body {
   height: 780px;
   margin: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s; /* Adiciona a propriedade de transição para o efeito suave */
+  transition: transform 0.3s;
+  /* Adiciona a propriedade de transição para o efeito suave */
 }
 
 .opcoes:hover {
-  transform: translateY(-10px) scale(1.05); /* Traduz e aumenta a escala do card ao passar o mouse */
+  transform: translateY(-10px) scale(1.05);
+  /* Traduz e aumenta a escala do card ao passar o mouse */
 }
 
 .tituloBrisas {
@@ -137,30 +139,37 @@ body {
 
 .bordaDatas {
   width: 90%;
-  height: 19%;
   background-color: white;
   padding: 20px;
   border-radius: 40px;
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px; 
 }
 
-.datas {
-  width: 550px;
-  height: 100px;
-  min-width: 0;
-  min-height: auto;
-  margin: auto;
-  display: block;
+.bordaDatas > h2 {
+  font-family: "Nunito";
+  margin-bottom: 20px;
+  margin-left: 13px;
+  margin: 10px;
+}
+
+.bordaDatas > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin: 2px 0px; /* Ajustamos a margem vertical e removemos a margem horizontal */
 }
 
 .datasbrisas {
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 0;
-  min-height: auto;
+  width: 25px; /* Ajuste o tamanho das imagens conforme necessário */
+  height: 25px;
+  margin-left: 13px;
+  margin-right:10px;
+}
+
+.textobrisas {
+  font-family: 'Nunito';
+  margin-right: 2px; /* Adicionamos uma margem direita para espaçamento entre imagem e texto */
 }
 
 .bordaDatasbrisas {
@@ -244,9 +253,11 @@ input:active {
   0% {
     content: '.';
   }
+
   33% {
     content: '..';
   }
+
   66% {
     content: '...';
   }

@@ -492,9 +492,7 @@ select {
     background-color: #F1F3F6;
 }
 
-/* Adiciona uma largura e cor de fundo para a barra de rolagem no Firefox */
-/* Este estilo é aplicado ao Firefox versão 64+ */
-/* Para outras versões, pode ser necessário utilizar extensões específicas do Firefox */
+
 * {
     scrollbar-color: #2970db #F1F3F6;
     scrollbar-width: thin;
