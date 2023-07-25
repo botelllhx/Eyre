@@ -111,10 +111,10 @@
     </div>
 
     <script>
-      // Antes de fazer a requisição
+      // Pré requisição
       document.getElementById('loading').style.display = 'block';
 
-      // Fazer a requisição usando fetch
+      // Requisição Fetch
       fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'GET',
         headers: {
@@ -123,7 +123,7 @@
       })
         .then(function (response) {
           if (response.ok) {
-            // A requisição foi bem-sucedida
+            // A requisição deu certo
             return response.json();
           } else {
             // A requisição falhou
@@ -132,11 +132,11 @@
         })
         .then(function (data) {
 
-          // Manipular a resposta do servidor
+          // Resposta do servidor
 
           console.log('Resposta do servidor:', data);
 
-          // Substituir as informações dos cards
+          // Substitui as info dos cards
 
           var card1 = document.getElementsByClassName('opcoes')[0];
           var card2 = document.getElementsByClassName('opcoes')[1];
@@ -148,7 +148,7 @@
               card1: {
                 id: 1,
                 titulo: "Brisas do Farol",
-                tipoQuarto: "", // Vazio neste exemplo
+                tipoQuarto: "",
                 descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²<br />3 camas (2 de solteiro, 1 de casal).",
                 listExtras: "Cancelamento grátis",
                 quantidadeReservas: "Resta 1 unidade por esse preço no nosso site",

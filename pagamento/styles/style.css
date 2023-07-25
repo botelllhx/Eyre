@@ -234,13 +234,13 @@
 .selecionadoC {
     cursor: pointer;
     transform: scale(1.03);
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #A6A6A6;
 }
 
 .selecionadoA {
     cursor: pointer;
     transform: scale(1.03);
-    background-color: #2970DB;
+    background-color: #1877F2;
 }
 
 /* ================================CARTAO DEBITO/CREDITO========================== */
@@ -263,12 +263,12 @@
 
 .imgCartao {
     width: 45px;
-    height: 35px;
-    margin: 0px 0px 0px -160px;
+    height: 45px;
+    margin: 0px 0px 0px -150px;
 }
 
 .palavraCartao {
-    margin: -45px 0px 0px 10px;
+    margin: -50px 0px 0px 6px;
 }
 
 /* ===========================PIX=========================== */
@@ -307,7 +307,7 @@
 }
 
 .palavraPix {
-    margin: -45px 0px 0px 45px;
+    margin: -45px 0px 0px 20px;
 }
 
 .escaneie {
@@ -340,7 +340,7 @@
 }
 
 .verPix {
-    background-color: #2970DB;
+    background-color: #1877F2;
     cursor: pointer;
     width: 500px;
     height: 35px;
@@ -380,13 +380,13 @@
 }
 
 .imgBoleto {
-    width: 55px;
-    height: 40px;
-    margin: 3px 0px 0px -150px;
+    width: 45px;
+    height: 45px;
+    margin: -5px 0px 0px -145px
 }
 
 .palavraBoleto {
-    margin: -50px 0px 0px 20px;
+    margin: -50px 0px 0px 25px;
 }
 
 .use {
@@ -415,7 +415,7 @@
 }
 
 .ver {
-    background-color: #2970DB;
+    background-color: #1877F2;
     cursor: pointer;
     text-align: center;
     width: 500px;
@@ -443,7 +443,7 @@
     font-family: "Nunito";
     font-weight: bold;
     cursor: pointer;
-    background-color: #2970DB;
+    background-color: #1877F2;
     width: 700px;
     height: 60px;
     top: 850px;
