@@ -15,13 +15,15 @@
 </head>
 
 <body>
-    <div>
+    <div class="topo">
         <div class="cabecalho">
-            <img src="./imagens/logoEyre2.png" class="logo">
+            <a href="../index.html">
+                <img src="./imagens/logoEyre2.png" class="logo">
+            </a>
             <div class="botoesCabecalho">
-                <button class="botaoBranco">R$ 0,00</button>
-                <button class="botaoBranco">RJ</button>
-                <button class="botaoBranco">26 mai - 28 mai</button>
+                <button class="botaoBrancoValor">R$ 0,00</button>
+                <button class="botaoBrancoLocalizacao">- RJ</button>
+                <button class="botaoBrancoData">22 set - 24 set</button>
                 <a href="../pagamento/index.html"><button class="botaoAzul">Reservar agora</button></a>
             </div>
         </div>
@@ -39,45 +41,300 @@
                         Senhora
                         dos Remédios fica a 12 minutos a pé da pousada.</p>
                 </div>
+                <div class="fotosBrisas">
+                    <img src="./imagens/fotosbrisas.png" class="imgBrisas" onclick="abrirModal()">
+                </div>
+                <div id="meuModal" class="modal">
+                    <span class="fechar" onclick="fecharModal()">&times;</span>
+                    <a class="anterior" onclick="retrocederImagem()">&#10094;</a>
+                    <a class="proximo" onclick="avancarImagem()">&#10095;</a>
+                    <div class="galeria">
+                        <img src="./imagens/BrisasDoFarol.jpg" class="modal-conteudo">
+                        <img src="./imagens/pousadaBrisasDoFarol.jpg" class="modal-conteudo">
+                    </div>
+                </div>
             </div>
             <div class="direita">
                 <div class="elementos1">
                     <div class="divAvaliacoes">
-                        <p class="avaliacoes">Muito bom! 729 avaliações</p>
-                    </div>
-                    <div class="classificacao">
-                        <h3>8,0</h3>
+                        <p class="avaliacoes"><strong>Muito bom!</strong> 729 avaliações</p>
+                        <div class="classificacao">
+                            <h3>8,0</h3>
+                        </div>
                     </div>
                     <div class="mapa-container">
-                        <img src="./imagens/mapa1.png" class="mapa">
-                        <button class="botao-ver-mapa">Ver no mapa</button>
-                        <!-- <img src="./imagens/iconmaps.png" class="iconMaps"> -->
+                        <img src="./imagens/mapa.png" class="mapa">
+                        <button class="botao-ver-mapa" onclick="abrirModalMapa()">
+                            <div class="alinharImgTextoVerMapa">
+                                <img src="./imagens/iconmaps.png" class="iconMaps" alt="Ícone Mapa">
+                                Ver no mapa
+                            </div>
+                        </button>
+                    </div>
+                    <div id="mapModal" class="modalMapa">
+                        <div class="modal-content">
+                            <span class="close" onclick="fecharModalMapa()">&times;</span>
+                            <div class="modal-header-mapa">
+                                <img src="./imagens/iconLocalizacao.png" class="iconLocalizacaoMapa">
+                                <h5 class="modal-title">Pousada Brisas do Farol</h5>
+                            </div>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.4956137863505!2d-42.02949918503327!3d-22.968795684980286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9719c84836b0df%3A0x99c9f4200ad4c12b!2sBrisas%20do%20Farol%20-%20Arraial%20do%20Cabo%20-%20Aluguel%20Econ%C3%B4mico!5e0!3m2!1spt-BR!2sbr!4v1690346062175!5m2!1spt-BR!2sbr"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="elementos2">
-                    <div class="icone-texto">
-                        <img src="./imagens/icone1.png" class="icone1">
-                        <p class="textoicone">Quartos para não fumantes</p>
+                    <div class="fundoBrancoSuite">
+                        <p class="titulos">Suíte</p>
+                        <div class="divDescricaoSuite">
+                            <img src="./imagens/cama.png" class="icons" alt="cama">
+                            <p class="textoSuite">Estúdio inteiro • 1 banheiro • 1 cozinha • 20m² <br> 3 camas (2 de
+                                solteiro, 1 de casal).</p>
+                        </div>
                     </div>
-                    <div class="icone-texto">
-                        <img src="./imagens/icone2.png" class="icone1">
-                        <p class="textoicone">Wi-fi gratuito</p>
+                    <div class="fundoBrancoServicos">
+                        <p class="titulos">Serviços de hospedagem</p>
+                        <div class="divDescricaoServicos">
+                            <img src="./imagens/cigarro.png" class="icons" alt="cigarro">
+                            <p class="texto">Quartos para não fumantes</p>
+                        </div>
+                        <div class="divDescricao">
+                            <img src="./imagens/wi-fi.png" class="icons" alt="wi-fi">
+                            <p class="texto">Wi-fi gratuito</p>
+                        </div>
+                        <div class="divDescricao">
+                            <img src="./imagens/recepcao.png" class="icons" alt="recepcao">
+                            <p class="texto">Recepção 24 horas</p>
+                        </div>
+                        <div class="divDescricao">
+                            <img src="./imagens/bar.png" class="icons" alt="bar">
+                            <p class="texto">Bar</p>
+                        </div>
                     </div>
-                    <div class="icone-texto">
-                        <img src="./imagens/icone3.png" class="icone1">
-                        <p class="textoicone">Recepção 24 horas</p>
-                    </div>
-                    <div class="icone-texto">
-                        <img src="./imagens/icone4.png" class="icone1">
-                        <p class="textoicone">Bar</p>
-                    </div>
-                    <div class="elementos3">
-                        <h3 class="tituloTransporte">Opções de transporte!</h3>
-                        <img src="./imagens/transporte.png" class="transporte">
+                    <div class="fundoBrancoHospedagem">
+                        <p class="titulos">Condições de hospedagem</p>
+                        <p class="subtitulo">Horário</p>
+                        <div class="divDescricao">
+                            <img src="./imagens/saida.png" class="icons" alt="cigarro">
+                            <p class="texto">Horário de Check-in: de 14:00 às 22:00</p>
+                        </div>
+                        <div class="divDescricao">
+                            <img src="./imagens/chegada.png" class="icons" alt="cigarro">
+                            <p class="texto">Horário de Check-out: 11:00</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="divDetalhesTransporte">
+            <p class="tituloDetalhesTransporte">Detalhes do transporte</p>
+        </div>
+        <div class="divOpcoesVoos">
+            <p class="tituloOpcoesVoos">Opções de voos:</p>
+        </div>
+        <div class="fundoCinzaOpcoesVoos">
+            <div class="blocoBrancoEsquerdo">
+                <div class="alinharImgTexto">
+                    <img src="./imagens/aviaoIndo.png" class="imgAviao">
+                    <p class="textoIda"><strong>Ida</strong> 22/09</p>
+                </div>
+                <div class="alinharCheckTextImg">
+                    <div class="check-box checked" onclick="toggleCheck(this)" data-side="left">
+                        <div class="check-mark"></div>
+                    </div>
+                    <img src="./imagens/latam.png" class="imgLatam">
+                    <p class="infoVoo">LATAM</p>
+                    <p class="infoVoo"><strong>16:40</strong></p>
+                    <p class="infoVooDireto">Direto</p>
+                    <p class="infoVoo"><strong>17:45</strong></p>
+                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/mala.png" class="imgMala">
+                </div>
+                <div class="alinharCheckTextImg">
+                    <div class="check-box" onclick="toggleCheck(this)" data-side="left">
+                        <div class="check-mark"></div>
+                    </div>
+                    <img src="./imagens/latam.png" class="imgLatam">
+                    <p class="infoVoo">LATAM</p>
+                    <p class="infoVoo"><strong>16:40</strong></p>
+                    <p class="infoVooDireto">Direto</p>
+                    <p class="infoVoo"><strong>17:45</strong></p>
+                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/mala.png" class="imgMala">
+                </div>
+            </div>
+            <img src="./imagens/seta.png" class="imgSeta">
+            <div class="blocoBrancoDireito">
+                <div class="alinharImgTexto">
+                    <img src="./imagens/aviaoVoltando.png" class="imgAviao">
+                    <p class="textoIda"><strong>Volta</strong> 24/09</p>
+                </div>
+                <div class="alinharCheckTextImg">
+                    <div class="check-box checked" onclick="toggleCheck(this)" data-side="right">
+                        <div class="check-mark"></div>
+                    </div>
+                    <img src="./imagens/latam.png" class="imgLatam">
+                    <p class="infoVoo">LATAM</p>
+                    <p class="infoVoo"><strong>06:20</strong></p>
+                    <p class="infoVooDireto">Direto</p>
+                    <p class="infoVoo"><strong>07:25</strong></p>
+                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/mala.png" class="imgMala">
+                </div>
+                <div class="alinharCheckTextImg">
+                    <div class="check-box" onclick="toggleCheck(this)" data-side="right">
+                        <div class="check-mark"></div>
+                    </div>
+                    <img src="./imagens/latam.png" class="imgLatam">
+                    <p class="infoVoo">LATAM</p>
+                    <p class="infoVoo"><strong>09:45</strong></p>
+                    <p class="infoVooDireto">Direto</p>
+                    <p class="infoVoo"><strong>10:50</strong></p>
+                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/mala.png" class="imgMala">
+                </div>
+            </div>
+        </div>
+        <div class="divOpcoesOnibus">
+            <p class="tituloOpcoesOnibus">Opções de ônibus:</p>
+        </div>
+        <div class="fundoCinzaOpcoesVoos">
+            <div class="blocoBrancoEsquerdo">
+                <div class="alinharDuasDivImgTextoOnibus">
+                    <img src="./imagens/buser.png" class="imgBuser">
+                    <div class="alinharImgTextoOnibus">
+                        <img src="./imagens/onibus.png" class="imgOnibus">
+                        <p class="textoBuser">Parceiro Buser</p>
+                        <p class="textoPoltrona">Poltrona:</p>
+                    </div>
+                    <div class="alinharImgTextoOnibus">
+                        <img src="./imagens/informacao.png" class="imgOnibus">
+                        <p class="textoBuser">Embarque com documento</p>
+                        <img src="./imagens/poltrona.png" class="imgPoltrona">
+                        <p class="textoLeito"><strong>Semi-leito</strong></p>
+                    </div>
+                </div>
+                <div class="divEmbarqueDesembarque">
+                    <ul class="horaEmbarqueDesembarque">
+                        <li><strong>11:45</strong></li>
+                        <li><strong>22:05</strong></li>
+                    </ul>
+                    <img src="./imagens/destino.png" class="imgDestino">
+                    <ul class="embarqueDestino">
+                        <li>Embarque: <strong>Belo Horizonte</strong></p>
+                        </li>
+                        <li>Desembarque: <strong>Arraial do Cabo</strong></p>
+                        </li>
+                    </ul>
+                    <div class="divBotaoSelecionar">
+                        <button class="botaoSelecionar" onclick="toggleSelection(this)">Selecionar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="divTextoOu">
+                <p class="textoOu">ou</p>
+            </div>
+            <div class="blocoBrancoDireito">
+                <div class="alinharDuasDivImgTextoOnibus">
+                    <img src="./imagens/buser.png" class="imgBuser">
+                    <div class="alinharImgTextoOnibus">
+                        <img src="./imagens/onibus.png" class="imgOnibus">
+                        <p class="textoBuser">Parceiro Buser</p>
+                        <p class="textoPoltrona">Poltrona:</p>
+                    </div>
+                    <div class="alinharImgTextoOnibus">
+                        <img src="./imagens/informacao.png" class="imgOnibus">
+                        <p class="textoBuser">Embarque com documento</p>
+                        <img src="./imagens/poltrona.png" class="imgPoltrona">
+                        <p class="textoLeito"><strong>Semi-leito</strong></p>
+                    </div>
+                </div>
+                <div class="divEmbarqueDesembarque">
+                    <ul class="horaEmbarqueDesembarque">
+                        <li><strong>11:45</strong></li>
+                        <li><strong>22:05</strong></li>
+                    </ul>
+                    <img src="./imagens/destino.png" class="imgDestino">
+                    <ul class="embarqueDestino">
+                        <li>Embarque: <strong>Belo Horizonte</strong></p>
+                        </li>
+                        <li>Desembarque: <strong>Arraial do Cabo</strong></p>
+                        </li>
+                    </ul>
+                    <div class="divBotaoSelecionar">
+                        <button class="botaoSelecionar" onclick="toggleSelection(this)">Selecionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divDicasLugares">
+            <p class="tituloDicasLugares">Dicas de lugares para visitar nas proximidades</p>
+            <img src="./imagens/camera.png" class="imgCamera">
+        </div>
+        <div class="alinharBotaoCategoriaLugares">
+            <div class="divCategoriaLugares">
+                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('turistico')"
+                    id="turistico">Turístico</button>
+            </div>
+            <div class="divCategoriaLugares">
+                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('restaurantes')"
+                    id="restaurantes">Restaurantes</button>
+            </div>
+            <div class="divCategoriaLugares">
+                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('bares')"
+                    id="bares">Bares</button>
+            </div>
+        </div>
+        <div>
+            <div id="turisticoContent" class="categoriaContent">
+                <div class="restauranteContainer">
+                    <p class="tituloMangaraRestaurante">Turístico</p>
+                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante">
+                </div>
+                <div class="restauranteContainer">
+                    <p class="tituloMangaraRestaurante">Turístico</p>
+                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante">
+                </div>
+                <div class="restauranteContainer">
+                    <p class="tituloMangaraRestaurante">Turístico</p>
+                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante">
+                </div>
+            </div>
+        </div>
+        <div id="restaurantesContent" class="categoriaContent">
+            <div class="restauranteContainer">
+                <p class="tituloMangaraRestaurante">Mangará Restaurante</p>
+                <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante">
+            </div>
+            <div class="restauranteContainer">
+                <p class="tituloMangaraRestaurante">Casa da Piedra</p>
+                <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante">
+            </div>
+            <div class="restauranteContainer">
+                <p class="tituloMangaraRestaurante">Sol na Cozinha</p>
+                <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante">
+            </div>
+        </div>
+        <div id="baresContent" class="categoriaContent">
+            <div class="restauranteContainer">
+                <p class="tituloMangaraRestaurante">Bares</p>
+                <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante">
+            </div>
+            <div class="restauranteContainer">
+                <p class="tituloMangaraRestaurante">Bares</p>
+                <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante">
+            </div>
+            <div class="restauranteContainer">
+                <p class="tituloMangaraRestaurante">Bares</p>
+                <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante">
+            </div>
+        </div>
+        <div class="espaçamentoFimPagina">
+        </div>
+    </div>
+    </div>
     </div>
     <script src="./script.js"></script>
 </body>

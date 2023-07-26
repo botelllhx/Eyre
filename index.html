@@ -356,6 +356,41 @@
     }
 
   </script>
+  </script>
+  <script>
+    function obterCidadesEstados(termo, callback) {
+      const url = `https://servicodados.ibge.gov.br/api/v1/localidades/municipios?nome=${termo}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const resultados = data.map(item => item.nome);
+          callback(resultados);
+        })
+        .catch(error => {
+          console.error('Erro ao obter os dados:', error);
+          callback([]);
+        });
+    }
+
+    // Função para autocompletar o campo de entrada
+    function autocompletarCampo(campo) {
+      campo.addEventListener('input', function () {
+        const termo = this.value;
+        obterCidadesEstados(termo, function (resultados) {
+          const sugestoes = resultados.map(cidadeEstado => `<option value="${cidadeEstado}"></option>`).join('');
+          campo.setAttribute('list', 'sugestoes');
+          document.getElementById('sugestoes').innerHTML = sugestoes;
+        });
+      });
+    }
+
+    const campoPartida = document.getElementById('partida');
+    const campoDestino = document.getElementById('destino');
+
+    autocompletarCampo(campoPartida);
+    autocompletarCampo(campoDestino);
+  </script>
   <script>
     window.onload = function () {
       var email = localStorage.getItem('email');
