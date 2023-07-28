@@ -21,18 +21,19 @@
                 <img src="./imagens/logoEyre2.png" class="logo">
             </a>
             <div class="botoesCabecalho">
-                <button class="botaoBrancoValor">R$ 0,00</button>
-                <button class="botaoBrancoLocalizacao">- RJ</button>
-                <button class="botaoBrancoData">22 set - 24 set</button>
+                <button class="botaoBrancoValor" id="orcamento">R$ 0,00</button>
+                <button class="botaoBrancoLocalizacao" id="Destino">- RJ</button>
+                <button class="botaoBrancoData" id="IdaVolta">22 set - 24 set</button>
                 <a href="../pagamento/index.html"><button class="botaoAzul">Reservar agora</button></a>
             </div>
         </div>
         <div class="blocos">
             <div class="esquerda">
-                <p class="titulo">Arraial do Cabo - Brisas do Farol</p>
+                <p class="titulo" id="titulo">Arraial do Cabo - Brisas do Farol</p>
                 <img src="./imagens/BrisasDoFarol.jpg" class="imagem1">
                 <div class="fundoDescricao">
-                    <p class="descricao">Localizado em Arraial do Cabo e com a Praia Grande a cerca de 600 metros, a
+                    <p class="descricao" id="descricao">Localizado em Arraial do Cabo e com a Praia Grande a cerca de
+                        600 metros, a
                         propriedade está
                         situada
                         a 300 m da Praça da Independência, a 500 m do Estádio Hermenegildo Barcellos e a 400 m da
@@ -57,9 +58,9 @@
             <div class="direita">
                 <div class="elementos1">
                     <div class="divAvaliacoes">
-                        <p class="avaliacoes"><strong>Muito bom!</strong> 729 avaliações</p>
+                        <p class="avaliacoes"><strong id="avaliacoes">Muito bom! 729 avaliações</strong></p>
                         <div class="classificacao">
-                            <h3>8,0</h3>
+                            <h3 id="classificacao">8,0</h3>
                         </div>
                     </div>
                     <div class="mapa-container">
@@ -87,30 +88,32 @@
                 </div>
                 <div class="elementos2">
                     <div class="fundoBrancoSuite">
-                        <p class="titulos">Suíte</p>
+                        <p class="titulos" id="tipoQuarto">Suíte</p>
                         <div class="divDescricaoSuite">
                             <img src="./imagens/cama.png" class="icons" alt="cama">
-                            <p class="textoSuite">Estúdio inteiro • 1 banheiro • 1 cozinha • 20m² <br> 3 camas (2 de
-                                solteiro, 1 de casal).</p>
+                            <p class="textoSuite" id="descricaoQuarto">Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²
+                                <br> 3 camas (2 de
+                                solteiro, 1 de casal).
+                            </p>
                         </div>
                     </div>
                     <div class="fundoBrancoServicos">
                         <p class="titulos">Serviços de hospedagem</p>
                         <div class="divDescricaoServicos">
                             <img src="./imagens/cigarro.png" class="icons" alt="cigarro">
-                            <p class="texto">Quartos para não fumantes</p>
+                            <p class="texto" id="servico1">Quartos para não fumantes</p>
                         </div>
                         <div class="divDescricao">
                             <img src="./imagens/wi-fi.png" class="icons" alt="wi-fi">
-                            <p class="texto">Wi-fi gratuito</p>
+                            <p class="texto" id="servico2">Wi-fi gratuito</p>
                         </div>
                         <div class="divDescricao">
                             <img src="./imagens/recepcao.png" class="icons" alt="recepcao">
-                            <p class="texto">Recepção 24 horas</p>
+                            <p class="texto" id="servico3">Recepção 24 horas</p>
                         </div>
                         <div class="divDescricao">
                             <img src="./imagens/bar.png" class="icons" alt="bar">
-                            <p class="texto">Bar</p>
+                            <p class="texto" id="servico4">Bar</p>
                         </div>
                     </div>
                     <div class="fundoBrancoHospedagem">
@@ -118,11 +121,11 @@
                         <p class="subtitulo">Horário</p>
                         <div class="divDescricao">
                             <img src="./imagens/saida.png" class="icons" alt="cigarro">
-                            <p class="texto">Horário de Check-in: de 14:00 às 22:00</p>
+                            <p class="texto" id="primeiraCondicao">Horário de Check-in: de 14:00 às 22:00</p>
                         </div>
                         <div class="divDescricao">
                             <img src="./imagens/chegada.png" class="icons" alt="cigarro">
-                            <p class="texto">Horário de Check-out: 11:00</p>
+                            <p class="texto" id="segundaCondicao">Horário de Check-out: 11:00</p>
                         </div>
                     </div>
                 </div>
@@ -138,30 +141,31 @@
             <div class="blocoBrancoEsquerdo">
                 <div class="alinharImgTexto">
                     <img src="./imagens/aviaoIndo.png" class="imgAviao">
-                    <p class="textoIda"><strong>Ida</strong> 22/09</p>
+                    <p class="textoIda">Ida <strong>22/09</strong></p>
                 </div>
                 <div class="alinharCheckTextImg">
-                    <div class="check-box checked" onclick="toggleCheck(this)" data-side="left">
+                    <div class="check-box checked" id="primeiraOpcaoIdaVoo" onclick="toggleCheck(this)"
+                        data-side="left">
                         <div class="check-mark"></div>
                     </div>
-                    <img src="./imagens/latam.png" class="imgLatam">
-                    <p class="infoVoo">LATAM</p>
-                    <p class="infoVoo"><strong>16:40</strong></p>
-                    <p class="infoVooDireto">Direto</p>
-                    <p class="infoVoo"><strong>17:45</strong></p>
-                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/latam.png" class="imgLatam" id="imgCompanhiaAerea1">
+                    <p class="infoVoo" id="companhiaAerea1">LATAM</p>
+                    <p class="infoVoo"><strong id="horarioIda1">16:40</strong></p>
+                    <p class="infoVooDireto" id="tipoVoo1">Direto</p>
+                    <p class="infoVoo"><strong id="horarioVolta1">17:45</strong></p>
+                    <p class="infoVoo" id="duracaoVoo1">1h 5m</p>
                     <img src="./imagens/mala.png" class="imgMala">
                 </div>
                 <div class="alinharCheckTextImg">
-                    <div class="check-box" onclick="toggleCheck(this)" data-side="left">
+                    <div class="check-box" id="segundaOpcaoIdaVoo" onclick="toggleCheck(this)" data-side="left">
                         <div class="check-mark"></div>
                     </div>
-                    <img src="./imagens/latam.png" class="imgLatam">
-                    <p class="infoVoo">LATAM</p>
-                    <p class="infoVoo"><strong>16:40</strong></p>
-                    <p class="infoVooDireto">Direto</p>
-                    <p class="infoVoo"><strong>17:45</strong></p>
-                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/latam.png" class="imgLatam" id="imgCompanhiaAerea2">
+                    <p class="infoVoo" id="companhiaAerea2">LATAM</p>
+                    <p class="infoVoo"><strong id="horarioIda2">16:40</strong></p>
+                    <p class="infoVooDireto" id="tipoVoo2">Direto</p>
+                    <p class="infoVoo"><strong id="horarioVolta2">17:45</strong></p>
+                    <p class="infoVoo" id="duracaoVoo2">1h 5m</p>
                     <img src="./imagens/mala.png" class="imgMala">
                 </div>
             </div>
@@ -169,30 +173,31 @@
             <div class="blocoBrancoDireito">
                 <div class="alinharImgTexto">
                     <img src="./imagens/aviaoVoltando.png" class="imgAviao">
-                    <p class="textoIda"><strong>Volta</strong> 24/09</p>
+                    <p class="textoIda">Volta <strong>24/09</strong></p>
                 </div>
                 <div class="alinharCheckTextImg">
-                    <div class="check-box checked" onclick="toggleCheck(this)" data-side="right">
+                    <div class="check-box checked" id="primeiraOpcaoVoltaVoo" onclick="toggleCheck(this)"
+                        data-side="right">
                         <div class="check-mark"></div>
                     </div>
-                    <img src="./imagens/latam.png" class="imgLatam">
-                    <p class="infoVoo">LATAM</p>
-                    <p class="infoVoo"><strong>06:20</strong></p>
-                    <p class="infoVooDireto">Direto</p>
-                    <p class="infoVoo"><strong>07:25</strong></p>
-                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/latam.png" class="imgLatam" id="imgCompanhiaAerea3">
+                    <p class="infoVoo" id="companhiaAerea3">LATAM</p>
+                    <p class="infoVoo"><strong id="horarioIda3">06:20</strong></p>
+                    <p class="infoVooDireto" id="tipoVoo3">Direto</p>
+                    <p class="infoVoo"><strong id="horarioVolta3">07:25</strong></p>
+                    <p class="infoVoo" id="duracaoVoo3">1h 5m</p>
                     <img src="./imagens/mala.png" class="imgMala">
                 </div>
                 <div class="alinharCheckTextImg">
-                    <div class="check-box" onclick="toggleCheck(this)" data-side="right">
+                    <div class="check-box" id="segundaOpcaoVoltaVoo" onclick="toggleCheck(this)" data-side="right">
                         <div class="check-mark"></div>
                     </div>
-                    <img src="./imagens/latam.png" class="imgLatam">
-                    <p class="infoVoo">LATAM</p>
-                    <p class="infoVoo"><strong>09:45</strong></p>
-                    <p class="infoVooDireto">Direto</p>
-                    <p class="infoVoo"><strong>10:50</strong></p>
-                    <p class="infoVoo">1h 5m</p>
+                    <img src="./imagens/latam.png" class="imgLatam" id="imgCompanhiaAerea4">
+                    <p class="infoVoo" id="companhiaAerea4">LATAM</p>
+                    <p class="infoVoo"><strong id="horarioIda4">09:45</strong></p>
+                    <p class="infoVooDireto" id="tipoVoo4">Direto</p>
+                    <p class="infoVoo"><strong id="horarioVolta4">10:50</strong></p>
+                    <p class="infoVoo" id="duracaoVoo4">1h 5m</p>
                     <img src="./imagens/mala.png" class="imgMala">
                 </div>
             </div>
@@ -212,24 +217,23 @@
                     <div class="alinharImgTextoOnibus">
                         <img src="./imagens/informacao.png" class="imgOnibus">
                         <p class="textoBuser">Embarque com documento</p>
-                        <img src="./imagens/poltrona.png" class="imgPoltrona">
-                        <p class="textoLeito"><strong>Semi-leito</strong></p>
+                        <img src="./imagens/poltrona.png" class="imgPoltrona" id="primeirotipoPoltronaIcone">
+                        <p class="textoLeito"><strong id="primeirotipoPoltrona">Semi-leito</strong></p>
                     </div>
                 </div>
                 <div class="divEmbarqueDesembarque">
                     <ul class="horaEmbarqueDesembarque">
-                        <li><strong>11:45</strong></li>
-                        <li><strong>22:05</strong></li>
+                        <li><strong id="primeiroHorarioEmbarque">11:45</strong></li>
+                        <li><strong id="primeiroHorarioDesembarque">22:05</strong></li>
                     </ul>
                     <img src="./imagens/destino.png" class="imgDestino">
                     <ul class="embarqueDestino">
-                        <li>Embarque: <strong>Belo Horizonte</strong></p>
-                        </li>
-                        <li>Desembarque: <strong>Arraial do Cabo</strong></p>
-                        </li>
+                        <li>Embarque: <strong id="primeiroLocalEmbarque">Belo Horizonte</strong></li>
+                        <li>Desembarque: <strong id="primeiroLocalDesembarque">Arraial do Cabo</strong></li>
                     </ul>
                     <div class="divBotaoSelecionar">
-                        <button class="botaoSelecionar" onclick="toggleSelection(this)">Selecionar</button>
+                        <button class="botaoSelecionar" id="PrimeiraOpcaoOnibusSelecionado"
+                            onclick="toggleSelection(this)">Selecionar</button>
                     </div>
                 </div>
             </div>
@@ -247,24 +251,23 @@
                     <div class="alinharImgTextoOnibus">
                         <img src="./imagens/informacao.png" class="imgOnibus">
                         <p class="textoBuser">Embarque com documento</p>
-                        <img src="./imagens/poltrona.png" class="imgPoltrona">
-                        <p class="textoLeito"><strong>Semi-leito</strong></p>
+                        <img src="./imagens/poltrona.png" class="imgPoltrona" id="segundotipoPoltronaIcone">
+                        <p class="textoLeito"><strong id="segundotipoPoltrona">Semi-leito</strong></p>
                     </div>
                 </div>
                 <div class="divEmbarqueDesembarque">
                     <ul class="horaEmbarqueDesembarque">
-                        <li><strong>11:45</strong></li>
-                        <li><strong>22:05</strong></li>
+                        <li><strong id="segundoHorarioEmbarque">08:30</strong></li>
+                        <li><strong id="segundoHorarioDesembarque">19:15</strong></li>
                     </ul>
                     <img src="./imagens/destino.png" class="imgDestino">
                     <ul class="embarqueDestino">
-                        <li>Embarque: <strong>Belo Horizonte</strong></p>
-                        </li>
-                        <li>Desembarque: <strong>Arraial do Cabo</strong></p>
-                        </li>
+                        <li>Embarque: <strong id="segundoLocalEmbarque">Arraial do Cabo</strong></li>
+                        <li>Desembarque: <strong id="segundoLocalDesembarque">Belo Horizonte</strong></li>
                     </ul>
                     <div class="divBotaoSelecionar">
-                        <button class="botaoSelecionar" onclick="toggleSelection(this)">Selecionar</button>
+                        <button class="botaoSelecionar" id="SegundaOpcaoOnibusSelecionado"
+                            onclick="toggleSelection(this)">Selecionar</button>
                     </div>
                 </div>
             </div>
@@ -336,6 +339,233 @@
     </div>
     </div>
     </div>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    // A requisição deu certo
+                    return response.json();
+                } else {
+                    // A requisição falhou
+                    throw new Error('Erro na requisição: ' + response.status);
+                }
+            })
+            .then(function (data) {
+
+                // Resposta do servidor
+
+                console.log('Resposta do servidor:', data);
+
+                // Substitui as info dos cards
+
+                setTimeout(function () {
+
+                    var data = {
+                        titulo: "Arraial do Cabo - Brisas do Farol",
+                        descricao:
+                            "Localizado em Arraial do Cabo e com a Praia Grande a cerca de 600 metros, a propriedade está situada a 300 m da Praça da Independência, a 500 m do Estádio Hermenegildo Barcellos e a 400 m da Prefeitura de Arraial do Cabo. O Museu Oceanográfico fica a menos de 1 km de distância e a Igreja Nossa Senhora dos Remédios fica a 12 minutos a pé da pousada.",
+                        imagens: [
+                            "./imagens/BrisasDoFarol.jpg",
+                            "./imagens/pousadaBrisasDoFarol.jpg",
+                        ],
+                        avaliacoes: "Muito bom! 729 avaliações",
+                        classificacao: "8,0",
+                        tipoQuarto: "Suíte",
+                        descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²ㅤ3 camas (2 de solteiro, 1 de casal)",
+                        servicos: ["Quartos para não fumantes", "Wi-fi gratuito", "Recepção 24 horas", "Bar"],
+                        primeiraCondicao: "Horário de Check-in: de 14:00 às 22:00",
+                        segundaCondicao: "Horário de Check-out: 11:00",
+                        voosIda: [
+                            {
+                                companhiaAerea: "LATAM",
+                                horarioIda: "16:45",
+                                tipoVoo: "Direto",
+                                horarioVolta: "17:45",
+                                duracaoVoo: "1h 5m",
+                                imgCompanhiaAerea: "./imagens/latam.png"
+                            },
+                            {
+                                companhiaAerea: "ㅤGOL",
+                                horarioIda: "16:44",
+                                tipoVoo: "Direto",
+                                horarioVolta: "17:45",
+                                duracaoVoo: "1h 5m",
+                                imgCompanhiaAerea: "./imagens/gol.png"
+                            },
+                        ],
+                        voosVolta: [
+                            {
+                                companhiaAerea: "LATAM",
+                                horarioIda: "06:20",
+                                tipoVoo: "Direto",
+                                horarioVolta: "07:25",
+                                duracaoVoo: "1h 5m",
+                                imgCompanhiaAerea: "./imagens/latam.png"
+                            },
+                            {
+                                companhiaAerea: "LATAM",
+                                horarioIda: "09:45",
+                                tipoVoo: "Direto",
+                                horarioVolta: "10:50",
+                                duracaoVoo: "1h 5m",
+                                imgCompanhiaAerea: "./imagens/latam.png"
+                            },
+                        ],
+                        onibusIda: [
+                            {
+                                horarioEmbarque: "08:00",
+                                horarioDesembarque: "17:35",
+                                embarque: "São Paulo",
+                                desembarque: "Arraial do Cabo",
+                                tipoPoltrona: "Semi-Leito",
+                                imagemPoltrona: "./imagens/poltrona.png",
+                            },
+                            {
+                                horarioEmbarque: "10:15",
+                                horarioDesembarque: "20:45",
+                                embarque: "Rio de Janeiro",
+                                desembarque: "Arraial do Cabo",
+                                tipoPoltrona: "Leito",
+                                imagemPoltrona: "./imagens/poltrona2.png",
+                            },
+                        ],
+                        onibusVolta: [
+                            {
+                                horarioEmbarque: "09:30",
+                                horarioDesembarque: "18:45",
+                                embarque: "Arraial do Cabo",
+                                desembarque: "São Paulo",
+                                tipoPoltrona: "Leito",
+                                imagemPoltrona: "./imagens/poltrona2.png",
+                            },
+                            {
+                                horarioEmbarque: "12:00",
+                                horarioDesembarque: "22:15",
+                                embarque: "Arraial do Cabo",
+                                desembarque: "Rio de Janeiro",
+                                tipoPoltrona: "Semi-leito",
+                                imagemPoltrona: "./imagens/poltrona.png",
+                            },
+                        ],
+
+                        dicasLugares: [
+                            {
+                                categoria: "turistico",
+                                imagens: ["./imagens/mangaraRestaurante.jpg", "./imagens/casaDaPiedra.jpg", "./imagens/solNaCozinha.jpg"],
+                            },
+                            {
+                                categoria: "restaurantes",
+                                imagens: ["./imagens/mangaraRestaurante.jpg", "./imagens/casaDaPiedra.jpg", "./imagens/solNaCozinha.jpg"],
+                            },
+                            {
+                                categoria: "bares",
+                                imagens: ["./imagens/mangaraRestaurante.jpg", "./imagens/casaDaPiedra.jpg", "./imagens/solNaCozinha.jpg"],
+                            },
+                        ],
+                    };
+
+                    document.getElementById("titulo").textContent = data.titulo;
+                    document.getElementById("descricao").textContent = data.descricao;
+                    document.getElementById("avaliacoes").textContent = data.avaliacoes;
+                    document.getElementById("classificacao").textContent = data.classificacao;
+                    document.getElementById("tipoQuarto").textContent = data.tipoQuarto;
+                    document.getElementById("descricaoQuarto").textContent = data.descricaoQuarto;
+                    document.getElementById("servico1").textContent = data.servicos[0];
+                    document.getElementById("servico2").textContent = data.servicos[1];
+                    document.getElementById("servico3").textContent = data.servicos[2];
+                    document.getElementById("servico4").textContent = data.servicos[3];
+                    document.getElementById("primeiraCondicao").textContent = data.primeiraCondicao;
+                    document.getElementById("segundaCondicao").textContent = data.segundaCondicao; 
+
+                    document.getElementById("companhiaAerea1").textContent = data.voosIda[0].companhiaAerea;
+                    document.getElementById("horarioIda1").textContent = data.voosIda[0].horarioIda;
+                    document.getElementById("tipoVoo1").textContent = data.voosIda[0].tipoVoo;
+                    document.getElementById("horarioVolta1").textContent = data.voosIda[0].horarioVolta;
+                    document.getElementById("duracaoVoo1").textContent = data.voosIda[0].duracaoVoo;
+                    document.getElementById("imgCompanhiaAerea1").src = data.voosIda[0].imgCompanhiaAerea;
+
+                    document.getElementById("companhiaAerea2").textContent = data.voosIda[1].companhiaAerea;
+                    document.getElementById("horarioIda2").textContent = data.voosIda[1].horarioIda;
+                    document.getElementById("tipoVoo2").textContent = data.voosIda[1].tipoVoo;
+                    document.getElementById("horarioVolta2").textContent = data.voosIda[1].horarioVolta;
+                    document.getElementById("duracaoVoo2").textContent = data.voosIda[1].duracaoVoo;
+                    document.getElementById("imgCompanhiaAerea2").src = data.voosIda[1].imgCompanhiaAerea;
+
+                    document.getElementById("companhiaAerea3").textContent = data.voosVolta[0].companhiaAerea;
+                    document.getElementById("horarioIda3").textContent = data.voosVolta[0].horarioIda;
+                    document.getElementById("tipoVoo3").textContent = data.voosVolta[0].tipoVoo;
+                    document.getElementById("horarioVolta3").textContent = data.voosVolta[0].horarioVolta;
+                    document.getElementById("duracaoVoo3").textContent = data.voosVolta[0].duracaoVoo;
+                    document.getElementById("imgCompanhiaAerea3").src = data.voosVolta[0].imgCompanhiaAerea;
+
+                    document.getElementById("companhiaAerea4").textContent = data.voosVolta[1].companhiaAerea;
+                    document.getElementById("horarioIda4").textContent = data.voosVolta[1].horarioIda;
+                    document.getElementById("tipoVoo4").textContent = data.voosVolta[1].tipoVoo;
+                    document.getElementById("horarioVolta4").textContent = data.voosVolta[1].horarioVolta;
+                    document.getElementById("duracaoVoo4").textContent = data.voosVolta[1].duracaoVoo;
+                    document.getElementById("imgCompanhiaAerea4").src = data.voosVolta[1].imgCompanhiaAerea;
+
+                    document.getElementById("primeiroHorarioEmbarque").textContent = data.onibusIda[0].horarioEmbarque;
+                    document.getElementById("primeiroHorarioDesembarque").textContent = data.onibusIda[0].horarioDesembarque;
+                    document.getElementById("primeiroLocalEmbarque").textContent = data.onibusIda[0].embarque;
+                    document.getElementById("primeiroLocalDesembarque").textContent = data.onibusIda[0].desembarque;
+                    document.getElementById("primeirotipoPoltrona").textContent = data.onibusIda[0].tipoPoltrona;
+                    document.getElementById("primeirotipoPoltronaIcone").src = data.onibusIda[0].imagemPoltrona;
+
+                    document.getElementById("segundoHorarioEmbarque").textContent = data.onibusVolta[0].horarioEmbarque;
+                    document.getElementById("segundoHorarioDesembarque").textContent = data.onibusVolta[0].horarioDesembarque;
+                    document.getElementById("segundoLocalEmbarque").textContent = data.onibusVolta[0].embarque;
+                    document.getElementById("segundoLocalDesembarque").textContent = data.onibusVolta[0].desembarque;
+                    document.getElementById("segundotipoPoltrona").textContent = data.onibusVolta[0].tipoPoltrona;
+                    document.getElementById("segundotipoPoltronaIcone").src = data.onibusVolta[0].imagemPoltrona;
+
+
+                    function mostrarCategoria(categoria) {
+                        document.getElementById("turisticoContent").style.display = "none";
+                        document.getElementById("restaurantesContent").style.display = "none";
+                        document.getElementById("baresContent").style.display = "none";
+
+                        document.getElementById(categoria + "Content").style.display = "flex";
+                    }
+
+                    mostrarCategoria("turistico"); // Mostrar a categoria "turistico" inicialmente
+
+                    document.getElementById("turistico").addEventListener("click", function () {
+                        mostrarCategoria("turistico");
+                    });
+
+                    document.getElementById("restaurantes").addEventListener("click", function () {
+                        mostrarCategoria("restaurantes");
+                    });
+
+                    document.getElementById("bares").addEventListener("click", function () {
+                        mostrarCategoria("bares");
+                    });
+
+                    // Loop para preencher as imagens de cada categoria
+                    // data.dicasLugares.forEach((categoria) => {
+                    //     const categoriaContent = document.getElementById(categoria.categoria + "Content");
+                    //     categoria.imagens.forEach((imagemSrc) => {
+                    //         const img = document.createElement("img");
+                    //         img.src = imagemSrc;
+                    //         img.className = "imgMangaraRestaurante"; // Ou a classe de estilo que você usa para as imagens
+                    //         categoriaContent.appendChild(img);
+                    //     });
+                    // });
+
+
+                });
+            })
+            .catch(function (error) {
+                // Tratar erros ocorridos durante a requisição
+                console.error('Erro:', error);
+            });
+    </script>
     <script src="./script.js"></script>
 </body>
 

@@ -815,7 +815,15 @@ body {
   height: 195px;
   border-radius: 120px;
   object-fit: cover;
+  transition: transform 0.3s;
+  /* Adiciona a propriedade de transição para o efeito suave */
 }
+
+.imgMangaraRestaurante:hover {
+  transform: translateY(-2px) scale(1.05);
+  /* Traduz e aumenta a escala do card ao passar o mouse */
+}
+
 
 .modal {
   display: none;
