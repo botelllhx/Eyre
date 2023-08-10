@@ -28,7 +28,7 @@
         <br />
         <p class="cancelamento" id="listExtras">Cancelamento grátis</p>
         <br />
-        <p class="resta" id="quantidadeReservas">Resta 1 unidade por esse preço no nosso site</p>
+        <p class="resta">Restaㅤ<strong id="quantidadeReservas">1</strong>ㅤunidades por esse preço no nosso site</p>
       </div>
       <div class="bordaDatas" id="existeVooOnibus">
         <h2 class="tituloTransporte">Transporte</h2>
@@ -57,7 +57,7 @@
         <br />
         <p class="cancelamento" id="listExtras2">Café da manhã incluído</p>
         <br />
-        <p class="resta" id="quantidadeReservas2">Resta 1 unidade por esse preço no nosso site</p>
+        <p class="resta">Restaㅤ<strong id="quantidadeReservas2"> 1 </strong>ㅤunidades por esse preço no nosso site</p>
       </div>
       <div class="bordaDatas" id="existeVooOnibus2">
         <h2 class="tituloTransporte">Transporte</h2>
@@ -86,7 +86,7 @@
         <br />
         <p class="cancelamento" id="listExtras3">Café da manhã incluído</p>
         <br />
-        <p class="resta" id="quantidadeReservas3">Resta 1 unidade por esse preço no nosso site</p>
+        <p class="resta">Restaㅤ<strong id="quantidadeReservas3">2</strong>ㅤunidades por esse preço no nosso site</p>
       </div>
       <div class="bordaDatas" id="existeVooOnibus3">
         <h2 class="tituloTransporte">Transporte</h2>
@@ -149,28 +149,73 @@
                 id: 1,
                 titulo: "Brisas do Farol",
                 tipoQuarto: "",
-                descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²<br />3 camas (2 de solteiro, 1 de casal).",
-                listExtras: "Cancelamento grátis",
-                quantidadeReservas: "Resta 1 unidade por esse preço no nosso site",
-                imagemHospedagem: "./imagens/brisasdofarol.jpg"
+                descricaoQuarto: "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m²<br />3 camas (2 de solteiro, 1 de casal).",
+                listExtras: [
+                  {
+                    id: 1,
+                    nome: "Cancelamento gratuito."
+                  },
+                  {
+                    id: 2,
+                    nome: "Café da manhã incluído.",
+                  }
+                ],
+                quantidadeReservas: "1",
+                imagemHospedagem: {
+                  id: 1,
+                  nome: "ImagemDoNegocio",
+                  dados: "./imagens/brisasdofarol.jpg", // virar código maluco e depois desvirar código maluco
+                },
+                existeVoo: true,
+                existeOnibus: true,
               },
               card2: {
                 id: 2,
                 titulo: "Pousada Bicho do Mar",
                 tipoQuarto: "Suíte Superior",
-                descricaoQuarto: "Suíte privativa • 1 quarto • 1 sala • 1 banheiro<br />1 cama de casal.",
-                listExtras: "Café da manhã incluído",
-                quantidadeReservas: "Resta 1 unidade por esse preço no nosso site",
-                imagemHospedagem: "./imagens/pousadabichodomar.jpg"
+                descricaoQuarto: "Suíte privativa, 1 quarto, 1 sala, 1 banheiro<br />1 cama de casal.",
+                listExtras: [
+                  {
+                    id: 1,
+                    nome: "Cancelamento gratuito."
+                  },
+                  {
+                    id: 2,
+                    nome: "Café da manhã incluído.",
+                  }
+                ],
+                quantidadeReservas: "2",
+                imagemHospedagem: {
+                  id: 1,
+                  nome: "ImagemDoNegocio",
+                  dados: "./imagens/pousadabichodomar.jpg", // virar código maluco e depois desvirar código maluco
+                },
+                existeVoo: true,
+                existeOnibus: true,
               },
               card3: {
                 id: 3,
                 titulo: "Hotel da Canoa",
                 tipoQuarto: "Quarto Duplo Standard",
-                descricaoQuarto: "1 cama de casal grande • 1 banheiro • 450 m da praia.",
-                listExtras: "Café da manhã incluído",
-                quantidadeReservas: "Resta 1 unidade por esse preço no nosso site",
-                imagemHospedagem: "./imagens/hoteldacanoa.jpg"
+                descricaoQuarto: "1 cama de casal grande, 1 banheiro, 450 m da praia.",
+                listExtras: [
+                  {
+                    id: 1,
+                    nome: "Cancelamento gratuito."
+                  },
+                  {
+                    id: 2,
+                    nome: "Café da manhã incluído.",
+                  }
+                ],
+                quantidadeReservas: "1",
+                imagemHospedagem: {
+                  id: 1,
+                  nome: "ImagemDoNegocio",
+                  dados: "./imagens/hoteldacanoa.jpg", // virar código maluco e depois desvirar código maluco
+                },
+                existeVoo: true,
+                existeOnibus: true,
               }
             };
 
@@ -178,7 +223,8 @@
             document.getElementById('titulo').innerHTML = data.card1.titulo;
             document.getElementById('tipoQuarto').innerHTML = data.card1.tipoQuarto !== "" ? data.card1.tipoQuarto : "Tipo não especificado";
             document.getElementById('descricaoQuarto').innerHTML = data.card1.descricaoQuarto;
-            document.getElementById('listExtras').innerHTML = data.card1.listExtras;
+            var listExtras1 = document.getElementById('listExtras');
+            listExtras1.textContent = data.card1.listExtras[0].nome;
             document.getElementById('quantidadeReservas').innerHTML = data.card1.quantidadeReservas;
             document.getElementById('imagemHospedagem').src = data.card1.imagemHospedagem;
 
@@ -186,7 +232,8 @@
             document.getElementById('titulo2').innerHTML = data.card2.titulo;
             document.getElementById('tipoQuarto2').innerHTML = data.card2.tipoQuarto !== "" ? data.card2.tipoQuarto : "Tipo não especificado";
             document.getElementById('descricaoQuarto2').innerHTML = data.card2.descricaoQuarto;
-            document.getElementById('listExtras2').innerHTML = data.card2.listExtras;
+            var listExtras2 = document.getElementById('listExtras2');
+            listExtras2.textContent = data.card2.listExtras[0].nome;
             document.getElementById('quantidadeReservas2').innerHTML = data.card2.quantidadeReservas;
             document.getElementById('imagemHospedagem2').src = data.card2.imagemHospedagem;
 
@@ -194,7 +241,8 @@
             document.getElementById('titulo3').innerHTML = data.card3.titulo;
             document.getElementById('tipoQuarto3').innerHTML = data.card3.tipoQuarto !== "" ? data.card3.tipoQuarto : "Tipo não especificado";
             document.getElementById('descricaoQuarto3').innerHTML = data.card3.descricaoQuarto;
-            document.getElementById('listExtras3').innerHTML = data.card3.listExtras;
+            var listExtras3 = document.getElementById('listExtras3');
+            listExtras3.textContent = data.card3.listExtras[0].nome;
             document.getElementById('quantidadeReservas3').innerHTML = data.card3.quantidadeReservas;
             document.getElementById('imagemHospedagem3').src = data.card3.imagemHospedagem;
 

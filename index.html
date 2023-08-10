@@ -307,8 +307,9 @@
         orcamento: orcamento,
         destino: destino,
         dataIda: dataIda,
-        dataVolta: dataVolta
-      };
+        dataVolta: dataVolta,
+        diasAMais: diasAMais, // booleano, verificar se a informação for true ai manda. 
+      }
 
       // Fazer a requisição usando fetch
       fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -340,7 +341,7 @@
           // Fazer algo com a resposta, como atualizar a página ou exibir uma mensagem de sucesso
 
           // Redirecionar para outra página
-          window.location.href = '../Eyre/opcoesJornada/index.html';
+          window.location.href = './opcoesJornada/index.html';
 
         })
         .catch(function (error) {

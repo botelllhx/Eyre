@@ -229,6 +229,7 @@ input:active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 280px;
 }
 
 .loading-spinner img {
