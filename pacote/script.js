@@ -53,46 +53,6 @@ function toggleSelection(button) {
     });
 }
 
-
-let botaoSelecionarAtivo = false;
-
-function toggleSelectionCategoria(categoria) {
-    if (!botaoSelecionarAtivo) {
-        const buttons = document.getElementsByClassName("botaoCategoriaLugares");
-        for (const btn of buttons) {
-            btn.classList.remove("botaoAtivo");
-        }
-        botaoSelecionarAtivo = true;
-
-        const turisticoContent = document.getElementById("turisticoContent");
-        turisticoContent.style.display = "flex";
-    }
-
-    const contents = document.getElementsByClassName("categoriaContent");
-    for (const content of contents) {
-        content.style.display = "none";
-    }
-
-    const contentToShow = document.getElementById(categoria + "Content");
-    if (contentToShow) {
-        contentToShow.style.display = "flex";
-    }
-
-    const buttons = document.getElementsByClassName("botaoCategoriaLugares");
-    for (const btn of buttons) {
-        btn.classList.remove("botaoAtivo");
-    }
-    const button = document.getElementById(categoria);
-    button.classList.add("botaoAtivo");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const turisticoButton = document.getElementById("turistico");
-    turisticoButton.classList.add("botaoAtivo");
-    toggleSelectionCategoria("turistico");
-});
-
-
 let modalIndex = 0;
 
 function abrirModal() {

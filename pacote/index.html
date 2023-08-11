@@ -295,45 +295,45 @@
         <div>
             <div id="turisticoContent" class="categoriaContent">
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante">Turístico</p>
-                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante">
+                    <p class="tituloMangaraRestaurante" id="tituloTuristico1">Turístico</p>
+                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemTuristico1">
                 </div>
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante">Turístico</p>
-                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante">
+                    <p class="tituloMangaraRestaurante" id="tituloTuristico2">Turístico</p>
+                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemTuristico2">
                 </div>
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante">Turístico</p>
-                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante">
+                    <p class="tituloMangaraRestaurante" id="tituloTuristico3">Turístico</p>
+                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemTuristico3">
                 </div>
             </div>
         </div>
         <div id="restaurantesContent" class="categoriaContent">
             <div class="restauranteContainer">
-                <p class="tituloMangaraRestaurante">Mangará Restaurante</p>
-                <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante">
+                <p class="tituloMangaraRestaurante" id="tituloRestaurante1">Mangará Restaurante</p>
+                <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemRestaurante1">
             </div>
             <div class="restauranteContainer">
-                <p class="tituloMangaraRestaurante">Casa da Piedra</p>
-                <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante">
+                <p class="tituloMangaraRestaurante" id="tituloRestaurante2">Casa da Piedra</p>
+                <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemRestaurante2">
             </div>
             <div class="restauranteContainer">
-                <p class="tituloMangaraRestaurante">Sol na Cozinha</p>
-                <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante">
+                <p class="tituloMangaraRestaurante" id="tituloRestaurante3">Sol na Cozinha</p>
+                <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemRestaurante3">
             </div>
         </div>
         <div id="baresContent" class="categoriaContent">
             <div class="restauranteContainer">
-                <p class="tituloMangaraRestaurante">Bares</p>
-                <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante">
+                <p class="tituloMangaraRestaurante" id="tituloBar1">Bares</p>
+                <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemBar1">
             </div>
             <div class="restauranteContainer">
-                <p class="tituloMangaraRestaurante">Bares</p>
-                <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante">
+                <p class="tituloMangaraRestaurante" id="tituloBar2">Bares</p>
+                <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemBar2">
             </div>
             <div class="restauranteContainer">
-                <p class="tituloMangaraRestaurante">Bares</p>
-                <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante">
+                <p class="tituloMangaraRestaurante" id="tituloBar3">Bares</p>
+                <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemBar3">
             </div>
         </div>
         <div class="espaçamentoFimPagina">
@@ -341,6 +341,49 @@
     </div>
     </div>
     </div>
+    <script>
+
+        let botaoSelecionarAtivo = false;
+
+        function toggleSelectionCategoria(categoria) {
+            console.log("Toggle function called with category:", categoria);
+
+            if (!botaoSelecionarAtivo) {
+                botaoSelecionarAtivo = true;
+
+                const buttons = document.getElementsByClassName("botaoCategoriaLugares");
+                for (const btn of buttons) {
+                    btn.classList.remove("botaoAtivo");
+                }
+
+                const turisticoContent = document.getElementById("turisticoContent");
+                turisticoContent.style.display = "flex";
+            }
+
+            const contents = document.getElementsByClassName("categoriaContent");
+            for (const content of contents) {
+                content.style.display = "none";
+            }
+
+            const contentToShow = document.getElementById(categoria + "Content");
+            if (contentToShow) {
+                contentToShow.style.display = "flex";
+            }
+
+            const buttons = document.getElementsByClassName("botaoCategoriaLugares");
+            for (const btn of buttons) {
+                btn.classList.remove("botaoAtivo");
+            }
+            const button = document.getElementById(categoria);
+            button.classList.add("botaoAtivo");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const turisticoButton = document.getElementById("turistico");
+            turisticoButton.classList.add("botaoAtivo");
+            toggleSelectionCategoria("turistico");
+        });
+    </script>
     <script>
         fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'GET',
@@ -557,7 +600,7 @@
                             Restaurante: [
                                 {
                                     id: 2,
-                                    nome: "Mangará Restaurante",
+                                    nome: "Manga Restaurante",
                                     imagem: {
                                         id: 1,
                                         nome: "Mangará Restaurante",
@@ -736,29 +779,25 @@
                         return `${duracaoHoras}h ${duracaoMinutos}m`;
                     }
 
-                    function preencherDicasLugares(dados) {
-                        const categorias = ["Turistico", "Restaurante", "Bar", "Boate"]; // Adicione mais categorias se necessário
+                    const categorias = ["Turistico", "Restaurante", "Bar", "Boate"];
 
-                        categorias.forEach(categoria => {
-                            const categoriaContent = document.getElementById(`${categoria.toLowerCase()}Content`);
-                            if (categoriaContent) {
-                                categoriaContent.innerHTML = ""; // Limpa o conteúdo anterior
+                    categorias.forEach(function (categoria) {
+                        const categoriaData = data.listProximidades[categoria];
+                        const categoriaContent = document.getElementById(`${categoria.toLowerCase()}Content`);
 
-                                dados[categoria].forEach((lugar, index) => {
-                                    const tituloElement = document.getElementById(`titulo${categoria}${index + 1}`);
-                                    const imagemElement = document.getElementById(`imagem${categoria}${index + 1}`);
+                        if (categoriaContent) {
+                            categoriaData.forEach(function (lugar, index) {
+                                const lugarContainer = categoriaContent.querySelector(`#titulo${categoria}${index + 1}`);
+                                const lugarImagem = categoriaContent.querySelector(`#imagem${categoria}${index + 1}`);
 
-                                    if (tituloElement && imagemElement) {
-                                        tituloElement.textContent = lugar.nome;
-                                        imagemElement.src = lugar.imagem.dados;
-                                    }
-                                });
-                            }
-                        });
-                    }
+                                if (lugarContainer && lugarImagem) {
+                                    lugarContainer.textContent = lugar.nome;
+                                    lugarImagem.src = lugar.imagem.dados;
+                                }
+                            });
+                        }
+                    });
 
-                    // Chame a função para preencher os elementos com os dados de listProximidades
-                    preencherDicasLugares(data.listProximidades);
 
                 });
             })
