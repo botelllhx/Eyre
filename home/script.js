@@ -30,40 +30,6 @@ function formatarMoeda(campo) {
     campo.value = "R$ " + parseFloat(valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-
-$("#calendario").datepicker({
-    showButtonPanel: true,
-    dateFormat: 'dd/mm/yy',
-    numberOfMonths: 1,
-    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
-    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-    onSelect: function (selectedDate) {
-        var minDate = $(this).datepicker('getDate');
-        if (minDate) {
-            minDate.setDate(minDate.getDate() + 1);
-            $("#calendario2").datepicker("option", "minDate", minDate);
-        }
-    }
-});
-
-
-$(function () {
-    $("#calendario2").datepicker({
-        showButtonPanel: true,
-        dateFormat: 'dd/mm/yy',
-        numberOfMonths: 1,
-        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
-        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
-    });
-});
-
-
 function trocaImagem() {
     document.getElementById("minha-imagem").src = "./home/imagens/paisagem2.jpg";
 }
@@ -71,4 +37,3 @@ function trocaImagem() {
 function retornaImagem() {
     document.getElementById("minha-imagem").src = "./home/imagens/paisagem.jpg";
 }
-

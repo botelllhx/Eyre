@@ -149,7 +149,7 @@
                 id: 1,
                 titulo: "Brisas do Farol",
                 tipoQuarto: "",
-                descricaoQuarto: "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m²<br />3 camas (2 de solteiro, 1 de casal).",
+                descricaoQuarto: "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m², 3 camas (2 de solteiro, 1 de casal).",
                 listExtras: [
                   {
                     id: 1,
@@ -163,7 +163,7 @@
                 quantidadeReservas: "1",
                 imagemHospedagem: {
                   id: 1,
-                  nome: "ImagemDoNegocio",
+                  nome: "Brisas do Farol",
                   dados: "./imagens/brisasdofarol.jpg", // virar código maluco e depois desvirar código maluco
                 },
                 existeVoo: true,
@@ -173,7 +173,7 @@
                 id: 2,
                 titulo: "Pousada Bicho do Mar",
                 tipoQuarto: "Suíte Superior",
-                descricaoQuarto: "Suíte privativa, 1 quarto, 1 sala, 1 banheiro<br />1 cama de casal.",
+                descricaoQuarto: "Suíte privativa, 1 quarto, 1 sala, 1 banheiro, 1 cama de casal.",
                 listExtras: [
                   {
                     id: 1,
@@ -187,7 +187,7 @@
                 quantidadeReservas: "2",
                 imagemHospedagem: {
                   id: 1,
-                  nome: "ImagemDoNegocio",
+                  nome: "Pousada Bicho do Mar",
                   dados: "./imagens/pousadabichodomar.jpg", // virar código maluco e depois desvirar código maluco
                 },
                 existeVoo: true,
@@ -211,7 +211,7 @@
                 quantidadeReservas: "1",
                 imagemHospedagem: {
                   id: 1,
-                  nome: "ImagemDoNegocio",
+                  nome: "Hotel da Canoa",
                   dados: "./imagens/hoteldacanoa.jpg", // virar código maluco e depois desvirar código maluco
                 },
                 existeVoo: true,
@@ -226,7 +226,7 @@
             var listExtras1 = document.getElementById('listExtras');
             listExtras1.textContent = data.card1.listExtras[0].nome;
             document.getElementById('quantidadeReservas').innerHTML = data.card1.quantidadeReservas;
-            document.getElementById('imagemHospedagem').src = data.card1.imagemHospedagem;
+            document.getElementById('imagemHospedagem').src = data.card1.imagemHospedagem.dados;
 
             // Card 2
             document.getElementById('titulo2').innerHTML = data.card2.titulo;
@@ -235,7 +235,7 @@
             var listExtras2 = document.getElementById('listExtras2');
             listExtras2.textContent = data.card2.listExtras[0].nome;
             document.getElementById('quantidadeReservas2').innerHTML = data.card2.quantidadeReservas;
-            document.getElementById('imagemHospedagem2').src = data.card2.imagemHospedagem;
+            document.getElementById('imagemHospedagem2').src = data.card2.imagemHospedagem.dados;
 
             // Card 3
             document.getElementById('titulo3').innerHTML = data.card3.titulo;
@@ -244,7 +244,7 @@
             var listExtras3 = document.getElementById('listExtras3');
             listExtras3.textContent = data.card3.listExtras[0].nome;
             document.getElementById('quantidadeReservas3').innerHTML = data.card3.quantidadeReservas;
-            document.getElementById('imagemHospedagem3').src = data.card3.imagemHospedagem;
+            document.getElementById('imagemHospedagem3').src = data.card3.imagemHospedagem.dados;
 
             // Depois de receber a resposta do servidor
             document.getElementById('loading').style.display = 'none';

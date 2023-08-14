@@ -12,6 +12,9 @@
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/brands.min.css" />
   <link rel="icon" href="./home/imagens/logoEyre.png" type="image/x-icon" />
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/l10n/pt.js">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,136 +46,105 @@
 
   <div id="fundoClaro">
     <div class="fundoBranco">
-      <div class="esquerda">
-        <h1 class="tituloDestino">Encontre o seu destino</h1>
+      <div class="alinha-esquerda-direita">
+        <asside class="esquerda">
+          <h1 class="tituloDestino">Encontre o seu destino</h1>
 
-        <form id="formularioViagem" onsubmit="enviarRequisicao(event)">
+          <form id="formularioViagem" onsubmit="enviarRequisicao(event)">
 
-          <input class="botaoOrcamento" type="text" id="orcamento" name="preco" placeholder="QUAL SEU ORÇAMENTO?"
-            oninput="formatarMoeda(this);" />
 
-          <select class="botaoLugar" id="destino" name="lugar">
-            <option value="" disabled selected>
-              Destino
-            </option>
-            <!-- <option value="AC">Acre</option>
+            <input class="botaoOrcamento imgSifao" type="text" id="orcamento" name="preco"
+              placeholder="QUAL É O SEU ORÇAMENTO?" oninput="formatarMoeda(this);" maxlength="15" />
+
+
+            <div class="alinharPartidaDestino">
+              <select class="botaoPartida" id="destino" name="lugar">
+                <option value="" disabled selected>
+                  Partida
+                </option>
+                <!-- <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
             <option value="AM">Amazonas</option> -->
-            <option value="Salvador, BA">Bahia</option>
-            <!-- <option value="CE">Ceará</option>
+                <option value="Salvador, BA">Bahia</option>
+                <!-- <option value="CE">Ceará</option>
             <option value="DF">Distrito Federal</option>
             <option value="ES">Espírito Santo</option>
             <option value="GO">Goiás</option>
             <option value="MA">Maranhão</option>
             <option value="MT">Mato Grosso</option>
             <option value="MS">Mato Grosso do Sul</option> -->
-            <option value="Belo Horizonte, MG">Minas Gerais</option>
-            <!-- <option value="PA">Pará</option>
+                <option value="Belo Horizonte, MG">Minas Gerais</option>
+                <!-- <option value="PA">Pará</option>
             <option value="PB">Paraíba</option>
             <option value="PR">Paraná</option>
             <option value="PE">Pernambuco</option>
             <option value="PI">Piauí</option> -->
-            <option value="Rio de Janeiro, RJ">Rio de Janeiro</option>
-            <!-- <option value="RN">Rio Grande do Norte</option>
+                <option value="Rio de Janeiro, RJ">Rio de Janeiro</option>
+                <!-- <option value="RN">Rio Grande do Norte</option>
             <option value="RS">Rio Grande do Sul</option>
             <option value="RO">Rondônia</option>
             <option value="RR">Roraima</option>
             <option value="SC">Santa Catarina</option> -->
-            <option value="São Paulo, SP">São Paulo</option>
-            <!-- <option value="SE">Sergipe</option>
+                <option value="São Paulo, SP">São Paulo</option>
+                <!-- <option value="SE">Sergipe</option>
             <option value="TO">Tocantins</option> -->
-          </select>
-          <div class="div-father">
-            <div class="input-group-1">
-              <input type="text" id="calendario" name="calendario" class="DateInput" placeholder="Data de ida" />
-
-              <style>
-                .DateInput {
-                  text-overflow: ellipsis;
-                  font-family: "Nunito";
-                  color: #000000;
-                  border-radius: 40px;
-                  font-size: 30px;
-                  text-align: center;
-                }
-
-                .ui-datepicker {
-                  font-family: "Nunito";
-                  font-size: 20px;
-                }
-
-                .ui-datepicker-header {
-                  background-color: #2970db;
-                  border-radius: 10px;
-                  color: #000000;
-                }
-
-                .ui-datepicker-prev:hover,
-                .ui-datepicker-next:hover {
-                  background-color: #2970db;
-                  color: #ffffff;
-                }
-
-                .ui-state-default,
-                .ui-widget-content .ui-state-default,
-                .ui-widget-header .ui-state-default {
-                  background-color: #ffffff;
-                  border: none;
-                  color: #2970db;
-                }
-
-                .ui-state-active,
-                .ui-widget-content .ui-state-active,
-                .ui-widget-header .ui-state-active {
-                  background-color: #2970db;
-                  border: none;
-                  color: #000000;
-                }
-
-                .ui-state-highlight,
-                .ui-widget-content .ui-state-highlight,
-                .ui-widget-header .ui-state-highlight {
-                  background-color: #2970db;
-                  border: none;
-                  color: #000000;
-                }
-
-                .ui-datepicker-calendar td a {
-                  color: #000000;
-                }
-
-                .ui-datepicker-calendar td a:hover {
-                  color: #2970db;
-                }
-              </style>
+              </select>
+              <img src="./home/imagens/setas.png" class="imgSetas">
+              <select class="botaoDestino" id="destino" name="lugar">
+                <option value="" disabled selected>
+                  Destino
+                </option>
+                <!-- <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option> -->
+                <option value="Salvador, BA">Bahia</option>
+                <!-- <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option> -->
+                <option value="Belo Horizonte, MG">Minas Gerais</option>
+                <!-- <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option> -->
+                <option value="Rio de Janeiro, RJ">Rio de Janeiro</option>
+                <!-- <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option> -->
+                <option value="São Paulo, SP">São Paulo</option>
+                <!-- <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option> -->
+              </select>
             </div>
-            <div class="input-group-2">
-              <input type="text" id="calendario2" name="calendario" class="DateInput2" placeholder="Data de volta" />
+            <div class="div-father">
+              <div class="input-group-1">
+                <input type="text" id="az-date-range" class="DateInput" name="az-date-range"
+                  placeholder="Data de ida - Data de volta">
+                <div class="divBotaoJornadas">
+                  <button type="submit" class="botaoJornadas">BUSCAR JORNADAS</button>
+                </div>
+              </div>
+            </div>
 
-              <style>
-                .DateInput2 {
-                  text-overflow: ellipsis;
-                  font-family: "Nunito";
-                  color: #000000;
-                  border-radius: 40px;
-                  font-size: 30px;
-                  text-align: center;
-                }
-              </style>
-            </div>
-            <div class="divBotaoJornadas">
-              <button type="submit" class="botaoJornadas">BUSCAR JORNADAS</button>
-            </div>
-        </form>
-      </div>
-    </div>
-    <div class="direita">
-      <div class="dica">
-        Gostaria de uma dica de lugar para visitar?
-        <img src="./home/imagens/lampada.png" class="lampada" />
-        <img class="paisagem" id="minha-imagem" src="./home/imagens/paisagem.jpg" onmouseover="trocaImagem()"
-          onmouseout="retornaImagem()" />
+          </form>
+        </asside>
+
+        <asside class="direita">
+          <div class="dica">
+            Gostaria de uma dica de lugar para visitar?
+            <img src="./home/imagens/lampada.png" class="lampada" />
+            <img class="paisagem" id="minha-imagem" src="./home/imagens/paisagem.jpg" onmouseover="trocaImagem()"
+              onmouseout="retornaImagem()" />
+          </div>
+        </asside>
       </div>
     </div>
   </div>
@@ -292,6 +264,26 @@
       </div>
     </footer>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+  <script>
+    var calendar = flatpickr("#az-date-range", {
+      mode: "range",
+      dateFormat: "d/m/Y",
+      showMonths: 2,
+      locale: "pt",
+      position: "below",
+      onChange: function (calendar) {
+        if (calendar.length == 2) {
+          var start = calendar[0].toLocaleDateString("pt-BR");
+          var end = calendar[1].toLocaleDateString("pt-BR");
+
+          $("#az-start-date").val(start);
+          $("#az-end-date").val(end);
+        }
+      },
+    });
+  </script>
   <script>
     function enviarRequisicao(event) {
       event.preventDefault();
@@ -299,98 +291,60 @@
       // Capturar os valores dos campos do formulário
       var orcamento = document.getElementById('orcamento').value;
       var destino = document.getElementById('destino').value;
-      var dataIda = document.getElementById('calendario').value;
-      var dataVolta = document.getElementById('calendario2').value;
 
-      // Construir o objeto de dados para a requisição
-      var data = {
-        orcamento: orcamento,
-        destino: destino,
-        dataIda: dataIda,
-        dataVolta: dataVolta,
-        diasAMais: diasAMais, // booleano, verificar se a informação for true ai manda. 
+      // Capturar o array de datas selecionadas
+      var selectedDates = calendar.selectedDates;
+
+      // Verificar se as duas datas foram selecionadas
+      if (selectedDates.length === 2) {
+        var dataIda = selectedDates[0].toLocaleDateString("pt-BR");
+        var dataVolta = selectedDates[1].toLocaleDateString("pt-BR");
+
+        // Construir o objeto de dados para a requisição
+        var data = {
+          orcamento: orcamento,
+          destino: destino,
+          dataIda: dataIda,
+          dataVolta: dataVolta
+        };
+
+        // Fazer a requisição usando fetch
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then(function (response) {
+            if (response.ok) {
+              // A requisição foi bem-sucedida
+              return response.json();
+            } else {
+              // A requisição falhou
+              throw new Error('Erro na requisição: ' + response.status);
+            }
+          })
+          .then(function (data) {
+            // Manipular a resposta do servidor
+            console.log('Resposta do servidor:', data);
+            // Fazer algo com a resposta, como atualizar a página ou exibir uma mensagem de sucesso
+            // Redirecionar para outra página
+            window.location.href = '../opcoesJornada/index.html';
+          })
+          .catch(function (error) {
+            // Tratar erros ocorridos durante a requisição
+            console.error('Erro:', error);
+          });
+
+      } else {
+        // Caso as duas datas não tenham sido selecionadas
+        console.error("Selecione um intervalo de datas válido.");
       }
 
-      // Fazer a requisição usando fetch
-      fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-        .then(function (response) {
-          if (response.ok) {
-
-            // A requisição foi bem-sucedida
-
-            return response.json();
-          } else {
-
-            // A requisição falhou
-
-            throw new Error('Erro na requisição: ' + response.status);
-          }
-        })
-        .then(function (data) {
-
-          // Manipular a resposta do servidor
-
-          console.log('Resposta do servidor:', data);
-
-          // Fazer algo com a resposta, como atualizar a página ou exibir uma mensagem de sucesso
-
-          // Redirecionar para outra página
-          window.location.href = './opcoesJornada/index.html';
-
-        })
-        .catch(function (error) {
-
-          // Tratar erros ocorridos durante a requisição
-
-          console.error('Erro:', error);
-        });
-
       // Limpar os campos do formulário (opcional)
-
       document.getElementById('formularioViagem').reset();
     }
-
-  </script>
-  </script>
-  <script>
-    function obterCidadesEstados(termo, callback) {
-      const url = `https://servicodados.ibge.gov.br/api/v1/localidades/municipios?nome=${termo}`;
-
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const resultados = data.map(item => item.nome);
-          callback(resultados);
-        })
-        .catch(error => {
-          console.error('Erro ao obter os dados:', error);
-          callback([]);
-        });
-    }
-
-    // Função para autocompletar o campo de entrada
-    function autocompletarCampo(campo) {
-      campo.addEventListener('input', function () {
-        const termo = this.value;
-        obterCidadesEstados(termo, function (resultados) {
-          const sugestoes = resultados.map(cidadeEstado => `<option value="${cidadeEstado}"></option>`).join('');
-          campo.setAttribute('list', 'sugestoes');
-          document.getElementById('sugestoes').innerHTML = sugestoes;
-        });
-      });
-    }
-
-    const campoPartida = document.getElementById('partida');
-    const campoDestino = document.getElementById('destino');
-
-    autocompletarCampo(campoPartida);
-    autocompletarCampo(campoDestino);
   </script>
   <script>
     window.onload = function () {
