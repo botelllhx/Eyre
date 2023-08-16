@@ -58,7 +58,7 @@
 
 
             <div class="alinharPartidaDestino">
-              <select class="botaoPartida" id="destino" name="lugar">
+              <select class="botaoPartida" id="partida" name="lugar">
                 <option value="" disabled selected>
                   Partida
                 </option>
@@ -299,8 +299,13 @@
         var dataIda = selectedDates[0].toLocaleDateString("pt-BR");
         var dataVolta = selectedDates[1].toLocaleDateString("pt-BR");
 
-        // Construir o objeto de dados para a requisição
+        // dados da requisição
+
         var data = {
+          page: 1, 
+          pageSize: 10,
+          order: "",
+          direction: "asc",
           content: {
             orcamento: orcamento,
             partida: partida,
@@ -315,7 +320,7 @@
         // Fazer a requisição usando fetch
         fetch('http://localhost:8080/api/hospedagem/list', {
           method: 'POST',
-          mode: "cors",
+          // mode: "cors",
           headers: {
             'Content-Type': 'application/json',
             'Authorization': "Bearer " + token
@@ -344,7 +349,7 @@
             console.log('Resposta do servidor:', data);
             // Fazer algo com a resposta, como atualizar a página ou exibir uma mensagem de sucesso
             // Redirecionar para outra página
-            window.location.href = '../Eyre/opcoesJornada/index.html';
+            window.location.href = './opcoesJornada/index.html';
           })
           .catch(function (error) {
             // Tratar erros ocorridos durante a requisição
