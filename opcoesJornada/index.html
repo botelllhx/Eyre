@@ -113,9 +113,12 @@
     <script>
       // Pré requisição
       document.getElementById('loading').style.display = 'block';
+      function requisicao(id, url, method){
+
+      }
 
       // Requisição Fetch
-      fetch('https://jsonplaceholder.typicode.com/posts', {
+      fetch('http://localhost:8080/api/hospedagem/1', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

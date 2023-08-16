@@ -64,10 +64,12 @@
 
         // REQUISIÇÃO
 
-        fetch("https://jsonplaceholder.typicode.com/posts", {
+        fetch("http://localhost:8080/auth/", {
           method: "POST",
+          mode: "cors",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json", // Certifique-se de que isso está correto
+            "nome": "valor",
           },
           body: JSON.stringify(dados)
         })
@@ -81,8 +83,14 @@
           .then(data => {
             console.log(data);
 
-            // Exibe mensagem de sucesso
+            // Armazenar o token JWT retornado pela API
+            var token = data.token;
 
+            // Armazenar o token no localStorage ou sessionStorage
+            localStorage.setItem("token", token); // Ou sessionStorage
+
+            // Exibe mensagem de sucesso
+            console.log(token)
             alert("Login realizado com sucesso!");
 
             // Armazena o email no local storage
@@ -96,6 +104,32 @@
           .catch(error => {
             console.error(error);
             alert("Ocorreu um erro durante o login. Por favor, tente novamente mais tarde.");
+          });
+      }
+
+
+      // Função para enviar requisições com token
+      function enviarRequisicaoComToken(url, metodo, dados) {
+        var token = localStorage.getItem("token"); // Ou sessionStorage
+
+        return fetch(url, {
+          method: metodo,
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token
+          },
+          body: JSON.stringify(dados)
+        })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("Erro na requisição: " + response.status);
+            }
+          })
+          .catch(error => {
+            console.error(error);
           });
       }
 

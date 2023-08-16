@@ -9,7 +9,6 @@ function formatCPF() {
   } else if (cpf.length > 9 && cpf.length <= 11) {
     cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
   }
-
   cpfInput.value = cpf;
 }
 

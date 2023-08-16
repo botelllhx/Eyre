@@ -66,7 +66,7 @@
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
             <option value="AM">Amazonas</option> -->
-                <option value="Salvador, BA">Bahia</option>
+                <option value="Salvador, Bahia">Bahia</option>
                 <!-- <option value="CE">Ceará</option>
             <option value="DF">Distrito Federal</option>
             <option value="ES">Espírito Santo</option>
@@ -74,19 +74,19 @@
             <option value="MA">Maranhão</option>
             <option value="MT">Mato Grosso</option>
             <option value="MS">Mato Grosso do Sul</option> -->
-                <option value="Belo Horizonte, MG">Minas Gerais</option>
+                <option value="Belo Horizonte, Minas Gerais">Minas Gerais</option>
                 <!-- <option value="PA">Pará</option>
             <option value="PB">Paraíba</option>
             <option value="PR">Paraná</option>
             <option value="PE">Pernambuco</option>
             <option value="PI">Piauí</option> -->
-                <option value="Rio de Janeiro, RJ">Rio de Janeiro</option>
+                <option value="Rio de Janeiro, Rio de Janeiro">Rio de Janeiro</option>
                 <!-- <option value="RN">Rio Grande do Norte</option>
             <option value="RS">Rio Grande do Sul</option>
             <option value="RO">Rondônia</option>
             <option value="RR">Roraima</option>
             <option value="SC">Santa Catarina</option> -->
-                <option value="São Paulo, SP">São Paulo</option>
+                <option value="São Paulo, São Paulo">São Paulo</option>
                 <!-- <option value="SE">Sergipe</option>
             <option value="TO">Tocantins</option> -->
               </select>
@@ -285,12 +285,11 @@
     });
   </script>
   <script>
-    function enviarRequisicao(event) {
-      event.preventDefault();
-
+    function enviarRequisicao(event, url, metodo, dados) {
       // Capturar os valores dos campos do formulário
       var orcamento = document.getElementById('orcamento').value;
       var destino = document.getElementById('destino').value;
+      var partida = document.getElementById('partida').value;
 
       // Capturar o array de datas selecionadas
       var selectedDates = calendar.selectedDates;
@@ -302,17 +301,24 @@
 
         // Construir o objeto de dados para a requisição
         var data = {
-          orcamento: orcamento,
-          destino: destino,
-          dataIda: dataIda,
-          dataVolta: dataVolta
+          content: {
+            orcamento: orcamento,
+            partida: partida,
+            destino: destino,
+            dataIda: dataIda,
+            dataVolta: dataVolta
+          }
         };
 
+        var token = localStorage.getItem("token"); // Ou sessionStorage
+        console.log(token);
         // Fazer a requisição usando fetch
-        fetch('https://jsonplaceholder.typicode.com/posts', {
+        fetch('http://localhost:8080/api/hospedagem/list', {
           method: 'POST',
+          mode: "cors",
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
           },
           body: JSON.stringify(data)
         })
@@ -327,10 +333,18 @@
           })
           .then(function (data) {
             // Manipular a resposta do servidor
+            // Armazenar o token JWT retornado pela API
+            var token = data.token;
+
+            // Armazenar o token no localStorage ou sessionStorage
+            localStorage.setItem("token", token); // Ou sessionStorage
+
+            // Exibe mensagem de sucesso
+            console.log(token)
             console.log('Resposta do servidor:', data);
             // Fazer algo com a resposta, como atualizar a página ou exibir uma mensagem de sucesso
             // Redirecionar para outra página
-            window.location.href = '../opcoesJornada/index.html';
+            window.location.href = '../Eyre/opcoesJornada/index.html';
           })
           .catch(function (error) {
             // Tratar erros ocorridos durante a requisição
@@ -344,6 +358,32 @@
 
       // Limpar os campos do formulário (opcional)
       document.getElementById('formularioViagem').reset();
+      event.preventDefault();
+    }
+    function enviarRequisicaoComToken(url, metodo, dados) {
+
+      var token = localStorage.getItem("token"); // Ou sessionStorage
+      console.log(token);
+      return fetch(url, {
+        method: metodo,
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': "Bearer " + token,
+          'nome': 'fodinha'
+        },
+        body: JSON.stringify(dados)
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Erro na requisição: " + response.status);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }
   </script>
   <script>
