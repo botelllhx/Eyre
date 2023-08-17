@@ -86,7 +86,7 @@
             <option value="RO">Rondônia</option>
             <option value="RR">Roraima</option>
             <option value="SC">Santa Catarina</option> -->
-                <option value="São Paulo, São Paulo">São Paulo</option>
+                <option value="Sao Paulo, Sao Paulo">São Paulo</option>
                 <!-- <option value="SE">Sergipe</option>
             <option value="TO">Tocantins</option> -->
               </select>
@@ -99,7 +99,7 @@
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
             <option value="AM">Amazonas</option> -->
-                <option value="Salvador, BA">Bahia</option>
+                <option value="Salvador, Bahia">Bahia</option>
                 <!-- <option value="CE">Ceará</option>
             <option value="DF">Distrito Federal</option>
             <option value="ES">Espírito Santo</option>
@@ -107,19 +107,19 @@
             <option value="MA">Maranhão</option>
             <option value="MT">Mato Grosso</option>
             <option value="MS">Mato Grosso do Sul</option> -->
-                <option value="Belo Horizonte, MG">Minas Gerais</option>
+                <option value="Belo Horizonte, Minas Gerais">Minas Gerais</option>
                 <!-- <option value="PA">Pará</option>
             <option value="PB">Paraíba</option>
             <option value="PR">Paraná</option>
             <option value="PE">Pernambuco</option>
             <option value="PI">Piauí</option> -->
-                <option value="Rio de Janeiro, RJ">Rio de Janeiro</option>
+                <option value="Rio de Janeiro, Rio de Janeiro">Rio de Janeiro</option>
                 <!-- <option value="RN">Rio Grande do Norte</option>
             <option value="RS">Rio Grande do Sul</option>
             <option value="RO">Rondônia</option>
             <option value="RR">Roraima</option>
             <option value="SC">Santa Catarina</option> -->
-                <option value="São Paulo, SP">São Paulo</option>
+                <option value="Sao Paulo, Sao Paulo">São Paulo</option>
                 <!-- <option value="SE">Sergipe</option>
             <option value="TO">Tocantins</option> -->
               </select>
@@ -285,7 +285,8 @@
     });
   </script>
   <script>
-    function enviarRequisicao(event, url, metodo, dados) {
+    async function enviarRequisicao(event, url, metodo, dados) {
+      event.preventDefault();
       // Capturar os valores dos campos do formulário
       var orcamento = document.getElementById('orcamento').value;
       var destino = document.getElementById('destino').value;
@@ -302,9 +303,9 @@
         // dados da requisição
 
         var data = {
-          page: 1, 
+          page: 0,
           pageSize: 10,
-          order: "",
+          order: "id",
           direction: "asc",
           content: {
             orcamento: orcamento,
@@ -318,7 +319,7 @@
         var token = localStorage.getItem("token"); // Ou sessionStorage
         console.log(token);
         // Fazer a requisição usando fetch
-        fetch('http://localhost:8080/api/hospedagem/list', {
+        const response = await fetch('http://localhost:8080/api/hospedagem/list', {
           method: 'POST',
           // mode: "cors",
           headers: {
@@ -326,16 +327,16 @@
             'Authorization': "Bearer " + token
           },
           body: JSON.stringify(data)
+        });
+        response.then(function (response) {
+          if (response.ok) {
+            // A requisição foi bem-sucedida
+            return response.json();
+          } else {
+            // A requisição falhou
+            throw new Error('Erro na requisição: ' + response.status);
+          }
         })
-          .then(function (response) {
-            if (response.ok) {
-              // A requisição foi bem-sucedida
-              return response.json();
-            } else {
-              // A requisição falhou
-              throw new Error('Erro na requisição: ' + response.status);
-            }
-          })
           .then(function (data) {
             // Manipular a resposta do servidor
             // Armazenar o token JWT retornado pela API
@@ -344,6 +345,7 @@
             // Armazenar o token no localStorage ou sessionStorage
             localStorage.setItem("token", token); // Ou sessionStorage
 
+            console.log(data);
             // Exibe mensagem de sucesso
             console.log(token)
             console.log('Resposta do servidor:', data);
@@ -360,7 +362,6 @@
         // Caso as duas datas não tenham sido selecionadas
         console.error("Selecione um intervalo de datas válido.");
       }
-
       // Limpar os campos do formulário (opcional)
       document.getElementById('formularioViagem').reset();
       event.preventDefault();
@@ -375,7 +376,6 @@
         headers: {
           "Content-Type": "application/json",
           'Authorization': "Bearer " + token,
-          'nome': 'fodinha'
         },
         body: JSON.stringify(dados)
       })

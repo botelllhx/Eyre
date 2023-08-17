@@ -30,7 +30,7 @@
         <div class="blocos">
             <div class="esquerda">
                 <p class="titulo" id="titulo">Arraial do Cabo - Brisas do Farol</p>
-                <img src="./imagens/BrisasDoFarol.jpg" class="imagem1">
+                <img src="./imagens/BrisasDoFarol.jpg" id="imagemPrincipal" class="imagem1">
                 <div class="fundoDescricao">
                     <p class="descricao" id="descricao">Localizado em Arraial do Cabo e com a Praia Grande a cerca de
                         600 metros, a
@@ -385,7 +385,7 @@
         });
     </script>
     <script>
-        fetch('https://jsonplaceholder.typicode.com/posts', {
+        fetch('http://localhost:8080/api/hospedagem/1/23-05-2023/true', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -408,307 +408,309 @@
 
                 setTimeout(function () {
 
-                    var data = {
-                        titulo: "Arraial do Cabo - Brisas do Farol",
-                        descricao:
-                            "Localizado em Arraial do Cabo e com a Praia Grande a cerca de 600 metros, a propriedade está situada a 300 m da Praça da Independência, a 500 m do Estádio Hermenegildo Brcellos e a 400 m da Prefeitura de Arraial do Cabo. O Museu Oceanográfico fica a menos de 1 km de distância e a Igreja Nossa Senhora dos Remédios fica a 12 minutos a pé da pousada.",
-                        imagens: [
-                            "./imagens/BrisasDoFarol.jpg",
-                            "./imagens/pousadaBrisasDoFarol.jpg",
-                        ],
-                        avaliacoes: "729",
-                        classificacao: "8,0",
-                        tipoQuarto: "Suíte",
-                        descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²ㅤ3 camas (2 de solteiro, 1 de casal)",
-                        endereco: {},
-                        listExtras: [
-                            {
-                                id: 1,
-                                nome: "Quartos para não fumantes"
-                            },
-                            {
-                                id: 2,
-                                nome: "Wi-fi gratuito",
-                            },
-                            {
-                                id: 3,
-                                nome: "Recepção 24 horas"
-                            },
-                            {
-                                id: 4,
-                                nome: "Bar"
-                            },
-                        ],
-                        checkIn: "12:00",
-                        checkOut: "11:00",
-                        voos: [
-                            {
-                                type: 0,
-                                nome: "LATAM",
-                                listTransporteDias: {
-                                    0: [{
-                                        tipoRota: "IDA",
-                                        horarioEmbarque: "16:45",
-                                        horarioDesembarque: "17:45",
+                    // var data = {
+                    //     titulo: "Arraial do Cabo - Brisas do Farol",
+                    //     descricao:
+                    //         "Localizado em Arraial do Cabo e com a Praia Grande a cerca de 600 metros, a propriedade está situada a 300 m da Praça da Independência, a 500 m do Estádio Hermenegildo Brcellos e a 400 m da Prefeitura de Arraial do Cabo. O Museu Oceanográfico fica a menos de 1 km de distância e a Igreja Nossa Senhora dos Remédios fica a 12 minutos a pé da pousada.",
+                    //     imagens: [
+                    //         "./imagens/BrisasDoFarol.jpg",
+                    //         "./imagens/pousadaBrisasDoFarol.jpg",
+                    //     ],
+                    //     avaliacoes: "729",
+                    //     classificacao: "8,0",
+                    //     tipoQuarto: "Suíte",
+                    //     descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²ㅤ3 camas (2 de solteiro, 1 de casal)",
+                    //     endereco: {},
+                    //     listExtras: [
+                    //         {
+                    //             id: 1,
+                    //             nome: "Quartos para não fumantes"
+                    //         },
+                    //         {
+                    //             id: 2,
+                    //             nome: "Wi-fi gratuito",
+                    //         },
+                    //         {
+                    //             id: 3,
+                    //             nome: "Recepção 24 horas"
+                    //         },
+                    //         {
+                    //             id: 4,
+                    //             nome: "Bar"
+                    //         },
+                    //     ],
+                    //     checkIn: "12:00",
+                    //     checkOut: "11:00",
+                    //     voos: [
+                    //         {
+                    //             type: 0,
+                    //             nome: "LATAM",
+                    //             listTransporteDias: {
+                    //                 0: [{
+                    //                     tipoRota: "IDA",
+                    //                     horarioEmbarque: "16:45",
+                    //                     horarioDesembarque: "17:45",
 
-                                    },
-                                    {
-                                        tipoRota: "IDA",
-                                        horarioEmbarque: "16:45",
-                                        horarioDesembarque: "17:45",
+                    //                 },
+                    //                 {
+                    //                     tipoRota: "IDA",
+                    //                     horarioEmbarque: "16:45",
+                    //                     horarioDesembarque: "17:45",
 
-                                    }],
-                                },
-                                // localSaida: "São Paulo",
-                                // localChegada: "Arraial do Cabo",
-                                tipoVoo: "Direto",
-                                duracaoVoo: "1h 5m",
-                                imgCompanhiaAerea: "./imagens/latam.png"
-                            },
-                            {
-                                type: 0,
-                                nome: "ㅤGOL",
-                                listTransporteDias: {
-                                    0: [{
-                                        tipoRota: "IDA",
-                                        horarioEmbarque: "10:50",
-                                        horarioDesembarque: "11:55",
+                    //                 }],
+                    //             },
+                    //             // localSaida: "São Paulo",
+                    //             // localChegada: "Arraial do Cabo",
+                    //             tipoVoo: "Direto",
+                    //             duracaoVoo: "1h 5m",
+                    //             imgCompanhiaAerea: "./imagens/latam.png"
+                    //         },
+                    //         {
+                    //             type: 0,
+                    //             nome: "ㅤGOL",
+                    //             listTransporteDias: {
+                    //                 0: [{
+                    //                     tipoRota: "IDA",
+                    //                     horarioEmbarque: "10:50",
+                    //                     horarioDesembarque: "11:55",
 
-                                    },
-                                    {
-                                        tipoRota: "IDA",
-                                        horarioEmbarque: "12:00",
-                                        horarioDesembarque: "13:05",
+                    //                 },
+                    //                 {
+                    //                     tipoRota: "IDA",
+                    //                     horarioEmbarque: "12:00",
+                    //                     horarioDesembarque: "13:05",
 
-                                    }],
-                                },
-                                // localSaida: "São Paulo",
-                                // localChegada: "Arraial do Cabo",
-                                tipoVoo: "Direto",
-                                duracaoVoo: "1h 5m",
-                                imgCompanhiaAerea: "./imagens/gol.png"
-                            },
-                            {
-                                type: 0,
-                                nome: "LATAM",
-                                listTransporteDias: {
-                                    0: [{
-                                        tipoRota: "VOLTA",
-                                        horarioEmbarque: "16:45",
-                                        horarioDesembarque: "17:50",
+                    //                 }],
+                    //             },
+                    //             // localSaida: "São Paulo",
+                    //             // localChegada: "Arraial do Cabo",
+                    //             tipoVoo: "Direto",
+                    //             duracaoVoo: "1h 5m",
+                    //             imgCompanhiaAerea: "./imagens/gol.png"
+                    //         },
+                    //         {
+                    //             type: 0,
+                    //             nome: "LATAM",
+                    //             listTransporteDias: {
+                    //                 0: [{
+                    //                     tipoRota: "VOLTA",
+                    //                     horarioEmbarque: "16:45",
+                    //                     horarioDesembarque: "17:50",
 
-                                    },
-                                    {
-                                        tipoRota: "VOLTA",
-                                        horarioEmbarque: "15:45",
-                                        horarioDesembarque: "16:55",
+                    //                 },
+                    //                 {
+                    //                     tipoRota: "VOLTA",
+                    //                     horarioEmbarque: "15:45",
+                    //                     horarioDesembarque: "16:55",
 
-                                    }],
-                                },
-                                // localSaida: "São Paulo",
-                                // localChegada: "Arraial do Cabo",
-                                tipoVoo: "Direto",
-                                duracaoVoo: "1h 5m",
-                                imgCompanhiaAerea: "./imagens/latam.png"
-                            },
-                            {
-                                type: 0,
-                                nome: "LATAM",
-                                listTransporteDias: {
-                                    0: [{
-                                        tipoRota: "VOLTA",
-                                        horarioEmbarque: "10:55",
-                                        horarioDesembarque: "11:55",
+                    //                 }],
+                    //             },
+                    //             // localSaida: "São Paulo",
+                    //             // localChegada: "Arraial do Cabo",
+                    //             tipoVoo: "Direto",
+                    //             duracaoVoo: "1h 5m",
+                    //             imgCompanhiaAerea: "./imagens/latam.png"
+                    //         },
+                    //         {
+                    //             type: 0,
+                    //             nome: "LATAM",
+                    //             listTransporteDias: {
+                    //                 0: [{
+                    //                     tipoRota: "VOLTA",
+                    //                     horarioEmbarque: "10:55",
+                    //                     horarioDesembarque: "11:55",
 
-                                    },
-                                    {
-                                        tipoRota: "VOLTA",
-                                        horarioEmbarque: "12:00",
-                                        horarioDesembarque: "13:05",
+                    //                 },
+                    //                 {
+                    //                     tipoRota: "VOLTA",
+                    //                     horarioEmbarque: "12:00",
+                    //                     horarioDesembarque: "13:05",
 
-                                    }],
-                                },
-                                // localSaida: "São Paulo",
-                                // localChegada: "Arraial do Cabo",
-                                tipoVoo: "Direto",
-                                duracaoVoo: "1h 5m",
-                                imgCompanhiaAerea: "./imagens/latam.png"
-                            },
-                        ],
+                    //                 }],
+                    //             },
+                    //             // localSaida: "São Paulo",
+                    //             // localChegada: "Arraial do Cabo",
+                    //             tipoVoo: "Direto",
+                    //             duracaoVoo: "1h 5m",
+                    //             imgCompanhiaAerea: "./imagens/latam.png"
+                    //         },
+                    //     ],
 
-                        onibus: [
-                            {
-                                type: 1,
-                                listTransporteDias: {
-                                    0: [{
-                                        tipoRota: "IDA",
-                                        horarioEmbarque: "10:15",
-                                        horarioDesembarque: "20:45",
-                                    }]
-                                },
-                                localSaida: "Belo Horizonte",
-                                localChegada: "Arraial do Cabo",
-                                tipoPoltrona: "Semi-Leito",
-                                imagemPoltrona: "./imagens/poltrona.png",
-                            },
-                            {
-                                type: 1,
-                                listTransporteDias: {
-                                    0: [{
-                                        tipoRota: "VOLTA",
-                                        horarioEmbarque: "20:45",
-                                        horarioDesembarque: "10:15",
-                                    }]
-                                },
-                                localSaida: "Arraial do Cabo",
-                                localChegada: "Belo Horizonte",
-                                tipoPoltrona: "Leito",
-                                imagemPoltrona: "./imagens/poltrona2.png",
-                            },
-                        ],
-                        listProximidades: {
-                            Turistico: [
-                                {
-                                    id: 2,
-                                    nome: "Mangará Restaurante",
-                                    imagem: {
-                                        id: 1,
-                                        nome: "Mangará Restaurante",
-                                        dados: "./imagens/mangaraRestaurante.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Casa da Piedra",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Casa da Piedra",
-                                        dados: "./imagens/casaDaPiedra.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Sol na Cozinha",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Sol na Cozinha",
-                                        dados: "./imagens/solNaCozinha.jpg"
-                                    }
-                                },
-                                // .....
-                            ],
-                            Restaurante: [
-                                {
-                                    id: 2,
-                                    nome: "Manga Restaurante",
-                                    imagem: {
-                                        id: 1,
-                                        nome: "Mangará Restaurante",
-                                        dados: "./imagens/mangaraRestaurante.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Casa da PEDRA",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Mangará Restaurante",
-                                        dados: "./imagens/casaDaPiedra.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Sol na Cozinha",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Sol na Cozinha",
-                                        dados: "./imagens/solNaCozinha.jpg"
-                                    }
-                                },
-                                // .....
-                            ],
-                            Bar: [
-                                {
-                                    id: 2,
-                                    nome: "Mangará Restaurante",
-                                    imagem: {
-                                        id: 1,
-                                        nome: "Mangará Restaurante",
-                                        dados: "./imagens/mangaraRestaurante.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Casa da Piedra",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Casa da Piedra",
-                                        dados: "./imagens/casaDaPiedra.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Sol na Cozinha",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Sol na Cozinha",
-                                        dados: "./imagens/solNaCozinha.jpg"
-                                    }
-                                },
-                                // .....
-                            ],
-                            Boate: [
-                                {
-                                    id: 2,
-                                    nome: "Mangará Restaurante",
-                                    imagem: {
-                                        id: 1,
-                                        nome: "Mangará Restaurante",
-                                        dados: "./imagens/mangaraRestaurante.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Casa da Piedra",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Casa da Piedra",
-                                        dados: "./imagens/casaDaPiedra.jpg"
-                                    }
-                                },
-                                {
-                                    id: 2,
-                                    nome: "Sol na Cozinha",
-                                    imagem: {
-                                        id: 2,
-                                        nome: "Sol na Cozinha",
-                                        dados: "./imagens/solNaCozinha.jpg"
-                                    }
-                                },
-                                // .....
-                            ],
-                        },
-                    };
-
-                    document.getElementById("titulo").textContent = data.titulo;
-                    document.getElementById("descricao").textContent = data.descricao;
+                    //     onibus: [
+                    //         {
+                    //             type: 1,
+                    //             listTransporteDias: {
+                    //                 0: [{
+                    //                     tipoRota: "IDA",
+                    //                     horarioEmbarque: "10:15",
+                    //                     horarioDesembarque: "20:45",
+                    //                 }]
+                    //             },
+                    //             localSaida: "Belo Horizonte",
+                    //             localChegada: "Arraial do Cabo",
+                    //             tipoPoltrona: "Semi-Leito",
+                    //             imagemPoltrona: "./imagens/poltrona.png",
+                    //         },
+                    //         {
+                    //             type: 1,
+                    //             listTransporteDias: {
+                    //                 0: [{
+                    //                     tipoRota: "VOLTA",
+                    //                     horarioEmbarque: "20:45",
+                    //                     horarioDesembarque: "10:15",
+                    //                 }]
+                    //             },
+                    //             localSaida: "Arraial do Cabo",
+                    //             localChegada: "Belo Horizonte",
+                    //             tipoPoltrona: "Leito",
+                    //             imagemPoltrona: "./imagens/poltrona2.png",
+                    //         },
+                    //     ],
+                    //     listProximidades: {
+                    //         Turistico: [
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Mangará Restaurante",
+                    //                 imagem: {
+                    //                     id: 1,
+                    //                     nome: "Mangará Restaurante",
+                    //                     dados: "./imagens/mangaraRestaurante.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Casa da Piedra",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Casa da Piedra",
+                    //                     dados: "./imagens/casaDaPiedra.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Sol na Cozinha",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Sol na Cozinha",
+                    //                     dados: "./imagens/solNaCozinha.jpg"
+                    //                 }
+                    //             },
+                    //             // .....
+                    //         ],
+                    //         Restaurante: [
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Manga Restaurante",
+                    //                 imagem: {
+                    //                     id: 1,
+                    //                     nome: "Mangará Restaurante",
+                    //                     dados: "./imagens/mangaraRestaurante.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Casa da PEDRA",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Mangará Restaurante",
+                    //                     dados: "./imagens/casaDaPiedra.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Sol na Cozinha",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Sol na Cozinha",
+                    //                     dados: "./imagens/solNaCozinha.jpg"
+                    //                 }
+                    //             },
+                    //             // .....
+                    //         ],
+                    //         Bar: [
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Mangará Restaurante",
+                    //                 imagem: {
+                    //                     id: 1,
+                    //                     nome: "Mangará Restaurante",
+                    //                     dados: "./imagens/mangaraRestaurante.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Casa da Piedra",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Casa da Piedra",
+                    //                     dados: "./imagens/casaDaPiedra.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Sol na Cozinha",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Sol na Cozinha",
+                    //                     dados: "./imagens/solNaCozinha.jpg"
+                    //                 }
+                    //             },
+                    //             // .....
+                    //         ],
+                    //         Boate: [
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Mangará Restaurante",
+                    //                 imagem: {
+                    //                     id: 1,
+                    //                     nome: "Mangará Restaurante",
+                    //                     dados: "./imagens/mangaraRestaurante.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Casa da Piedra",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Casa da Piedra",
+                    //                     dados: "./imagens/casaDaPiedra.jpg"
+                    //                 }
+                    //             },
+                    //             {
+                    //                 id: 2,
+                    //                 nome: "Sol na Cozinha",
+                    //                 imagem: {
+                    //                     id: 2,
+                    //                     nome: "Sol na Cozinha",
+                    //                     dados: "./imagens/solNaCozinha.jpg"
+                    //                 }
+                    //             },
+                    //             // .....
+                    //         ],
+                    //     },
+                    // };
+                    hos = data.hospedagem;
+                    document.getElementById("titulo").textContent = hos.titulo;
+                    document.getElementById("descricao").textContent = hos.descricao;
                     document.getElementById("avaliacoes").textContent = data.avaliacoes;
                     document.getElementById("classificacao").textContent = data.classificacao;
-                    document.getElementById("tipoQuarto").textContent = data.tipoQuarto;
-                    document.getElementById("descricaoQuarto").textContent = data.descricaoQuarto;
+                    document.getElementById("tipoQuarto").textContent = hos.tipoQuarto;
+                    document.getElementById("descricaoQuarto").textContent = hos.descricaoQuarto;
+                    document.getElementById("imagemPrincipal").src = "data:image/png;base64,"+ hos.listImagens[0].dados;
 
+                    console.log("blabla")
 
-                    for (let i = 0; i < data.listExtras.length; i++) {
-                        document.getElementById(`servico${i + 1}`).textContent = data.listExtras[i].nome;
+                    for (let i = 0; i < hos.listExtras.length; i++) {
+                        document.getElementById(`servico${i + 1}`).textContent = hos.listExtras[i].nome;
                     }
+                    console.log("blabla")
 
+                    document.getElementById("primeiraCondicao").textContent = hos.checkIn;
+                    document.getElementById("segundaCondicao").textContent = hos.checkOut;
 
-                    document.getElementById("primeiraCondicao").textContent = data.checkIn;
-                    document.getElementById("segundaCondicao").textContent = data.checkOut;
-
-                    for (let i = 0; i < data.voos.length; i++) {
-                        const voo = data.voos[i];
-                        const horarioEmbarque = voo.listTransporteDias[0][0].horarioEmbarque;
+                    for (let i = 0; i < hos.voos.length; i++) {
+                        const voo = hos.voos[i];
+                        const horarioEmbarque = voo.listDias["EXATA"].horarioEmbarque;
                         const horarioDesembarque = voo.listTransporteDias[0][0].horarioDesembarque;
                         const duracaoVoo = voo.duracaoVoo;
 
@@ -779,10 +781,12 @@
                         return `${duracaoHoras}h ${duracaoMinutos}m`;
                     }
 
-                    const categorias = ["Turistico", "Restaurante", "Bar", "Boate"];
-
+                    const categorias = ["Turísticos", "Restaurantes", "Bares", "Boates"];
+                    console.log(categorias);
                     categorias.forEach(function (categoria) {
+                        console.log("categorias");
                         const categoriaData = data.listProximidades[categoria];
+                        console.log(categoriaData);
                         const categoriaContent = document.getElementById(`${categoria.toLowerCase()}Content`);
 
                         if (categoriaContent) {

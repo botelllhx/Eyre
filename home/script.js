@@ -27,7 +27,7 @@ function formatarMoeda(campo) {
     var parteDecimal = valor.slice(-2);
     valor = parteInteira + '.' + parteDecimal;
 
-    campo.value = "R$ " + parseFloat(valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    campo.value = parseFloat(valor);
 }
 
 function trocaImagem() {
