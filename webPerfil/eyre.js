@@ -251,12 +251,51 @@ function abrirTextoModal() {
 
 // MODAL TERMOS E CONDIÇÕES
 
+// function abrirModalTermos() {
+//     document.getElementById('modalTermosCondicoes').style.display = 'block';
+// }
+
+// function fecharModalTermos() {
+//     document.getElementById('modalTermosCondicoes').style.display = 'none';
+// }
+
+// Adicione um evento de clique ao documento
+document.addEventListener('click', function(event) {
+    var modal = document.getElementById('modalTermosCondicoes');
+    
+    // Verifique se o clique ocorreu fora do modal e se o modal está aberto
+    if (event.target === modal && modal.style.display === 'block') {
+        fecharModalTermos();
+    }
+});
+
 function abrirModalTermos() {
-    document.getElementById('modalTermosCondicoes').style.display = 'block';
+    var modal = document.getElementById('modalTermosCondicoes');
+    modal.style.display = 'block';
 }
 
 function fecharModalTermos() {
-    document.getElementById('modalTermosCondicoes').style.display = 'none';
+    var modal = document.getElementById('modalTermosCondicoes');
+    modal.style.display = 'none';
+}
+
+document.addEventListener('click', function(event) {
+    var modal = document.getElementById('modalPoliticaPrivacidade');
+    
+    // Verifique se o clique ocorreu fora do modal e se o modal está aberto
+    if (event.target === modal && modal.style.display === 'block') {
+        fecharModalTermos();
+    }
+});
+
+function abrirModalTermos() {
+    var modal = document.getElementById('modalPoliticaPrivacidade');
+    modal.style.display = 'block';
+}
+
+function fecharModalTermos() {
+    var modal = document.getElementById('modalPoliticaPrivacidade');
+    modal.style.display = 'none';
 }
 //------------------------------------------------------------------------------------------------
 
@@ -270,3 +309,7 @@ function mostrarResposta(numeroPergunta) {
         resposta.style.display = "none";
     }
 }
+
+// barra de rolagem 
+var scrollContainer = document.getElementById('scrollContainer');
+    scrollContainer.scrollLeft = -100; // Ajuste o valor conforme necessário

@@ -27,7 +27,7 @@ function formatarMoeda(campo) {
     var parteDecimal = valor.slice(-2);
     valor = parteInteira + '.' + parteDecimal;
 
-    campo.value = parseFloat(valor);
+    campo.value = "R$ " + parseFloat(valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 function trocaImagem() {
@@ -36,4 +36,20 @@ function trocaImagem() {
 
 function retornaImagem() {
     document.getElementById("minha-imagem").src = "./home/imagens/paisagem.jpg";
+}
+
+
+var isImagemSifaoVisible = true;
+
+function ocultarImagemSifao() {
+    if (isImagemSifaoVisible) {
+        var input = document.getElementById("orcamento");
+        input.classList.add("ocultar-imagem");
+        isImagemSifaoVisible = false;
+    }
+}
+
+
+function toggleCustomCheck(element) {
+    element.classList.toggle("checked");
 }

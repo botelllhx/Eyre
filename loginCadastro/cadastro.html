@@ -60,9 +60,27 @@
                     <i id="confirm-eye-icon" class="fa fa-eye"></i>
                 </span>
             </div>
+            <div class="form-group">
+                <input type="text" name="cep" id="cep" maxlength="8" placeholder="CEP">
+            </div>
+            <div class="form-group">
+                <input type="text" name="rua" id="rua" placeholder="Rua">
+            </div>
+            <div class="form-group">
+                <input type="text" name="numero" id="numero" placeholder="Número">
+            </div>
+            <div class="form-group">
+                <input type="text" name="bairro" id="bairro" placeholder="Bairro">
+            </div>
+            <div class="form-group">
+                <input type="text" name="cidade" id="cidade" placeholder="Cidade">
+            </div>
+            <div class="form-group">
+                <input type="text" name="estado" id="estado" placeholder="Estado">
+            </div>
             <div class="correto">
                 <div class="correto2">
-                    <input type="checkbox" name="checkbox" id="accept-checkbox">
+                    <input type="checkbox" id="accept-checkbox">
                     <label for="accept-checkbox">
                         <p>Li e aceito os <u>Termos e Condições</u> de serviço.</p>
                     </label>
@@ -71,66 +89,103 @@
             </div>
         </form>
     </div>
-    <script>
-        function enviarFormulario() {
-            var formulario = document.getElementById("cadastro_form");
-            var dadosFormulario = new FormData(formulario);
-            var dados = {};
-            for (var [key, value] of dadosFormulario.entries()) {
-                dados[key] = value;
-            }
-
-            // REQUISIÇÃO É FEITA AQUI
-
-            fetch("http://localhost:8080/api/usuario/", {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(dados)
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error("Erro na requisição: " + response.status);
-                    }
-                })
-                .then(data => {
-                    console.log(data);
-
-                    // MENSAGEM DE SUCESSO APÓS CADASTRADO
-
-                    alert("Cadastro realizado com sucesso!");
-
-                    // PARA REDIRECIONAR PARA A PÁGINA DE LOGIN
-
-                    window.location.href = "http://127.0.0.1:5500/loginCadastro/login.html";
-                })
-                .catch(error => {
-                    console.error(error);
-                    alert("Ocorreu um erro durante o cadastro. Por favor, tente novamente mais tarde.");
-                });
-        }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(window).on('load', function () {
-            $('body').css('opacity', '1');
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        flatpickr("#birthdate", {
-            dateFormat: "d/m/Y",
-            maxDate: "today",
-            locale: "pt",
-            allowInput: true
-        });
-    </script>
-    <script src="JavaScript/eyre.js"></script>
-    <script src="JavaScript/eyre2.js"></script>
 </body>
+<script>
+    function enviarFormulario() {
+        var formulario = document.getElementById("cadastro_form");
+        var dadosFormulario = new FormData(formulario);
+
+        // Validação dos campos obrigatórios
+        const camposObrigatorios = ['nome', 'dataNascimento', 'cpfCnpj', 'email', 'telefone', 'senha', 'confirmarSenha', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado'];
+        const camposPreenchidos = camposObrigatorios.every(campo => dadosFormulario.get(campo) !== '');
+
+        if (!camposPreenchidos) {
+            alert('Preencha todos os campos obrigatórios.');
+            return; // Impede o envio da requisição
+        }
+
+        // Validação da confirmação de senha
+        const senha = dadosFormulario.get('senha');
+        const confirmarSenha = dadosFormulario.get('confirmarSenha');
+
+        if (senha !== confirmarSenha) {
+            alert('A senha e a confirmação de senha não coincidem.');
+            return; // Impede o envio da requisição
+        }
+
+        // objeto de endereco
+        var endereco = {
+            cep: dadosFormulario.get('cep'),
+            rua: dadosFormulario.get('rua'),
+            numero: dadosFormulario.get('numero'),
+            bairro: dadosFormulario.get('bairro'),
+            cidade: dadosFormulario.get('cidade'),
+            estado: dadosFormulario.get('estado')
+        };
+
+        dadosFormulario.delete('cep');
+        dadosFormulario.delete('rua');
+        dadosFormulario.delete('numero');
+        dadosFormulario.delete('bairro');
+        dadosFormulario.delete('cidade');
+        dadosFormulario.delete('estado');
+
+        // incluindo endereco
+        var dados = {};
+        for (var [key, value] of dadosFormulario.entries()) {
+            dados[key] = value;
+        }
+        dados.endereco = endereco; // Incluindo o endereco como uma propriedade
+
+        fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dados)
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Erro na requisição: " + response.status);
+                }
+            })
+            .then(data => {
+                console.log(data);
+
+                // MENSAGEM DE SUCESSO APÓS CADASTRADO
+                alert("Cadastro realizado com sucesso!");
+
+                // PARA REDIRECIONAR PARA A PÁGINA DE LOGIN
+                window.location.href = "http://127.0.0.1:5500/loginCadastro/login.html";
+            })
+            .catch(error => {
+                console.error(error);
+                alert("Ocorreu um erro durante o cadastro. Por favor, tente novamente mais tarde.");
+            });
+    }
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.0.2/luxon.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(window).on('load', function () {
+        $('body').css('opacity', '1');
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("#birthdate", {
+        dateFormat: "d/m/Y",
+        maxDate: "today",
+        locale: "pt",
+        allowInput: true
+    });
+</script>
+<script src="JavaScript/eyre.js"></script>
+<script src="JavaScript/eyre2.js"></script>
+<script src="JavaScript/cep.js"></script>
 
 </html>

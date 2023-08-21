@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="imagens/logoEyre.png" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="eyre.js"></script>
     <!-- BIBLIOTECA CALENDARIO - CAMPO DATA DE NASCIMENTO -->
@@ -64,90 +64,93 @@
             <div>
 
                 <div id="alterarDados-form" class="alterarDados payment-form">
-                    <p class="textoPerfil">Meu Perfil</p>
-                    <div class="imgBotaoAoLado">
-                        <div>
-                            <img src="./imagens/login.png" class="imgPessoa" />
-                            <input type="file" id="campo-foto" style="display: none;">
-                        </div>
-                        <div>
+                    <div class="container2">
+                        <p class="textoPerfil">Meu Perfil</p>
+                        <div class="imgBotaoAoLado">
                             <div>
-                                <button onclick="document.getElementById('campo-foto').click()"
-                                    class="botaoAlterarFoto">ALTERAR
-                                    FOTO</button>
+                                <img src="./imagens/login.png" class="imgPessoa" />
+                                <input type="file" id="campo-foto" style="display: none;">
                             </div>
-                            <div>
-                                <button onclick="removerFoto()" class="botaoRemoverFoto">REMOVER FOTO</button>
-                                <script>
-                                    function removerFoto() {
-                                        document.getElementById('campo-foto').value = '';
-                                    }
-                                </script>
+                            <div class="selecionarFotos">
+                                <div>
+                                    <button onclick="document.getElementById('campo-foto').click()"
+                                        class="botaoAlterarFoto">ALTERAR
+                                        FOTO</button>
+                                </div>
+                                <div>
+                                    <button onclick="removerFoto()" class="botaoRemoverFoto">REMOVER FOTO</button>
+                                    <script>
+                                        function removerFoto() {
+                                            document.getElementById('campo-foto').value = '';
+                                        }
+                                    </script>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div>
-                        <input type="text" id="campoNome" placeholder="Nome" readonly class="botoesAlterarDados"
-                            onfocus="limparTextoNome()" oninput="recuperarOpacidadeNome()"
-                            onkeypress="transformarPalavras()">
-                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                            onclick="habilitarEdicaoNome()">
-                    </div>
+                        <div>
+                            <input type="text" id="campoNome" placeholder="Nome" readonly class="botoesAlterarDados"
+                                onfocus="limparTextoNome()" oninput="recuperarOpacidadeNome()"
+                                onkeypress="transformarPalavras()">
+                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                onclick="habilitarEdicaoNome()">
+                        </div>
 
-                    <div>
-                        <input type="text" id="campoNascimento" placeholder="Nascimento" readonly
-                            class="botoesAlterarDados" onfocus="limparTextoNascimento()"
-                            oninput="recuperarOpacidadeNascimento()">
-                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                            onclick="habilitarEdicaoNascimento()">
-                        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-                        <script>
-                            flatpickr("#campoNascimento", {
-                                dateFormat: "d/m/Y",
-                                maxDate: "today",
-                                locale: "pt",
-                                allowInput: true
-                            });
-                        </script>
-                    </div>
+                        <div>
+                            <input type="text" id="campoNascimento" placeholder="Nascimento" readonly
+                                class="botoesAlterarDados" onfocus="limparTextoNascimento()"
+                                oninput="recuperarOpacidadeNascimento()">
+                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                onclick="habilitarEdicaoNascimento()">
+                            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                            <script>
+                                flatpickr("#campoNascimento", {
+                                    dateFormat: "d/m/Y",
+                                    maxDate: "today",
+                                    locale: "pt",
+                                    allowInput: true
+                                });
+                            </script>
+                        </div>
 
-                    <div>
-                        <input type="text" id="campoCPF" placeholder="CPF" readonly class="botoesAlterarDados"
-                            onfocus="limparTextoCPF()" oninput="recuperarOpacidadeCPF()" maxlength="14"
-                            onkeyup="formatCPF()">
-                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                            onclick="habilitarEdicaoCPF()">
-                    </div>
+                        <div>
+                            <input type="text" id="campoCPF" placeholder="CPF" readonly class="botoesAlterarDados"
+                                onfocus="limparTextoCPF()" oninput="recuperarOpacidadeCPF()" maxlength="14"
+                                onkeyup="formatCPF()">
+                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                onclick="habilitarEdicaoCPF()">
+                        </div>
 
-                    <div>
-                        <input type="text" id="campoEmail" placeholder="E-mail" readonly class="botoesAlterarDados"
-                            onfocus="limparTextoEmail()" oninput="recuperarOpacidadeEmail()">
-                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                            onclick="habilitarEdicaoEmail()">
-                    </div>
+                        <div>
+                            <input type="text" id="campoEmail" placeholder="E-mail" readonly class="botoesAlterarDados"
+                                onfocus="limparTextoEmail()" oninput="recuperarOpacidadeEmail()">
+                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                onclick="habilitarEdicaoEmail()">
+                        </div>
 
-                    <div>
-                        <input type="text" id="campoTelefone" placeholder="Telefone" readonly class="botoesAlterarDados"
-                            onfocus="limparTextoTelefone()" oninput="recuperarOpacidadeTelefone()" maxlength="14"
-                            onkeyup="formatTelefone()">
-                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                            onclick="habilitarEdicaoTelefone()">
-                    </div>
+                        <div>
+                            <input type="text" id="campoTelefone" placeholder="Telefone" readonly
+                                class="botoesAlterarDados" onfocus="limparTextoTelefone()"
+                                oninput="recuperarOpacidadeTelefone()" maxlength="14" onkeyup="formatTelefone()">
+                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                onclick="habilitarEdicaoTelefone()">
+                        </div>
 
-                    <div>
-                        <input type="password" id="campoSenha" placeholder="Senha" maxlength="12" readonly
-                            class="botoesAlterarDados" onfocus="limparTextoSenha()" oninput="recuperarOpacidadeSenha()">
-                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                            onclick="habilitarEdicaoSenha()">
-                    </div>
+                        <div>
+                            <input type="password" id="campoSenha" placeholder="Senha" maxlength="12" readonly
+                                class="botoesAlterarDados" onfocus="limparTextoSenha()"
+                                oninput="recuperarOpacidadeSenha()">
+                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                onclick="habilitarEdicaoSenha()">
+                        </div>
 
-                    <div>
-                        <input type="password" id="campoConfirmaSenha" placeholder="Confirma Senha" maxlength="12"
-                            readonly class="botoesAlterarDados" onfocus="limparTextoConfirmaSenha()"
-                            oninput="recuperarOpacidadeConfirmaSenha()">
-                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                            onclick="habilitarEdicaoConfirmaSenha()">
+                        <div>
+                            <input type="password" id="campoConfirmaSenha" placeholder="Confirma Senha" maxlength="12"
+                                readonly class="botoesAlterarDados" onfocus="limparTextoConfirmaSenha()"
+                                oninput="recuperarOpacidadeConfirmaSenha()">
+                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                onclick="habilitarEdicaoConfirmaSenha()">
+                        </div>
                     </div>
                 </div>
 
@@ -156,7 +159,6 @@
             <div id="historico-form" class="historico payment-form">
                 <div class="container">
                     <p class="textoPerfil">Em andamento</p>
-
                     <div class="fundoCinzaHistorico">
                         <div class="divImagem">
                             <img src="./imagens/salvador.png" class="imgSalvador" />
@@ -319,53 +321,18 @@
                             class="fas fa-long-arrow-alt-right tamanhoSeta"></i></button>
                     <div>
                         <div class="fundoCinzaSuporte">
+
                             <div class="tituloFAQ">
                                 FAQ
                             </div>
-                            <div>
+                            <div class="pergunta1">
                                 <img src="./imagens/ponto.png" class="ponto" />
+                                <p class="perguntaEyre1">O QUE É A EYRE?</p>
                             </div>
-                            <div class="perguntaEyre">
-                                O QUE É A EYRE?
-                            </div>
-                            <div>
-                                <img class="botao-mostrar" src="./imagens/sinalAzul.png" onclick="mostrarResposta(1)">
-                            </div>
-                            <div class="pergunta">
-                                <div class="resposta" id="resposta1">A Eyre é uma plataforma de viagens que oferece
-                                    pacotes personalizados com base
-                                    no seu orçamento e preferências de viagem.</div>
-                            </div>
-
-                            <div class="linha-cinza"></div>
-
-                            <div>
-                                <img src="./imagens/ponto.png" class="ponto" />
-                            </div>
-                            <div class="perguntaEyre">
-                                COMO FAÇO PARA USAR A EYRE?
-                            </div>
-                            <div>
-                                <img class="botao-mostrar" src="./imagens/sinalAzul.png" onclick="mostrarResposta(2)">
-                            </div>
-                            <div class="pergunta">
-                                <div class="resposta" id="resposta2">A Eyre é uma plataforma de viagens que oferece
-                                    pacotes personalizados com base
-                                    no seu orçamento e preferências de viagem.</div>
-                            </div>
-
-                            <div class="linha-cinza"></div>
-
-                            <div>
-                                <img src="./imagens/ponto.png" class="ponto" />
-                            </div>
-                            <div class="perguntaEyre">
-                                POSSO PERSONALIZAR MINHA <br>VIAGEM COM A EYRE?
-                            </div>
-                            <div>
+                            <div class="posicaoBotao">
                                 <img class="botao-mostrar" src="./imagens/sinalAzul.png" onclick="mostrarResposta(3)">
                             </div>
-                            <div class="pergunta">
+                            <div class="resposta1">
                                 <div class="resposta" id="resposta3">A Eyre é uma plataforma de viagens que oferece
                                     pacotes personalizados com base
                                     no seu orçamento e preferências de viagem.</div>
@@ -373,17 +340,45 @@
 
                             <div class="linha-cinza"></div>
 
-                            <div>
+                            <div class="pergunta1">
                                 <img src="./imagens/ponto.png" class="ponto" />
+                                <p class="perguntaEyre1">COMO FAÇO PARA USAR A EYRE?
                             </div>
-                            <div class="perguntaEyre">
-                                QUAIS MÉTODOS DE PAGAMENTO <br>A EYRE ACEITA?
-                            </div>
-                            <div>
+                            <div class="posicaoBotao">
                                 <img class="botao-mostrar" src="./imagens/sinalAzul.png" onclick="mostrarResposta(4)">
                             </div>
-                            <div class="pergunta">
+                            <div class="resposta1">
                                 <div class="resposta" id="resposta4">A Eyre é uma plataforma de viagens que oferece
+                                    pacotes personalizados com base
+                                    no seu orçamento e preferências de viagem.</div>
+                            </div>
+
+                            <div class="linha-cinza"></div>
+
+                            <div class="pergunta1">
+                                <img src="./imagens/ponto.png" class="ponto" />
+                                <p class="perguntaEyre1">POSSO PERSONALIZAR MINHA <br>VIAGEM COM A EYRE?</p>
+                            </div>
+                            <div class="posicaoBotao">
+                                <img class="botao-mostrar" src="./imagens/sinalAzul.png" onclick="mostrarResposta(5)">
+                            </div>
+                            <div class="resposta1">
+                                <div class="resposta" id="resposta5">A Eyre é uma plataforma de viagens que oferece
+                                    pacotes personalizados com base
+                                    no seu orçamento e preferências de viagem.</div>
+                            </div>
+
+                            <div class="linha-cinza"></div>
+
+                            <div class="pergunta1">
+                                <img src="./imagens/ponto.png" class="ponto" />
+                                <p class="perguntaEyre1">QUAIS MÉTODOS DE PAGAMENTO <br>A EYRE ACEITA?
+                            </div>
+                            <div class="posicaoBotao">
+                                <img class="botao-mostrar" src="./imagens/sinalAzul.png" onclick="mostrarResposta(6)">
+                            </div>
+                            <div class="resposta1">
+                                <div class="resposta" id="resposta6">A Eyre é uma plataforma de viagens que oferece
                                     pacotes personalizados com base
                                     no seu orçamento e preferências de viagem.</div>
                             </div>
@@ -528,7 +523,6 @@
                             </div>
                         </div>
                     </div>
-                    <button class="close-modal" onclick="fecharModal()">Fechar</button>
                 </div>
 
                 <button onclick="abrirModalTermos()" class="botaoPoliticaDePrivacidade"><img
@@ -611,10 +605,73 @@
                             </div>
                         </div>
                     </div>
-                    <button class="close-modal" onclick="fecharModalTermos()">Fechar</button>
+                    <!-- <button class="close-modal" onclick="fecharModalTermos()">Fechar</button> -->
                 </div>
             </div>
         </div>
+        <footer>
+            <div class="fundoClaroRodape">
+                <div class="inlineInfoAdicionais">
+                    <nav>
+                        <ul>
+                            <li>Países</li>
+                            <li>Regiões</li>
+                            <li>Cidades</li>
+                            <li>Bairros</li>
+                            <li>Aeroportos</li>
+                            <li>Hotéis</li>
+                            <li>Locais de interesse</li>
+                        </ul>
+                    </nav>
+                    <nav>
+                        <ul>
+                            <li>Casas e apartamentos</a></li>
+                            <li>Apartamentos</a></li>
+                            <li>Resorts</a></li>
+                            <li>Villas</a></li>
+                            <li>Hostels</a></li>
+                            <li>Cama e Cafés (B&Bs)</a></li>
+                            <li>Casas de hóspedes</a></li>
+                        </ul>
+                    </nav>
+                    <nav>
+                        <ul>
+                            <li>Latam</a></li>
+                            <li>Azul</a></li>
+                            <li>Gol</a></li>
+                            <li>United</a></li>
+                        </ul>
+                    </nav>
+                    <div>
+                        <img src="./imagens/logo2.png" class="imgLogoEyreRodape">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="formasPagamento">Formas de pagamento</h2>
+            </div>
+            <div class="centralizarImgBandeirasCartao">
+                <img src="./imagens/bandeirasCartao.png" class="imgBandeirasCartao">
+            </div>
+            <hr class="linhaHorizontal">
+            <div class="alinharEmail">
+                <h2 class="email">eyre@contact.com.br</h2>
+            </div>
+            <div>
+                <h2 class="conecteConosco">CONECTE-SE CONOSCO</h2>
+            </div>
+            <div class="inlineRedesSociais">
+                <img src="./imagens/instagram.png">
+                <img src="./imagens/twitter.png">
+                <img src="./imagens/linkedin.png">
+                <img src="./imagens/facebook.png">
+            </div>
+            <div class="alinharEndereco">
+                <h3 class="endereco">Eyre Viagens Ltda, CNPJ: 00.000.000/0001-00, Rua Paineiras, 1300 - Eldorado, CEP
+                    30.000-000,
+                    Contagem/MG.</h3>
+            </div>
+        </footer>
         <!-- <div class="logoELogin2"></div> -->
     </div>
 </body>

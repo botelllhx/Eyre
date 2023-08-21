@@ -23,6 +23,10 @@ body {
     width: 100%;
     height: 90px;
     overflow: hidden;
+    position: fixed;
+    margin-top: -510px;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -49,6 +53,7 @@ body {
 
 .entrarOuCadastrar a {
     text-decoration: none;
+    color: #2970DB;
 }
 
 .entrarOuCadastrar a:visited {
@@ -65,7 +70,7 @@ body {
     text-shadow: black 0.1em 0.1em 0.2em;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
-    margin-top: 160px;
+    margin-top: -320px;
     letter-spacing: 1px;
 }
 
@@ -92,6 +97,7 @@ body {
     font-weight: bold;
     position: relative;
     overflow: hidden;
+    margin-top: 25px;
 }
 
 .botaoComecar:before {
@@ -152,6 +158,7 @@ body {
     font-size: 60px;
     position: relative;
     display: block;
+    margin-bottom: 30px;
 }
 
 input {
@@ -196,8 +203,8 @@ input {
     background-size: 30px 30px;
     background-image: url('../home/imagens/localizacaoCinza.png');
     background-repeat: no-repeat;
-    background-position: 20px center;
-    padding-left: 50px;
+    background-position: 10px center;
+    padding-left: 20px;
 }
 
 .botaoDestino {
@@ -217,8 +224,8 @@ input {
     background-size: 30px 30px;
     background-image: url('../home/imagens/localizacaoCinza.png');
     background-repeat: no-repeat;
-    background-position: 20px center;
-    padding-left: 50px;
+    background-position: 10px center;
+    padding-left: 20px;
 }
 
 .divBotaoJornadas {
@@ -233,7 +240,7 @@ input {
     color: white;
     border: none;
     border-radius: 70px;
-    font-size: 27px;
+    font-size: 28px;
     cursor: pointer;
     font-family: 'Nunito', sans-serif;
     width: 400px;
@@ -284,7 +291,7 @@ input {
     background-size: 30px 30px;
     background-image: url('../home/imagens/calendarioHome.png');
     background-repeat: no-repeat;
-    background-position: 25px center;
+    background-position: 15px center;
 }
 
 .flatpickr-calendar {
@@ -304,6 +311,7 @@ input {
     position: relative;
     text-align: center;
     font-family: "Nunito";
+    margin-top: 70px;
 }
 
 .lampada {
@@ -564,6 +572,60 @@ input {
 .imgSifao {
     background-image: url('../home/imagens/sifao.png');
     background-size: 30px 30px;
-    background-position: 18px center;
+    background-position: 9px center;
     background-repeat: no-repeat;
+}
+
+.ocultar-imagem {
+    background-image: none;
+}
+
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #A6A6A6;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-checkbox::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.custom-checkbox.checked {
+    border: 2px solid #2970DB;
+    background-color: white;
+}
+
+.custom-checkbox.checked::after {
+    content: "";
+    display: block;
+    background-color: #2970DB;
+}
+
+.checkbox-label {
+    color: black;
+    margin-left: 5px;
+    vertical-align: middle;
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+.divCheckBox {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

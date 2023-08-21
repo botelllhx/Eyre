@@ -342,7 +342,6 @@
     </div>
     </div>
     <script>
-
         let botaoSelecionarAtivo = false;
 
         function toggleSelectionCategoria(categoria) {
@@ -384,8 +383,9 @@
             toggleSelectionCategoria("turistico");
         });
     </script>
+    <!-- fetch('http://localhost:8080/api/hospedagem/1/23-05-2023/true' -->
     <script>
-        fetch('http://localhost:8080/api/hospedagem/1/23-05-2023/true', {
+        fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -407,6 +407,102 @@
                 console.log('Resposta do servidor:', data);
 
                 setTimeout(function () {
+
+                    var data = {
+                        "hospedagem": {
+                            "id": 1,
+                            "titulo": "nana professor",
+                            "descricao": "",
+                            "tipoQuarto": "SUITE",
+                            "descricaoQuarto": "",
+                            "voos": [
+                                {
+                                    "nome": "LATAM",
+                                    "listDias": {
+                                        "POSTERIOR": [
+                                            {
+                                                "listHorarios": [
+                                                    {
+                                                        "id": 7,
+                                                        "horarioSaida": "14:00:00",
+                                                        "horarioChegada": "15:50:00"
+                                                    },
+                                                    {
+                                                        "id": 8,
+                                                        "horarioSaida": "07:00:00",
+                                                        "horarioChegada": "08:40:00"
+                                                    },
+                                                    {
+                                                        "id": 9,
+                                                        "horarioSaida": "07:40:00",
+                                                        "horarioChegada": "09:40:00"
+                                                    },
+                                                    {
+                                                        "id": 10,
+                                                        "horarioSaida": "10:00:00",
+                                                        "horarioChegada": "12:10:00"
+                                                    }
+                                                ],
+                                                "tipoRota": "IDA"
+                                            }
+                                        ],
+                                        "ANTERIOR": [],
+                                        "EXATA": [
+                                            {
+                                                "listHorarios": [
+                                                    {
+                                                        "id": 1,
+                                                        "horarioSaida": "07:00:00",
+                                                        "horarioChegada": "08:40:00"
+                                                    },
+                                                    {
+                                                        "id": 2,
+                                                        "horarioSaida": "07:40:00",
+                                                        "horarioChegada": "09:42:00"
+                                                    },
+                                                    {
+                                                        "id": 3,
+                                                        "horarioSaida": "10:00:00",
+                                                        "horarioChegada": "12:10:00"
+                                                    }
+                                                ],
+                                                "tipoRota": "IDA"
+                                            },
+                                            {
+                                                "listHorarios": [
+                                                    {
+                                                        "id": 4,
+                                                        "horarioSaida": "07:00:00",
+                                                        "horarioChegada": "08:42:00"
+                                                    },
+                                                    {
+                                                        "id": 5,
+                                                        "horarioSaida": "07:40:00",
+                                                        "horarioChegada": "09:43:00"
+                                                    },
+                                                    {
+                                                        "id": 6,
+                                                        "horarioSaida": "10:00:00",
+                                                        "horarioChegada": "12:10:00"
+                                                    }
+                                                ],
+                                                "tipoRota": "VOLTA"
+                                            }
+                                        ]
+                                    },
+                                    "escala": true,
+                                    "imagemCompanhiaAerea": {
+                                        "id": 1,
+                                        "nome": "foto-1",
+                                        "tipoMidia": "FOTO_PRINCIPAL",
+                                        "dados": "caminho_da_imagem_em_base64"
+                                    }
+                                }
+                            ],
+                            "checkIn": "13:00:00",
+                            "checkOut": "20:00:00",
+                        }
+                    }
 
                     // var data = {
                     //     titulo: "Arraial do Cabo - Brisas do Farol",
@@ -696,32 +792,94 @@
                     document.getElementById("classificacao").textContent = data.classificacao;
                     document.getElementById("tipoQuarto").textContent = hos.tipoQuarto;
                     document.getElementById("descricaoQuarto").textContent = hos.descricaoQuarto;
-                    document.getElementById("imagemPrincipal").src = "data:image/png;base64,"+ hos.listImagens[0].dados;
+                    // document.getElementById("imagemPrincipal").src = "data:image/png;base64," + hos.listImagens[0].dados;
 
                     console.log("blabla")
 
-                    for (let i = 0; i < hos.listExtras.length; i++) {
-                        document.getElementById(`servico${i + 1}`).textContent = hos.listExtras[i].nome;
-                    }
+                    // for (let i = 0; i < hos.listExtras.length; i++) {
+                    //     document.getElementById(`servico${i + 1}`).textContent = hos.listExtras[i].nome;
+                    // }
                     console.log("blabla")
 
                     document.getElementById("primeiraCondicao").textContent = hos.checkIn;
                     document.getElementById("segundaCondicao").textContent = hos.checkOut;
 
-                    for (let i = 0; i < hos.voos.length; i++) {
-                        const voo = hos.voos[i];
-                        const horarioEmbarque = voo.listDias["EXATA"].horarioEmbarque;
-                        const horarioDesembarque = voo.listTransporteDias[0][0].horarioDesembarque;
-                        const duracaoVoo = voo.duracaoVoo;
+                    function calcularDuracaoHorasMinutos(horarioSaida, horarioChegada) {
+                        const tempoSaida = new Date(`2000-01-01T${horarioSaida}`);
+                        const tempoChegada = new Date(`2000-01-01T${horarioChegada}`);
+                        const diferenca = Math.abs(tempoChegada - tempoSaida);
 
-                        // Preencha as informações do voo utilizando os IDs corretos no HTML
-                        document.getElementById(`companhiaAerea${i + 1}`).textContent = voo.nome;
-                        document.getElementById(`horarioIda${i + 1}`).textContent = horarioEmbarque;
-                        document.getElementById(`tipoVoo${i + 1}`).textContent = voo.tipoVoo;
-                        document.getElementById(`horarioVolta${i + 1}`).textContent = horarioDesembarque;
-                        document.getElementById(`duracaoVoo${i + 1}`).textContent = duracaoVoo;
-                        document.getElementById(`imgCompanhiaAerea${i + 1}`).src = voo.imgCompanhiaAerea;
+                        const horas = Math.floor(diferenca / 3600000); // 1 hora = 3600000 ms
+                        const minutos = Math.floor((diferenca % 3600000) / 60000); // 1 minuto = 60000 ms
+
+                        return `${horas}h ${minutos}m`;
                     }
+
+                    // Encontre os voos de ida e volta
+                    const voosIda = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "IDA").listHorarios;
+                    const voosVolta = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "VOLTA").listHorarios;
+
+                    // Preencha informações dos voos de ida nos elementos HTML
+                    for (let i = 0; i < voosIda.length && i < 2; i++) {
+                        const indexIda = i + 1;
+
+                        // Formatar o horário de saída e chegada para exibir apenas HH:mm
+                        const horarioSaidaIda = voosIda[i].horarioSaida.substring(0, 5);
+                        const horarioChegadaIda = voosIda[i].horarioChegada.substring(0, 5);
+
+                        // Atualize informações de ida
+                        document.getElementById(`companhiaAerea${indexIda}`).textContent = hos.voos[0].nome;
+                        document.getElementById(`horarioIda${indexIda}`).textContent = voosIda[i].horarioSaida;
+                        document.getElementById(`horarioVolta${indexIda}`).textContent = voosIda[i].horarioChegada;
+
+                        // Calcular a duração do voo de ida e preencher
+                        const duracaoVooElementIda = document.getElementById(`duracaoVoo${indexIda}`);
+                        if (duracaoVooElementIda) {
+                            const duracaoVooIda = calcularDuracaoHorasMinutos(voosIda[i].horarioSaida, voosIda[i].horarioChegada);
+                            duracaoVooElementIda.textContent = duracaoVooIda;
+                        }
+
+                        // ... (resto do código)
+                    }
+
+                    // Após preencher os horários de ida, agora preencha os horários de volta
+                    for (let i = 0; i < voosVolta.length && i < 2; i++) {
+                        const indexVolta = i + 3;
+
+                        // Formatar o horário de saída e chegada para exibir apenas HH:mm
+                        const horarioSaidaVolta = voosVolta[i].horarioSaida.substring(0, 5);
+                        const horarioChegadaVolta = voosVolta[i].horarioChegada.substring(0, 5);
+
+                        // Atualize informações de volta
+                        document.getElementById(`companhiaAerea${indexVolta}`).textContent = hos.voos[0].nome;
+                        document.getElementById(`horarioIda${indexVolta}`).textContent = voosVolta[i].horarioSaida;
+                        document.getElementById(`horarioVolta${indexVolta}`).textContent = voosVolta[i].horarioChegada;
+
+                        const duracaoVooElementVolta = document.getElementById(`duracaoVoo${indexVolta}`);
+                        if (duracaoVooElementVolta) {
+                            const duracaoVooVolta = calcularDuracaoHorasMinutos(voosVolta[i].horarioSaida, voosVolta[i].horarioChegada);
+                            duracaoVooElementVolta.textContent = duracaoVooVolta;
+                        }
+
+                        // ... (resto do código)
+                    }
+
+
+
+                    // for (let i = 0; i < hos.voos.length; i++) {
+                    //     const voo = hos.voos[i];
+                    //     const horarioEmbarque = voo.listDias["EXATA"].horarioEmbarque;
+                    //     const horarioDesembarque = voo.listTransporteDias[0][0].horarioDesembarque;
+                    //     const duracaoVoo = voo.duracaoVoo;
+
+                    //     // Preencha as informações do voo utilizando os IDs corretos no HTML
+                    //     document.getElementById(`companhiaAerea${i + 1}`).textContent = voo.nome;
+                    //     document.getElementById(`horarioIda${i + 1}`).textContent = horarioEmbarque;
+                    //     document.getElementById(`tipoVoo${i + 1}`).textContent = voo.tipoVoo;
+                    //     document.getElementById(`horarioVolta${i + 1}`).textContent = horarioDesembarque;
+                    //     document.getElementById(`duracaoVoo${i + 1}`).textContent = duracaoVoo;
+                    //     document.getElementById(`imgCompanhiaAerea${i + 1}`).src = voo.imgCompanhiaAerea;
+                    // }
 
                     // Preencher detalhes dos ônibus de ida
                     for (let i = 0; i < data.onibus.length; i++) {
@@ -751,35 +909,6 @@
                         }
                     }
 
-                    for (let i = 0; i < data.voos.length; i++) {
-                        const voo = data.voos[i];
-                        const horarioEmbarque = voo.listTransporteDias[0][0].horarioEmbarque;
-                        const horarioDesembarque = voo.listTransporteDias[0][0].horarioDesembarque;
-                        const duracaoVoo = calcularDuracaoVoo(horarioEmbarque, horarioDesembarque);
-                        const duracaoVooElement = document.getElementById(`duracaoVoo${i + 1}`);
-                        if (duracaoVooElement) {
-                            duracaoVooElement.textContent = duracaoVoo;
-                        }
-
-                    }
-
-                    function calcularDuracaoVoo(horarioEmbarque, horarioDesembarque) {
-                        const horaEmbarque = parseInt(horarioEmbarque.split(":")[0]);
-                        const minutoEmbarque = parseInt(horarioEmbarque.split(":")[1]);
-
-                        const horaDesembarque = parseInt(horarioDesembarque.split(":")[0]);
-                        const minutoDesembarque = parseInt(horarioDesembarque.split(":")[1]);
-
-                        let duracaoHoras = horaDesembarque - horaEmbarque;
-                        let duracaoMinutos = minutoDesembarque - minutoEmbarque;
-
-                        if (duracaoMinutos < 0) {
-                            duracaoHoras -= 1;
-                            duracaoMinutos += 60;
-                        }
-
-                        return `${duracaoHoras}h ${duracaoMinutos}m`;
-                    }
 
                     const categorias = ["Turísticos", "Restaurantes", "Bares", "Boates"];
                     console.log(categorias);
