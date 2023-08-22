@@ -87,70 +87,70 @@
                                 </div>
                             </div>
                         </div>
+                        <form>
+                            <div>
+                                <input type="text" id="campoNome" placeholder="Nome" readonly class="botoesAlterarDados"
+                                    onfocus="limparTextoNome()" oninput="recuperarOpacidadeNome()"
+                                    onkeypress="transformarPalavras()">
+                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                    onclick="habilitarEdicaoNome()">
+                            </div>
+                            <div>
+                                <input type="text" id="campoNascimento" placeholder="Nascimento" readonly
+                                    class="botoesAlterarDados" onfocus="limparTextoNascimento()"
+                                    oninput="recuperarOpacidadeNascimento()">
+                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                    onclick="habilitarEdicaoNascimento()">
+                                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                                <script>
+                                    flatpickr("#campoNascimento", {
+                                        dateFormat: "d/m/Y",
+                                        maxDate: "today",
+                                        locale: "pt",
+                                        allowInput: true
+                                    });
+                                </script>
+                            </div>
+                            <div>
+                                <input type="text" id="campoCPF" placeholder="CPF" readonly class="botoesAlterarDados"
+                                    onfocus="limparTextoCPF()" oninput="recuperarOpacidadeCPF()" maxlength="14"
+                                    onkeyup="formatCPF()">
+                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                    onclick="habilitarEdicaoCPF()">
+                            </div>
 
-                        <div>
-                            <input type="text" id="campoNome" placeholder="Nome" readonly class="botoesAlterarDados"
-                                onfocus="limparTextoNome()" oninput="recuperarOpacidadeNome()"
-                                onkeypress="transformarPalavras()">
-                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                onclick="habilitarEdicaoNome()">
-                        </div>
+                            <div>
+                                <input type="text" id="campoEmail" placeholder="E-mail" readonly
+                                    class="botoesAlterarDados" onfocus="limparTextoEmail()"
+                                    oninput="recuperarOpacidadeEmail()">
+                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                    onclick="habilitarEdicaoEmail()">
+                            </div>
 
-                        <div>
-                            <input type="text" id="campoNascimento" placeholder="Nascimento" readonly
-                                class="botoesAlterarDados" onfocus="limparTextoNascimento()"
-                                oninput="recuperarOpacidadeNascimento()">
-                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                onclick="habilitarEdicaoNascimento()">
-                            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-                            <script>
-                                flatpickr("#campoNascimento", {
-                                    dateFormat: "d/m/Y",
-                                    maxDate: "today",
-                                    locale: "pt",
-                                    allowInput: true
-                                });
-                            </script>
-                        </div>
+                            <div>
+                                <input type="text" id="campoTelefone" placeholder="Telefone" readonly
+                                    class="botoesAlterarDados" onfocus="limparTextoTelefone()"
+                                    oninput="recuperarOpacidadeTelefone()" maxlength="14" onkeyup="formatTelefone()">
+                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                    onclick="habilitarEdicaoTelefone()">
+                            </div>
 
-                        <div>
-                            <input type="text" id="campoCPF" placeholder="CPF" readonly class="botoesAlterarDados"
-                                onfocus="limparTextoCPF()" oninput="recuperarOpacidadeCPF()" maxlength="14"
-                                onkeyup="formatCPF()">
-                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                onclick="habilitarEdicaoCPF()">
-                        </div>
+                            <div>
+                                <input type="password" id="campoSenha" placeholder="Senha" maxlength="12" readonly
+                                    class="botoesAlterarDados" onfocus="limparTextoSenha()"
+                                    oninput="recuperarOpacidadeSenha()">
+                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                    onclick="habilitarEdicaoSenha()">
+                            </div>
 
-                        <div>
-                            <input type="text" id="campoEmail" placeholder="E-mail" readonly class="botoesAlterarDados"
-                                onfocus="limparTextoEmail()" oninput="recuperarOpacidadeEmail()">
-                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                onclick="habilitarEdicaoEmail()">
-                        </div>
-
-                        <div>
-                            <input type="text" id="campoTelefone" placeholder="Telefone" readonly
-                                class="botoesAlterarDados" onfocus="limparTextoTelefone()"
-                                oninput="recuperarOpacidadeTelefone()" maxlength="14" onkeyup="formatTelefone()">
-                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                onclick="habilitarEdicaoTelefone()">
-                        </div>
-
-                        <div>
-                            <input type="password" id="campoSenha" placeholder="Senha" maxlength="12" readonly
-                                class="botoesAlterarDados" onfocus="limparTextoSenha()"
-                                oninput="recuperarOpacidadeSenha()">
-                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                onclick="habilitarEdicaoSenha()">
-                        </div>
-
-                        <div>
-                            <input type="password" id="campoConfirmaSenha" placeholder="Confirma Senha" maxlength="12"
-                                readonly class="botoesAlterarDados" onfocus="limparTextoConfirmaSenha()"
-                                oninput="recuperarOpacidadeConfirmaSenha()">
-                            <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                onclick="habilitarEdicaoConfirmaSenha()">
-                        </div>
+                            <div>
+                                <input type="password" id="campoConfirmaSenha" placeholder="Confirma Senha"
+                                    maxlength="12" readonly class="botoesAlterarDados"
+                                    onfocus="limparTextoConfirmaSenha()" oninput="recuperarOpacidadeConfirmaSenha()">
+                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                    onclick="habilitarEdicaoConfirmaSenha()">
+                            </div>
+                        </form>
                     </div>
                 </div>
 
