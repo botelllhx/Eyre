@@ -16,91 +16,98 @@
     <h1 class="tituloJornada">Suas opções de jornada!</h1>
   </div>
   <div class="inline">
-    <div class="opcoes">
-      <h2 class="tituloBrisas" id="titulo">Brisas do Farol</h2>
+    <div class="cardDiv">
+      <h2 class="tituloHospedagem" id="titulo">Brisas do Farol</h2>
       <div class="infoBranco">
-        <img src="./imagens/brisasdofarol.jpg" class="imgBrisas" id="imagemHospedagem" />
+        <img src="./imagens/brisasdofarol.jpg" class="imagemHospedagem" id="imagemHospedagem" />
         <h2 class="tituloSuite" id="tipoQuarto">Suíte</h2>
         <p class="infoBrisas" id="descricaoQuarto">
           Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²<br />
           3 camas (2 de solteiro, 1 de casal).
         </p>
         <br />
-        <p class="cancelamento" id="listExtras">Cancelamento grátis</p>
+        <p class="listExtras" id="listExtras">Cancelamento grátis</p>
         <br />
-        <p class="resta">Restaㅤ<strong id="quantidadeReservas">1</strong>ㅤunidades por esse preço no nosso site</p>
+        <p class="quantidadeReservas">Restamㅤ<strong id="quantidadeReservas"
+            class="quantidadeReservasMudar">1</strong>ㅤunidades disponíveis.</p>
       </div>
       <div class="bordaDatas" id="existeVooOnibus">
         <h2 class="tituloTransporte">Transporte</h2>
         <div>
           <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="textobrisas">Opções de <b>voo</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>voo</b> disponíveis ida/volta</p>
+          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>voo</b> disponível.</p>
         </div>
         <div>
           <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="textobrisas">Opções de <b>ônibus</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis ida/volta</p>
+          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>ônibus</b> disponível.</p>
         </div>
       </div>
       <div class="botao">
-        <a href="../pacote/index.html"><input type="button" value="QUERO SABER MAIS" /></a>
+        <input type="button" value="QUERO SABER MAIS" onclick="getHospedagemDetails(this)" />
       </div>
     </div>
-    <div class="opcoes">
-      <h2 class="tituloPousada" id="titulo2">Pousada Bicho do Mar</h2>
+    <div class="cardDiv">
+      <h2 class="tituloHospedagem" id="titulo2">Pousada Bicho do Mar</h2>
       <div class="infoBranco">
-        <img src="./imagens/pousadabichodomar.jpg" class="imgPousada" id="imagemHospedagem2" />
+        <img src="./imagens/pousadabichodomar.jpg" class="imagemHospedagem" id="imagemHospedagem2" />
         <h2 class="tituloSuite" id="tipoQuarto2">Suíte Superior</h2>
         <p class="infoBrisas" id="descricaoQuarto2">
           Suíte privativa • 1 quarto • 1 sala • 1 banheiro<br />
           1 cama de casal.
         </p>
         <br />
-        <p class="cancelamento" id="listExtras2">Café da manhã incluído</p>
+        <p class="listExtras" id="listExtras2">Café da manhã incluído</p>
         <br />
-        <p class="resta">Restaㅤ<strong id="quantidadeReservas2"> 1 </strong>ㅤunidades por esse preço no nosso site</p>
+        <p class="quantidadeReservas">Restamㅤ<strong id="quantidadeReservas2" class="quantidadeReservasMudar"> 1
+          </strong>ㅤunidades disponíveis.</p>
       </div>
-      <div class="bordaDatas" id="existeVooOnibus2">
+      <div class="bordaDatas" id="existeVooOnibus">
         <h2 class="tituloTransporte">Transporte</h2>
         <div>
           <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="textobrisas">Opções de <b>voo</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>voo</b> disponíveis ida/volta</p>
+          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>voo</b> disponível.</p>
         </div>
         <div>
           <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="textobrisas">Opções de <b>ônibus</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis ida/volta</p>
+          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>ônibus</b> disponível.</p>
         </div>
       </div>
       <div class="botao">
-        <input type="button" value="QUERO SABER MAIS" />
+        <input type="button" value="QUERO SABER MAIS" onclick="getHospedagemDetails(this)" />
       </div>
     </div>
-    <div class="opcoes">
-      <h2 class="tituloHotel" id="titulo3">Hotel da Canoa</h2>
+    <div class="cardDiv">
+      <h2 class="tituloHospedagem" id="titulo3">Hotel da Canoa</h2>
       <div class="infoBranco">
-        <img src="./imagens/hoteldacanoa.jpg" class="imgHotel" id="imagemHospedagem3" />
+        <img src="./imagens/hoteldacanoa.jpg" class="imagemHospedagem" id="imagemHospedagem3" />
         <h2 class="tituloSuite" id="tipoQuarto3">Quarto Duplo Standard</h2>
         <p class="infoBrisas" id="descricaoQuarto3">
           1 cama de casal grande • 1 banheiro • 450 m&nbsp&nbsp<br />
           da praia.
         </p>
         <br />
-        <p class="cancelamento" id="listExtras3">Café da manhã incluído</p>
+        <p class="listExtras" id="listExtras3">Café da manhã incluído</p>
         <br />
-        <p class="resta">Restaㅤ<strong id="quantidadeReservas3">2</strong>ㅤunidades por esse preço no nosso site</p>
+        <p class="quantidadeReservas">Restamㅤ<strong id="quantidadeReservas3"
+            class="quantidadeReservasMudar">2</strong>ㅤunidades disponíveis.</p>
       </div>
-      <div class="bordaDatas" id="existeVooOnibus3">
+      <div class="bordaDatas" id="existeVooOnibus">
         <h2 class="tituloTransporte">Transporte</h2>
         <div>
           <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="textobrisas">Opções de <b>voo</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>voo</b> disponíveis ida/volta</p>
         </div>
         <div>
           <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="textobrisas">Opções de <b>ônibus</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis ida/volta</p>
         </div>
       </div>
       <div class="botao">
-        <input type="button" value="QUERO SABER MAIS" />
+        <input type="button" value="QUERO SABER MAIS" onclick="getHospedagemDetails(this)" />
       </div>
     </div>
     <div id="loading" class="loading-overlay">
@@ -109,147 +116,428 @@
         <div class="loading-text">Carregando</div>
       </div>
     </div>
-
     <script>
-      // Pré requisição
-      document.getElementById('loading').style.display = 'block';
-      function requisicao(id, url, method){
+      const respostaHospedagens = localStorage.getItem('respostaHospedagens');
+      const hospedagensData = JSON.parse(respostaHospedagens);
 
-      }
+      document.addEventListener('DOMContentLoaded', function () {
 
-      // Requisição Fetch
-      fetch('http://localhost:3189/api/hospedagem/list', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(function (response) {
-          if (response.ok) {
-            // A requisição deu certo
-            return response.json();
-          } else {
-            // A requisição falhou
-            throw new Error('Erro na requisição: ' + response.status);
+        setTimeout(function () {
+          hospedagensData.content.forEach((card, index) => {
+
+            console.log('Processando Card ' + index + ':', card);
+            console.log("aqui funciona! 1")
+            const num = index + 1;
+            const cardDiv = document.querySelector('.cardDiv:nth-child(' + num + ')');
+
+            if (cardDiv) {
+              cardDiv.querySelector('.tituloHospedagem').textContent = card.titulo;
+              cardDiv.querySelector('.imagemHospedagem').src = card.listImagens[0].imagem.dados; // primeiro item é alterado
+              cardDiv.querySelector('.tituloSuite').textContent = card.tipoQuarto;
+              cardDiv.querySelector('.infoBrisas').textContent = card.descricaoQuarto;
+              cardDiv.querySelector('.listExtras').textContent = card.listExtras[0].nome; // primeiro item é alterado
+              cardDiv.querySelector('.botao input').setAttribute('data-card-id', card.id);
+
+              console.log(cardDiv.querySelector('.botao input').getAttribute('data-card-id'));
+              console.log("aqui funciona! 2")
+
+              // atualizar o número de unidades restantes
+              const quantidadeReservasElement = cardDiv.querySelector('.quantidadeReservasMudar');
+              if (quantidadeReservasElement) {
+                quantidadeReservasElement.innerHTML = card.quantidadeReservas;
+              }
+
+              console.log("aqui funciona! 3")
+
+              // selecionar a div de transporte correspondente
+              const existeVooOnibusDiv = cardDiv.querySelector('.bordaDatas');
+              const existeTransporteParagrafos = existeVooOnibusDiv.querySelectorAll('.existeTransporte');
+
+              if (existeVooOnibusDiv) {
+                if (card.existeVoo === 'true') {
+                  existeTransporteParagrafos[0].style.display = 'block';
+                } else {
+                  existeTransporteParagrafos[0].style.display = 'none';
+                }
+
+                if (card.existeOnibus === 'true') {
+                  existeTransporteParagrafos[1].style.display = 'block';
+                  console.log("aqui funciona! 4")
+                } else {
+                  existeTransporteParagrafos[1].style.display = 'none';
+                }
+              } else {
+                console.log('bordaDatas not found for num: ' + num);
+              }
+            } else {
+              console.log('CardDiv not found for num: ' + num);
+            }
+
+            // Esconder a tela de loading após processar o último card
+            if (index === hospedagensData.content.length - 1) {
+              console.log("aqui funciona! 5")
+              const loadingOverlay = document.getElementById('loading');
+              loadingOverlay.style.display = 'none';
+            }
+          });
+        }, 2000);
+
+      });
+
+      function getHospedagemDetails(button) {
+        const cardId = button.getAttribute('data-card-id');
+        const dataIdaUrl = localStorage.getItem('dataIdaUrl');
+        const dataIda = JSON.parse(dataIdaUrl);
+        const dataIdaFormatoCorreto = dataIda.split('/').join('-');
+
+        const dataVoltaUrl = localStorage.getItem('dataVoltaUrl');
+        const dataVolta = JSON.parse(dataVoltaUrl);
+        const dataVoltaFormatoCorreto = dataVolta.split('/').join('-');
+
+        // http://localhost:3189/api/hospedagem/${cardId}/${dataIdaFormatoCorreto}/${dataVoltaFormatoCorreto}/true
+
+        fetch(`https://jsonplaceholder.typicode.com/posts`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
           }
         })
-        .then(function (data) {
+          .then(function (response) {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error('Erro na requisição: ' + response.status);
+            }
+          })
+          .then(function (data) {
 
-          // Resposta do servidor
-
-          console.log('Resposta do servidor:', data);
-
-          // Substitui as info dos cards
-
-          var card1 = document.getElementsByClassName('opcoes')[0];
-          var card2 = document.getElementsByClassName('opcoes')[1];
-          var card3 = document.getElementsByClassName('opcoes')[2];
-
-          setTimeout(function () {
-
-            var data = {
-              card1: {
-                id: 1,
-                titulo: "Brisas do Farol",
-                tipoQuarto: "",
-                descricaoQuarto: "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m², 3 camas (2 de solteiro, 1 de casal).",
-                listExtras: [
+            const respostaDetalhesHospedagens = {
+              "hospedagem": {
+                "id": 1,
+                "titulo": "Brisas do Farol - Arraial do Cabo",
+                "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+                "tipoQuarto": "SUITE",
+                "descricaoQuarto": "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m², 3 camas (2 de solteiro, 1 de casal).",
+                "voos": [
                   {
-                    id: 1,
-                    nome: "Cancelamento gratuito."
-                  },
-                  {
-                    id: 2,
-                    nome: "Café da manhã incluído.",
+                    "nome": "LATAM",
+                    "listDias": {
+                      "POSTERIOR": [],
+                      "ANTERIOR": [
+                        {
+                          "listHorarios": [
+                            {
+                              "id": 4,
+                              "horarioSaida": "07:00",
+                              "horarioChegada": "08:40"
+                            },
+                            {
+                              "id": 5,
+                              "horarioSaida": "07:40",
+                              "horarioChegada": "09:40"
+                            },
+                            {
+                              "id": 6,
+                              "horarioSaida": "10:00",
+                              "horarioChegada": "12:10"
+                            }
+                          ],
+                          "tipoRota": "VOLTA"
+                        }
+                      ],
+                      "EXATA": [
+                        {
+                          "listHorarios": [
+                            {
+                              "id": 1,
+                              "horarioSaida": "07:00",
+                              "horarioChegada": "08:40"
+                            },
+                            {
+                              "id": 2,
+                              "horarioSaida": "07:40",
+                              "horarioChegada": "09:42"
+                            },
+                            {
+                              "id": 3,
+                              "horarioSaida": "10:00",
+                              "horarioChegada": "12:10"
+                            }
+                          ],
+                          "tipoRota": "IDA"
+                        },
+                        {
+                          "listHorarios": [
+                            {
+                              "id": 4,
+                              "horarioSaida": "07:00",
+                              "horarioChegada": "08:42"
+                            },
+                            {
+                              "id": 5,
+                              "horarioSaida": "07:40",
+                              "horarioChegada": "09:43"
+                            },
+                            {
+                              "id": 6,
+                              "horarioSaida": "10:00",
+                              "horarioChegada": "12:10"
+                            }
+                          ],
+                          "tipoRota": "VOLTA"
+                        }
+                      ]
+                    },
+                    "escala": true,
+                    "imagemCompanhiaAerea": {
+                      "id": 1,
+                      "nome": "foto-1",
+                      "tipoMidia": "FOTO_PRINCIPAL",
+                      "dados": "DADOSBASE64",
+                      "byteArrayFrom64": "DADOSBASE64"
+                    }
                   }
                 ],
-                quantidadeReservas: "1",
-                imagemHospedagem: {
-                  id: 1,
-                  nome: "Brisas do Farol",
-                  dados: "./imagens/brisasdofarol.jpg", // virar código maluco e depois desvirar código maluco
+                "onibus": [
+                  {
+                    "listDias": {
+                      "POSTERIOR": [],
+                      "ANTERIOR": [
+                        {
+                          "listHorarios": [
+                            {
+                              "id": 4,
+                              "horarioSaida": "07:00",
+                              "horarioChegada": "08:40"
+                            },
+                            {
+                              "id": 5,
+                              "horarioSaida": "07:40",
+                              "horarioChegada": "09:40"
+                            },
+                            {
+                              "id": 6,
+                              "horarioSaida": "10:00",
+                              "horarioChegada": "12:10"
+                            }
+                          ],
+                          "tipoRota": "VOLTA"
+                        }
+                      ],
+                      "EXATA": [
+                        {
+                          "listHorarios": [
+                            {
+                              "id": 1,
+                              "horarioSaida": "07:00",
+                              "horarioChegada": "08:40"
+                            },
+                            {
+                              "id": 2,
+                              "horarioSaida": "07:40",
+                              "horarioChegada": "09:42"
+                            },
+                            {
+                              "id": 3,
+                              "horarioSaida": "10:00",
+                              "horarioChegada": "12:10"
+                            }
+                          ],
+                          "tipoRota": "IDA",
+                          "localSaida": "Lourdes",
+                          "localChegada": "Praia dos Anjos",
+                        },
+                        {
+                          "listHorarios": [
+                            {
+                              "id": 4,
+                              "horarioSaida": "07:00",
+                              "horarioChegada": "08:42"
+                            },
+                            {
+                              "id": 5,
+                              "horarioSaida": "07:40",
+                              "horarioChegada": "09:43"
+                            },
+                            {
+                              "id": 6,
+                              "horarioSaida": "10:00",
+                              "horarioChegada": "12:10"
+                            }
+                          ],
+                          "tipoRota": "VOLTA",
+                          "localSaida": "Praia dos Anjos",
+                          "localChegada": "Lagoinha",
+                        }
+                      ]
+                    },
+                  }
+                ],
+                "listExtras": [
+                  {
+                    "id": 1,
+                    "nome": "extra principal AQUI"
+                  }
+                ],
+                "listImagens": [
+                  {
+                    "id": 1,
+                    "nome": "foto-1",
+                    "tipoMidia": "FOTO_PRINCIPAL",
+                    "dados": "DADOSBASE64",
+                    "byteArrayFrom64": "DADOSBASE64"
+                  }
+                ],
+                "checkIn": "13:00",
+                "checkOut": "20:00",
+                "endereco": {
+                  "id": 1,
+                  "cep": "39827000",
+                  "pais": "Brasil",
+                  "estado": "Minas Gerais",
+                  "sigla": "MG",
+                  "cidade": "Pote",
+                  "bairro": "Centro",
+                  "rua": "Benedito Valadares",
+                  "numero": "172"
                 },
-                existeVoo: true,
-                existeOnibus: true,
+                "listAvaliacoes": [],
+                "preco": 300.00,
+                "listProximidades": {
+                  "Turisticos": [
+                    {
+                      "id": 1,
+                      "nome": "corcovado",
+                      "tipoProximidade": "TURISTICO",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                    {
+                      "id": 2,
+                      "nome": "cristo redentor",
+                      "tipoProximidade": "TURISTICO",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                    {
+                      "id": 3,
+                      "nome": "et bilu",
+                      "tipoProximidade": "TURISTICO",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                  ],
+                  "Restaurantes": [
+                    {
+                      "id": 1,
+                      "nome": "ja",
+                      "tipoProximidade": "RESTAURANTE",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                    {
+                      "id": 2,
+                      "nome": "podi",
+                      "tipoProximidade": "RESTAURANTE",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                    {
+                      "id": 3,
+                      "nome": "almosar",
+                      "tipoProximidade": "RESTAURANTE",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                  ],
+                  "Boates": [],
+                  "Bares": [
+                    {
+                      "id": 1,
+                      "nome": "barzinho",
+                      "tipoProximidade": "BARES",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                    {
+                      "id": 2,
+                      "nome": "barzao",
+                      "tipoProximidade": "BARES",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                    {
+                      "id": 3,
+                      "nome": "botecao",
+                      "tipoProximidade": "BARES",
+                      "foto": {
+                        "id": 1,
+                        "nome": "foto-1",
+                        "tipoMidia": "FOTO_PRINCIPAL",
+                        "dados": "./imagens/TESTE1.png",
+                        "byteArrayFrom64": "DADOSBASE64"
+                      }
+                    },
+                  ]
+                }
               },
-              card2: {
-                id: 2,
-                titulo: "Pousada Bicho do Mar",
-                tipoQuarto: "Suíte Superior",
-                descricaoQuarto: "Suíte privativa, 1 quarto, 1 sala, 1 banheiro, 1 cama de casal.",
-                listExtras: [
-                  {
-                    id: 1,
-                    nome: "Cancelamento gratuito."
-                  },
-                  {
-                    id: 2,
-                    nome: "Café da manhã incluído.",
-                  }
-                ],
-                quantidadeReservas: "2",
-                imagemHospedagem: {
-                  id: 1,
-                  nome: "Pousada Bicho do Mar",
-                  dados: "./imagens/pousadabichodomar.jpg", // virar código maluco e depois desvirar código maluco
-                },
-                existeVoo: true,
-                existeOnibus: true,
-              },
-              card3: {
-                id: 3,
-                titulo: "Hotel da Canoa",
-                tipoQuarto: "Quarto Duplo Standard",
-                descricaoQuarto: "1 cama de casal grande, 1 banheiro, 450 m da praia.",
-                listExtras: [
-                  {
-                    id: 1,
-                    nome: "Cancelamento gratuito."
-                  },
-                  {
-                    id: 2,
-                    nome: "Café da manhã incluído.",
-                  }
-                ],
-                quantidadeReservas: "1",
-                imagemHospedagem: {
-                  id: 1,
-                  nome: "Hotel da Canoa",
-                  dados: "./imagens/hoteldacanoa.jpg", // virar código maluco e depois desvirar código maluco
-                },
-                existeVoo: true,
-                existeOnibus: true,
-              }
-            };
-            let num = 1;
-            data.content.array.forEach(card => {
-              // Card 1
-              document.getElementById('titulo'+num).innerHTML = card.titulo;
-              document.getElementById('tipoQuarto'+num).innerHTML = card.tipoQuarto !== "" ? card.tipoQuarto : "Tipo não especificado";
-              document.getElementById('descricaoQuarto'+num).innerHTML = card.descricaoQuarto;
-              var listExtras1 = document.getElementById('listExtras'+num);
-              listExtras1.textContent = card.listExtras[0].nome;
-              document.getElementById('quantidadeReservas'+num).innerHTML = card.quantidadeReservas;
-              document.getElementById('imagemHospedagem'+num).src = card.imagemHospedagem.dados;
-              num++;
-            });
+              "avaliacoes": 1,
+              "classificacao": 10.0
+            }
+            // Aqui você manipula a resposta do servidor
+            console.log('Resposta do servidor:', data);
 
-           
+            console.log
+            // Armazena a resposta do servidor no localStorage
+            localStorage.setItem('respostaDetalhesHospedagens', JSON.stringify(respostaDetalhesHospedagens));
 
-            // Depois de receber a resposta do servidor
-            document.getElementById('loading').style.display = 'none';
-          }, 5000); // Aguarde 5 segundos (5000 milissegundos) antes de ocultar a tela de loading
-        })
-        .catch(function (error) {
-          // Tratar erros ocorridos durante a requisição
-          console.error('Erro:', error);
+            // Redireciona para outra página
+            window.location.href = '../pacote/index.html';
+          });
+      }
 
-          // Em caso de erro, também é necessário esconder a tela de loading
-          document.getElementById('loading').style.display = 'none';
-        });
 
     </script>
-    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>

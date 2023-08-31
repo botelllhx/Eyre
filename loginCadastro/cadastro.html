@@ -122,7 +122,7 @@
             cidade: dadosFormulario.get('cidade'),
             estado: dadosFormulario.get('estado'),
             pais: "Brasil",
-            sigla: "MA"
+            sigla: dadosFormulario.get('estado')
         };
 
         dadosFormulario.delete('cep');
@@ -137,9 +137,8 @@
         for (var [key, value] of dadosFormulario.entries()) {
             dados[key] = value;
         }
-        dados.endereco = endereco; // Incluindo o endereco como uma propriedade
-        console.log('rabada moral');
-        fetch("http://localhost:3189/api/usuario/", {
+        dados.endereco = endereco; // inclui o endereco como uma propriedade http://localhost:3189/api/usuario/
+        fetch("https://jsonplaceholder.typicode.com/posts", {
             method: "POST",
             mode: "cors",
             headers: {

@@ -1,0 +1,318 @@
+.body {
+    background-color: #F1F3F6;
+    height: 900px;
+    border-radius: 100px;
+    width: 1700px;
+    margin: -15px 0px 0px 100px;
+}
+
+/* ============================CABECALHO================================= */
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 50px 0px 0px 110px;
+}
+
+.detalhes {
+    font-family: "Nunito";
+    margin: 0px 30px;
+    font-size: 25px;
+    align-items: center;
+}
+
+.horarioLimite {
+    font-family: "Nunito";
+    background-color: #2970DB;
+    color: white;
+    align-items: center;
+}
+
+.icon-background {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 25px;
+    align-items: center;
+}
+
+.icon-background i {
+    line-height: 80px;
+    color: #2970DB;
+    align-items: center;
+}
+
+/* =============================CARTAO NUMERO============================== */
+.cartao {
+    font-family: "Nunito";
+    margin: 0px 0px 0px 125px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+}
+
+.numeroCartao {
+    margin-bottom: 20px;
+    align-items: center;
+    position: fixed;
+}
+
+.inputNumero {
+    font-family: "Nunito";
+    border: none;
+    cursor: pointer;
+    margin: 100px 0px 0px 125px;
+    width: 31%;
+    height: 60px;
+    border-radius: 70px;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    align-items: center;
+    position: fixed;
+}
+
+/* =============================CARTAO DATA DE EXPEDIÇÃO=================================== */
+.data {
+    font-family: "Nunito";
+    margin: 160px 0px 0px 125px;
+    font-size: 30px;
+    align-items: center;
+    position: fixed;
+}
+
+.inputData {
+    font-family: "Nunito";
+    border: none;
+    cursor: pointer;
+    margin: 260px 0px 0px 125px;
+    width: 18%;
+    height: 60px;
+    border-radius: 70px;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    align-items: center;
+    position: fixed;
+}
+
+.dataValidade {
+    font-family: "Nunito";
+    align-items: center;
+    position: fixed;
+}
+
+/* =============================CARTAO CVV=============================================== */
+
+.cvv {
+    font-family: "Nunito";
+    margin: 160px 0px 0px 520px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+}
+
+.inputCVV {
+    font-family: "Nunito";
+    border: none;
+    cursor: pointer;
+    margin: 260px 0px 0px 520px;
+    width: 10%;
+    height: 60px;
+    border-radius: 70px;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    align-items: center;
+    position: fixed;
+}
+
+.codigoCVV {
+    font-family: "Nunito";
+    align-items: center;
+    position: fixed;
+}
+
+/* ============================CARTAO NOME======================================= */
+.nome {
+    font-family: "Nunito";
+    margin: 360px 0px 0px 130px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+}
+
+.inputNome {
+    font-family: "Nunito";
+    border: none;
+    cursor: pointer;
+    margin: 460px 0px 0px 130px;
+    width: 18%;
+    height: 60px;
+    border-radius: 70px;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    align-items: center;
+    position: fixed;
+}
+
+.nomeCartao {
+    font-family: "Nunito";
+    align-items: center;
+    position: fixed;
+}
+
+/* ================================PARCELAMENTO============================ */
+.parcelamento {
+    font-family: "Nunito";
+    margin: 360px 0px 0px 520px;
+    font-size: 30px;
+    align-items: center;
+    position: fixed;
+}
+
+.inputParcelar {
+    font-family: "Nunito";
+    border: none;
+    cursor: pointer;
+    margin: 460px 0px 0px 520px;
+    width: 10%;
+    height: 60px;
+    border-radius: 70px;
+    background-color: white;
+    text-align: center;
+    font-size: 25px;
+    align-items: center;
+    position: fixed;
+}
+
+.parcelar {
+    font-family: "Nunito";
+    align-items: center;
+    position: fixed;
+}
+
+/* ===============================SELECIONAR============================ */
+
+.selecionar {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 600px 0px 0px 130px;
+}
+
+.payment-form {
+    display: none;
+}
+
+/* ================================CARTAO DEBITO/CREDITO========================== */
+
+.cartaoTipo {
+    background-color: #2970DB;
+    color: white;
+    border: none;
+    font-size: 28px;
+    font-family: "Nunito";
+    font-weight: bold;
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    border-radius: 70px;
+    border: none;
+    padding-left: 70px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.imgCartao {
+    width: 45px;
+    height: 35px;
+    margin: 0px 0px 0px -160px;
+}
+
+.palavraCartao {
+    margin: -45px 0px 0px 10px;
+}
+
+/* ===============================CONFIRMAR==================================== */
+
+.botao {
+    color: white;
+    border: none;
+    font-size: 28px;
+    font-family: "Nunito";
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #2970DB;
+    width: 700px;
+    height: 60px;
+    top: 850px;
+    left: 235px;
+    position: fixed;
+    border-radius: 70px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    align-items: center;
+}
+
+/* =================================DESCRICÃO============================== */
+.hospedagem {
+    font-family: "Nunito";
+    color: white;
+    padding-left: 65px;
+    padding-top: 10px;
+    font-size: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.check1 {
+    height: 30px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.transporte {
+    font-family: "Nunito";
+    color: white;
+    padding-left: 65px;
+    font-size: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.check2 {
+    height: 30px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.reembolso {
+    font-family: "Nunito";
+    color: white;
+    padding-left: 65px;
+    font-size: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.check3 {
+    height: 30px;
+    margin-left: 10px;
+    align-items: center;
+}

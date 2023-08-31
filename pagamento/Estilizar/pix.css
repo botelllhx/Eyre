@@ -1,0 +1,78 @@
+/* ===========================PIX=========================== */
+
+.pagPix {
+    background-color: #2970DB;
+    color: white;
+    border: none;
+    font-size: 28px;
+    font-family: "Nunito";
+    font-weight: bold;
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    margin: 0px 40px;
+    border-radius: 70px;
+    border: none;
+    padding-left: 30px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.fundoBranco2 {
+    margin: -600px 0px 0px -491px;
+    background-color: white;
+    height: 500px;
+    width: 700px;
+    border-radius: 30px;
+    position: fixed;
+}
+
+.imgPix {
+    width: 50px;
+    height: 50px;
+    margin: -3px 0px 0px -80px;
+}
+
+.palavraPix {
+    margin: -55px 0px 0px 45px;
+}
+
+.escaneie {
+    font-family: "Nunito";
+    font-weight:bolder;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.qrcode {
+    width: 300px;
+    height: 300px;
+    margin: -20px 200px;
+}
+
+.copie {
+    font-family: "Nunito";
+    font-weight:bolder;
+    font-size: 20px;
+    text-align: center;
+}
+
+.codPix {
+    color: white;
+    font-family: "Nunito";
+    font-weight:bolder;
+    margin: -18px 0px;
+    font-size: 18px;
+}
+
+.verPix {
+    background-color: #2970DB;
+    cursor: pointer;
+    width: 500px;
+    height: 35px;
+    border-radius: 15px;
+    margin: 0px 100px;
+    text-align: center;
+    border: none;
+}

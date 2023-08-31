@@ -1,0 +1,83 @@
+/* ============================BOLETO============================ */
+
+.pagBoleto {
+    background-color: #2970DB;
+    color: white;
+    border: none;
+    font-size: 28px;
+    font-family: "Nunito";
+    font-weight: bold;
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    margin: 0px 0px;
+    border-radius: 70px;
+    border: none;
+    padding-left: 70px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.fundoBranco3 {
+    margin: -590px 0px 0px -691px;
+    background-color: white;
+    height: 500px;
+    width: 700px;
+    border-radius: 30px;
+    position: fixed;
+}
+
+.imgBoleto {
+    width: 55px;
+    height: 40px;
+    margin: 3px 0px 0px -150px;
+}
+
+.palavraBoleto {
+    margin: -50px 0px 0px 20px;
+}
+
+.use{
+    font-family: "Nunito";
+    font-weight:bolder;
+    font-size: 25px;
+    text-align: center;
+    margin: -5px 0px;
+    word-wrap: normal;
+}
+
+.imgCodBarras {
+    margin: 0px;
+}
+
+.codBoleto{
+    font-family: "Nunito";
+    font-size: 20px;
+    margin: -10px 100px ;
+}
+
+.vencimento {
+    font-family: "Nunito";
+    font-weight: bolder;
+    margin: 0px 300px;
+}
+
+.ver{
+    background-color: #2970DB;
+    cursor: pointer;
+    text-align: center;
+    width: 500px;
+    height: 40px;
+    border-radius: 15px;
+    border-radius: 70px;
+    border: none;
+    margin: 0 100px;
+}
+
+.verBoleto {
+    color: white;
+    font-family: "Nunito";
+    font-weight:bolder;
+    font-size: 25px;
+    margin: -30px 100px;
+}

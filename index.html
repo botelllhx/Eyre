@@ -54,7 +54,8 @@
 
 
             <input class="botaoOrcamento imgSifao" type="text" id="orcamento" name="preco"
-              placeholder="QUAL É O SEU ORÇAMENTO?" oninput="formatarMoeda(this); ocultarImagemSifao();" maxlength="15" />
+              placeholder="QUAL É O SEU ORÇAMENTO?" oninput="formatarMoeda(this); ocultarImagemSifao();"
+              maxlength="15" />
 
 
             <div class="alinharPartidaDestino">
@@ -324,8 +325,8 @@
 
         var token = localStorage.getItem("token"); // Ou sessionStorage
         console.log(token);
-        // Fazer a requisição usando fetch https://jsonplaceholder.typicode.com/posts
-        const response = await fetch('http://localhost:3189/api/hospedagem/list', {
+        // Fazer a requisição usando fetch https://jsonplaceholder.typicode.com/posts http://localhost:3189/api/hospedagem/list'
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
           method: 'POST',
           // mode: "cors",
           headers: {
@@ -334,47 +335,117 @@
           },
           body: JSON.stringify(data)
         })
-        .then(function (response) {
-          if (response.ok) {
-            // A requisição foi bem-sucedida
-            return response.json();
-          } else {
-            // A requisição falhou
-            throw new Error('Erro na requisição: ' + response.status);
-          }
-        })
+          .then(function (response) {
+            if (response.ok) {
+              // A requisição deu certo
+              return response.json();
+            } else {
+              // A requisição falhou
+              throw new Error('Erro na requisição: ' + response.status);
+            }
+          })
           .then(function (data) {
-            // Manipular a resposta do servidor
-            // Armazenar o token JWT retornado pela API
+            //resposta do servidor
+
+            const respostaHospedagens = {
+              content: [
+                {
+                  id: 1,
+                  titulo: "Brisas do Farol",
+                  tipoQuarto: "Suíte",
+                  descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²\n3 camas (2 de solteiro, 1 de casal).",
+                  quantidadeReservas: "1",
+                  listExtras: [
+                    { id: 1, nome: "Quartos para não fumantes" },
+                    { id: 2, nome: "Wi-fi gratuito" },
+                    { id: 3, nome: "Recepção 24 horas" },
+                    { id: 4, nome: "Bar" }
+                  ],
+                  listImagens: [
+                    {
+                      id: 2,
+                      nome: "Hotel da Canoa",
+                      imagem: { id: 1, nome: "Hotel da Canoa", dados: "./imagens/brisasdofarol.jpg" }
+                    }
+                  ],
+                  existeVoo: "true",
+                  existeOnibus: "true"
+                },
+                {
+                  id: 2,
+                  titulo: "Pousada Bicho do Mar",
+                  tipoQuarto: "Suíte Superior",
+                  descricaoQuarto: "Suíte privativa • 1 quarto • 1 sala • 1 banheiro\n1 cama de casal.",
+                  quantidadeReservas: "1",
+                  listExtras: [
+                    { id: 1, nome: "Café da manhã incluído" }
+                  ],
+                  listImagens: [
+                    {
+                      id: 2,
+                      nome: "Pousada Bicho do Mar",
+                      imagem: { id: 1, nome: "Pousada Bicho do Mar", dados: "./imagens/pousadabichodomar.jpg" }
+                    }
+                  ],
+                  existeVoo: "true",
+                  existeOnibus: "true"
+                },
+                {
+                  id: 3,
+                  titulo: "Hotel da Canoa",
+                  tipoQuarto: "Quarto Duplo Standard",
+                  descricaoQuarto: "1 cama de casal grande • 1 banheiro • 450 m da praia.",
+                  quantidadeReservas: "5",
+                  listExtras: [
+                    { id: 1, nome: "Café da manhã incluído" },
+                    { id: 2, nome: "Piscina" }
+                  ],
+                  listImagens: [
+                    {
+                      id: 2,
+                      nome: "Hotel da Canoa",
+                      imagem: { id: 1, nome: "Hotel da Canoa", dados: "./imagens/hoteldacanoa.jpg" }
+                    }
+                  ],
+                  existeVoo: "true",
+                  existeOnibus: "true"
+                }
+              ]
+            };
+
+            // área de manipulação da resposta
+
             var token = data.token;
 
-            // Armazenar o token no localStorage ou sessionStorage
-            localStorage.setItem("token", token); // Ou sessionStorage
-
-            console.log(data);
-            // Exibe mensagem de sucesso
+            // armazenar no localstorage 
+            localStorage.setItem("token", token);
             console.log(token)
-            console.log('Resposta do servidor:', data);
-            // Fazer algo com a resposta, como atualizar a página ou exibir uma mensagem de sucesso
-            // Redirecionar para outra página
+
+            localStorage.setItem('respostaHospedagens', JSON.stringify(respostaHospedagens));
+
+            localStorage.setItem('dataIdaUrl', JSON.stringify(data.content.dataIda));
+
+            localStorage.setItem('dataVoltaUrl', JSON.stringify(data.content.dataVolta));
+
+            // redireciona para outra página
             window.location.href = '../Eyre/opcoesJornada/index.html';
           })
           .catch(function (error) {
-            // Tratar erros ocorridos durante a requisição
+            // em caso de erro
             console.error('Erro:', error);
           });
 
       } else {
-        // Caso as duas datas não tenham sido selecionadas
+        // caso as duas datas não sejam selecionadas
         console.error("Selecione um intervalo de datas válido.");
       }
-      // Limpar os campos do formulário (opcional)
+      // limpa os campos do form
       document.getElementById('formularioViagem').reset();
       event.preventDefault();
     }
     function enviarRequisicaoComToken(url, metodo, dados) {
 
-      var token = localStorage.getItem("token"); // Ou sessionStorage
+      var token = localStorage.getItem("token");
       console.log(token);
       return fetch(url, {
         method: metodo,

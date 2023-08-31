@@ -1,0 +1,87 @@
+/* ================================PAGANDO===================================== */
+.fundoAzul2 {
+    background-color: #2970DB;
+    width: 25%;
+    margin: 0px 0px 0px 1100px;
+    height: 600px;
+    border-radius: 25px;
+    align-items: center;
+    position: fixed;
+    display: inline-block;
+}
+
+.pagando {
+    font-family: "Nunito";
+    color: white;
+    padding-top: 10px;
+    padding-left: 90px;
+    font-size: 30px;
+    align-items: center;
+}
+
+.valor {
+    font-family: "Nunito";
+    font-size: 25px;
+    margin-left: 110px;
+    margin-top: -125px;
+    align-items: center;
+}
+
+.fundoBrancoValor {
+    background-color: white;
+    width: 320px;
+    height: 120px;
+    border-radius: 20px;
+    margin-left: 80px;
+    align-items: center;
+}
+
+/* =================================DESCRICÃO============================== */
+.hospedagem {
+    font-family: "Nunito";
+    color: white;
+    padding-left: 85px;
+    padding-top: 10px;
+    font-size: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.check1 {
+    height: 30px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.transporte {
+    font-family: "Nunito";
+    color: white;
+    padding-left: 85px;
+    font-size: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.check2 {
+    height: 30px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.reembolso {
+    font-family: "Nunito";
+    color: white;
+    padding-left: 85px;
+    font-size: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.check3 {
+    height: 30px;
+    margin-left: 10px;
+    align-items: center;
+}

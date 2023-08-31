@@ -1,0 +1,29 @@
+.countdown-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .countdown-wrapper span {
+    margin: 0 2px;
+    padding-inline-start: 6px;
+    background-color: #2970DB;
+    width: 40px;
+    height: 40px;
+    border-radius: 40%;
+    font-family: "Nunito";
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+  }
+
+  .countdown-wrapper .colon {
+    margin: 0 2px;
+    padding-inline-start: 12px;
+    width: 20px;
+    height: 40px;
+    color: black;
+    background-color: #F1F3F6;
+    font-family: "Nunito";
+    font-weight: bold;
+  }
