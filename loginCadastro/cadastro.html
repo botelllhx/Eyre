@@ -120,7 +120,9 @@
             numero: dadosFormulario.get('numero'),
             bairro: dadosFormulario.get('bairro'),
             cidade: dadosFormulario.get('cidade'),
-            estado: dadosFormulario.get('estado')
+            estado: dadosFormulario.get('estado'),
+            pais: "Brasil",
+            sigla: "MA"
         };
 
         dadosFormulario.delete('cep');
@@ -136,8 +138,8 @@
             dados[key] = value;
         }
         dados.endereco = endereco; // Incluindo o endereco como uma propriedade
-
-        fetch("https://jsonplaceholder.typicode.com/posts", {
+        console.log('rabada moral');
+        fetch("http://localhost:3189/api/usuario/", {
             method: "POST",
             mode: "cors",
             headers: {
@@ -160,9 +162,10 @@
 
                 // PARA REDIRECIONAR PARA A PÁGINA DE LOGIN
                 window.location.href = "http://127.0.0.1:5500/loginCadastro/login.html";
+                console.log('rabada moral 3');
             })
             .catch(error => {
-                console.error(error);
+                console.log(error);
                 alert("Ocorreu um erro durante o cadastro. Por favor, tente novamente mais tarde.");
             });
     }

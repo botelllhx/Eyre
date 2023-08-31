@@ -118,7 +118,7 @@
       }
 
       // Requisição Fetch
-      fetch('http://localhost:8080/api/hospedagem/1/23-05-2023/true', {
+      fetch('http://localhost:3189/api/hospedagem/list', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -221,33 +221,20 @@
                 existeOnibus: true,
               }
             };
+            let num = 1;
+            data.content.array.forEach(card => {
+              // Card 1
+              document.getElementById('titulo'+num).innerHTML = card.titulo;
+              document.getElementById('tipoQuarto'+num).innerHTML = card.tipoQuarto !== "" ? card.tipoQuarto : "Tipo não especificado";
+              document.getElementById('descricaoQuarto'+num).innerHTML = card.descricaoQuarto;
+              var listExtras1 = document.getElementById('listExtras'+num);
+              listExtras1.textContent = card.listExtras[0].nome;
+              document.getElementById('quantidadeReservas'+num).innerHTML = card.quantidadeReservas;
+              document.getElementById('imagemHospedagem'+num).src = card.imagemHospedagem.dados;
+              num++;
+            });
 
-            // Card 1
-            document.getElementById('titulo').innerHTML = data.card1.titulo;
-            document.getElementById('tipoQuarto').innerHTML = data.card1.tipoQuarto !== "" ? data.card1.tipoQuarto : "Tipo não especificado";
-            document.getElementById('descricaoQuarto').innerHTML = data.card1.descricaoQuarto;
-            var listExtras1 = document.getElementById('listExtras');
-            listExtras1.textContent = data.card1.listExtras[0].nome;
-            document.getElementById('quantidadeReservas').innerHTML = data.card1.quantidadeReservas;
-            document.getElementById('imagemHospedagem').src = data.card1.imagemHospedagem.dados;
-
-            // Card 2
-            document.getElementById('titulo2').innerHTML = data.card2.titulo;
-            document.getElementById('tipoQuarto2').innerHTML = data.card2.tipoQuarto !== "" ? data.card2.tipoQuarto : "Tipo não especificado";
-            document.getElementById('descricaoQuarto2').innerHTML = data.card2.descricaoQuarto;
-            var listExtras2 = document.getElementById('listExtras2');
-            listExtras2.textContent = data.card2.listExtras[0].nome;
-            document.getElementById('quantidadeReservas2').innerHTML = data.card2.quantidadeReservas;
-            document.getElementById('imagemHospedagem2').src = data.card2.imagemHospedagem.dados;
-
-            // Card 3
-            document.getElementById('titulo3').innerHTML = data.card3.titulo;
-            document.getElementById('tipoQuarto3').innerHTML = data.card3.tipoQuarto !== "" ? data.card3.tipoQuarto : "Tipo não especificado";
-            document.getElementById('descricaoQuarto3').innerHTML = data.card3.descricaoQuarto;
-            var listExtras3 = document.getElementById('listExtras3');
-            listExtras3.textContent = data.card3.listExtras[0].nome;
-            document.getElementById('quantidadeReservas3').innerHTML = data.card3.quantidadeReservas;
-            document.getElementById('imagemHospedagem3').src = data.card3.imagemHospedagem.dados;
+           
 
             // Depois de receber a resposta do servidor
             document.getElementById('loading').style.display = 'none';
