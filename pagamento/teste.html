@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cronômetro de 12 minutos</title>
+  <style>
+    #cronometro {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tela de Pagamento</h1>
+  <div id="cronometro"></div>
+
+  <script>
+    // Obtém a referência para o elemento do cronômetro
+    var cronometroElement = document.getElementById("cronometro");
+
+    // Define o tempo inicial do cronômetro em 12 minutos (720 segundos)
+    var tempoRestante = 720;
+
+    // Função para atualizar o cronômetro
+    function atualizarCronometro() {
+      // Calcula os minutos e segundos restantes
+      var minutos = Math.floor(tempoRestante / 60);
+      var segundos = tempoRestante % 60;
+
+      // Formata a saída para exibir sempre dois dígitos (por exemplo, 09:05)
+      var formatoMinutos = minutos < 10 ? "0" + minutos : minutos;
+      var formatoSegundos = segundos < 10 ? "0" + segundos : segundos;
+
+      // Define o texto do cronômetro
+      cronometroElement.innerText = formatoMinutos + ":" + formatoSegundos;
+
+      // Verifica se o tempo acabou
+      if (tempoRestante === 0) {
+        // Faça algo quando o tempo acabar, como redirecionar para outra página
+        window.location.href = "pagina-de-finalizacao.html";
+      } else {
+        // Atualiza o tempo restante, subtraindo 1 segundo
+        tempoRestante--;
+      }
+    }
+
+    // Chama a função inicialmente para exibir o cronômetro
+    atualizarCronometro();
+
+    // Configura um intervalo para chamar a função atualizarCronometro() a cada segundo
+    setInterval(atualizarCronometro, 1000);
+  </script>
+</body>
+</html>

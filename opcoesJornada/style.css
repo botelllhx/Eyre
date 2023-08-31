@@ -32,7 +32,7 @@ body {
   margin-top: -12px;
 }
 
-.opcoes {
+.cardDiv {
   width: 400px;
   background-color: #F1F3F6;
   padding: 20px;
@@ -44,48 +44,18 @@ body {
   /* Adiciona a propriedade de transição para o efeito suave */
 }
 
-.opcoes:hover {
+.cardDiv:hover {
   transform: translateY(-10px) scale(1.05);
   /* Traduz e aumenta a escala do card ao passar o mouse */
 }
 
-.tituloBrisas {
+.tituloHospedagem {
   text-align: center;
   font-family: "Nunito";
   margin-top: -5px;
 }
 
-.tituloPousada {
-  text-align: center;
-  font-family: "Nunito";
-  margin-top: -5px;
-}
-
-.tituloHotel {
-  text-align: center;
-  font-family: "Nunito";
-  margin-top: -5px;
-}
-
-.imgBrisas {
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 0;
-  min-height: auto;
-  background-color: white;
-  display: inline-block;
-}
-
-.imgPousada {
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 0;
-  min-height: auto;
-  background-color: white;
-  display: inline-block;
-}
-
-.imgHotel {
+.imagemHospedagem {
   max-width: 100%;
   max-height: 100%;
   min-width: 0;
@@ -118,7 +88,7 @@ body {
   margin: 15px 30px;
 }
 
-.cancelamento {
+.listExtras {
   font-family: "Nunito";
   display: flex;
   margin: 15px 15px;
@@ -128,7 +98,7 @@ body {
   font-weight: bold;
 }
 
-.resta {
+.quantidadeReservas {
   font-family: "Nunito";
   display: flex;
   margin-top: -30px;
@@ -167,7 +137,7 @@ body {
   margin-right:10px;
 }
 
-.textobrisas {
+.existeTransporte {
   font-family: 'Nunito';
   margin-right: 2px; /* Adicionamos uma margem direita para espaçamento entre imagem e texto */
 }
@@ -229,7 +199,7 @@ input:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 280px;
+  margin-top: -5%;
 }
 
 .loading-spinner img {
