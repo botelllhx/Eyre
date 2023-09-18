@@ -72,11 +72,26 @@ function validarDigitacao(event) {
 }
 
 // =======================================PARCELAMENTO===================================
+
+const respostaDetalhesHospedagens = localStorage.getItem('respostaDetalhesHospedagens');
+const hospedagensData = JSON.parse(respostaDetalhesHospedagens);
+
+hos = hospedagensData.hospedagem;
+
+// Transforma o preço em formato "300.00" para um número
+const precoNumerico = parseFloat(hos.preco);
+
+// Formata o número como moeda brasileira (R$)
+const precoFormatado = precoNumerico.toLocaleString('pt-BR', {
+  style: 'currency',
+  currency: 'BRL'
+});
+
 function atualizarTotal() {
   const selectParcelas = document.getElementById("parcelas");
   const valorTotalElement = document.querySelector(".valor h1");
 
-  const valorTotal = 1500; // Substitua pelo valor total real
+  const valorTotal = precoNumerico; // Substitua pelo valor total real
   const parcelasSelecionadas = parseInt(selectParcelas.value);
 
   let valorParcela;

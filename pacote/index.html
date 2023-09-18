@@ -21,9 +21,9 @@
                 <img src="./imagens/logoEyre2.png" class="logo">
             </a>
             <div class="botoesCabecalho">
-                <button class="botaoBrancoValor" id="orcamento">R$ 0,00</button>
+                <!-- <button class="botaoBrancoValor" id="orcamento">R$ 0,00</button>
                 <button class="botaoBrancoLocalizacao" id="Destino">- RJ</button>
-                <button class="botaoBrancoData" id="IdaVolta">22 set - 24 set</button>
+                <button class="botaoBrancoData" id="IdaVolta">22 set - 24 set</button> -->
                 <a href="../pagamento/index.html"><button class="botaoAzul">Reservar agora</button></a>
             </div>
         </div>
@@ -58,9 +58,20 @@
             <div class="direita">
                 <div class="elementos1">
                     <div class="divAvaliacoes">
-                        <p class="avaliacoes">Muito bom! <strong id="avaliacoes">729</strong> avaliações</p>
+                        <p class="avaliacoes" id="avaliacoesClickable">Muito bom! <strong
+                                id="avaliacoesCount">729</strong>
+                            avaliações</p>
                         <div class="classificacao">
                             <h3 id="classificacao">8,0</h3>
+                        </div>
+                    </div>
+                    <div class="modal-avaliacoes" id="reviewModal">
+                        <div class="modal-content-avaliacoes">
+                            <span class="close" id="closeModal">&times;</span>
+                            <h2 class="tituloAvaliacoes">Avaliações</h2>
+                            <div id="reviewsList">
+                                <!-- Avaliações serão exibidas aqui dinamicamente -->
+                            </div>
                         </div>
                     </div>
                     <div class="mapa-container">
@@ -291,10 +302,19 @@
             </div>
         </div>
         <div>
+            <!-- <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="fecharModal()">&times;</span>
+                    <p class="tituloMangaraRestaurante" id="tituloRestaurantes1">Mangará Restaurante</p>
+                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemRestaurantes1">
+                    <div id="modalText"></div>
+                </div>
+            </div> -->
+
             <div id="Turisticos" class="categoriaContent">
-                <div class="restauranteContainer">
+                <div class="restauranteContainer" onclick="abrirModal('turistico', 1)">
                     <p class="tituloMangaraRestaurante" id="tituloTuristicos1">Turístico</p>
-                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemTuristicos1">
+                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemTuristicos1" data-categoria="Turístico" data-id="1">
                 </div>
                 <div class="restauranteContainer">
                     <p class="tituloMangaraRestaurante" id="tituloTuristicos2">Turístico</p>
@@ -339,7 +359,113 @@
     </div>
     </div>
     </div>
-    <!-- fetch('http://localhost:3189/api/hospedagem/${id}/${dataIda}/${dataVolta}/true' -->
+    <script>
+        const modal = document.getElementById("reviewModal");
+        const closeModal = document.getElementById("closeModal");
+        const reviewsList = document.getElementById("reviewsList");
+        const avaliacoesClickable = document.getElementById("avaliacoesClickable");
+        const avaliacoesCount = document.getElementById("avaliacoesCount"); // Elemento para exibir a quantidade de avaliações
+
+        function getStars(nota) {
+            if (nota < 0) nota = 0;
+            if (nota > 10) nota = 10;
+
+            const stars = '<span class="stars">' + '★'.repeat(nota) + '</span>';
+            return `${stars} (${nota})`;
+        }
+
+        // Função para buscar as avaliações da API
+        function fetchReviews() {
+            fetch("https://jsonplaceholder.typicode.com/posts", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                        console.log("Avalições carregadas!")
+                    } else {
+                        throw new Error('Erro na requisição: ' + response.status);
+                    }
+                })
+                .then(function (data) {
+                    // Manipular os dados da API aqui
+                    reviewsList.innerHTML = ""; // Limpar avaliações anteriores
+
+                    console.log("Avalições carregadas!")
+
+                    // Simulação de dados de avaliação (substitua com seus próprios dados)
+                    const reviewsData = [
+                        {
+                            id: 1,
+                            nome: "Fulano",
+                            texto: "Gostei muito dessa hospedagem iria mais vezes.",
+                            nota: "8"
+                        },
+                        {
+                            id: 2,
+                            nome: "Ciclano",
+                            texto: "Gostei muito dessa hospedagem iria mais vezes.",
+                            nota: "6"
+                        },
+                        {
+                            id: 3,
+                            nome: "Fulano",
+                            texto: "Gostei muito dessa hospedagem iria mais vezes.",
+                            nota: "5"
+                        },
+                        {
+                            id: 4,
+                            nome: "Ciclano",
+                            texto: "Gostei muito dessa hospedagem iria mais vezes.",
+                            nota: "4"
+                        },
+                        {
+                            id: 5,
+                            nome: "Fulano",
+                            texto: "Gostei muito dessa hospedagem iria mais vezes.",
+                            nota: "7"
+                        },
+                        {
+                            id: 6,
+                            nome: "Ciclano",
+                            texto: "Gostei muito dessa hospedagem iria mais vezes.",
+                            nota: "9"
+                        },
+                        // Adicione mais avaliações aqui
+                    ];
+
+                    reviewsData.forEach(review => {
+                        const reviewElement = document.createElement("div");
+                        reviewElement.classList.add("review-item");
+                        reviewElement.innerHTML = `
+                        <p><strong>${review.nome}</strong></p>
+                        <p class="review-text">${review.texto}</p>
+                        <p class="nota">${getStars(parseInt(review.nota))}</p>
+                    `;
+                        reviewsList.appendChild(reviewElement);
+                    });
+
+                    modal.style.display = "block";
+
+                    // Atualizar a quantidade de avaliações no HTML
+                    avaliacoesCount.textContent = reviewsData.length;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        }
+
+        // Fechar o modal ao clicar no botão de fechar
+        closeModal.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // Abrir o modal ao clicar na avaliação clicável
+        avaliacoesClickable.onclick = fetchReviews;
+    </script>
     <script>
         let botaoSelecionarAtivo = false;
 
@@ -405,7 +531,7 @@
                 console.log(enderecoCompleto);
 
                 // Use a chave de API do Google Maps
-                const apiKey = 'AIzaSyATuuD8TdjTavbARUBgI0UwR9hbTtaqJYo';
+                const apiKey = 'AIzaSyAsTbKHpTgDtOjWySZ1Ox1mzmv4WeAB-yE';
 
                 // URL para a API de Geocodificação
                 const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(enderecoCompleto)}&key=${apiKey}`;
@@ -445,8 +571,9 @@
                             mapIframe.appendChild(iframe);
                         }
                     });
+
                 document.getElementById("descricao").textContent = hos.descricao;
-                document.getElementById("avaliacoes").textContent = hospedagensData.avaliacoes;
+                document.getElementById("avaliacoesCount").textContent = hospedagensData.avaliacoes;
                 document.getElementById("classificacao").textContent = hospedagensData.classificacao;
                 document.getElementById("tipoQuarto").textContent = hos.tipoQuarto;
                 document.getElementById("descricaoQuarto").textContent = hos.descricaoQuarto;
@@ -471,29 +598,29 @@
                 }
 
                 // encontra os voos de ida e volta
-                const voosIda = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "IDA").listHorarios;
+                // const voosIda = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "IDA").listHorarios;
                 const voosVolta = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "VOLTA").listHorarios;
 
                 // voos de ida
-                for (let i = 0; i < voosIda.length && i < 2; i++) {
-                    const indexIda = i + 1;
+                // for (let i = 0; i < voosIda.length && i < 2; i++) {
+                //     const indexIda = i + 1;
 
-                    // Formatar o horário de saída e chegada para exibir apenas HH:mm
-                    const horarioSaidaIda = voosIda[i].horarioSaida.substring(0, 5);
-                    const horarioChegadaIda = voosIda[i].horarioChegada.substring(0, 5);
+                //     // Formatar o horário de saída e chegada para exibir apenas HH:mm
+                //     const horarioSaidaIda = voosIda[i].horarioSaida.substring(0, 5);
+                //     const horarioChegadaIda = voosIda[i].horarioChegada.substring(0, 5);
 
-                    // preenche os html dos voos de ida
-                    document.getElementById(`companhiaAerea${indexIda}`).textContent = hos.voos[0].nome;
-                    document.getElementById(`horarioIda${indexIda}`).textContent = voosIda[i].horarioSaida;
-                    document.getElementById(`horarioVolta${indexIda}`).textContent = voosIda[i].horarioChegada;
+                //     // preenche os html dos voos de ida
+                //     document.getElementById(`companhiaAerea${indexIda}`).textContent = hos.voos[0].nome;
+                //     document.getElementById(`horarioIda${indexIda}`).textContent = voosIda[i].horarioSaida;
+                //     document.getElementById(`horarioVolta${indexIda}`).textContent = voosIda[i].horarioChegada;
 
-                    // Calcular a duração do voo de ida e preencher
-                    const duracaoVooElementIda = document.getElementById(`duracaoVoo${indexIda}`);
-                    if (duracaoVooElementIda) {
-                        const duracaoVooIda = calcularDuracaoHorasMinutos(voosIda[i].horarioSaida, voosIda[i].horarioChegada);
-                        duracaoVooElementIda.textContent = duracaoVooIda;
-                    }
-                }
+                //     // Calcular a duração do voo de ida e preencher
+                //     const duracaoVooElementIda = document.getElementById(`duracaoVoo${indexIda}`);
+                //     if (duracaoVooElementIda) {
+                //         const duracaoVooIda = calcularDuracaoHorasMinutos(voosIda[i].horarioSaida, voosIda[i].horarioChegada);
+                //         duracaoVooElementIda.textContent = duracaoVooIda;
+                //     }
+                // }
 
                 // voos de volta
                 for (let i = 0; i < voosVolta.length && i < 2; i++) {
@@ -515,24 +642,24 @@
                 }
 
                 // encontra os horários de ida e volta de ônibus
-                const onibusIda = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "IDA");
-                const onibusVolta = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "VOLTA");
+                // const onibusIda = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "IDA");
+                // const onibusVolta = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "VOLTA");
 
-                // preenche os html dos onibus de ida
-                if (onibusIda) {
-                    document.getElementById("primeiroHorarioEmbarque").textContent = onibusIda.listHorarios[0].horarioSaida;
-                    document.getElementById("primeiroHorarioDesembarque").textContent = onibusIda.listHorarios[0].horarioChegada;
-                    document.getElementById("primeiroLocalEmbarque").textContent = onibusIda.localSaida;
-                    document.getElementById("primeiroLocalDesembarque").textContent = onibusIda.localChegada;
-                }
+                // // preenche os html dos onibus de ida
+                // if (onibusIda) {
+                //     document.getElementById("primeiroHorarioEmbarque").textContent = onibusIda.listHorarios[0].horarioSaida;
+                //     document.getElementById("primeiroHorarioDesembarque").textContent = onibusIda.listHorarios[0].horarioChegada;
+                //     document.getElementById("primeiroLocalEmbarque").textContent = onibusIda.localSaida;
+                //     document.getElementById("primeiroLocalDesembarque").textContent = onibusIda.localChegada;
+                // }
 
-                // preenche os html dos onibus de volta
-                if (onibusVolta) {
-                    document.getElementById("segundoHorarioEmbarque").textContent = onibusVolta.listHorarios[0].horarioSaida;
-                    document.getElementById("segundoHorarioDesembarque").textContent = onibusVolta.listHorarios[0].horarioChegada;
-                    document.getElementById("segundoLocalEmbarque").textContent = onibusVolta.localSaida;
-                    document.getElementById("segundoLocalDesembarque").textContent = onibusVolta.localChegada;
-                }
+                // // preenche os html dos onibus de volta
+                // if (onibusVolta) {
+                //     document.getElementById("segundoHorarioEmbarque").textContent = onibusVolta.listHorarios[0].horarioSaida;
+                //     document.getElementById("segundoHorarioDesembarque").textContent = onibusVolta.listHorarios[0].horarioChegada;
+                //     document.getElementById("segundoLocalEmbarque").textContent = onibusVolta.localSaida;
+                //     document.getElementById("segundoLocalDesembarque").textContent = onibusVolta.localChegada;
+                // }
 
                 const infosProximidades = document.querySelectorAll(".categoriaContent");
                 for (const proximidadeCaixa of infosProximidades) {
@@ -557,6 +684,46 @@
         })
 
     </script>
+    <!-- <script>
+        // Função para abrir o modal com informações da categoria
+        function abrirModal(categoria, id) {
+            // Obtenha informações com base na categoria e no id
+            const proximidade = obterInformacoesCategoria(categoria, id);
+
+            // Preencha o modal com informações da categoria
+            const modalImage = document.getElementById("modalImage");
+            modalImage.src = proximidade.foto.dados;
+            modalImage.alt = proximidade.nome;
+
+            const modalText = document.getElementById("modalText");
+            modalText.innerHTML = `<h2>${proximidade.nome}</h2><p>${proximidade.descricao}</p>`;
+
+            // Exibir o modal
+            const modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Função para obter informações da categoria com base na categoria e no id
+        function obterInformacoesCategoria(categoria, id) {
+            // Substitua esta função para obter informações da categoria com base na categoria e no id
+            // Retorne as informações corretas
+            // Por exemplo:
+            const informacoes = {
+                nome: "Nome da Categoria",
+                descricao: "Descrição da Categoria",
+                foto: {
+                    dados: "./imagens/categoria.jpg"
+                }
+            };
+            return informacoes;
+        }
+    </script> -->
     <script src="./script.js"></script>
 </body>
 

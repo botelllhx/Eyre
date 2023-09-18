@@ -1,3 +1,12 @@
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
 .body {
     background-color: #F1F3F6;
     height: 750px;
@@ -5,6 +14,11 @@
     width: 1500px;
     margin-top: 11vh;
     margin-left: 19vh;
+    font-family: 'Nunito';
+}
+
+body {
+    font-family: 'Nunito';
 }
 
 /* ============================CABECALHO================================= */
@@ -546,4 +560,10 @@
     height: 30px;
     margin-left: 10px;
     align-items: center;
+}
+
+.swal2-popup .botao-confirmar-pagamento {
+    background-color: #2970DB;
+    color: #fff;
+    /* Outros estilos, se necessário */
 }

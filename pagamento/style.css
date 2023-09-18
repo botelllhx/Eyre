@@ -1,3 +1,12 @@
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
 .body {
     background-color: #F1F3F6;
     height: 900px;
@@ -253,11 +262,12 @@
 
 .escaneie {
     font-family: "Nunito";
-    font-weight:bolder;
+    font-weight: bolder;
     font-size: 20px;
     text-align: center;
     padding-top: 5px;
 }
+
 .qrcode {
     width: 300px;
     height: 300px;
@@ -266,7 +276,7 @@
 
 .copie {
     font-family: "Nunito";
-    font-weight:bolder;
+    font-weight: bolder;
     font-size: 20px;
     text-align: center;
 }
@@ -276,7 +286,7 @@
     color: white;
     cursor: pointer;
     font-family: "Nunito";
-    font-weight:bolder;
+    font-weight: bolder;
     text-align: center;
     width: 500px;
     height: 27px;
@@ -304,6 +314,15 @@
     align-items: center;
 }
 
+.pagBoleto:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.pagBoleto:active {
+    transform: scale(0.97);
+}
+
 /* ===============================CONFIRMAR==================================== */
 
 .botao {
@@ -312,16 +331,24 @@
     font-size: 28px;
     font-family: "Nunito";
     font-weight: bold;
-    cursor: pointer;
     background-color: #2970DB;
     width: 700px;
     height: 60px;
     top: 850px;
     left: 235px;
-    position: fixed;
+    position: relative;
     border-radius: 70px;
-    border: none;
     text-align: center;
     text-decoration: none;
     align-items: center;
+    overflow: hidden;
+}
+
+.botao:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.botao:active {
+    transform: scale(0.97);
 }

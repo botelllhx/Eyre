@@ -1,3 +1,12 @@
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
 .fundoCinza {
     background-color: #F1F3F6;
     border-bottom-left-radius: 15px;
@@ -72,7 +81,7 @@ h3 {
     height: 150px;
     width: 150px;
     margin-left: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .imgBotaoAoLado {
@@ -89,7 +98,7 @@ h3 {
     height: 35px;
     margin-left: 30px;
     border-radius: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
     font-family: 'Nunito';
@@ -116,6 +125,21 @@ h3 {
     background-color: #F1F3F6;
 }
 
+.botaoFormulario {
+    width: 35vh;
+    height: 3.5vh;
+    margin-left: 25vh;
+    margin-top: 2vh;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Nunito';
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #2970DB;
+}
+
 .alterarDadosEsquerda{
     display: flex;
     flex-direction: column;
@@ -125,7 +149,7 @@ h3 {
     display: flex;
     flex-direction: column;
     margin-left: 50vh;
-    margin-top: -48.5vh;
+    margin-top: -41.2vh;
 }
 
 .iconeLapis {
@@ -138,8 +162,8 @@ h3 {
 
 .botoesAlterarDados {
     background-color: #F1F3F6;
-    width: 350px;
-    height: 45px;
+    width: 280px;
+    height: 35px;
     align-self: center;
     border-radius: 30px;
     margin-bottom: 20px;
@@ -269,7 +293,7 @@ input[type="password"] {
     background-color: #2970DB;
 }
 
-
+/* ==========CAMPO SUPORTE========= */
 .Suporte {
     margin-left: 70px;
     margin-top: -40px;
@@ -304,6 +328,107 @@ input[type="password"] {
     color: #fff;
     background-color: #2970DB;
     margin-top: 40px;
+}
+
+.modalChatBot-background {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+}
+
+.modalChatBot-content {
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 50vh 145vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    max-height: 40vh;
+    max-width: 400vh;
+    width: 40vh;
+    height: 50vh;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    text-align: end;
+    line-height: 20px;
+}
+
+.chat-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 2vh;
+}
+
+.chat-style {
+    border: none;
+    cursor: pointer;
+    width: 20vh;
+    height: 3vh;
+    font-family: 'Nunito';
+    font-size: 15px;
+    border-radius: 30px;
+}
+
+.chat-button {
+    flex-basis: calc(50% - 5px);
+}
+
+.user-input {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    justify-content: space-between;
+}
+
+.input-mensage {
+    flex: 1;
+    cursor: pointer;
+    border: none;
+    background-color: #e8e8e8;
+    border-radius: 30px;
+}
+
+.send-button {
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: #1877F2;
+    height: 2vh;
+}
+
+.close-button {
+    background-color: #fff;
+    color: #8a8686;
+    border: none;
+    margin: auto 13vh;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Nunito';
+    font-size: 2vh;
 }
 
 .tamanhoSeta {
@@ -631,6 +756,30 @@ input[type="password"] {
     margin-left: 30px;
 }
 
+.botoesMudarOpcoesV {
+    width: 250px;
+    height: 50px;
+    align-self: center;
+    border-radius: 30px;
+    margin-top: 31vh;
+    margin-left: 5vh;
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    font-family: 'Nunito';
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.iconeBotoesV {
+    height: 35px;
+    width: 35px;
+    margin-right: 15px;
+    margin-left: 8vh;
+}
+
 /* ----------------------DETALHES DE SALVADOR ---------------*/
 
 /* -------------------PRIMEIRA PARTE DETALHES SALVADOR---------- */
@@ -801,7 +950,7 @@ input[type="password"] {
     font-size: 20px;
 }
 
-.email {
+.email2 {
     display: flex;
     /* position: fixed; */
     transform: translateY(-13.5vh);
@@ -1028,7 +1177,406 @@ input[type="password"] {
     height: 90px;
 }
 
-/* ------------------FIM DO DETALHES DE SALVADOR */
+/* ------------------FIM DO DETALHES DE SALVADOR-------------------- */
+
+/* ----------------------DETALHES DE ARRAIAL DO CABO ---------------*/
+
+/* -------------------PRIMEIRA PARTE DETALHES ARRAIAL DO CABO---------- */
+.tituloArraialDoCabo {
+    font-family: 'Nunito';
+    font-size: 50px;
+    margin-top: 0vh;
+    /* position: fixed; */
+    margin-left: 15vh;
+}
+
+.fundoCinzaHistoricoDoisC {
+    background-color: #F1F3F6;
+    width: 120vh;
+    height: 600px;
+    border-radius: 20px;
+    /* position: fixed; */
+    margin-top: 3vh;
+    margin-left: 15vh;
+}
+
+.linhaC {
+    width: 2px;
+    /* Largura da linha */
+    height: 94%;
+    /* Altura da linha */
+    background-color: transparent;
+    /* Cor de fundo transparente */
+    border-left: 1px dashed #F1F3F6;
+    /* Linha pontilhada esquerda */
+    border-width: 3px;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    /* Posição no meio do elemento */
+    transform: translateX(-50%);
+    /* Centraliza a linha */
+}
+
+.fundoBrancoHistoricoDoisC {
+    background-color: #fff;
+    width: 110vh;
+    height: 500px;
+    margin-left: 5vh;
+    border-radius: 20px;
+    transform: translateY(5vh);
+}
+
+.fundoBrancoHistoricoDoisC::before {
+    content: "";
+    /* position: absolute; */
+    width: 30px;
+    height: 30px;
+    background-color: #F1F3F6;
+    /* Cor da bolinha */
+    border-radius: 50%;
+    /* Transforma o elemento em um círculo */
+    top: 0.2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fundoBrancoHistoricoDoisC::after {
+    content: "";
+    /* position: absolute; */
+    width: 30px;
+    height: 30px;
+    background-color: #F1F3F6;
+    /* Cor da bolinha */
+    border-radius: 50%;
+    /* Transforma o elemento em um círculo */
+    top: 99.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tituloHospedagemC {
+    /* position: fixed; */
+    margin-left: 3vh;
+    transform: translateY(1vh);
+}
+
+.hospedagemC {
+    font-family: 'Nunito';
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.localImgC {
+    /* position: fixed; */
+    margin-top: 7vh;
+    margin-left: 3vh;
+}
+
+.imgPraiaC {
+    width: 300px;
+    height: 150px;
+    border-radius: 20px;
+    transform: translateY(-5vh);
+}
+
+.tituloArraialC {
+    /* position: fixed; */
+    transform: translateY(-5vh);
+    margin-left: 3vh;
+}
+
+.arraialSubTituloC {
+    font-family: 'Nunito';
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.suiteC {
+    /* position: fixed; */
+    display: flex;
+    transform: translateY(-8vh);
+    margin-left: 3vh;
+    gap: 15px;
+    align-items: center;
+}
+
+.camaC {
+    width: 30px;
+    height: 30px;
+}
+
+.palavraSuiteC {
+    font-family: "Nunito";
+    font-size: 19px;
+}
+
+.checkTotalC {
+    /* position: fixed; */
+    display: flex;
+    transform: translateY(-10vh);
+    margin-left: 3vh;
+    gap: 30px;
+}
+
+.dataCheckC {
+    font-family: "Nunito";
+    font-size: 15px;
+}
+
+.dataCheck2C {
+    font-family: "Nunito";
+    font-size: 15px;
+}
+
+.contatoC {
+    display: flex;
+    /* position: fixed; */
+    transform: translateY(-12.5vh);
+    margin-left: 3vh;
+    gap: 18.5vh;
+}
+
+.palavraContatoC {
+    font-family: 'Nunito';
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.palavraEndereçoC {
+    font-family: 'Nunito';
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.email2C {
+    display: flex;
+    /* position: fixed; */
+    transform: translateY(-13.5vh);
+    margin-left: 3vh;
+    gap: 1vh;
+}
+
+.logoSmsC {
+    width: 25px;
+    height: 25px;
+}
+
+.emailCompletoC {
+    font-family: 'Nunito';
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 0.1vh;
+}
+
+.telefoneC {
+    display: flex;
+    /* position: fixed; */
+    transform: translateY(-13.5vh);
+    margin-left: 3vh;
+    gap: 1vh;
+}
+
+.logoTelefoneC {
+    width: 25px;
+    height: 25px;
+}
+
+.telefoneCompletoC {
+    font-family: 'Nunito';
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 0.1vh;
+}
+
+.endereçoC {
+    /* position: fixed; */
+    transform: translateY(-23vh);
+    margin-left: 28.5vh;
+}
+
+.endereçoCompletoC {
+    font-family: 'Nunito';
+    font-size: 16px;
+}
+
+/* ---------------SEGUNDA PARTE DETALHES ARRAIAL DO CABO----------------- */
+.tituloTransporteC {
+    display: flex;
+    /* position: fixed; */
+    transform: translateY(-75vh);
+    margin-left: 60vh;
+    gap: 20px;
+}
+
+.transporteC {
+    font-family: 'Nunito';
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.golLogoC {
+    width: 85px;
+    height: 85px;
+    transform: translateY(1vh);
+}
+
+.horarioC {
+    display: flex;
+    flex-direction: column;
+    /* position: fixed; */
+    gap: 70px;
+    transform: translateY(-78vh);
+    margin-left: 60vh;
+}
+
+.horario1C {
+    font-family: 'Nunito';
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.horario2C {
+    font-family: 'Nunito';
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.pontoLinhaC {
+    display: flex;
+    flex-direction: column;
+    /* position: fixed; */
+    gap: 10px;
+    transform: translateY(-94vh);
+    margin-left: 65vh;
+}
+
+.circuloC {
+    width: 20px;
+    height: 20px;
+}
+
+.linha2C {
+    border-left: 2px solid #545454;
+    /* Linha preta de 1px de espessura */
+    height: 19.7%;
+    transform: translateY(-106.2vh);
+    margin-left: 66vh;
+}
+
+.marcacaoC {
+    width: 20px;
+    height: 20px;
+    margin-top: 9vh;
+}
+
+.embarqueC {
+    /* position: fixed; */
+    gap: 82px;
+    transform: translateY(-120.5vh);
+    margin-left: 69vh;
+}
+
+.embarqueTituloC {
+    font-family: "Nunito";
+    font-size: 18px;
+}
+
+.descricaoEmbarqueC {
+    transform: translateY(-121vh);
+    margin-left: 69vh;
+}
+
+.embarqueDescricaoC {
+    font-family: "Nunito";
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+.desembarqueC {
+    /* position: fixed; */
+    gap: 82px;
+    transform: translateY(-122vh);
+    margin-left: 69vh;
+}
+
+.desembarqueTituloC {
+    font-family: "Nunito";
+    font-size: 18px;
+}
+
+.descricaoDesembarqueC {
+    transform: translateY(-123vh);
+    margin-left: 69vh;
+}
+
+.desembarqueDescricaoC {
+    font-family: "Nunito";
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+.avisoC {
+    display: flex;
+    /* position: fixed; */
+    transform: translateY(-121vh);
+    margin-left: 60vh;
+    gap: 2vh;
+}
+
+.exclamacaoC {
+    width: 25x;
+    height: 25px;
+}
+
+.avisoVooC {
+    font-family: 'Nunito';
+    font-size: 16px;
+    transform: translateY(-2vh);
+}
+
+.poltronaC {
+    display: flex;
+    /* position: fixed; */
+    margin-left: 60vh;
+    transform: translateY(-123vh);
+}
+
+.poltronaTituloC {
+    font-family: 'Nunito';
+    font-size: 18px;
+}
+
+.leitoC {
+    display: flex;
+    flex-direction: row;
+    /* position: fixed; */
+    transform: translateY(-123vh);
+    margin-left: 60vh;
+    gap: 10px;
+}
+
+.logoLeitoC {
+    width: 30px;
+    height: 30px;
+}
+
+.semiLeitoC {
+    font-family: 'Nunito';
+    font-size: 18px;
+    margin-top: 0vh;
+}
+
+.logoELogin2C {
+    background-color: #F1F3F6;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 1890px;
+    height: 90px;
+}
+
+/* ------------------FIM DO DETALHES DE ARRAIAL DO CABO */
 
 /* ----------------SCROLL-------------------- */
 
@@ -1050,6 +1598,19 @@ input[type="password"] {
     background-color: #F1F3F6;
 }
 
+/* .mCSB_scrollTools {
+    margin: 1px -3px 1px 0;
+    opacity: 0;
+  }
+  
+  .mCSB_inside > .mCSB_container {
+    margin-right: 0px;
+    padding: 0 10px;
+  }
+  
+  .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  } */
 /* ------------------FIM DO SCROLL--------------- */
 
 /* -----------------RODAPE------------------ */
@@ -1070,11 +1631,26 @@ input[type="password"] {
     overflow-x: auto;
 }
 
+.inlineInfoAdicionais nav {
+    margin-right: 50px;
+}
+
+.inlineInfoAdicionais nav ul {
+    list-style-type: none;
+}
+
+.inlineInfoAdicionais nav ul li {
+    padding: 3px;
+    font-size: 20px;
+    font-family: "Nunito";
+}
+
 .imgLogoEyreRodape {
-    width: 250px;
-    height: 250px;
+    width: 450px;
+    height: 450px;
     position: relative;
-    margin-left: 480px;
+    margin-left: 250px;
+    margin-top: -10vh;
 }
 
 .formasPagamento {
@@ -1092,6 +1668,7 @@ input[type="password"] {
 
 .imgBandeirasCartao {
     max-width: 25%;
+
 }
 
 .linhaHorizontal {
@@ -1108,14 +1685,17 @@ input[type="password"] {
     left: 94em;
 }
 
-.email2 {
+.email {
     font-family: "Nunito";
     opacity: 0.5;
+    margin-top: 17vh;
+    margin-left: -0.5vh;
 }
 
 .conecteConosco {
     font-family: "Nunito";
     text-align: center;
+    margin-top: -15vh;
 }
 
 .inlineRedesSociais {
@@ -1139,5 +1719,6 @@ input[type="password"] {
     font-family: "Nunito";
     text-align: center;
     opacity: 0.5;
+    margin-top: -1vh;
 }
 /* -----------------FIM DO RODAPE------------------ */

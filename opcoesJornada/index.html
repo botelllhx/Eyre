@@ -35,13 +35,11 @@
         <h2 class="tituloTransporte">Transporte</h2>
         <div>
           <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>voo</b> disponíveis ida/volta</p>
-          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>voo</b> disponível.</p>
+          <p class="existeTransporte">Opções de <b>voo</b> disponíveis.</p>
         </div>
         <div>
           <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis ida/volta</p>
-          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>ônibus</b> disponível.</p>
+          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis.</p>
         </div>
       </div>
       <div class="botao">
@@ -67,13 +65,11 @@
         <h2 class="tituloTransporte">Transporte</h2>
         <div>
           <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>voo</b> disponíveis ida/volta</p>
-          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>voo</b> disponível.</p>
+          <p class="existeTransporte">Opções de <b>voo</b> disponíveis.</p>
         </div>
         <div>
           <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis ida/volta</p>
-          <p class="mensagemTransporteNaoDisponivel" style="display: none;">Não existe <b>ônibus</b> disponível.</p>
+          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis.</p>
         </div>
       </div>
       <div class="botao">
@@ -99,11 +95,11 @@
         <h2 class="tituloTransporte">Transporte</h2>
         <div>
           <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>voo</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>voo</b> disponíveis.</p>
         </div>
         <div>
           <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis ida/volta</p>
+          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis.</p>
         </div>
       </div>
       <div class="botao">
@@ -119,11 +115,12 @@
     <script>
       const respostaHospedagens = localStorage.getItem('respostaHospedagens');
       const hospedagensData = JSON.parse(respostaHospedagens);
+      var token = localStorage.getItem("token");
 
       document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
-          hospedagensData.content.forEach((card, index) => {
+          hospedagensData.forEach((card, index) => {
 
             console.log('Processando Card ' + index + ':', card);
             console.log("aqui funciona! 1")
@@ -132,10 +129,12 @@
 
             if (cardDiv) {
               cardDiv.querySelector('.tituloHospedagem').textContent = card.titulo;
-              cardDiv.querySelector('.imagemHospedagem').src = card.listImagens[0].imagem.dados; // primeiro item é alterado
+              // cardDiv.querySelector('.imagemHospedagem').src = card.listImagens[0].imagem.dados; // primeiro item é alterado
               cardDiv.querySelector('.tituloSuite').textContent = card.tipoQuarto;
               cardDiv.querySelector('.infoBrisas').textContent = card.descricaoQuarto;
-              cardDiv.querySelector('.listExtras').textContent = card.listExtras[0].nome; // primeiro item é alterado
+              if(card.listExtras.length != 0){
+                cardDiv.querySelector('.listExtras').textContent = card.listExtras[0].nome; // primeiro item é alterado
+              }
               cardDiv.querySelector('.botao input').setAttribute('data-card-id', card.id);
 
               console.log(cardDiv.querySelector('.botao input').getAttribute('data-card-id'));
@@ -154,17 +153,12 @@
               const existeTransporteParagrafos = existeVooOnibusDiv.querySelectorAll('.existeTransporte');
 
               if (existeVooOnibusDiv) {
-                if (card.existeVoo === 'true') {
-                  existeTransporteParagrafos[0].style.display = 'block';
-                } else {
-                  existeTransporteParagrafos[0].style.display = 'none';
+                if (!card.existeVoo) {
+                  existeTransporteParagrafos[0].innerHTML = "<b>Não</b> existe <b>voo</b> disponível.";
                 }
 
-                if (card.existeOnibus === 'true') {
-                  existeTransporteParagrafos[1].style.display = 'block';
-                  console.log("aqui funciona! 4")
-                } else {
-                  existeTransporteParagrafos[1].style.display = 'none';
+                if (!card.existeOnibus) {
+                  existeTransporteParagrafos[1].innerHTML = "<b>Não</b> existe <b>ônibus</b> disponível.";
                 }
               } else {
                 console.log('bordaDatas not found for num: ' + num);
@@ -174,7 +168,7 @@
             }
 
             // Esconder a tela de loading após processar o último card
-            if (index === hospedagensData.content.length - 1) {
+            if (index === hospedagensData.length - 1) {
               console.log("aqui funciona! 5")
               const loadingOverlay = document.getElementById('loading');
               loadingOverlay.style.display = 'none';
@@ -196,10 +190,11 @@
 
         // http://localhost:3189/api/hospedagem/${cardId}/${dataIdaFormatoCorreto}/${dataVoltaFormatoCorreto}/true
 
-        fetch(`https://jsonplaceholder.typicode.com/posts`, {
+        fetch(`http://localhost:3189/api/hospedagem/${cardId}/${dataIdaFormatoCorreto}/${dataVoltaFormatoCorreto}/true`, {
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
           }
         })
           .then(function (response) {
@@ -211,325 +206,343 @@
           })
           .then(function (data) {
 
-            const respostaDetalhesHospedagens = {
-              "hospedagem": {
-                "id": 1,
-                "titulo": "Brisas do Farol - Arraial do Cabo",
-                "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-                "tipoQuarto": "SUITE",
-                "descricaoQuarto": "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m², 3 camas (2 de solteiro, 1 de casal).",
-                "voos": [
-                  {
-                    "nome": "LATAM",
-                    "listDias": {
-                      "POSTERIOR": [],
-                      "ANTERIOR": [
-                        {
-                          "listHorarios": [
-                            {
-                              "id": 4,
-                              "horarioSaida": "07:00",
-                              "horarioChegada": "08:40"
-                            },
-                            {
-                              "id": 5,
-                              "horarioSaida": "07:40",
-                              "horarioChegada": "09:40"
-                            },
-                            {
-                              "id": 6,
-                              "horarioSaida": "10:00",
-                              "horarioChegada": "12:10"
-                            }
-                          ],
-                          "tipoRota": "VOLTA"
-                        }
-                      ],
-                      "EXATA": [
-                        {
-                          "listHorarios": [
-                            {
-                              "id": 1,
-                              "horarioSaida": "07:00",
-                              "horarioChegada": "08:40"
-                            },
-                            {
-                              "id": 2,
-                              "horarioSaida": "07:40",
-                              "horarioChegada": "09:42"
-                            },
-                            {
-                              "id": 3,
-                              "horarioSaida": "10:00",
-                              "horarioChegada": "12:10"
-                            }
-                          ],
-                          "tipoRota": "IDA"
-                        },
-                        {
-                          "listHorarios": [
-                            {
-                              "id": 4,
-                              "horarioSaida": "07:00",
-                              "horarioChegada": "08:42"
-                            },
-                            {
-                              "id": 5,
-                              "horarioSaida": "07:40",
-                              "horarioChegada": "09:43"
-                            },
-                            {
-                              "id": 6,
-                              "horarioSaida": "10:00",
-                              "horarioChegada": "12:10"
-                            }
-                          ],
-                          "tipoRota": "VOLTA"
-                        }
-                      ]
-                    },
-                    "escala": true,
-                    "imagemCompanhiaAerea": {
-                      "id": 1,
-                      "nome": "foto-1",
-                      "tipoMidia": "FOTO_PRINCIPAL",
-                      "dados": "DADOSBASE64",
-                      "byteArrayFrom64": "DADOSBASE64"
-                    }
-                  }
-                ],
-                "onibus": [
-                  {
-                    "listDias": {
-                      "POSTERIOR": [],
-                      "ANTERIOR": [
-                        {
-                          "listHorarios": [
-                            {
-                              "id": 4,
-                              "horarioSaida": "07:00",
-                              "horarioChegada": "08:40"
-                            },
-                            {
-                              "id": 5,
-                              "horarioSaida": "07:40",
-                              "horarioChegada": "09:40"
-                            },
-                            {
-                              "id": 6,
-                              "horarioSaida": "10:00",
-                              "horarioChegada": "12:10"
-                            }
-                          ],
-                          "tipoRota": "VOLTA"
-                        }
-                      ],
-                      "EXATA": [
-                        {
-                          "listHorarios": [
-                            {
-                              "id": 1,
-                              "horarioSaida": "07:00",
-                              "horarioChegada": "08:40"
-                            },
-                            {
-                              "id": 2,
-                              "horarioSaida": "07:40",
-                              "horarioChegada": "09:42"
-                            },
-                            {
-                              "id": 3,
-                              "horarioSaida": "10:00",
-                              "horarioChegada": "12:10"
-                            }
-                          ],
-                          "tipoRota": "IDA",
-                          "localSaida": "Lourdes",
-                          "localChegada": "Praia dos Anjos",
-                        },
-                        {
-                          "listHorarios": [
-                            {
-                              "id": 4,
-                              "horarioSaida": "07:00",
-                              "horarioChegada": "08:42"
-                            },
-                            {
-                              "id": 5,
-                              "horarioSaida": "07:40",
-                              "horarioChegada": "09:43"
-                            },
-                            {
-                              "id": 6,
-                              "horarioSaida": "10:00",
-                              "horarioChegada": "12:10"
-                            }
-                          ],
-                          "tipoRota": "VOLTA",
-                          "localSaida": "Praia dos Anjos",
-                          "localChegada": "Lagoinha",
-                        }
-                      ]
-                    },
-                  }
-                ],
-                "listExtras": [
-                  {
-                    "id": 1,
-                    "nome": "extra principal AQUI"
-                  }
-                ],
-                "listImagens": [
-                  {
-                    "id": 1,
-                    "nome": "foto-1",
-                    "tipoMidia": "FOTO_PRINCIPAL",
-                    "dados": "DADOSBASE64",
-                    "byteArrayFrom64": "DADOSBASE64"
-                  }
-                ],
-                "checkIn": "13:00",
-                "checkOut": "20:00",
-                "endereco": {
-                  "id": 1,
-                  "cep": "39827000",
-                  "pais": "Brasil",
-                  "estado": "Minas Gerais",
-                  "sigla": "MG",
-                  "cidade": "Pote",
-                  "bairro": "Centro",
-                  "rua": "Benedito Valadares",
-                  "numero": "172"
-                },
-                "listAvaliacoes": [],
-                "preco": 300.00,
-                "listProximidades": {
-                  "Turisticos": [
-                    {
-                      "id": 1,
-                      "nome": "corcovado",
-                      "tipoProximidade": "TURISTICO",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                    {
-                      "id": 2,
-                      "nome": "cristo redentor",
-                      "tipoProximidade": "TURISTICO",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                    {
-                      "id": 3,
-                      "nome": "et bilu",
-                      "tipoProximidade": "TURISTICO",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                  ],
-                  "Restaurantes": [
-                    {
-                      "id": 1,
-                      "nome": "ja",
-                      "tipoProximidade": "RESTAURANTE",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                    {
-                      "id": 2,
-                      "nome": "podi",
-                      "tipoProximidade": "RESTAURANTE",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                    {
-                      "id": 3,
-                      "nome": "almosar",
-                      "tipoProximidade": "RESTAURANTE",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                  ],
-                  "Boates": [],
-                  "Bares": [
-                    {
-                      "id": 1,
-                      "nome": "barzinho",
-                      "tipoProximidade": "BARES",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                    {
-                      "id": 2,
-                      "nome": "barzao",
-                      "tipoProximidade": "BARES",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                    {
-                      "id": 3,
-                      "nome": "botecao",
-                      "tipoProximidade": "BARES",
-                      "foto": {
-                        "id": 1,
-                        "nome": "foto-1",
-                        "tipoMidia": "FOTO_PRINCIPAL",
-                        "dados": "./imagens/TESTE1.png",
-                        "byteArrayFrom64": "DADOSBASE64"
-                      }
-                    },
-                  ]
-                }
-              },
-              "avaliacoes": 1,
-              "classificacao": 10.0
-            }
+            // const respostaDetalhesHospedagens = {
+            //   "hospedagem": {
+            //     "id": 1,
+            //     "titulo": "Brisas do Farol - Arraial do Cabo",
+            //     "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+            //     "tipoQuarto": "SUITE",
+            //     "descricaoQuarto": "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m², 3 camas (2 de solteiro, 1 de casal).",
+            //     "voos": [
+            //       {
+            //         "nome": "LATAM",
+            //         "listDias": {
+            //           "POSTERIOR": [],
+            //           "ANTERIOR": [
+            //             {
+            //               "listHorarios": [
+            //                 {
+            //                   "id": 4,
+            //                   "horarioSaida": "07:00",
+            //                   "horarioChegada": "08:40"
+            //                 },
+            //                 {
+            //                   "id": 5,
+            //                   "horarioSaida": "07:40",
+            //                   "horarioChegada": "09:40"
+            //                 },
+            //                 {
+            //                   "id": 6,
+            //                   "horarioSaida": "10:00",
+            //                   "horarioChegada": "12:10"
+            //                 }
+            //               ],
+            //               "tipoRota": "VOLTA"
+            //             }
+            //           ],
+            //           "EXATA": [
+            //             {
+            //               "listHorarios": [
+            //                 {
+            //                   "id": 1,
+            //                   "horarioSaida": "07:00",
+            //                   "horarioChegada": "08:40"
+            //                 },
+            //                 {
+            //                   "id": 2,
+            //                   "horarioSaida": "07:40",
+            //                   "horarioChegada": "09:42"
+            //                 },
+            //                 {
+            //                   "id": 3,
+            //                   "horarioSaida": "10:00",
+            //                   "horarioChegada": "12:10"
+            //                 }
+            //               ],
+            //               "tipoRota": "IDA"
+            //             },
+            //             {
+            //               "listHorarios": [
+            //                 {
+            //                   "id": 4,
+            //                   "horarioSaida": "07:00",
+            //                   "horarioChegada": "08:42"
+            //                 },
+            //                 {
+            //                   "id": 5,
+            //                   "horarioSaida": "07:40",
+            //                   "horarioChegada": "09:43"
+            //                 },
+            //                 {
+            //                   "id": 6,
+            //                   "horarioSaida": "10:00",
+            //                   "horarioChegada": "12:10"
+            //                 }
+            //               ],
+            //               "tipoRota": "VOLTA"
+            //             }
+            //           ]
+            //         },
+            //         "escala": true,
+            //         "imagemCompanhiaAerea": {
+            //           "id": 1,
+            //           "nome": "foto-1",
+            //           "tipoMidia": "FOTO_PRINCIPAL",
+            //           "dados": "DADOSBASE64",
+            //           "byteArrayFrom64": "DADOSBASE64"
+            //         }
+            //       }
+            //     ],
+            //     "onibus": [
+            //       {
+            //         "listDias": {
+            //           "POSTERIOR": [],
+            //           "ANTERIOR": [
+            //             {
+            //               "listHorarios": [
+            //                 {
+            //                   "id": 4,
+            //                   "horarioSaida": "07:00",
+            //                   "horarioChegada": "08:40"
+            //                 },
+            //                 {
+            //                   "id": 5,
+            //                   "horarioSaida": "07:40",
+            //                   "horarioChegada": "09:40"
+            //                 },
+            //                 {
+            //                   "id": 6,
+            //                   "horarioSaida": "10:00",
+            //                   "horarioChegada": "12:10"
+            //                 }
+            //               ],
+            //               "tipoRota": "VOLTA"
+            //             }
+            //           ],
+            //           "EXATA": [
+            //             {
+            //               "listHorarios": [
+            //                 {
+            //                   "id": 1,
+            //                   "horarioSaida": "07:00",
+            //                   "horarioChegada": "08:40"
+            //                 },
+            //                 {
+            //                   "id": 2,
+            //                   "horarioSaida": "07:40",
+            //                   "horarioChegada": "09:42"
+            //                 },
+            //                 {
+            //                   "id": 3,
+            //                   "horarioSaida": "10:00",
+            //                   "horarioChegada": "12:10"
+            //                 }
+            //               ],
+            //               "tipoRota": "IDA",
+            //               "localSaida": "Lourdes",
+            //               "localChegada": "Praia dos Anjos",
+            //             },
+            //             {
+            //               "listHorarios": [
+            //                 {
+            //                   "id": 4,
+            //                   "horarioSaida": "07:00",
+            //                   "horarioChegada": "08:42"
+            //                 },
+            //                 {
+            //                   "id": 5,
+            //                   "horarioSaida": "07:40",
+            //                   "horarioChegada": "09:43"
+            //                 },
+            //                 {
+            //                   "id": 6,
+            //                   "horarioSaida": "10:00",
+            //                   "horarioChegada": "12:10"
+            //                 }
+            //               ],
+            //               "tipoRota": "VOLTA",
+            //               "localSaida": "Praia dos Anjos",
+            //               "localChegada": "Lagoinha",
+            //             }
+            //           ]
+            //         },
+            //       }
+            //     ],
+            //     "listExtras": [
+            //       {
+            //         "id": 1,
+            //         "nome": "extra principal AQUI"
+            //       },
+            //       {
+            //         "id": 2,
+            //         "nome": "extra principal AQUI"
+            //       },
+            //       {
+            //         "id": 3,
+            //         "nome": "extra principal AQUI"
+            //       },
+            //     ],
+            //     "listImagens": [
+            //       {
+            //         "id": 1,
+            //         "nome": "foto-1",
+            //         "tipoMidia": "FOTO_PRINCIPAL",
+            //         "dados": "DADOSBASE64",
+            //         "byteArrayFrom64": "DADOSBASE64"
+            //       }
+            //     ],
+            //     "checkIn": "13:00",
+            //     "checkOut": "20:00",
+            //     "endereco": {
+            //       "id": 1,
+            //       "cep": "39827000",
+            //       "pais": "Brasil",
+            //       "estado": "Minas Gerais",
+            //       "sigla": "MG",
+            //       "cidade": "Pote",
+            //       "bairro": "Centro",
+            //       "rua": "Benedito Valadares",
+            //       "numero": "172"
+            //     },
+            //     "listAvaliacoes": [],
+            //     "preco": 300.00,
+            //     "listProximidades": {
+            //       "Turisticos": [
+            //         {
+            //           "id": 1,
+            //           "nome": "corcovado",
+            //           "tipoProximidade": "TURISTICO",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //         {
+            //           "id": 2,
+            //           "nome": "cristo redentor",
+            //           "tipoProximidade": "TURISTICO",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //         {
+            //           "id": 3,
+            //           "nome": "et bilu",
+            //           "tipoProximidade": "TURISTICO",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //       ],
+            //       "Restaurantes": [
+            //         {
+            //           "id": 1,
+            //           "nome": "ja",
+            //           "tipoProximidade": "RESTAURANTE",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //         {
+            //           "id": 2,
+            //           "nome": "podi",
+            //           "tipoProximidade": "RESTAURANTE",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+                      
+            //         },
+            //         {
+            //           "id": 3,
+            //           "nome": "almosar",
+            //           "tipoProximidade": "RESTAURANTE",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //       ],
+            //       "Boates": [],
+            //       "Bares": [
+            //         {
+            //           "id": 1,
+            //           "nome": "barzinho",
+            //           "tipoProximidade": "BARES",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //         {
+            //           "id": 2,
+            //           "nome": "barzao",
+            //           "tipoProximidade": "BARES",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //         {
+            //           "id": 3,
+            //           "nome": "botecao",
+            //           "tipoProximidade": "BARES",
+            //           "foto": {
+            //             "id": 1,
+            //             "nome": "foto-1",
+            //             "tipoMidia": "FOTO_PRINCIPAL",
+            //             "dados": "./imagens/TESTE1.png",
+            //             "byteArrayFrom64": "DADOSBASE64"
+            //           },
+            //           "texto" : "baracunde barcunde eo",
+            //         },
+            //       ]
+            //     }
+            //   },
+            //   "avaliacoes": 1,
+            //   "classificacao": 10.0
+            // }
             // Aqui você manipula a resposta do servidor
             console.log('Resposta do servidor:', data);
 
             console.log
             // Armazena a resposta do servidor no localStorage
-            localStorage.setItem('respostaDetalhesHospedagens', JSON.stringify(respostaDetalhesHospedagens));
+            localStorage.setItem('respostaDetalhesHospedagens', JSON.stringify(data));
 
             // Redireciona para outra página
             window.location.href = '../pacote/index.html';

@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="CSS/styleLogin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <title>Eyre - Login</title>
 </head>
 
@@ -55,21 +56,21 @@
       </a>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
   <script>
+    // função para realizar o login
     function login() {
       var dados = {
         email: document.getElementById("email").value,
         senha: document.getElementById("password").value
       };
 
-      // REQUISIÇÃO
-      // http://localhost:8080/auth/
+      // requisição para autenticar o usuário
       fetch("http://localhost:3189/auth/", {
         method: "POST",
         mode: "cors",
         headers: {
-          "Content-Type": "application/json", // Certifique-se de que isso está correto
-          "nome": "valor",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(dados)
       })
@@ -81,46 +82,21 @@
           }
         })
         .then(data => {
-          console.log(data);
-
-          // Armazenar o token JWT retornado pela API
           var token = data.token;
+          // var token = "seu-token-de-autenticacao"
 
-          // Armazenar o token no localStorage ou sessionStorage
+          // armazena o token no localStorage ou sessionStorage
           localStorage.setItem("token", token); // Ou sessionStorage
 
-          // Exibe mensagem de sucesso
-          console.log(token)
-          alert("Login realizado com sucesso!");
-
-          // Armazena o email no local storage
-
-          localStorage.setItem('email', dados.email);
-
-          // Redireciona para a página inicial
-
-          window.location.href = "../index.html";
+          // segunda requisição para obter os dados do usuário
+          return fetch("http://localhost:3189/api/usuario/me/", {
+            method: "GET",
+            mode: "cors",
+            headers: {
+              "Authorization": "Bearer " + token
+            }
+          });
         })
-        .catch(error => {
-          console.error(error);
-          alert("Ocorreu um erro durante o login. Por favor, tente novamente mais tarde.");
-        });
-    }
-
-
-    // Função para enviar requisições com token
-    function enviarRequisicaoComToken(url, metodo, dados) {
-      var token = localStorage.getItem("token"); // Ou sessionStorage
-
-      return fetch(url, {
-        method: metodo,
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token
-        },
-        body: JSON.stringify(dados)
-      })
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -128,8 +104,36 @@
             throw new Error("Erro na requisição: " + response.status);
           }
         })
+        .then(usuario => {
+          // armazenar os dados do usuário no LocalStorage
+          localStorage.setItem("usuario", JSON.stringify(usuario));
+
+          // armazena o email no localStorage
+          localStorage.setItem('email', dados.email);
+
+          Swal.fire({
+            icon: 'success', // Ícone de sucesso
+            title: 'Login Realizado', // Título da mensagem
+            customClass: {
+              confirmButton: 'botao-ok-customizado' // Nome da classe personalizada
+            }
+          });
+
+          // Aguarde alguns segundos antes de redirecionar
+          setTimeout(() => {
+            // redireciona para a página inicial
+            window.location.href = "../index.html";
+          }, 2000); // 2000 milissegundos = 2 segundos
+        })
         .catch(error => {
           console.error(error);
+          Swal.fire({
+            icon: 'error', // Ícone de erro
+            title: 'Erro ao fazer login',
+            customClass: {
+              confirmButton: 'botao-erro-customizado' // Nome da classe personalizada
+            }
+          });
         });
     }
 

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="./funcoes.js"></script>
     <title>Eyre - Pagamentos</title>
 
@@ -135,7 +136,7 @@
                     </div>
 
                     <div id="cartaoTitularDivTreze" class="nomeCartao">
-                        <input type="text" id="cardNameInputQuatro" placeholder="Nalysson Luiz" class="inputNome"
+                        <input type="text" id="cardNameInputQuatro" placeholder="Nome" class="inputNome"
                             oninput="formatarNome(event)" onkeypress="validarDigitacao(event)">
                     </div>
 
@@ -259,7 +260,7 @@
             </div>
 
             <!-- ===================================== TROCA DE COR ====================================== -->
-            
+
             <script>
                 const botoes = document.querySelectorAll('.selecionadoC')
 
@@ -276,9 +277,9 @@
             <!-- /* ===============================CONFIRMAR==================================== */ -->
 
             <div>
-                <a href="../webPerfil/index.html"><button class="botao">
+                <button id="botaoConfirmarPagamento" class="botao">
                     Confirmar
-                </button></a>
+                </button>
             </div>
 
             <!-- ==========================VALOR A PAGAR========================== -->
@@ -290,7 +291,7 @@
                 <div class="fundoBrancoValor">
                 </div>
                 <div class="valor">
-                    <h1>R$1.500,00</h1>
+                    <h1 id="preco">R$1.500,00</h1>
                 </div>
                 <div class="hospedagem">
                     <h3>Hospedagem</h3>
@@ -310,6 +311,38 @@
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.getElementById('botaoConfirmarPagamento').addEventListener('click', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Pagamento Confirmado',
+                text: 'Seu pagamento foi confirmado com sucesso.',
+                customClass: {
+                    confirmButton: 'botao-confirmar-pagamento'
+                },
+                showCancelButton: false,
+            });
+
+            // Aguarde 2 segundos antes de redirecionar
+            setTimeout(function () {
+                window.location.href = '../webPerfil/index.html';
+            }, 3000); // 2000 milissegundos = 2 segundos
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                // Formata o número como moeda brasileira (R$)
+                const precoFormatado = precoNumerico.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                });
+
+                // Atualiza o conteúdo do elemento HTML com o preço formatado
+                document.getElementById("preco").textContent = precoFormatado;
+            });
+        });
+    </script>
 </body>
 
 </html>

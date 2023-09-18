@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" type="image/png" href="imagens/icon.png" />
+    <title>Eyre - Viagens acessíveis</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="cs/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navBARES navBARES-expand-lg bg-body-tertiary cabecalho">
+            <div class="container-fluid">
+                <a class="navBARES-brand" href="#">
+                    <h1 class="logoEyre"><img src="imagens/logo.png"
+                            alt="Logo da Eyre com o ultimo 'E' dentro de uma bolsa."></h1>
+                </a>
+                <button class="navBARES-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navBARESSupportedContent" aria-controls="navBARESSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navBARES-toggler-icon"></span>
+                </button>
+                <div class="collapse navBARES-collapse conteudoNavBARES" id="navBARESSupportedContent">
+                    <ul class="navBARES-nav me-auto mb-2 mb-lg-0">
+                        <!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li> -->
+                        <li class="nav-item dropdown perfilDropDown">
+                            <a class="nav-link dropdown-toggle perfilAvatar" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="imagens/login.png"
+                                    alt="Imagem e silhueta de uma pessoa, indicando perfil de usuário.">
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><img src="imagens/lapisPerfil.png"
+                                            alt="Imagem de um lápis, indicando alteração de dados do usuário"><span>Perfil</span></a>
+                                </li> <!-- TODO: Conectar páginas-->
+                                <li><a class="dropdown-item" href="/hospedagens.html"><img
+                                            src="imagens/camaHospedagem.png"
+                                            alt="Imagem de uma cama, indicando acesso a lista de hospedagens cadastradas."><span>Hospedagens</span></a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><img src="imagens/novaHospedagem.png"
+                                            alt="Sinal de 'mais' indicando acesso a criação de hospedagem. "><span>Nova<br>Hospedagem</span></a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><img src="imagens/sairPerfil.png"
+                                            alt="seta vermelha indicando logout do usuário."><span>Sair</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <form class="formularioHospedagem" id="formularioHospedagem" enctype="multipart/form-data">
+            <article>
+                <h2>Dados da Hospedagem</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="px-2 col-6">
+                        <label for="nome" class="form-label">Nome da Hospedagem</label>
+                        <input type="text" class="form-control" id="nome" name="titulo" placeholder="Digite aqui..."
+                            required>
+                    </div>
+                    <div class="px-2 col-6">
+                        <label for="preco" class="form-label">Preço/Diária</label>
+                        <input type="text" class="form-control" id="preco" name="preco" placeholder="Digite o valor"
+                            required> <!-- TODO: VALIDAÇÃO DA MOEDA IGUAL NA PÁGINA HOME-->
+                    </div>
+                    <div class="px-2 col-12">
+                        <label for="descricao" class="form-label">Descrição da Hospedagem</label>
+                        <textarea class="form-control" id="descricao" name="descricao" rows="3"
+                            placeholder="Digite aqui..."></textarea>
+                    </div>
+                    <div class="px-2 col-6">
+                        <label for="quantidadeReservas" class="form-label">Quantidade de Quartos</label>
+                        <input type="number" class="form-control" id="quantidadeReservas" name="quantidadeReservas"
+                            placeholder="Digite o valor" required>
+                    </div>
+                    <fieldset class="px-2 col-6">
+                        <legend>Tipo dos quartos</legend>
+                        <select id="tipoQuarto" name="tipoQuarto">
+                            <option disabled selected>Selecione</option>
+                            <option>STANDARD</option>
+                            <option>SUITE</option>
+                            <option>SUITE_JUNIOR</option>
+                            <option>SUITE_EXECUTIVA</option>
+                            <option>SUITE_PRESIDENCIAL</option>
+                            <option>SUPERIOR</option>
+                            <option>DELUXE</option>
+                        </select>
+                    </fieldset>
+                    <div class="px-2 col-12">
+                        <label for="descricao" class="form-label">Descrição do Quarto</label>
+                        <textarea class="form-control" id="descricaoQuarto" name="descricaoQuarto" rows="3"
+                            placeholder="Digite aqui..."></textarea>
+                    </div>
+                    <fieldset class="fieldSetlistExtras px-2 col-8">
+                        <legend>Lista de listExtras/Serviços</legend>
+                        <div class="selectMultiplo">
+                            <ul class="legendaExtras col-4">
+                                <li>
+                                    <div class="quadradoLegenda"></div>
+                                    <span>Serviços</span>
+                                </li>
+                                <li>
+                                    <div class="quadradoLegenda"></div>
+                                    <span>Condições</span>
+                                </li>
+                                <li>
+                                    <div class="quadradoLegenda"></div>
+                                    <span>Serviços Principais</span>
+                                </li>
+                            </ul>
+                            <div class="col-8">
+                                <ul class="list-group conteudoSelect"></ul>
+                                <!-- TODO: colocar a lista abaixo para ser um dropdown funcional-->
+                                <ul class="list-group opcoesSelect"></ul>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="px-2 col-2">
+                        <label for="checkIn" class="form-label">Check In</label>
+                        <input type="time" class="form-control" id="checkIn" name="checkIn" placeholder="Digite o valor"
+                            required>
+                    </div>
+                    <div class="px-2 col-2">
+                        <label for="checkOut" class="form-label">Check Out</label>
+                        <input type="time" class="form-control" id="checkOut" name="checkOut"
+                            placeholder="Digite o valor" required>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h2>Endereço</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="px-2 col-6">
+                        <label for="cep" class="form-label">Cep</label>
+                        <input type="text" class="form-control" id="cep" name="cep" placeholder="Digite o valor"
+                            required><!--TODO: conexão API por CEP-->
+                    </div>
+                    <div class="px-2 col-6">
+                        <label for="rua" class="form-label">Rua</label>
+                        <input type="text" class="form-control" id="rua" name="rua" placeholder="Digite o valor"
+                            required>
+                    </div>
+                    <div class="px-2 col-2">
+                        <label for="numero" class="form-label">Número</label>
+                        <input type="text" class="form-control" id="numero" name="numero" placeholder="Digite o valor"
+                            required>
+                    </div>
+                    <div class="px-2 col-5">
+                        <label for="bairro" class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Digite o valor"
+                            required>
+                    </div>
+                    <div class="px-2 col-5">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Digite o valor"
+                            required>
+                    </div>
+                    <div class="px-2 col-5">
+                        <label for="estado" class="form-label">Estado</label>
+                        <input type="text" class="form-control" id="estado" name="estado" placeholder="Digite o valor"
+                            required>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h2>Contato</h2>
+                <div class="d-flex flex-wrap">
+                    <div class="px-2 col-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite o valor"
+                            required>
+                    </div>
+                    <div class="px-2 col-6">
+                        <label for="telefone" class="form-label">Telefone</label>
+                        <input type="tel" class="form-control" id="telefone" name="telefone"
+                            placeholder="Digite o valor" onkeyup="formatTelefone()" maxlength="14" required>
+                    </div>
+                </div>
+            </article>
+            <article class="fotos">
+                <h2>Fotos</h2>
+                <div class="px-2">
+                    <input type="file" id="uploadImagens" name="fotos" multiple accept="image/*" required>
+                    <div class="image-preview" id="imagePreview"></div>
+                    <div id="imagemInputFile">
+                        <img src="imagens/imageUploadImage.png"
+                            alt="Imagem de uma paisagem, indicando local para adição de imagens.">
+                        <span>Escolha as Imagens</span>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h2>Proximidades</h2>
+
+                <!-- Menu de Abas -->
+                <div class="tabs">
+                    <button class="tablink" onclick="abrirAba(event, 'BARES')">Bares</button>
+                    <button class="tablink" onclick="abrirAba(event, 'TURISTICO')">Turisticos</button>
+                    <button class="tablink" onclick="abrirAba(event, 'RESTAURANTE')">Restaurantes</button>
+                </div>
+
+                <!-- Aba de BARES -->
+                <div id="BARES" class="aba ativa">
+                    <!-- Conjunto de campos para BARES (repetir 3 vezes) -->
+                    <h3>BARES</h3>
+                    <!-- BARES 1 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeBARES1" class="form-label">Nome do BARES 1</label>
+                                <input type="text" class="form-control" id="nomeBARES1" name="nomeBARES1"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoBARES1" class="form-label">Descrição do BARES 1</label>
+                                <input type="text" class="form-control" id="descricaoBARES1" name="descricaoBARES1"
+                                    placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensBARES1" class="form-label">Fotos do BARES 1</label>
+                                <label class="image-container" id="imageContainerBARES1">
+                                    <input type="file" id="uploadImagensBARES1" name="fotosProximidadesBARES1"
+                                        style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensBARES1', 'imageContainerBARES1')">
+                                    <span class="image-text">Foto do BARES</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BARES 2 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeBARES2" class="form-label">Nome do BARES 2</label>
+                                <input type="text" class="form-control" id="nomeBARES2" name="nomeBARES2"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoBARES2" class="form-label">Descrição do BARES 2</label>
+                                <input type="text" class="form-control" id="descricaoBARES2" name="descricaoBARES2"
+                                    placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensBARES2" class="form-label">Fotos do BARES 2</label>
+                                <label class="image-container" id="imageContainerBARES2">
+                                    <input type="file" id="uploadImagensBARES2" name="fotosProximidadesBARES2"
+                                        style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensBARES2', 'imageContainerBARES2')">
+                                    <span class="image-text">Foto do BARES</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BARES 3 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeBARES3" class="form-label">Nome do BARES 3</label>
+                                <input type="text" class="form-control" id="nomeBARES3" name="nomeBARES3"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoBARES3" class="form-label">Descrição do BARES 3</label>
+                                <input type="text" class="form-control" id="descricaoBARES3" name="descricaoBARES3"
+                                    placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensBARES3" class="form-label">Fotos do BARES 3</label>
+                                <label class="image-container" id="imageContainerBARES3">
+                                    <input type="file" id="uploadImagensBARES3" name="fotosProximidadesBARES3"
+                                        style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensBARES3', 'imageContainerBARES3')">
+                                    <span class="image-text">Foto do BARES</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="BARESContainer">
+                        <!-- Conteúdo de BARES será dinamicamente adicionado aqui -->
+                    </div>
+                    <button type="button" onclick="adicionarEstabelecimento('BARESContainer')">Adicionar
+                        Estabelecimento</button>
+
+                </div>
+
+                <!-- Aba de Atrações Turísticas (repetir o padrão para 3 atrações) -->
+                <div id="TURISTICO" class="aba">
+                    <!-- Conjunto de campos para Atrações Turísticas (repetir 3 vezes) -->
+                    <h3>TURISTICO</h3>
+                    <!-- Turísticos 1 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeTURISTICO1" class="form-label">Nome TURISTICO 1</label>
+                                <input type="text" class="form-control" id="nomeTURISTICO1" name="nomeTURISTICO1"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoTURISTICO1" class="form-label">Descrição TURISTICO 1</label>
+                                <input type="text" class="form-control" id="descricaoTURISTICO1"
+                                    name="descricaoTURISTICO1" placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensTURISTICO1" class="form-label">Fotos TURISTICO 1</label>
+                                <label class="image-container" id="imageContainerTURISTICO1">
+                                    <input type="file" id="uploadImagensTURISTICO1" name="fotosProximidadesTURISTICO1"
+                                        style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensTURISTICO1', 'imageContainerTURISTICO1')">
+                                    <span class="image-text">Foto TURISTICO</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Turísticos 2 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeTURISTICO2" class="form-label">Nome TURISTICO 2</label>
+                                <input type="text" class="form-control" id="nomeTURISTICO2" name="nomeTURISTICO2"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoTURISTICO2" class="form-label">Descrição TURISTICO 2</label>
+                                <input type="text" class="form-control" id="descricaoTURISTICO2"
+                                    name="descricaoTURISTICO2" placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensTURISTICO2" class="form-label">Fotos TURISTICO 2</label>
+                                <label class="image-container" id="imageContainerTURISTICO2">
+                                    <input type="file" id="uploadImagensTURISTICO2" name="fotosProximidadesTURISTICO2"
+                                        style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensTURISTICO2', 'imageContainerTURISTICO2')">
+                                    <span class="image-text">Foto TURISTICO</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Turísticos 3 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeTURISTICO3" class="form-label">Nome TURISTICO 3</label>
+                                <input type="text" class="form-control" id="nomeTURISTICO3" name="nomeTURISTICO3"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoTURISTICO3" class="form-label">Descrição TURISTICO 3</label>
+                                <input type="text" class="form-control" id="descricaoTURISTICO3"
+                                    name="descricaoTURISTICO3" placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensTURISTICO3" class="form-label">Fotos TURISTICO 3</label>
+                                <label class="image-container" id="imageContainerTURISTICO3">
+                                    <input type="file" id="uploadImagensTURISTICO3" name="fotosProximidadesTURISTICO3"
+                                        style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensTURISTICO3', 'imageContainerTURISTICO3')">
+                                    <span class="image-text">Foto TURISTICO</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="TURISTICOContainer">
+                        <!-- Conteúdo de Turísticos será dinamicamente adicionado aqui -->
+                    </div>
+                    <button type="button" onclick="adicionarEstabelecimento('TURISTICOContainer')">Adicionar
+                        Estabelecimento</button>
+
+                </div>
+
+                <!-- Aba de RESTAURANTE (repetir o padrão para 3 RESTAURANTE) -->
+                <div id="RESTAURANTE" class="aba">
+                    <!-- Conjunto de campos para RESTAURANTE (repetir 3 vezes) -->
+                    <h3>RESTAURANTE</h3>
+                    <!-- RESTAURANTE 1 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeRESTAURANTE1" class="form-label">Nome do RESTAURANTE 1</label>
+                                <input type="text" class="form-control" id="nomeRESTAURANTE1" name="nomeRESTAURANTE1"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoRESTAURANTE1" class="form-label">Descrição do RESTAURANTE 1</label>
+                                <input type="text" class="form-control" id="descricaoRESTAURANTE1"
+                                    name="descricaoRESTAURANTE1" placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensRESTAURANTE1" class="form-label">Fotos do RESTAURANTE 1</label>
+                                <label class="image-container" id="imageContainerRESTAURANTE1">
+                                    <input type="file" id="uploadImagensRESTAURANTE1"
+                                        name="fotosProximidadesRESTAURANTE1" style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensRESTAURANTE1', 'imageContainerRESTAURANTE1')">
+                                    <span class="image-text">Foto RESTAURANTE</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RESTAURANTE 2 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeRESTAURANTE2" class="form-label">Nome do RESTAURANTE 2</label>
+                                <input type="text" class="form-control" id="nomeRESTAURANTE2" name="nomeRESTAURANTE2"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoRESTAURANTE2" class="form-label">Descrição do RESTAURANTE 2</label>
+                                <input type="text" class="form-control" id="descricaoRESTAURANTE2"
+                                    name="descricaoRESTAURANTE2" placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensRESTAURANTE2" class="form-label">Fotos do RESTAURANTE 2</label>
+                                <label class="image-container" id="imageContainerRESTAURANTE2">
+                                    <input type="file" id="uploadImagensRESTAURANTE2"
+                                        name="fotosProximidadesRESTAURANTE2" style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensRESTAURANTE2', 'imageContainerRESTAURANTE2')">
+                                    <span class="image-text">Foto RESTAURANTE</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RESTAURANTE 3 -->
+                    <div class="estabelecimento-item">
+                        <div class="d-flex flex-wrap">
+                            <div class="px-2 col-6">
+                                <label for="nomeRESTAURANTE3" class="form-label">Nome do RESTAURANTE 3</label>
+                                <input type="text" class="form-control" id="nomeRESTAURANTE3" name="nomeRESTAURANTE3"
+                                    placeholder="Digite o nome">
+                                <label for="descricaoRESTAURANTE3" class="form-label">Descrição do RESTAURANTE 3</label>
+                                <input type="text" class="form-control" id="descricaoRESTAURANTE3"
+                                    name="descricaoRESTAURANTE3" placeholder="Digite a descrição">
+                            </div>
+                            <div class="px-2 col-6">
+                                <label for="uploadImagensRESTAURANTE3" class="form-label">Fotos do RESTAURANTE 3</label>
+                                <label class="image-container" id="imageContainerRESTAURANTE3">
+                                    <input type="file" id="uploadImagensRESTAURANTE3"
+                                        name="fotosProximidadesRESTAURANTE3" style="display: none;"
+                                        onchange="mostrarPreview('uploadImagensRESTAURANTE3', 'imageContainerRESTAURANTE3')">
+                                    <span class="image-text">Foto RESTAURANTE</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="RESTAURANTEContainer">
+                        <!-- Conteúdo de RESTAURANTE será dinamicamente adicionado aqui -->
+                    </div>
+                    <button type="button" onclick="adicionarEstabelecimento('RESTAURANTEContainer')">Adicionar
+                        Estabelecimento</button>
+                </div>
+            </article>
+            <div class="caixaEnviarHospedagem"><button type="submit">Cadastrar</button></div>
+            <!--TODO: Serviços com o BACKEND!!-->
+        </form>
+    </main>
+    <footer>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var token = localStorage.getItem('token')
+
+        fetch('http://localhost:3189/api/extra/findAll', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + token
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    alert('EXTRA PUXADO COM SUCESSO!');
+                    return response.json();
+
+                } else {
+                    // Algo deu errado, verifique o cód
+                    console.error('Erro na requisição:', response.status);
+                }
+            })
+            .then(function (data) {
+                const listExtrasField = document.querySelector(".fieldSetlistExtras .selectMultiplo .opcoesSelect");
+                data.forEach((alvo) => {
+                    listExtrasField.innerHTML += `<li class="list-group-item" id="${alvo.nome}" data-id="${alvo.id}"><span>${alvo.nome}</span><i class="bi bi-check2 d-none"></i></li>`
+                });
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+                alert('Ocorreu um erro ao cadastrar a hospedagem. Por favor, tente novamente mais tarde.');
+            });
+    </script>
+    <script>
+        // Variável para rastrear o número máximo de estabelecimentos
+        var maxEstabelecimentos = 10;
+
+        // Função para alternar entre abas
+        function abrirAba(event, abaId) {
+            event.preventDefault();
+            var abas = document.querySelectorAll('.aba');
+            for (var i = 0; i < abas.length; i++) {
+                abas[i].style.display = 'none';
+            }
+            document.getElementById(abaId).style.display = 'block';
+        }
+
+        // Função para mostrar o preview da imagem
+        function mostrarPreview(inputId, containerId) {
+            var input = document.getElementById(inputId);
+            var container = document.getElementById(containerId);
+            var imageText = container.querySelector('.image-text');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    container.style.backgroundImage = 'url(' + e.target.result + ')';
+                    container.style.backgroundSize = 'cover';
+                    container.style.backgroundPosition = 'center';
+                    container.style.border = 'none';
+                    imageText.style.display = 'none';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Função para adicionar um novo estabelecimento
+        function adicionarEstabelecimento(containerId) {
+            var container = document.getElementById(containerId);
+
+            // Verificar se o número máximo de estabelecimentos adicionais foi atingido (7)
+            var estabelecimentosAtuais = container.querySelectorAll('.estabelecimento-item').length;
+            if (estabelecimentosAtuais >= 7) {
+                alert('Número máximo de estabelecimentos adicionais atingido (10).');
+                return;
+            }
+
+            var novoEstabelecimento = document.createElement('div');
+            novoEstabelecimento.classList.add('estabelecimento-item');
+
+            novoEstabelecimento.innerHTML = `
+        <div class="d-flex flex-wrap">
+            <div class="px-2 col-6">
+                <label for="nomeNovoEstabelecimento" class="form-label">Nome do Estabelecimento</label>
+                <input type="text" class="form-control" id="nomeNovoEstabelecimento" name="nomeNovoEstabelecimento" placeholder="Digite o nome" required>
+                <label for="descricaoNovoEstabelecimento" class="form-label">Descrição do Estabelecimento</label>
+                <input type="text" class="form-control" id="descricaoNovoEstabelecimento" name="descricaoNovoEstabelecimento" placeholder="Digite a descrição" required>
+            </div>
+            <div class="px-2 col-6">
+                <label for="uploadImagensNovoEstabelecimento" class="form-label">Fotos do Estabelecimento</label>
+                <label class="image-container" id="imageContainerNovoEstabelecimento">
+                    <input type="file" id="uploadImagensNovoEstabelecimento" name="fotosProximidadesNovoEstabelecimento" style="display: none;" onchange="mostrarPreview('uploadImagensNovoEstabelecimento', 'imageContainerNovoEstabelecimento')" required>
+                    <span class="image-text">Foto do Estabelecimento</span>
+                </label>
+            </div>
+        </div>
+    `;
+
+            container.appendChild(novoEstabelecimento);
+        }
+
+    </script>
+    <script>
+        // Função para converter uma imagem em base64
+        async function converterImagemParaBase64(inputId) {
+            const input = document.getElementById(inputId);
+            if (input && input.files && input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                return new Promise((resolve, reject) => {
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = (error) => reject(error);
+                });
+            }
+            return null;
+        }
+
+        async function preencherListProximidades(listProximidades) {
+            const categorias = ['TURISTICO', 'RESTAURANTE', 'BARES'];
+            const formData1 = new FormData(formularioHospedagem);
+
+            // Usar Promise.all para aguardar todas as operações assíncronas no loop
+            await Promise.all(categorias.map(async (categoria) => {
+                const estabelecimentos = document.querySelectorAll(`#${categoria} .estabelecimento-item`);
+                const categoriaListProximidades = listProximidades[categoria];
+
+                for (const [index, estabelecimento] of estabelecimentos.entries()) {
+                    const nomeCampo = formData1.get(`nome${categoria}${index + 1}`);
+                    const descricaoCampo = formData1.get(`descricao${categoria}${index + 1}`);
+                    const imagensCampo = formData1.get(`fotosProximidades${categoria}${index + 1}`);
+                    const base64 = await converterImagemParaBase64(`uploadImagens${categoria}${index + 1}`);
+
+                    // Inicialize um objeto para armazenar os dados do estabelecimento
+                    const estabelecimentoObj = {
+                        nome: nomeCampo,
+                        descricao: descricaoCampo,
+                        tipoProximidade: categoria.toUpperCase(),
+                        foto: {
+                            nome: nomeCampo,
+                            tipoMidia: "FOTO_PRINCIPAL",
+                            dados: base64,
+                        },
+                    };
+                    // Adicione o objeto do estabelecimento à categoria apropriada na listaProximidades
+                    categoriaListProximidades.push(estabelecimentoObj);
+                }
+            }));
+
+            return Promise.resolve();
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const formularioHospedagem = document.getElementById('formularioHospedagem');
+
+            formularioHospedagem.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(formularioHospedagem);
+
+                const categorias = ['TURISTICO', 'RESTAURANTE', 'BARES'];
+
+                // Recolha as imagens selecionadas
+                const imagensInput = document.getElementById('uploadImagens');
+                const imagens = imagensInput.files;
+
+                // Verifique se alguma imagem foi selecionada
+                if (imagens.length > 0) {
+                    // Inicialize um array para armazenar as imagens em base64
+                    const imagensBase64 = [];
+
+                    // Converta cada imagem para base64 e adicione-a ao array
+                    for (let i = 0; i < imagens.length; i++) {
+                        const base64 = await converterImagemParaBase64(`uploadImagens`);
+                        const foto = {
+                            nome: formData.get('titulo'),
+                            tipoMidia: "FOTO_PRINCIPAL",
+                            dados: base64,
+                        }
+                        imagensBase64.push(foto);
+                    }
+
+                    // Adicione o array de imagens em base64 ao formData
+                    formData.set('fotos', JSON.stringify(imagensBase64));
+                }
+
+                // Crie um objeto para o endereço
+                const endereco = {
+                    cep: formData.get('cep'),
+                    rua: formData.get('rua'),
+                    numero: formData.get('numero'),
+                    bairro: formData.get('bairro'),
+                    cidade: formData.get('cidade'),
+                    estado: formData.get('estado'),
+                    pais: "Brasil",
+                    sigla: "UF",
+                };
+
+                // Remova os campos de endereço do formData
+                formData.delete('cep');
+                formData.delete('rua');
+                formData.delete('numero');
+                formData.delete('bairro');
+                formData.delete('cidade');
+                formData.delete('estado');
+
+                // Crie um array para os listExtras selecionados
+                const listExtras = [];
+
+                // Selecione todos os itens da lista de listExtras com a classe 'bi-check2' visível
+                const listExtrasSelecionados = document.querySelectorAll('.list-group.conteudoSelect li');
+                listExtrasSelecionados.forEach(function (item) {
+                    const id = item.getAttribute("data-id");
+                    const nome = item.id;
+                    const tipoExtra = item.getAttribute("data-tipo-extra");
+                    listExtras.push({ id, nome, tipoExtra });
+                });
+
+                // Remova o campo de listExtras do formData
+                formData.delete('listExtras');
+
+                const listProximidades = {
+                    TURISTICO: [],
+                    RESTAURANTE: [],
+                    BARES: [],
+                };
+
+                await preencherListProximidades(listProximidades);
+
+
+                const listImagens = JSON.parse(formData.get('fotos'));
+
+                // Remova os campos de estabelecimentos de formData
+                for (const categoria of categorias) {
+                    const estabelecimentos = document.querySelectorAll(`#${categoria} .estabelecimento-item`);
+                    estabelecimentos.forEach((estabelecimento, index) => {
+                        formData.delete(`nome${categoria}${index + 1}`);
+                        formData.delete(`descricao${categoria}${index + 1}`);
+                        formData.delete(`fotosProximidades${categoria}${index + 1}`);
+                    });
+                }
+
+                const hospedagem = {
+                    ...Object.fromEntries(formData),
+                    endereco,
+                    listExtras,
+                    listImagens, // Parse das fotos para objeto
+                    listProximidades,
+                };
+
+                console.log(hospedagem);
+
+                // obtendo o token de autenticação do localStorage
+                var token = localStorage.getItem('token');
+
+                // Envie a solicitação POST com cabeçalho JSON http://localhost:3189/api/hospedagem/
+                fetch('http://localhost:3189/api/hospedagem/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': "Bearer " + token
+                    },
+                    body: JSON.stringify(hospedagem)
+                })
+                    .then(response => {
+                        if (response.status === 201) {
+                            // localStorage.setItem('hospedagemCadastrada', JSON.stringify(hospedagem));
+                            console.log('Resposta do backend:', hospedagem);
+                            alert('Hospedagem cadastrada com sucesso!');
+                        } else {
+                            // Algo deu errado, verifique o código de status e trate conforme necessário
+                            console.error('Erro na requisição:', response.status);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro na requisição:', error);
+                        alert('Ocorreu um erro ao cadastrar a hospedagem. Por favor, tente novamente mais tarde.');
+                    });
+            });
+        });
+    </script>
+    <script src="js/cep.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

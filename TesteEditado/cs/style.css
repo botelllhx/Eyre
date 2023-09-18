@@ -1,0 +1,506 @@
+body {
+    margin: 0 7%;
+    padding-bottom: 80px;
+    background-color: #f1f3f6 !important;
+    font-family: 'Nunito';
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    border: 0;
+}
+
+.cabecalho {
+    height: 90px;
+    background-color: transparent !important;
+}
+
+.logoEyre {
+    height: 90px;
+}
+
+.logoEyre img {
+    height: 100%;
+}
+
+.conteudoNavbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.conteudoNavbar ul {
+    margin: 0 !important;
+}
+
+.perfilAvatar img {
+    width: 50px;
+}
+
+.perfilDropDown > .dropdown-menu li:last-child span{
+    color: #E60101;
+}
+
+.perfilDropDown ul {
+    width: 160px;
+    padding: 0;
+    background-color: #2970db;
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+
+.perfilDropDown ul:after {
+    content: "";
+    position: absolute;
+    top: -16px;
+    /* Posiciona a seta acima do dropdown */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #2970db transparent;
+    z-index: -1;
+}
+
+.perfilDropDown li>a {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.perfilDropDown ul li {
+    padding: 3px;
+}
+
+.perfilDropDown li img {
+    width: 25px;
+}
+
+.perfilDropDown ul li span {
+    color: white;
+}
+
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.perfilDropDown li:hover span {
+    color: white;
+}
+
+.espaco {
+    margin-left: 3px;
+}
+
+.perfilDropDown li:hover a {
+    background-color: #a2bffa;
+    border-radius: 10px;
+}
+
+.perfilDropDown li a>span {
+    flex-grow: 1;
+}
+
+.perfilDropDown li a span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 10px;
+    gap: 1px;
+    font-weight: bold;
+}
+
+.textoComFlex {
+    margin: 0px 0px 0px 0px;
+}
+
+.formularioHospedagem fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.formularioHospedagem legend {
+    font-size: 16px;
+}
+
+.formularioHospedagem input,
+.formularioHospedagem textarea,
+.formularioHospedagem select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.formularioHospedagem select {
+    height: 24px;
+    box-sizing: content-box;
+    background-color: var(--bs-body-bg);
+}
+
+.formularioHospedagem article {
+    margin-bottom: 20px;
+}
+
+.formularioHospedagem article div {
+    gap: 10px 0;
+}
+
+.formularioHospedagem>article>div>div.px-2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectMultiplo{
+    display: flex;
+}
+
+.legendaExtras{
+    background-color: #fbdcdc;
+    border: 1px solid grey;
+    border-radius: 6px;
+    list-style: none;
+    padding: 2%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.legendaExtras li{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.legendaExtras li:first-child > .quadradoLegenda{
+    border: 1px solid black;
+    background-color: greenyellow;
+}
+
+.legendaExtras li:nth-child(2) > .quadradoLegenda{
+    border: 1px solid black;
+    background-color: chocolate;
+}
+
+.legendaExtras li:last-child > .quadradoLegenda{
+    border: 1px solid brown;
+    background-color: black;
+}
+
+.quadradoLegenda{
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.conteudoSelect {
+    min-height: 50px;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid var(--bs-list-group-border-color);
+    border-radius: 6px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+}
+
+.conteudoSelect li {
+    padding: 0 0 0 4px !important;
+    background-color: #ccc;
+    border-radius: 20px !important;
+}
+
+.conteudoSelect li,
+.opcoesSelect li {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.conteudoSelect span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.conteudoSelect li[data-tipo-extra="SERVICOS"]{
+    background-color: greenyellow;
+    color: black;
+}
+.conteudoSelect li[data-tipo-extra="CONDICOES"]{
+    background-color: chocolate;
+    color: black;
+}
+.conteudoSelect li[data-tipo-extra="SERVIÇO_PRINCIPAL"]{
+    background-color: black;
+    color: white;
+}
+.conteudoSelect button {
+    border: 1px solid #999;
+    padding: 0 0px 6px !important;
+    border-radius: 15px;
+    width: 30px;
+}
+
+.opcoesSelect {
+    max-height: 100px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.fotos>div {
+    position: relative;
+    cursor: pointer;
+}
+
+.image-preview {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    gap: 10px 5px !important;
+    background-color: var(--bs-body-bg);
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 5px;
+    overflow: auto;
+}
+
+.image-preview img {
+    max-width: 270px;
+    max-height: 180px;
+    border: 2px solid #555555;
+}
+
+#imagemInputFile {
+    width: 140px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#imagemInputFile img {
+    width: 100%;
+}
+
+.zIndexImgs {
+    z-index: 1;
+}
+
+.caixaEnviarHospedagem {
+    display: flex;
+    justify-content: space-around;
+}
+
+.formularioHospedagem button[type="submit"] {
+    width: 20%;
+    height: 50px;
+    margin: 0 auto;
+    background-color: #2970db;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 15px;
+    font-size: 24px;
+}
+
+/*****************************************************/
+
+.paginaHospedagens main {
+    margin-top: var(--espaco-cabecalho-main);
+}
+
+.paginaHospedagens>main>h2 {
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+.buscaHospedagem {
+    padding: 8px;
+    margin: 2em 0;
+    /* box-shadow: #dbdbdb 0px 0px 4px 3px; */
+    border-radius: 20px;
+}
+
+.buscaHospedagem form {
+    position: relative;
+    min-width: 370px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.buscaHospedagem form input {
+    padding: 8px calc(50px + 0.5em) 8px 0.5em;
+    border-radius: 20px;
+}
+
+.buscaHospedagem form button {
+    width: 50px;
+    padding: 12px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    border-radius: 20px;
+    border: 0;
+    border-left: 0;
+}
+
+
+
+.buscaHospedagem form input {
+    padding: 8px calc(50px + 0.5em) 8px 0.5em;
+    border-radius: 20px;
+}
+
+.form-control {
+    border-width: 2px;
+    border-color: #2970db;
+}
+
+.buscaHospedagem form button:hover {
+    background-color: #2970db;
+}
+
+.buscaHospedagem form button i {
+    color: black;
+}
+
+.noLineHeight {
+    line-height: 0;
+    vertical-align: super;
+}
+
+.buscaHospedagem form button:hover i {
+    color: white;
+}
+
+.listHospedagens {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+
+}
+
+.listHospedagens li {
+    box-shadow: #dbdbdb 0px 0px 4px 3px;
+
+}
+
+.hospedagemCaixa {
+    --altura-hospedagem: 200px;
+    height: var(--altura-hospedagem);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--bs-body-bg);
+    border-radius: calc(var(--altura-hospedagem)/8);
+    padding: calc(var(--altura-hospedagem) * 5/100);
+}
+
+figure {
+    margin: 0;
+}
+
+.imagemHospedagem {
+    height: 100%;
+}
+
+.imagemHospedagem img {
+    object-fit: cover;
+    /* object-position: 50% 50%; */
+    height: 100%;
+    width: 100%;
+}
+
+.infoHospedagem {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+}
+
+.tituloHospedagem {
+    font-size: 28px;
+    width: 100%;
+    text-align: flex-start;
+}
+
+.infoHospedagem div i {
+    font-size: 22px;
+}
+
+.enderecoHospedagem {
+    font-size: 22px;
+}
+
+.aba {
+    display: none;
+}
+
+.ativa {
+    display: block;
+}
+
+.estabelecimento-item {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px; /* Espaçamento entre os estabelecimentos */
+}
+
+.image-container {
+    background-color: #f5f5f5; /* Cor de fundo para a área da imagem */
+    padding: 100px; /* Espaçamento interno para a área da imagem */
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+    height: 150px; /* Altura do preview da imagem */
+    border: 1px solid #ccc;
+    cursor: pointer; /* Transforma o cursor em uma mão ao passar sobre a área */
+    position: relative; /* Permite posicionar elementos dentro do container */
+}
+
+.image-text {
+    text-align: center; /* Centraliza o texto horizontalmente */
+    position: absolute; /* Posiciona o texto dentro do container */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Centraliza completamente o texto */
+}
+
+.tabs {
+    margin: 20px; /* Espaçamento entre os botões do menu e os títulos/categorias */
+}
+
+.tablink {
+    background-color: white;
+    border-radius: 20px;
+    width: 150px;
+    border-color: transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}

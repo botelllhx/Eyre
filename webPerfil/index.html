@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- --------------------------------------------------- -->
 
+    <!-- --------------CHAT BOT------------------ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet prefetch'
+        href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
 
     <title>Eyre - Perfil</title>
 </head>
@@ -29,7 +33,7 @@
         <div class="logoELogin">
             <img src="imagens/logo.png" class="logo" />
             <img src="imagens/login.png" class="login" />
-            <div class="entrarOuCadastrar">
+            <div class="entrarOuCadastrar" id="entrarOuCadastrar">
                 <h3>Olá, Victor.</h3>
             </div>
         </div>
@@ -59,6 +63,10 @@
                             class="botoesMudarOpcoes"><img src="./imagens/termos.png" class="iconeBotoes" />TERMOS E
                             CONDIÇÕES</button>
                     </div>
+                    <div>
+                        <button type="button" class="botoesMudarOpcoesV"><img src="./imagens/imgSaida.png"
+                                class="iconeBotoesV" />SAIR</button>
+                    </div>
                 </div>
             </div>
 
@@ -68,144 +76,152 @@
                 <div id="alterarDados-form" class="alterarDados payment-form">
                     <div class="container2">
                         <p class="textoPerfil">Meu Perfil</p>
-                        <div class="imgBotaoAoLado">
-                            <div>
-                                <img src="./imagens/login.png" class="imgPessoa" />
-                                <input type="file" id="campo-foto" style="display: none;">
-                            </div>
-                            <div class="selecionarFotos">
+                        <form id="cadastro_form" onsubmit="event.preventDefault()">
+                            <div class="imgBotaoAoLado">
                                 <div>
-                                    <button onclick="document.getElementById('campo-foto').click()"
-                                        class="botaoAlterarFoto">ALTERAR
-                                        FOTO</button>
+                                    <img src="./imagens/login.png" class="imgPessoa" />
+                                    <input type="file" id="campo-foto" style="display: none;">
                                 </div>
+                                <div class="selecionarFotos">
+                                    <div>
+                                        <button onclick="document.getElementById('campo-foto').click()"
+                                            class="botaoAlterarFoto">ALTERAR
+                                            FOTO</button>
+                                    </div>
+                                    <div>
+                                        <button onclick="removerFoto()" class="botaoRemoverFoto">REMOVER FOTO</button>
+                                        <script>
+                                            function removerFoto() {
+                                                document.getElementById('campo-foto').value = '';
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="alterarDadosEsquerda">
+                                <form id="cadastro_form" onsubmit="event.preventDefault()">
+                                    <div>
+                                        <input type="text" id="campoNome" name="nome" placeholder="Nome" readonly
+                                            class="botoesAlterarDados" onfocus="limparTextoNome()"
+                                            oninput="recuperarOpacidadeNome()" onkeypress="transformarPalavras()">
+                                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                            onclick="habilitarEdicaoNome()">
+                                    </div>
+
+                                    <div>
+                                        <input type="text" id="campoNascimento" name="dataNascimento"
+                                            placeholder="Nascimento" readonly class="botoesAlterarDados"
+                                            onfocus="limparTextoNascimento()" oninput="recuperarOpacidadeNascimento()">
+                                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                            onclick="habilitarEdicaoNascimento()">
+                                    </div>
+
+                                    <div>
+                                        <input type="text" id="campoCPF" name="cpf" placeholder="CPF" readonly
+                                            class="botoesAlterarDados" onfocus="limparTextoCPF()"
+                                            oninput="recuperarOpacidadeCPF()" maxlength="14" onkeyup="formatCPF()">
+                                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                            onclick="habilitarEdicaoCPF()">
+                                    </div>
+
+                                    <div>
+                                        <input type="text" id="campoEmail" name="email" placeholder="E-mail" readonly
+                                            class="botoesAlterarDados" onfocus="limparTextoEmail()"
+                                            oninput="recuperarOpacidadeEmail()">
+                                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                            onclick="habilitarEdicaoEmail()">
+                                    </div>
+
+                                    <div>
+                                        <input type="text" id="campoTelefone" name="telefone" placeholder="Telefone"
+                                            readonly class="botoesAlterarDados" onfocus="limparTextoTelefone()"
+                                            oninput="recuperarOpacidadeTelefone()" maxlength="14"
+                                            onkeyup="formatTelefone()">
+                                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                            onclick="habilitarEdicaoTelefone()">
+                                    </div>
+
+                                    <div>
+                                        <input type="password" id="campoSenha" name="senha" placeholder="Senha"
+                                            maxlength="12" readonly class="botoesAlterarDados"
+                                            onfocus="limparTextoSenha()" oninput="recuperarOpacidadeSenha()">
+                                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                            onclick="habilitarEdicaoSenha()">
+                                    </div>
+
+                                    <div>
+                                        <input type="password" id="campoConfirmaSenha" name="confirmaSenha"
+                                            placeholder="Confirma Senha" maxlength="12" readonly
+                                            class="botoesAlterarDados" onfocus="limparTextoConfirmaSenha()"
+                                            oninput="recuperarOpacidadeConfirmaSenha()">
+                                        <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                            onclick="habilitarEdicaoConfirmaSenha()">
+                                    </div>
+                            </div>
+                            <!-- -------------------------------------------  -->
+                            <div class="alterarDadosDireita">
+
                                 <div>
-                                    <button onclick="removerFoto()" class="botaoRemoverFoto">REMOVER FOTO</button>
-                                    <script>
-                                        function removerFoto() {
-                                            document.getElementById('campo-foto').value = '';
-                                        }
-                                    </script>
+                                    <input type="text" id="cepInput" name="cep" placeholder="CEP" maxlength="12"
+                                        readonly class="botoesAlterarDados" onfocus="limparTextoCep()"
+                                        oninput="fetchAddressData(this)">
+                                    <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                        onclick="habilitarEdicaoCep()">
+                                </div>
+
+                                <div>
+                                    <input type="text" id="ruaInput" name="rua" placeholder="Rua / Avenida"
+                                        maxlength="12" readonly class="botoesAlterarDados" onfocus="limparTextoRua()"
+                                        oninput="recuperarOpacidadeRua()">
+                                    <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                        onclick="habilitarEdicaoRua()">
+                                </div>
+
+                                <div>
+                                    <input type="text" id="numeroInput" name="numero" placeholder="Número"
+                                        maxlength="12" readonly class="botoesAlterarDados" onfocus="limitarInput(this)"
+                                        oninput="limitarInput(this)">
+                                    <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                        onclick="habilitarEdicaoNumero()">
+                                </div>
+
+                                <div>
+                                    <input type="text" id="complementoInput" placeholder="Complemento" maxlength="30"
+                                        readonly class="botoesAlterarDados" onfocus="limitarAlfanumericos(this)"
+                                        oninput="limitarAlfanumericos(this)">
+                                    <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                        onclick="habilitarEdicaoComplemento()">
+                                </div>
+
+                                <div>
+                                    <input type="text" id="cidadeInput" name="cidade" placeholder="Cidade"
+                                        maxlength="12" readonly class="botoesAlterarDados" onfocus="limparTextoCidade()"
+                                        oninput="recuperarOpacidadeCidade()">
+                                    <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                        onclick="habilitarEdicaoCidade()">
+                                </div>
+
+                                <div>
+                                    <input type="text" id="estadoInput" name="estado" placeholder="Estado"
+                                        maxlength="12" readonly class="botoesAlterarDados" onfocus="limparTextoEstado()"
+                                        oninput="recuperarOpacidadeEstado()">
+                                    <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                        onclick="habilitarEdicaoEstado()">
+                                </div>
+
+                                <div>
+                                    <input type="text" id="paisInput" placeholder="País" maxlength="12" readonly
+                                        class="botoesAlterarDados" onfocus="limparTextoPais()"
+                                        oninput="recuperarOpacidadePais()">
+                                    <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
+                                        onclick="habilitarEdicaoPais()">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="alterarDadosEsquerda">
-                            <div>
-                                <input type="text" id="campoNome" placeholder="Nome" readonly class="botoesAlterarDados"
-                                    onfocus="limparTextoNome()" oninput="recuperarOpacidadeNome()"
-                                    onkeypress="transformarPalavras()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoNome()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="campoNascimento" placeholder="Nascimento" readonly
-                                    class="botoesAlterarDados" onfocus="limparTextoNascimento()"
-                                    oninput="recuperarOpacidadeNascimento()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoNascimento()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="campoCPF" placeholder="CPF" readonly class="botoesAlterarDados"
-                                    onfocus="limparTextoCPF()" oninput="recuperarOpacidadeCPF()" maxlength="14"
-                                    onkeyup="formatCPF()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoCPF()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="campoEmail" placeholder="E-mail" readonly
-                                    class="botoesAlterarDados" onfocus="limparTextoEmail()"
-                                    oninput="recuperarOpacidadeEmail()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoEmail()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="campoTelefone" placeholder="Telefone" readonly
-                                    class="botoesAlterarDados" onfocus="limparTextoTelefone()"
-                                    oninput="recuperarOpacidadeTelefone()" maxlength="14" onkeyup="formatTelefone()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoTelefone()">
-                            </div>
-
-                            <div>
-                                <input type="password" id="campoSenha" placeholder="Senha" maxlength="12" readonly
-                                    class="botoesAlterarDados" onfocus="limparTextoSenha()"
-                                    oninput="recuperarOpacidadeSenha()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoSenha()">
-                            </div>
-
-                            <div>
-                                <input type="password" id="campoConfirmaSenha" placeholder="Confirma Senha"
-                                    maxlength="12" readonly class="botoesAlterarDados"
-                                    onfocus="limparTextoConfirmaSenha()" oninput="recuperarOpacidadeConfirmaSenha()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoConfirmaSenha()">
-                            </div>
-                        </div>
-                        <!-- -------------------------------------------  -->
-                        <div class="alterarDadosDireita">
-
-                            <div>
-                                <input type="text" id="cepInput" placeholder="CEP" maxlength="12" readonly
-                                    class="botoesAlterarDados" onfocus="limparTextoCep()"
-                                    oninput="fetchAddressData(this)">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoCep()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="ruaInput" placeholder="Rua / Avenida" maxlength="12"
-                                    readonly class="botoesAlterarDados" onfocus="limparTextoRua()"
-                                    oninput="recuperarOpacidadeRua()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoRua()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="numeroInput" placeholder="Número" maxlength="12"
-                                    readonly class="botoesAlterarDados" onfocus="limitarInput(this)"
-                                    oninput="limitarInput(this)">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoNumero()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="complementoInput" placeholder="Complemento" maxlength="30"
-                                    readonly class="botoesAlterarDados" onfocus="limitarAlfanumericos(this)"
-                                    oninput="limitarAlfanumericos(this)">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoComplemento()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="cidadeInput" placeholder="Cidade" maxlength="12"
-                                    readonly class="botoesAlterarDados" onfocus="limparTextoCidade()"
-                                    oninput="recuperarOpacidadeCidade()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoCidade()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="estadoInput" placeholder="Estado" maxlength="12"
-                                    readonly class="botoesAlterarDados" onfocus="limparTextoEstado()"
-                                    oninput="recuperarOpacidadeEstado()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoEstado()">
-                            </div>
-
-                            <div>
-                                <input type="text" id="paisInput" placeholder="País" maxlength="12"
-                                    readonly class="botoesAlterarDados" onfocus="limparTextoPais()"
-                                    oninput="recuperarOpacidadePais()">
-                                <img src="./imagens/iconeLapis.png" alt="Ícone Lápis" class="iconeLapis"
-                                    onclick="habilitarEdicaoPais()">
-                            </div>
-                        </div>
+                            <button class="botaoFormulario" id="salvarInformacoes" onclick="enviarFormulario()">SALVAR
+                                INFORMAÇÕES</button>
+                        </form>
                     </div>
                 </div>
 
@@ -216,10 +232,10 @@
                     <p class="textoPerfil">Em andamento</p>
                     <div class="fundoCinzaHistorico">
                         <div class="divImagem">
-                            <img src="./imagens/historicoArraial.jpg" class="imgSalvador" />
+                            <img src="./imagens/salvador.png" class="imgSalvador" />
                         </div>
                         <div class="divTexto">
-                            <p class="textoLugar">Arraial do Cabo, Rio de Janeiro.</p>
+                            <p class="textoLugar">Salvador, Bahia.</p>
                             <p class="textoData">02 de maio - 05 de maio</p>
                             <button class="botaoDetalhesViagem" type="button"
                                 onclick="toggleSelectionCategoria('historicoSalvadorDetalhes')">DETALHES SOBRE A
@@ -231,12 +247,14 @@
 
                     <div class="fundoCinzaHistorico">
                         <div class="divImagem">
-                            <img src="./imagens/salvador.png" class="imgSalvador" />
+                            <img src="./imagens/historicoArraial.jpg" class="imgSalvador" />
                         </div>
                         <div class="divTexto">
-                            <p class="textoLugar">Salvador, Bahia.</p>
+                            <p class="textoLugar">Arraial do Cabo, Rio de Janeiro.</p>
                             <p class="textoData">02 de maio - 05 de maio</p>
-                            <button class="botaoDetalhesViagem" type="button">DETALHES SOBRE A VIAGEM</button>
+                            <button class="botaoDetalhesViagem" type="button"
+                                onclick="toggleSelectionCategoria2('historicoArraialDoCaboDetalhes')">DETALHES SOBRE A
+                                VIAGEM</button>
                         </div>
                     </div>
                     <div class="fundoCinzaHistorico">
@@ -284,7 +302,7 @@
                             <p class="hospedagem">Hospedagem</p>
                         </div>
                         <div class="localImg">
-                            <img src="./imagens/praia.jpg" class="imgPraia" />
+                            <img src="./imagens/salvador.png" class="imgPraia" />
                         </div>
                         <div class="tituloArraial">
                             <p class="arraialSubTitulo">Arraial do Cabo - Brisas do Farol</p>
@@ -307,7 +325,7 @@
                             <p class="palavraContato">Contato</p>
                             <p class="palavraEndereço">Endereço</p>
                         </div>
-                        <div class="email">
+                        <div class="email2">
                             <img src="./IMAGENS/sms.png" class="logoSms" />
                             <p class="emailCompleto">email.email@email.com</p>
                         </div>
@@ -337,15 +355,15 @@
                             <p class="embarqueTitulo">Embarque: <strong>Belo Horizonte</strong></p>
                         </div>
                         <div class="descricaoEmbarque">
-                            <p class="embarqueDescricao">Avenida Presidente Antônio <br>Carlos, 6640 - Pampulha,
-                                Belo<br>Horizonte - MG, 00000-000</p>
+                            <p class="embarqueDescricao">Praça Rio Branco, <br>100 - Centro,
+                                Belo<br>Horizonte - MG, 30110-002</p>
                         </div>
                         <div class="desembarque">
                             <p class="desembarqueTitulo">Desembarque: <strong>Arraial do Cabo</strong></p>
                         </div>
                         <div class="descricaoDesembarque">
-                            <p class="desembarqueDescricao">Av. Heitor Beltrão, s/n - Tijuca, <br>Rio de Janeiro - RJ,
-                                00000-000.</p>
+                            <p class="desembarqueDescricao">Praia dos Anjos, <br>Arraial do Cabo - RJ,
+                                28930-000.</p>
                         </div>
                         <div class="aviso">
                             <img src="./IMAGENS/exclamacao.png" class="exclamacao" />
@@ -364,14 +382,109 @@
             </div>
             <!-- acabou a tela a ser exibida -->
 
+            <!-- tela2 ser exibida apos clicar em detalhes sobre a viagem -->
+            <div id="historicoArraialDoCaboDetalhes-form" class="historicoArraialDoCabo payment-form"
+                style="display: none;">
+                <div>
+                    <p class="tituloArraialDoCabo">Arraial do Cabo, Rio de Janeiro</p>
+                </div>
+                <div class="fundoCinzaHistoricoDoisC">
+                    <div class="fundoBrancoHistoricoDoisC">
+                        <div class="tituloHospedagemC">
+                            <p class="hospedagemC">Hospedagem</p>
+                        </div>
+                        <div class="localImgC">
+                            <img src="./imagens/praia.jpg" class="imgPraia" />
+                        </div>
+                        <div class="tituloArraialC">
+                            <p class="arraialSubTituloC">Arraial do Cabo - Brisas do Farol</p>
+                        </div>
+                        <div class="suiteC">
+                            <img src="./IMAGENS/cama.png" class="cama" />
+                            <p class="palavraSuite">Suíte</p>
+                        </div>
+                        <div class="checkTotalC">
+                            <div>
+                                <p class="dataCheckC"> <strong>Check in:</strong> sexta-feira, 10 de <br>setembro de
+                                    2021, 14h</p>
+                            </div>
+                            <div>
+                                <p class="dataCheck2C"> <strong>Check out:</strong> domingo, 12 de <br>setembro de 2021,
+                                    12h</p>
+                            </div>
+                        </div>
+                        <div class="contatoC">
+                            <p class="palavraContatoC">Contato</p>
+                            <p class="palavraEndereçoC">Endereço</p>
+                        </div>
+                        <div class="email2C">
+                            <img src="./IMAGENS/sms.png" class="logoSmsC" />
+                            <p class="emailCompletoC">email.email@email.com</p>
+                        </div>
+                        <div class="telefoneC">
+                            <img src="./IMAGENS/telefone.png" class="logoTelefoneC" />
+                            <p class="telefoneCompletoC">(33) 90000-0000</p>
+                        </div>
+                        <div class="endereçoC">
+                            <p class="endereçoCompletoC">R. Nereu Ramos, 11 - Centro, <br>Arraial do Cabo - RJ,
+                                28930-<br>000.</p>
+                        </div>
+                        <div class="linhaC"></div>
+                        <div class="tituloTransporteC">
+                            <p class="transporteC">Transporte</p>
+                            <img src="./IMAGENS/gol.png" class="golLogoC" />
+                        </div>
+                        <div class="horarioC">
+                            <p class="horario1C">11:45</p>
+                            <p class="horario2C">22:05</p>
+                        </div>
+                        <div class="pontoLinhaC">
+                            <img src="./IMAGENS/circulo.png" class="circuloC" />
+                            <img src="./IMAGENS/marcacao.png" class="marcacaoC" />
+                        </div>
+                        <div class="linha2C"></div>
+                        <div class="embarqueC">
+                            <p class="embarqueTituloC">Embarque: <strong>Belo Horizonte</strong></p>
+                        </div>
+                        <div class="descricaoEmbarqueC">
+                            <p class="embarqueDescricaoC"> LMG-800, 76 <br>Rodoviario - Confins,
+                                <br>Horizonte - MG, 33500-000
+                            </p>
+                        </div>
+                        <div class="desembarqueC">
+                            <p class="desembarqueTituloC">Desembarque: <strong>Arraial do Cabo</strong></p>
+                        </div>
+                        <div class="descricaoDesembarqueC">
+                            <p class="desembarqueDescricaoC">Estrada Velha do Arraial do Cabo, s/n - Praia Sudoeste,
+                                <br>Cabo Frio - RJ,
+                                28905-970.
+                            </p>
+                        </div>
+                        <div class="avisoC">
+                            <img src="./IMAGENS/exclamacao.png" class="exclamacaoC" />
+                            <p class="avisoVooC">Para embarcar você deve levar RG ou CNH ou <br>Passaporte ou qualquer
+                                outro documento.</p>
+                        </div>
+                        <div class="poltronaC">
+                            <p class="poltronaTituloC">Poltrona:</p>
+                        </div>
+                        <div class="leitoC">
+                            <img src="./IMAGENS/leito.png" class="logoLeitoC" />
+                            <p class="semiLeitoC"><strong>Semi-Leito</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- acabou a tela2 a ser exibida -->
+
             <div id="suporte-form" class="Suporte payment-form">
                 <p class="textoPerfil">Suporte</p>
                 <p class="textoEyre">EYRE VIAGENS LTDA.</p>
                 <p class="dadosEyre">CNPJ 00.000.000/0001-00 <br>Rua Paineiras, 1300 - Eldorado <br>CEP 32310-400,
                     Contagem/MG</p>
                 <div class="aoLado">
-                    <button class="botaoAtendimento">SERVIÇO DE ATENDIMENTO <br>AO CLIENTE<br><i
-                            class="fas fa-long-arrow-alt-right tamanhoSeta"></i></button>
+                    <button class="botaoAtendimento" onclick="openChatBotModal()">SERVIÇO DE ATENDIMENTO <br>AO
+                        CLIENTE<br><i class="fas fa-long-arrow-alt-right tamanhoSeta"></i></button>
                     <div>
                         <div class="fundoCinzaSuporte">
 
@@ -513,6 +626,31 @@
                         </div>
                     </div>
                 </div>
+                <div id="modalChatBot" class="modalChatBot-background">
+                    <div class="modal-content">
+                        <div class="modalChatBot-content">
+                            <div class="chat-header">
+                                <button class="close-button" onclick="closeChatBotModal()">Fechar Chat</button>
+                            </div>
+                            <div class="chat-options">
+                                <button class="chat-style">Compra não processada</button>
+                                <button class="chat-style">Valor não estornado</button>
+                                <button class="chat-style">Adiantar/antecipar viagem</button>
+                                <button class="chat-style">Troca de transporte</button>
+                                <button class="chat-style">Cancelar a viagem</button>
+                                <button class="chat-style">Chat Livre</button>
+                            </div>
+                            <div class="chat-messages" id="chatMessages">
+                                <!-- onde asmensagens iram aparecer -->
+                            </div>
+                            <div class="user-input">
+                                <input type="text" class="input-mensage" id="chatInput"
+                                    placeholder="Digite sua mensagem...">
+                                <button class="send-button" onclick="sendMessage()">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="notificacoes-form" class="notificacoes payment-form">
@@ -583,71 +721,84 @@
                                 <p>Política de Privacidade da Eyre agradecemos por escolher a Eyre como sua plataforma
                                     de viagens.
                                     Estamos empenhados em proteger sua privacidade e manter a segurança das informações
-                                    pessoais fornecidas. Nesta Política de Privacidade,
-                                    xplicaremos como coletamos, usamos, compartilhamos e protegemos seus dados. Ao usar
+                                    pessoais fornecidas. Nesta Política de Privacidade, explicaremos como coletamos,
+                                    usamos, compartilhamos e protegemos seus dados. Ao usar
                                     a Eyre, você concorda com esta política e com o processamento de suas informações de
                                     acordo com os termos aqui
                                     estabelecidos.</p>
 
-                                <p>Informações coletadas</p>
-                                <p>Dados de cadastro: Ao criar uma conta na Eyre, coletamos informações como nome
+                                <p><strong>Informações coletadas</strong></p>
+                                <p><strong>Dados de cadastro:</strong> Ao criar uma conta na Eyre, coletamos informações
+                                    como nome
                                     completo, data de nascimento, CPF, telefone, endereço de e-mail e senha para
                                     autenticação.</p>
-                                <p>Preferências de viagem: Para personalizar os pacotes de viagem, podemos coletar
+                                <p><strong>Preferências de viagem:</strong> Para personalizar os pacotes de viagem,
+                                    podemos coletar
                                     informações sobre seu orçamento, local de partida, destino e preferências de viagem.
                                 </p>
-                                <p>Informações de pagamento: Para processar suas reservas, coletamos dados de pagamento,
+                                <p><strong>Informações de pagamento:</strong> Para processar suas reservas, coletamos
+                                    dados de pagamento,
                                     como informações do cartão de crédito ou PIX.</p>
-                                <p>Uso do site e aplicativo: Podemos coletar dados sobre como você interage com a Eyre,
+                                <p><strong>Uso do site e aplicativo:</strong> Podemos coletar dados sobre como você
+                                    interage com a Eyre,
                                     como páginas visitadas, recursos utilizados e informações de localização.</p>
 
-                                <p>Uso das informações</p>
-                                <p>Personalização de pacotes: Utilizamos suas preferências de viagem para oferecer
+                                <p><strong>Uso das informações</strong></p>
+                                <p><strong>Personalização de pacotes:</strong> Utilizamos suas preferências de viagem
+                                    para oferecer
                                     pacotes personalizados, adequados ao seu orçamento e interesses.</p>
-                                <p>Processamento de reservas: As informações de pagamento são usadas para processar suas
+                                <p><strong>Processamento de reservas:</strong> As informações de pagamento são usadas
+                                    para processar suas
                                     reservas com segurança.</p>
-                                <p>Melhoria do serviço: Analisamos os dados coletados para aprimorar nossos serviços,
+                                <p><strong>Melhoria do serviço:</strong> Analisamos os dados coletados para aprimorar
+                                    nossos serviços,
                                     garantindo uma experiência cada vez melhor aos nossos usuários.</p>
-                                <p>Comunicações: Podemos enviar e-mails ou notificações relacionados a reservas,
+                                <p><strong>Comunicações:</strong> Podemos enviar e-mails ou notificações relacionados a
+                                    reservas,
                                     promoções ou atualizações da Eyre.</p>
 
-                                <p>Compartilhamento de informações</p>
+                                <p><strong>Compartilhamento de informações</strong></p>
                                 <ul>
-                                    <li>Terceiros confiáveis: Podemos compartilhar suas informações com parceiros e
+                                    <li><strong>Terceiros confiáveis:</strong> Podemos compartilhar suas informações com
+                                        parceiros e
                                         fornecedores de serviços para garantir a entrega dos pacotes de viagem.</li>
-                                    <li>Cumprimento da lei: Em casos específicos, podemos compartilhar informações em
+                                    <li><strong>Cumprimento da lei:</strong> Em casos específicos, podemos compartilhar
+                                        informações em
                                         resposta a solicitações legais, para proteger nossos direitos ou garantir a
                                         segurança de nossos usuários.</li>
                                 </ul>
 
-                                <p>Segurança das informações</p>
+                                <p><strong>Segurança das informações</strong></p>
                                 <ul>
-                                    <li>Medidas de segurança: Empregamos medidas técnicas e organizacionais para
+                                    <li><strong>Medidas de segurança:</strong> Empregamos medidas técnicas e
+                                        organizacionais para
                                         proteger suas informações contra acesso não autorizado e uso indevido.</li>
-                                    <li>Acesso restrito: Limitamos o acesso às suas informações somente a funcionários
+                                    <li><strong>Acesso restrito:</strong> Limitamos o acesso às suas informações somente
+                                        a funcionários
                                         autorizados que precisam delas para prestar os serviços.</li>
                                 </ul>
 
-                                <p>Retenção de dados</p>
+                                <p><strong>Retenção de dados</strong></p>
                                 <p>As informações coletadas serão mantidas pelo tempo necessário para cumprir os
                                     propósitos descritos nesta Política de Privacidade, a menos que exigido por lei o
                                     armazenamento por um período mais longo.</p>
 
-                                <p>Seus direitos</p>
+                                <p><strong>Seus direitos</strong></p>
                                 <p>Você tem o direito de acessar, corrigir, atualizar ou solicitar a exclusão de suas
                                     informações pessoais. Para exercer esses direitos ou para quaisquer dúvidas sobre
                                     nossa política de privacidade, entre em contato conosco por meio das informações
                                     fornecidas no final desta política.</p>
 
-                                <p>Alterações na Política de Privacidade</p>
+                                <p><strong>Alterações na Política de Privacidade</strong></p>
                                 <p>Reservamo-nos o direito de atualizar esta Política de Privacidade periodicamente.
                                     Quaisquer alterações serão publicadas nesta página com a data de entrada em vigor.
                                 </p>
 
-                                <p>Contato</p>
+                                <p><strong>Contato</strong></p>
                                 <p>Se você tiver alguma dúvida ou preocupação sobre esta Política de Privacidade ou
-                                    sobre suas informações pessoais, entre em contato conosco através do e-mail [inserir
-                                    e-mail de contato].</p>
+                                    sobre suas informações pessoais, entre em contato conosco através do e-mail
+                                    <strong>eyre@contact.com.br</strong>.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -771,7 +922,7 @@
                         </ul>
                     </nav>
                     <div>
-                        <img src="./imagens/logo2.png" class="imgLogoEyreRodape">
+                        <img src="./imagens/logo.png" class="imgLogoEyreRodape">
                     </div>
                 </div>
             </div>
@@ -800,8 +951,128 @@
                     Contagem/MG.</h3>
             </div>
         </footer>
-        <!-- <div class="logoELogin2"></div> -->
     </div>
+    <script>
+        const usuario = localStorage.getItem('usuario');
+        const usuarioData = JSON.parse(usuario);
+        const usuarioId = usuarioData.id;
+
+
+        function enviarFormulario() {
+            // reoclhe os dados do formulario alterados
+            var dadosAtualizados = {
+                id: usuarioId,
+                nome: document.getElementById('campoNome').value,
+                dataNascimento: document.getElementById('campoNascimento').value,
+                cpfCnpj: document.getElementById('campoCPF').value,
+                email: document.getElementById('campoEmail').value,
+                telefone: document.getElementById('campoTelefone').value,
+                senha: document.getElementById('campoSenha').value,
+                confirmarSenha: document.getElementById('campoConfirmaSenha').value,
+                endereco: {
+                    cep: document.getElementById('cepInput').value,
+                    rua: document.getElementById('ruaInput').value,
+                    numero: document.getElementById('numeroInput').value,
+                    complemento: document.getElementById('complementoInput').value,
+                    cidade: document.getElementById('cidadeInput').value,
+                    estado: document.getElementById('estadoInput').value,
+                    pais: document.getElementById('paisInput').value
+                }
+            };
+
+            // obtendo o token de autenticação do localStorage
+            var token = localStorage.getItem('token');
+
+            // verificando se tem um token válido
+            if (!token) {
+                alert('Token de autenticação ausente. Faça o login novamente.');
+                return;
+            }
+
+            console.log(dadosAtualizados)
+
+            fetch("http://localhost:3189/api/usuario/", {
+                method: "PUT",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': "Bearer " + token
+                },
+                body: JSON.stringify(dadosAtualizados)
+            })
+                .then(response => {
+                    if (response.success) {
+                        alert('Dados atualizados com sucesso!');
+                        desabilitarEdicao(campos);
+
+                        // atualize os dados do usuário no localStorage, se necessário
+                        localStorage.setItem('usuario', JSON.stringify(dadosAtualizados));
+                    } else {
+                        alert('Ocorreu um erro ao atualizar os dados. Por favor, tente novamente mais tarde.');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Ocorreu um erro ao atualizar os dados. Por favor, tente novamente mais tarde.');
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var usuario = JSON.parse(localStorage.getItem('usuario'));
+
+            // preenchendo os campos de dados do usuário
+            function preencherCampos() {
+                document.getElementById('campoNome').value = usuario.nome;
+                document.getElementById('campoNascimento').value = usuario.dataNascimento;
+                document.getElementById('campoCPF').value = usuario.cpfCnpj;
+                document.getElementById('campoEmail').value = usuario.email;
+                document.getElementById('campoTelefone').value = usuario.telefone;
+                document.getElementById('campoSenha').value = usuario.senha;
+                document.getElementById('campoConfirmaSenha').value = usuario.confirmarSenha;
+                document.getElementById('cepInput').value = usuario.endereco.cep;
+                document.getElementById('ruaInput').value = usuario.endereco.rua;
+                document.getElementById('numeroInput').value = usuario.endereco.numero;
+                document.getElementById('complementoInput').value = usuario.endereco.complemento || '';
+                document.getElementById('cidadeInput').value = usuario.endereco.cidade;
+                document.getElementById('estadoInput').value = usuario.endereco.estado;
+                document.getElementById('paisInput').value = usuario.endereco.pais;
+            }
+
+            preencherCampos();
+        });
+    </script>
+
+    <script>
+        window.onload = function () {
+      var email = localStorage.getItem('email');
+      const nomeUsuario = localStorage.getItem('usuario');
+      const nomeUsuarioData = JSON.parse(nomeUsuario);
+
+      nom = nomeUsuarioData.nome;
+
+      var botaoEntrarOuCadastrar = document.getElementById('entrarOuCadastrar');
+
+      if (nom) {
+        botaoEntrarOuCadastrar.innerHTML = '<h3>Olá, ' + nom + '</h3>';
+      }
+        };
+    </script>
+    <script>
+        // Seletor para o botão "Sair"
+        const botaoSair = document.querySelector('.botoesMudarOpcoesV');
+
+        // Evento de clique para o botão "Sair"
+        botaoSair.addEventListener('click', () => {
+            // Remova o token do localStorage
+            localStorage.removeItem('token');
+            localStorage.removeItem('usuario')
+            localStorage.removeItem('email')
+
+            // Redirecione para a tela inicial (home)
+            window.location.href = "../index.html"; // Substitua 'caminho_para_sua_home.html' pelo caminho correto
+        });
+    </script>
 </body>
 
 </html>

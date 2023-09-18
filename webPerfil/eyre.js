@@ -25,7 +25,16 @@ function toggleSelectionCategoria(categoria) {
     historicoForm.style.display = historicoForm.style.display === "none" ? "block" : "none";
 }
 
-//CAMPO NOME
+function toggleSelectionCategoria2(categoria) {
+    const turisticoContent = document.getElementById("historicoArraialDoCaboDetalhes-form");
+    const historicoForm = document.getElementById("historico-form");
+    
+    // Inverter a visibilidade do conteúdo
+    turisticoContent.style.display = turisticoContent.style.display === "none" ? "block" : "none";
+    historicoForm.style.display = historicoForm.style.display === "none" ? "block" : "none";
+}
+
+//=============================CAMPO NOME=============================
 function habilitarEdicaoNome() {
     var campoNome = document.getElementById("campoNome");
     campoNome.readOnly = false;
@@ -59,7 +68,7 @@ function transformarPalavras() {
     }
 }
 
-//CAMPO NASCIMENTO
+//============================CAMPO NASCIMENTO=============================
 function habilitarEdicaoNascimento() {
     var campoNome = document.getElementById("campoNascimento");
     campoNome.readOnly = false;
@@ -78,7 +87,7 @@ function recuperarOpacidadeNascimento() {
     campoNome.style.opacity = 1;
 }
 
-//CAMPO CPF
+//======================CAMPO CPF============================
 function habilitarEdicaoCPF() {
     var campoNome = document.getElementById("campoCPF");
     campoNome.readOnly = false;
@@ -112,7 +121,7 @@ function formatCPF() {
     cpfInput.value = cpf;
 }
 
-//CAMPO CEP
+//=========================CAMPO CEP==============================
 function formatCEP() {
     const cepInput = document.getElementById('campoCEP');
     const rawValue = cepInput.value.replace(/[^\d]/g, '');
@@ -140,7 +149,7 @@ function habilitarEdicaoCEP() {
     cepInput.focus(); // Adicione esta linha para focar no campo após habilitar a edição
 }
 
-//CAMPO EMAIL
+//==========================CAMPO EMAIL========================
 function habilitarEdicaoEmail() {
     var campoNome = document.getElementById("campoEmail");
     campoNome.readOnly = false;
@@ -159,7 +168,7 @@ function recuperarOpacidadeEmail() {
     campoNome.style.opacity = 1;
 }
 
-//CAMPO TELEFONE
+//======================CAMPO TELEFONE===========================
 function habilitarEdicaoTelefone() {
     var campoNome = document.getElementById("campoTelefone");
     campoNome.readOnly = false;
@@ -211,7 +220,7 @@ function recuperarOpacidadeSenha() {
     campoNome.style.opacity = 1;
 }
 
-//CAMPO CONFIRMA SENHA
+//========================CAMPO CONFIRMA SENHA========================
 function habilitarEdicaoConfirmaSenha() {
     var campoNome = document.getElementById("campoConfirmaSenha");
     campoNome.readOnly = false;
@@ -230,7 +239,7 @@ function recuperarOpacidadeConfirmaSenha() {
     campoNome.style.opacity = 1;
 }
 
-// TROCAR TELA AO CLICAR NOS BOTÕES E MUDAR DE COR
+//=======================TROCAR TELA AO CLICAR NOS BOTÕES E MUDAR DE COR
 function showPaymentForm(paymentMethod) {
     var paymentForms = document.getElementsByClassName("payment-form");
     for (var i = 0; i < paymentForms.length; i++) {
@@ -245,7 +254,7 @@ function showPaymentForm(paymentMethod) {
     event.target.classList.add("clicked");
 }
 
-// MODAL POLITICA DE PRIVACIDADE
+//===========================MODAL POLITICA DE PRIVACIDADE==================
 function abrirModal() {
     document.getElementById('modalPoliticaPrivacidade').style.display = 'block';
 }
@@ -297,7 +306,7 @@ function fecharModalTermos() {
     modal.style.display = 'none';
 }
 
-// OCULTAR RESPOSTAS 
+//========================OCULTAR RESPOSTAS=============================
 function mostrarResposta(numeroPergunta) {
     var resposta = document.getElementById("resposta" + numeroPergunta);
     if (resposta.style.display === "none") {
@@ -311,7 +320,7 @@ function mostrarResposta(numeroPergunta) {
 var scrollContainer = document.getElementById('scrollContainer');
 scrollContainer.scrollLeft = -100; // Ajuste o valor conforme necessário
 
-//CAMPO DADOS MORADIA
+//==============================CAMPO DADOS MORADIA============================
 async function fetchAddressData(input) {
     const cep = input.value.replace(/\D/g, ''); // Remove non-numeric characters
     if (cep.length >= 5) {
@@ -451,3 +460,34 @@ function recuperarOpacidadePais() {
     var campoNome = document.getElementById("Pais");
     campoNome.style.opacity = 1;
 }
+
+//========================CAMPO SUPORTE CHAT BOT=============
+function openChatBotModal() {
+    var modal = document.getElementById("modalChatBot");
+    modal.style.display = "block";
+}
+
+function closeChatBotModal() {
+    var modal = document.getElementById("modalChatBot");
+    modal.style.display = "none";
+}
+
+function sendMessage(message) {
+    var chatMessages = document.getElementById("chatMessages");
+    var chatInput = document.getElementById("chatInput");
+
+    if (message) {
+        var messageDiv = document.createElement("div");
+        messageDiv.className = "message user";
+        messageDiv.textContent = message;
+        chatMessages.appendChild(messageDiv);
+    } else if (chatInput.value.trim() !== "") {
+        var userMessage = chatInput.value;
+        var messageDiv = document.createElement("div");
+        messageDiv.className = "message user";
+        messageDiv.textContent = userMessage;
+        chatMessages.appendChild(messageDiv);
+        chatInput.value = "";
+    }
+}
+

@@ -2,6 +2,7 @@ body {
     background-color: #1877F2;
     opacity: 0;
     transition: opacity 2s;
+    font-family: 'Nunito';
 }
 
 .centro {
@@ -155,4 +156,24 @@ p {
     cursor: pointer;
 }
 
+.flatpickr-calendar {
+    font-family: "Nunito";
+    margin-left: 30px;
+}
 
+.flatpickr-day.selected {
+    background-color: #2970DB;
+    color: white;
+}
+
+.swal2-popup .botao-ok-customizado {
+    background-color: #2970DB;
+    color: #fff;
+    /* Outros estilos, se necessário */
+}
+
+.swal2-popup .botao-erro-customizado {
+    background-color: #2970DB;
+    color: #fff;
+    /* Outros estilos, se necessário */
+}

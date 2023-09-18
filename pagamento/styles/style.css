@@ -1,3 +1,12 @@
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
 .body {
     background-color: #F1F3F6;
     height: 900px;

@@ -7,13 +7,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="./home/style.css" />
+  <link rel="stylesheet" href="./home/waves.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/balloon-css/balloon.min.css">
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/fontawesome.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/solid.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/brands.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" href="./home/imagens/icon.png" type="image/x-icon" />
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/l10n/pt.js">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/browse/flatpickr@4.6.13/dist/l10n/pt.js">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,42 +27,71 @@
 </head>
 
 <body>
-  <div class="body">
+  <div class="topo">
     <div class="logoELogin">
-      <img src="./home/imagens/logo.png" class="logo" />
-      <a href="./loginCadastro/login.html"><img src="./home/imagens/login.png" class="login" /></a>
+      <img src="./home/imagens/logoEyreRodape.png" class="logo" alt="Logotipo da Eyre" />
+      <div class="controllSize">
+        <div class="boxCtrl">
+          <div class="quadradoContraste">
+            <div class="metade-esquerda-contraste detalheBalloon" id="ativarContraste" data-balloon-length="medium"
+              aria-label="Clique aqui para ativar o modo de contraste" data-balloon-pos="down">
+              <img src="./home/imagens/no-contraste.png" class="imgContrasteDesativado" alt="Ícone de contraste ativo">
+            </div>
+            <div class="metade-direita-contraste detalheBalloon" id="desativarContraste" data-balloon-length="medium"
+              aria-label="Clique aqui para desativar o modo de contraste" data-balloon-pos="down">
+              <img src="./home/imagens/contraste.png" class="imgContrasteAtivo" alt="Ícone de contraste desativado">
+            </div>
+          </div>
+          <div class="quadradoAumentarFonte">
+            <div class="metade-esquerda-fonte detalheBalloon" data-balloon-length="medium"
+              aria-label="Clique aqui para aumentar o tamanho da fonte" data-balloon-pos="down">
+              <p class="aumentaFonte">A+</p>
+              <div class="linha-vertical1"></div>
+            </div>
+            <div class="metade-meio-fonte detalheBalloon" data-balloon-length="medium"
+              aria-label="Clique aqui para restaurar o tamanho padrão da fonte" data-balloon-pos="down">
+              <p class="retornaFonte">A</p>
+            </div>
+            <div class="metade-direita-fonte detalheBalloon" data-balloon-length="medium"
+              aria-label="Clique aqui para diminuir o tamanho da fonte" data-balloon-pos="down">
+              <p class="diminuiFonte">A-</p>
+              <div class="linha-vertical2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div aria-label="Clique aqui para acessar o perfil" class="acesso-perfil" data-balloon-length="medium"
+        data-balloon-pos="down">
+        <a href="./loginCadastro/login.html">
+          <i class="fa-solid fa-user"></i>
+        </a>
+      </div>
       <div class="entrarOuCadastrar" id="entrarOuCadastrar">
         <a href="./loginCadastro/login.html">
           <h3>Entre ou cadastre-se</h3>
         </a>
       </div>
     </div>
-    <div class="textoConvidativo">
-      <p>
-        Deseja fazer uma viagem acessível e <br />
-        personalizada? Então você veio ao <br />
-        lugar certo!
-      </p>
-    </div>
-    <div class="divBotaoComecar">
-      <a href="#fundoClaro" id="scrollButton"><button class="botaoComecar">CLIQUE PARA COMEÇAR</button></a>
-    </div>
   </div>
-
+  <div class="textoConvidativo">
+    <p>
+      Deseja fazer uma viagem acessível e <br />
+      personalizada? Então você veio ao <br />
+      lugar certo!
+    </p>
+  </div>
+  <div class="divBotaoComecar">
+    <a href="#fundoClaro" id="scrollButton"><button class="botaoComecar">CLIQUE PARA COMEÇAR</button></a>
+  </div>
   <div id="fundoClaro">
     <div class="fundoBranco">
       <div class="alinha-esquerda-direita">
         <asside class="esquerda">
           <h1 class="tituloDestino">Encontre o seu destino</h1>
-
           <form id="formularioViagem" onsubmit="enviarRequisicao(event)">
-
-
-            <input class="botaoOrcamento imgSifao" type="text" id="orcamento" name="preco"
-              placeholder="QUAL É O SEU ORÇAMENTO?" oninput="formatarMoeda(this); ocultarImagemSifao();"
-              maxlength="15" />
-
-
+            <input class="botaoOrcamento imgCifrao" type="text" id="orcamento" name="preco"
+              placeholder="QUAL É O SEU ORÇAMENTO?" oninput="formatarMoeda(this); ocultarImagemCifrao();" maxlength="15"
+              autocomplete="off" />
             <div class="alinharPartidaDestino">
               <select class="botaoPartida" id="partida" name="lugar">
                 <option value="" disabled selected>
@@ -67,7 +101,7 @@
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
             <option value="AM">Amazonas</option> -->
-                <option value="Salvador, Bahia">Bahia</option>
+                <option value="Salvador, BA">Salvador, BA</option>
                 <!-- <option value="CE">Ceará</option>
             <option value="DF">Distrito Federal</option>
             <option value="ES">Espírito Santo</option>
@@ -75,23 +109,24 @@
             <option value="MA">Maranhão</option>
             <option value="MT">Mato Grosso</option>
             <option value="MS">Mato Grosso do Sul</option> -->
-                <option value="Belo Horizonte, Minas Gerais">Minas Gerais</option>
+                <option value="Belo Horizonte, MG">Belo Horizonte, MG</option>
                 <!-- <option value="PA">Pará</option>
             <option value="PB">Paraíba</option>
             <option value="PR">Paraná</option>
             <option value="PE">Pernambuco</option>
             <option value="PI">Piauí</option> -->
-                <option value="Rio de Janeiro, Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Rio de Janeiro, RJ">Rio de Janeiro, RJ</option>
                 <!-- <option value="RN">Rio Grande do Norte</option>
             <option value="RS">Rio Grande do Sul</option>
             <option value="RO">Rondônia</option>
             <option value="RR">Roraima</option>
             <option value="SC">Santa Catarina</option> -->
-                <option value="Sao Paulo, Sao Paulo">São Paulo</option>
+                <option value="Sao Paulo, SP">São Paulo, SP</option>
                 <!-- <option value="SE">Sergipe</option>
             <option value="TO">Tocantins</option> -->
               </select>
-              <img src="./home/imagens/setas.png" class="imgSetas">
+              <img src="./home/imagens/setas.png" class="imgSetas"
+                alt="Ícone de duas setas apontando em direções opostas, representando a direção no sentido de partida e destino." />
               <select class="botaoDestino" id="destino" name="lugar">
                 <option value="" disabled selected>
                   Destino
@@ -100,29 +135,29 @@
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
             <option value="AM">Amazonas</option> -->
-                <option value="Salvador, Bahia">Bahia</option>
+                <option value="Salvador, BA">Salvador, BA</option>
                 <!-- <option value="CE">Ceará</option>
-            <option value="DF">Distrito Federal</option>
-            <option value="ES">Espírito Santo</option>
-            <option value="GO">Goiás</option>
-            <option value="MA">Maranhão</option>
-            <option value="MT">Mato Grosso</option>
-            <option value="MS">Mato Grosso do Sul</option> -->
-                <option value="Belo Horizonte, Minas Gerais">Minas Gerais</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option> -->
+                <option value="Belo Horizonte, MG">Belo Horizonte, MG</option>
                 <!-- <option value="PA">Pará</option>
-            <option value="PB">Paraíba</option>
-            <option value="PR">Paraná</option>
-            <option value="PE">Pernambuco</option>
-            <option value="PI">Piauí</option> -->
-                <option value="Rio de Janeiro, Rio de Janeiro">Rio de Janeiro</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option> -->
+                <option value="Rio de Janeiro, RJ">Rio de Janeiro, RJ</option>
                 <!-- <option value="RN">Rio Grande do Norte</option>
-            <option value="RS">Rio Grande do Sul</option>
-            <option value="RO">Rondônia</option>
-            <option value="RR">Roraima</option>
-            <option value="SC">Santa Catarina</option> -->
-                <option value="Sao Paulo, Sao Paulo">São Paulo</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option> -->
+                <option value="Sao Paulo, SP">São Paulo, SP</option>
                 <!-- <option value="SE">Sergipe</option>
-            <option value="TO">Tocantins</option> -->
+        <option value="TO">Tocantins</option> -->
               </select>
             </div>
             <div class="div-father">
@@ -140,16 +175,16 @@
                 </div>
               </div>
             </div>
-
           </form>
         </asside>
-
         <asside class="direita">
           <div class="dica">
             Gostaria de uma dica de lugar para visitar?
-            <img src="./home/imagens/lampada.png" class="lampada" />
-            <img class="paisagem" id="minha-imagem" src="./home/imagens/paisagem.jpg" onmouseover="trocaImagem()"
-              onmouseout="retornaImagem()" />
+            <img src="./home/imagens/lampada.png" class="lampada"
+              alt="Ícone de uma lâmpada acesa, simbolizando uma ideia ou inspiração." />
+            <img class="paisagem" id="minha-imagem" src="./home/imagens/paisagem.jpg"
+              alt="A primeira imagem mostra o centro de uma cidade e quando troca a imagem mostra uma igreja"
+              onmouseover="trocaImagem()" onmouseout="retornaImagem()" />
           </div>
         </asside>
       </div>
@@ -158,51 +193,55 @@
   </div>
   <div class="rodape">
     <div class="inlineEstrelas">
-      <img src="./home/imagens/estrelas.png" class="imgEstrelas">
+      <img src="./home/imagens/estrelas.png" class="imgEstrelas" alt="Ícones de cinco estrelas azúis">
       <h1 class="tituloAvaliacoes">Avaliações</h1>
-      <img src="./home/imagens/estrelas.png" class="imgEstrelas">
+      <img src="./home/imagens/estrelas.png" class="imgEstrelas" alt="Ícones de cinco estrelas azúis">
     </div>
     <div class="inlineAvaliacoes">
       <div class="avaliacoes">
         <div>
-          <img src="./home/imagens/aspa.png" class="imgAspa">
+          <img src="./home/imagens/aspa.png" class="imgAspa" alt="Ícone de aspas duplas azuis">
         </div>
-        <p class="avaliacaoIndividual">Eu sou uma pessoa muito organizada e gosto de ter o controle sobre meu
+        <p class="avaliacaoIndividualRafael">Eu sou uma pessoa muito organizada e gosto de ter o controle sobre meu
           orçamento
           de
           viagem. A Eyre me permitiu definir o meu orçamento e encontrar opções que cabiam dentro dele. Tudo foi
           perfeito, desde a reserva até o pouso. Obrigado por uma viagem inesquecível!</p>
         <div class="fotoENome">
-          <img src="./home/imagens/rafael.jpg" class="imgAvaliador">
-          <p class="nomeAvaliador">RAFAEL,</br>
+          <img src="./home/imagens/rafael.jpg" class="imgAvaliador"
+            alt="Foto de Rafael, que avaliou a usabilidade do site e forneceu um feedback">
+          <p class="nomeAvaliadorRafael">RAFAEL,</br>
             MINHA CIDADE, MG</p>
         </div>
       </div>
       <div class="avaliacoes">
         <div>
-          <img src="./home/imagens/aspa.png" class="imgAspa">
+          <img src="./home/imagens/aspa.png" class="imgAspa" alt="Ícone de aspas duplas azuis">
         </div>
-        <p class="avaliacaoIndividual">Eu usei a Eyre para planejar minhas férias recentes e fiquei surpreso com a
+        <p class="avaliacaoIndividualKaik">Eu usei a Eyre para planejar minhas férias recentes e fiquei surpreso com a
           quantidade de opções disponíveis dentro do meu orçamento. A viagem foi incrível e eu recomendo este site
           a qualquer pessoa procurando por viagens acessíveis.</p>
         <div class="fotoENome">
-          <img src="./home/imagens/kaik.jpg" class="imgAvaliador">
-          <p class="nomeAvaliador">KAIK,</br>
+          <img src="./home/imagens/kaik.jpg" class="imgAvaliador"
+            alt="Foto de Kaik, que avaliou a usabilidade do site e forneceu um feedback">
+          <p class="nomeAvaliadorKaik">KAIK,</br>
             BELO HORIZONTE, MG</p>
         </div>
       </div>
       <div class="avaliacoes">
         <div>
-          <img src="./home/imagens/aspa.png" class="imgAspa">
+          <img src="./home/imagens/aspa.png" class="imgAspa" alt="Ícone de aspas duplas azuis">
         </div>
-        <p class="avaliacaoIndividual">Eu já usei outros sites de viagens antes, mas este é de longe o melhor quando
+        <p class="avaliacaoIndividualAllan">Eu já usei outros sites de viagens antes, mas este é de longe o melhor
+          quando
           se
           trata de pacotes baseados em um orçamento. Adorei a flexibilidade de ser capaz de definir meu orçamento
           e encontrar opções que cabiam dentro dele. A equipe de atendimento ao cliente também foi incrível e me
           ajudou com todas as minhas perguntas e preocupações.</p>
         <div class="fotoENome">
-          <img src="./home/imagens/allan.jpg" class="imgAvaliador">
-          <p class="nomeAvaliador">ALLAN,</br>
+          <img src="./home/imagens/allan.jpg" class="imgAvaliador"
+            alt="Foto de Allan, que avaliou a usabilidade do site e forneceu um feedback">
+          <p class="nomeAvaliadorAllan">ALLAN,</br>
             CONTAGEM, MG</p>
         </div>
       </div>
@@ -212,36 +251,36 @@
         <div class="inlineInfoAdicionais">
           <nav>
             <ul>
-              <li>Países</li>
-              <li>Regiões</li>
-              <li>Cidades</li>
-              <li>Bairros</li>
-              <li>Aeroportos</li>
-              <li>Hotéis</li>
-              <li>Locais de interesse</li>
+              <li class="paises">Países</li>
+              <li class="regioes">Regiões</li>
+              <li class="cidades">Cidades</li>
+              <li class="bairros">Bairros</li>
+              <li class="aeroportos">Aeroportos</li>
+              <li class="hoteis">Hotéis</li>
+              <li class="locaisInteresse">Locais de interesse</li>
             </ul>
           </nav>
           <nav>
             <ul>
-              <li>Casas e apartamentos</a></li>
-              <li>Apartamentos</a></li>
-              <li>Resorts</a></li>
-              <li>Villas</a></li>
-              <li>Hostels</a></li>
-              <li>Cama e Cafés (B&Bs)</a></li>
-              <li>Casas de hóspedes</a></li>
+              <li class="casasApartamentos">Casas e apartamentos</a></li>
+              <li class="apartamentos">Apartamentos</li>
+              <li class="resorts">Resorts</li>
+              <li class="villas">Villas</li>
+              <li class="hostels">Hostels</li>
+              <li class="camaCafe">Cama e Cafés (B&Bs)</li>
+              <li class="casasHospedes">Casas de hóspedes</li>
             </ul>
           </nav>
           <nav>
             <ul>
-              <li>Latam</a></li>
-              <li>Azul</a></li>
-              <li>Gol</a></li>
-              <li>United</a></li>
+              <li class="latam">Latam</li>
+              <li class="azul">Azul</li>
+              <li class="gol">Gol</li>
+              <li class="united">United</li>
             </ul>
           </nav>
           <div>
-            <img src="./home/imagens/logoEyreRodape.png" class="imgLogoEyreRodape">
+            <img src="./home/imagens/logoEyreRodape.png" class="imgLogoEyreRodape" alt="Logotipo da Eyre">
           </div>
         </div>
       </div>
@@ -249,37 +288,50 @@
         <h2 class="formasPagamento">Formas de pagamento</h2>
       </div>
       <div class="centralizarImgBandeirasCartao">
-        <img src="./home/imagens/bandeirasCartao.png" class="imgBandeirasCartao">
+        <img src="./home/imagens/bandeirasCartao.png" class="imgBandeirasCartao"
+          alt="Ícones de bandeiras de cartão de débito e crédito">
       </div>
       <hr class="linhaHorizontal">
       <div class="alinharEmail">
-        <h2 class="email">eyre@contact.com.br</h2>
+        <h2 class="email" id="emailLink">eyre@contact.com.br</h2>
       </div>
       <div>
-        <h2 class="conecteConosco">CONECTE-SE CONOSCO</h2>
+        <h2 class="conecteConosco">Conecte-se conosco</h2>
       </div>
       <div class="inlineRedesSociais">
-        <img src="./home/imagens/instagram.png">
-        <img src="./home/imagens/twitter.png">
-        <img src="./home/imagens/linkedin.png">
-        <img src="./home/imagens/facebook.png">
+        <img src="./home/imagens/instagram.png" class="instagram" id="instagramIcon" alt="Ícone do Instagram">
+        <img src="./home/imagens/twitter.png" class="twitter" id="twitterIcon" alt="Ícone do Twitter">
+        <img src="./home/imagens/linkedin.png" class="linkedin" id="linkedinIcon" alt="Ícone do LinkedIn">
+        <img src="./home/imagens/facebook.png" class="facebook" id="facebookIcon" alt="Ícone do Facebook">
+      </div>
+      <div>
+        <h2 class="baixarAplicativo">Baixe nosso aplicativo</h2>
+        <li class="aplicativo">
+          <img src="./home/imagens/socialAppstore.png" class="Appstore" id="appstoreIcon" alt="Ícone da App Store">
+          <img src="./home/imagens/socialGoogleplay.png" class="Googleplay" id="googleplayIcon"
+            alt="Ícone do Google Play">
+        </li>
       </div>
       <div class="alinharEndereco">
-        <h3 class="endereco">Eyre Viagens Ltda, CNPJ: 00.000.000/0001-00, Rua Paineiras, 1300 - Eldorado, CEP
-          30.000-000,
-          Contagem/MG.</h3>
+        <h3 class="endereco">
+          Copyright© 2021-2023 Eyre. Todos os direitos reservados. <br>
+          Eyre Viagens Ltda, CNPJ: 00.000.000/0001-00, Rua Paineiras, 1300 - Eldorado, CEP 30.000-000, Contagem/MG.</h3>
       </div>
     </footer>
   </div>
+  <button class="back-to-top waves-effect" type="button"></button>
+  <div id="content"></div>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/flatpickr.min.js"></script>
   <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+  <script src="./home/waves.min.js"></script>
   <script>
     var calendar = flatpickr("#az-date-range", {
       mode: "range",
       dateFormat: "d/m/Y",
-      showMonths: 2,
+      showMonths: getNumberOfMonths(),
       locale: "pt",
       position: "below",
+      minDate: "today",
       onChange: function (calendar) {
         if (calendar.length == 2) {
           var start = calendar[0].toLocaleDateString("pt-BR");
@@ -290,12 +342,28 @@
         }
       },
     });
+
+    function getNumberOfMonths() {
+      if (window.innerWidth < 768) {
+        return 1;
+      } else {
+        return 2;
+      }
+    }
+
+    window.addEventListener("resize", function () {
+      calendar.set("showMonths", getNumberOfMonths());
+    });
+
   </script>
   <script>
     async function enviarRequisicao(event, url, metodo, dados) {
       event.preventDefault();
       // Capturar os valores dos campos do formulário
       var orcamento = document.getElementById('orcamento').value;
+      var orcamentoFormatado = orcamento; // Substitua isso pela variável real do seu código
+      var orcamentoNumerico = parseFloat(orcamentoFormatado.replace("R$", "").replace(",", "").trim());
+
       var destino = document.getElementById('destino').value;
       var partida = document.getElementById('partida').value;
 
@@ -310,23 +378,34 @@
         // dados da requisição
 
         var data = {
-          page: 0,
-          pageSize: 10,
-          order: "id",
-          direction: "asc",
-          content: {
-            orcamento: orcamento,
-            partida: partida,
-            destino: destino,
-            dataIda: dataIda,
-            dataVolta: dataVolta
+          "page": 0,
+          "pageSize": 3,
+          "order": "id",
+          "direction": "asc",
+          "content": {
+            "orcamento": 1200,
+            "partida": {
+              "estado": "estado",
+              "cidade": "cidade"
+            },
+            "destino": {
+              "estado": "estado",
+              "cidade": "cidade"
+            },
+            "dataIda": "22/05/2023",
+            "dataVolta": "26/05/2023",
+            "diasAMais": true
           }
         };
+
+        localStorage.setItem('dataIdaUrl', JSON.stringify(data.content.dataIda));
+
+        localStorage.setItem('dataVoltaUrl', JSON.stringify(data.content.dataVolta));
 
         var token = localStorage.getItem("token"); // Ou sessionStorage
         console.log(token);
         // Fazer a requisição usando fetch https://jsonplaceholder.typicode.com/posts http://localhost:3189/api/hospedagem/list'
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        const response = await fetch('http://localhost:3189/api/hospedagem/list', {
           method: 'POST',
           // mode: "cors",
           headers: {
@@ -347,85 +426,83 @@
           .then(function (data) {
             //resposta do servidor
 
-            const respostaHospedagens = {
-              content: [
-                {
-                  id: 1,
-                  titulo: "Brisas do Farol",
-                  tipoQuarto: "Suíte",
-                  descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²\n3 camas (2 de solteiro, 1 de casal).",
-                  quantidadeReservas: "1",
-                  listExtras: [
-                    { id: 1, nome: "Quartos para não fumantes" },
-                    { id: 2, nome: "Wi-fi gratuito" },
-                    { id: 3, nome: "Recepção 24 horas" },
-                    { id: 4, nome: "Bar" }
-                  ],
-                  listImagens: [
-                    {
-                      id: 2,
-                      nome: "Hotel da Canoa",
-                      imagem: { id: 1, nome: "Hotel da Canoa", dados: "./imagens/brisasdofarol.jpg" }
-                    }
-                  ],
-                  existeVoo: "true",
-                  existeOnibus: "true"
-                },
-                {
-                  id: 2,
-                  titulo: "Pousada Bicho do Mar",
-                  tipoQuarto: "Suíte Superior",
-                  descricaoQuarto: "Suíte privativa • 1 quarto • 1 sala • 1 banheiro\n1 cama de casal.",
-                  quantidadeReservas: "1",
-                  listExtras: [
-                    { id: 1, nome: "Café da manhã incluído" }
-                  ],
-                  listImagens: [
-                    {
-                      id: 2,
-                      nome: "Pousada Bicho do Mar",
-                      imagem: { id: 1, nome: "Pousada Bicho do Mar", dados: "./imagens/pousadabichodomar.jpg" }
-                    }
-                  ],
-                  existeVoo: "true",
-                  existeOnibus: "true"
-                },
-                {
-                  id: 3,
-                  titulo: "Hotel da Canoa",
-                  tipoQuarto: "Quarto Duplo Standard",
-                  descricaoQuarto: "1 cama de casal grande • 1 banheiro • 450 m da praia.",
-                  quantidadeReservas: "5",
-                  listExtras: [
-                    { id: 1, nome: "Café da manhã incluído" },
-                    { id: 2, nome: "Piscina" }
-                  ],
-                  listImagens: [
-                    {
-                      id: 2,
-                      nome: "Hotel da Canoa",
-                      imagem: { id: 1, nome: "Hotel da Canoa", dados: "./imagens/hoteldacanoa.jpg" }
-                    }
-                  ],
-                  existeVoo: "true",
-                  existeOnibus: "true"
-                }
-              ]
-            };
+            // const respostaHospedagens = {
+            //   content: [
+            //     {
+            //       id: 1,
+            //       titulo: "Brisas do Farol",
+            //       tipoQuarto: "Suíte",
+            //       descricaoQuarto: "Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²\n3 camas (2 de solteiro, 1 de casal).",
+            //       quantidadeReservas: "1",
+            //       listExtras: [
+            //         { id: 1, nome: "Quartos para não fumantes" },
+            //         { id: 2, nome: "Wi-fi gratuito" },
+            //         { id: 3, nome: "Recepção 24 horas" },
+            //         { id: 4, nome: "Bar" }
+            //       ],
+            //       listImagens: [
+            //         {
+            //           id: 2,
+            //           nome: "Hotel da Canoa",
+            //           imagem: { id: 1, nome: "Hotel da Canoa", dados: "./imagens/brisasdofarol.jpg" }
+            //         }
+            //       ],
+            //       existeVoo: "true",
+            //       existeOnibus: "true"
+            //     },
+            //     {
+            //       id: 2,
+            //       titulo: "Pousada Bicho do Mar",
+            //       tipoQuarto: "Suíte Superior",
+            //       descricaoQuarto: "Suíte privativa • 1 quarto • 1 sala • 1 banheiro\n1 cama de casal.",
+            //       quantidadeReservas: "1",
+            //       listExtras: [
+            //         { id: 1, nome: "Café da manhã incluído" }
+            //       ],
+            //       listImagens: [
+            //         {
+            //           id: 2,
+            //           nome: "Pousada Bicho do Mar",
+            //           imagem: { id: 1, nome: "Pousada Bicho do Mar", dados: "./imagens/pousadabichodomar.jpg" }
+            //         }
+            //       ],
+            //       existeVoo: "true",
+            //       existeOnibus: "true"
+            //     },
+            //     {
+            //       id: 3,
+            //       titulo: "Hotel da Canoa",
+            //       tipoQuarto: "Quarto Duplo Standard",
+            //       descricaoQuarto: "1 cama de casal grande • 1 banheiro • 450 m da praia.",
+            //       quantidadeReservas: "5",
+            //       listExtras: [
+            //         { id: 1, nome: "Café da manhã incluído" },
+            //         { id: 2, nome: "Piscina" }
+            //       ],
+            //       listImagens: [
+            //         {
+            //           id: 2,
+            //           nome: "Hotel da Canoa",
+            //           imagem: { id: 1, nome: "Hotel da Canoa", dados: "./imagens/hoteldacanoa.jpg" }
+            //         }
+            //       ],
+            //       existeVoo: "true",
+            //       existeOnibus: "true"
+            //     }
+            //   ]
+            // };
 
             // área de manipulação da resposta
 
-            var token = data.token;
+            // var token = data.token;
 
-            // armazenar no localstorage 
-            localStorage.setItem("token", token);
-            console.log(token)
+            // // armazenar no localstorage 
+            // localStorage.setItem("token", token);
+            // console.log(token)
 
-            localStorage.setItem('respostaHospedagens', JSON.stringify(respostaHospedagens));
+            console.log(data)
 
-            localStorage.setItem('dataIdaUrl', JSON.stringify(data.content.dataIda));
-
-            localStorage.setItem('dataVoltaUrl', JSON.stringify(data.content.dataVolta));
+            localStorage.setItem('respostaHospedagens', JSON.stringify(data.content));
 
             // redireciona para outra página
             window.location.href = '../Eyre/opcoesJornada/index.html';
@@ -471,14 +548,32 @@
   <script>
     window.onload = function () {
       var email = localStorage.getItem('email');
+      const nomeUsuario = localStorage.getItem('usuario');
+      const nomeUsuarioData = JSON.parse(nomeUsuario);
 
-      if (email) {
-        document.getElementById('entrarOuCadastrar').innerHTML = '<h3>Olá, ' + email + '</h3>';
+      nom = nomeUsuarioData.nome;
+
+      var botaoEntrarOuCadastrar = document.getElementById('entrarOuCadastrar');
+
+      if (nom) {
+        botaoEntrarOuCadastrar.innerHTML = '<a href="./webPerfil/index.html"><h3>Olá, ' + nom + '</h3></a>';
+      } else {
+        botaoEntrarOuCadastrar.innerHTML = '<a href="./loginCadastro/login.html"><h3>Entre ou cadastre-se</h3></a>';
       }
     };
   </script>
-  <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script src="https://code.jquery.com/jquery-1.8.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
   <script type="text/javascript" src="./home/script.js"></script>
 </body>
 

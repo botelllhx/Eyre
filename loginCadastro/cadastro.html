@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/styleCadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>Eyre - Cadastro</title>
 </head>
 
@@ -43,8 +44,7 @@
                 <input type="email" id="email" name="email" placeholder="E-mail" required>
             </div>
             <div class="form-group">
-                <input type="text" name="telefone" id="telefoneInput" maxlength="14" placeholder="Telefone"
-                    onkeyup="formatTelefone()">
+                <input type="text" name="telefone" id="telefoneInput" maxlength="14" placeholder="Telefone">
             </div>
             <div class="password-container">
                 <input type="password" name="senha" id="password" placeholder="Senha" maxlength="12" required>
@@ -90,6 +90,7 @@
         </form>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script>
     function enviarFormulario() {
         var formulario = document.getElementById("cadastro_form");
@@ -137,8 +138,8 @@
         for (var [key, value] of dadosFormulario.entries()) {
             dados[key] = value;
         }
-        dados.endereco = endereco; // inclui o endereco como uma propriedade http://localhost:3189/api/usuario/
-        fetch("https://jsonplaceholder.typicode.com/posts", {
+        dados.endereco = endereco;
+        fetch("http://localhost:3189/api/usuario/", {
             method: "POST",
             mode: "cors",
             headers: {
@@ -148,25 +149,55 @@
         })
             .then(response => {
                 if (response.ok) {
-                    return response.json();
+                    if (response.status === 201) {
+                        // Se a resposta for 201 Created, significa que o cadastro foi bem-sucedido
+                        // Você pode tratar isso de acordo com sua lógica
+                        Swal.fire({
+                            icon: 'success', // Ícone de sucesso
+                            title: 'Cadastro Realizado', // Título da mensagem
+                            customClass: {
+                                confirmButton: 'botao-ok-customizado' // Nome da classe personalizada
+                            }
+                        });
+
+                        // Aguarde alguns segundos antes de redirecionar
+                        setTimeout(() => {
+                            // redireciona para a página inicial
+                            window.location.href = "./login.html";
+                        }, 2000); // 2000 milissegundos = 2 segundos
+                    } else {
+                        // Se a resposta não for 201, pode haver uma mensagem de erro no corpo da resposta
+                        return response.json();
+                    }
                 } else {
                     throw new Error("Erro na requisição: " + response.status);
                 }
             })
             .then(data => {
-                console.log(data);
-
-                // MENSAGEM DE SUCESSO APÓS CADASTRADO
-                alert("Cadastro realizado com sucesso!");
-
-                // PARA REDIRECIONAR PARA A PÁGINA DE LOGIN
-                window.location.href = "http://127.0.0.1:5500/loginCadastro/login.html";
-                console.log('rabada moral 3');
+                // Verifique se há dados antes de analisar como JSON
+                if (data) {
+                    console.log(data);
+                    // Você pode tratar a mensagem de erro aqui
+                    Swal.fire({
+                        icon: 'error', // Ícone de erro
+                        title: 'Erro ao fazer o cadastro',
+                        customClass: {
+                            confirmButton: 'botao-erro-customizado' // Nome da classe personalizada
+                        }
+                    });
+                }
             })
             .catch(error => {
                 console.log(error);
-                alert("Ocorreu um erro durante o cadastro. Por favor, tente novamente mais tarde.");
+                Swal.fire({
+                    icon: 'error', // Ícone de erro
+                    title: 'Erro ao fazer, tente novamente mais tarde',
+                    customClass: {
+                        confirmButton: 'botao-erro-customizado' // Nome da classe personalizada
+                    }
+                });
             });
+
     }
 
 </script>
