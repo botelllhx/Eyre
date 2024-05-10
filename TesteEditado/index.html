@@ -622,25 +622,46 @@
 
                 const categorias = ['TURISTICO', 'RESTAURANTE', 'BARES'];
 
-                // Recolha as imagens selecionadas
-                const imagensInput = document.getElementById('uploadImagens');
-                const imagens = imagensInput.files;
+                // Função para converter uma imagem em base64
+                async function converterImagemPraBase64(input) {
+                    if (input && input.files) {
+                        const imagensBase64 = [];
 
-                // Verifique se alguma imagem foi selecionada
-                if (imagens.length > 0) {
-                    // Inicialize um array para armazenar as imagens em base64
-                    const imagensBase64 = [];
+                        for (let i = 0; i < input.files.length; i++) {
+                            const file = input.files[i];
+                            const reader = new FileReader();
 
-                    // Converta cada imagem para base64 e adicione-a ao array
-                    for (let i = 0; i < imagens.length; i++) {
-                        const base64 = await converterImagemParaBase64(`uploadImagens`);
-                        const foto = {
-                            nome: formData.get('titulo'),
-                            tipoMidia: "FOTO_PRINCIPAL",
-                            dados: base64,
+                            reader.readAsDataURL(file);
+
+                            await new Promise((resolve, reject) => {
+                                reader.onload = () => {
+                                    imagensBase64.push({
+                                        nome: formData.get('titulo'),
+                                        tipoMidia: "FOTO_PRINCIPAL",
+                                        dados: reader.result,
+                                    });
+
+                                    resolve();
+                                };
+
+                                reader.onerror = (error) => {
+                                    reject(error);
+                                };
+                            });
                         }
-                        imagensBase64.push(foto);
+
+                        return imagensBase64;
                     }
+
+                    return null;
+                }
+
+                const imagensInput = document.getElementById('uploadImagens');
+                const imagensBase64 = await converterImagemPraBase64(imagensInput);
+
+                if (imagensBase64 && imagensBase64.length > 0) {
+                    // Agora você tem a matriz de imagens em base64 pronta para uso
+                    console.log(imagensBase64);
 
                     // Adicione o array de imagens em base64 ao formData
                     formData.set('fotos', JSON.stringify(imagensBase64));

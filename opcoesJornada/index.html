@@ -10,547 +10,93 @@
 
 <body>
   <div>
-    <img src="./imagens/logo.png" class="logo" />
+    <header class="cabeca">
+      <img src="./imagens/logo.png" class="logo" />
+      <h1 class="tituloJornada">Suas opções de jornada!</h1>
+    </header>
+    <div class="englobaCards">
+    </div>
   </div>
-  <div>
-    <h1 class="tituloJornada">Suas opções de jornada!</h1>
+  <div id="loading" class="loading-overlay">
+    <div class="loading-spinner">
+      <img src="./imagens/logoAnimada.gif" alt="Loading" />
+      <div class="loading-text">Carregando</div>
+    </div>
   </div>
-  <div class="inline">
-    <div class="cardDiv">
-      <h2 class="tituloHospedagem" id="titulo">Brisas do Farol</h2>
-      <div class="infoBranco">
-        <img src="./imagens/brisasdofarol.jpg" class="imagemHospedagem" id="imagemHospedagem" />
-        <h2 class="tituloSuite" id="tipoQuarto">Suíte</h2>
-        <p class="infoBrisas" id="descricaoQuarto">
-          Estúdio inteiro • 1 banheiro • 1 cozinha • 20m²<br />
-          3 camas (2 de solteiro, 1 de casal).
-        </p>
-        <br />
-        <p class="listExtras" id="listExtras">Cancelamento grátis</p>
-        <br />
-        <p class="quantidadeReservas">Restamㅤ<strong id="quantidadeReservas"
-            class="quantidadeReservasMudar">1</strong>ㅤunidades disponíveis.</p>
-      </div>
-      <div class="bordaDatas" id="existeVooOnibus">
-        <h2 class="tituloTransporte">Transporte</h2>
-        <div>
-          <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>voo</b> disponíveis.</p>
+  <script>
+    const respostaHospedagens = localStorage.getItem('respostaHospedagens');
+    const hospedagensData = JSON.parse(respostaHospedagens);
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      setTimeout(function () {
+        hospedagensData.forEach((card, index) => {
+
+          console.log('Processando Card ' + index + ':', card);
+          // console.log("aqui funciona! 1")
+          // const num = index + 1;
+          // const cardDiv = document.querySelector('.cardDiv:nth-child(' + num + ')');
+
+          document.querySelector(".englobaCards").innerHTML += `<div class="cardDiv">
+        <h2 class="tituloHospedagem" id="titulo">${card.titulo}</h2>
+        <div class="infoBranco">
+          <img src="${"data:image/png;base64," + card.listImagens[0].dados}" class="imagemHospedagem" id="imagemHospedagem" />
+          <h2 class="tituloSuite" id="tipoQuarto">${card.tipoQuarto}</h2>
+          <p class="infoBrisas" id="descricaoQuarto">
+            ${(card.descricaoQuarto.length >= 90)?card.descricaoQuarto.substring(0, 90)+"...":card.descricaoQuarto}
+          </p>
+          <br />
+          <p class="listExtras" id="listExtras">${card.listExtras[0].nome}</p>
+          <br />
+          <p class="quantidadeReservas">Restamㅤ<strong id="quantidadeReservas"
+              class="quantidadeReservasMudar">${card.quantidadeReservas}</strong>ㅤunidades disponíveis.</p>
         </div>
-        <div>
-          <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis.</p>
+        <div class="bordaDatas" id="existeVooOnibus">
+          <h2 class="tituloTransporte">Transporte</h2>
+          <div>
+            <img src="./imagens/iconeVoo.png" class="datasbrisas" />
+            <p class="existeTransporte">${(card.existeVoo) ? "Opções de <b>voo</b> disponíveis." : "<b>Não</b> existe <b>voo</b> disponível."}</p>
+          </div>
+          <div>
+            <img src="./imagens/iconeBus.png" class="datasbrisas" />
+            <p class="existeTransporte">${(card.existeOnibus) ? "Opções de <b>ônibus</b> disponíveis." : "<b>Não</b> existe <b>ônibus</b> disponível."}</p>
+          </div>
         </div>
-      </div>
-      <div class="botao">
-        <input type="button" value="QUERO SABER MAIS" onclick="getHospedagemDetails(this)" />
-      </div>
-    </div>
-    <div class="cardDiv">
-      <h2 class="tituloHospedagem" id="titulo2">Pousada Bicho do Mar</h2>
-      <div class="infoBranco">
-        <img src="./imagens/pousadabichodomar.jpg" class="imagemHospedagem" id="imagemHospedagem2" />
-        <h2 class="tituloSuite" id="tipoQuarto2">Suíte Superior</h2>
-        <p class="infoBrisas" id="descricaoQuarto2">
-          Suíte privativa • 1 quarto • 1 sala • 1 banheiro<br />
-          1 cama de casal.
-        </p>
-        <br />
-        <p class="listExtras" id="listExtras2">Café da manhã incluído</p>
-        <br />
-        <p class="quantidadeReservas">Restamㅤ<strong id="quantidadeReservas2" class="quantidadeReservasMudar"> 1
-          </strong>ㅤunidades disponíveis.</p>
-      </div>
-      <div class="bordaDatas" id="existeVooOnibus">
-        <h2 class="tituloTransporte">Transporte</h2>
-        <div>
-          <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>voo</b> disponíveis.</p>
+        <div class="botao">
+          <input type="button" value="QUERO SABER MAIS" data-card-id="${card.id}" onclick="getHospedagemDetailsAfterRedirectPage(this)" />
         </div>
-        <div>
-          <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis.</p>
-        </div>
-      </div>
-      <div class="botao">
-        <input type="button" value="QUERO SABER MAIS" onclick="getHospedagemDetails(this)" />
-      </div>
-    </div>
-    <div class="cardDiv">
-      <h2 class="tituloHospedagem" id="titulo3">Hotel da Canoa</h2>
-      <div class="infoBranco">
-        <img src="./imagens/hoteldacanoa.jpg" class="imagemHospedagem" id="imagemHospedagem3" />
-        <h2 class="tituloSuite" id="tipoQuarto3">Quarto Duplo Standard</h2>
-        <p class="infoBrisas" id="descricaoQuarto3">
-          1 cama de casal grande • 1 banheiro • 450 m&nbsp&nbsp<br />
-          da praia.
-        </p>
-        <br />
-        <p class="listExtras" id="listExtras3">Café da manhã incluído</p>
-        <br />
-        <p class="quantidadeReservas">Restamㅤ<strong id="quantidadeReservas3"
-            class="quantidadeReservasMudar">2</strong>ㅤunidades disponíveis.</p>
-      </div>
-      <div class="bordaDatas" id="existeVooOnibus">
-        <h2 class="tituloTransporte">Transporte</h2>
-        <div>
-          <img src="./imagens/iconeVoo.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>voo</b> disponíveis.</p>
-        </div>
-        <div>
-          <img src="./imagens/iconeBus.png" class="datasbrisas" />
-          <p class="existeTransporte">Opções de <b>ônibus</b> disponíveis.</p>
-        </div>
-      </div>
-      <div class="botao">
-        <input type="button" value="QUERO SABER MAIS" onclick="getHospedagemDetails(this)" />
-      </div>
-    </div>
-    <div id="loading" class="loading-overlay">
-      <div class="loading-spinner">
-        <img src="./imagens/logoAnimada.gif" alt="Loading" />
-        <div class="loading-text">Carregando</div>
-      </div>
-    </div>
-    <script>
-      const respostaHospedagens = localStorage.getItem('respostaHospedagens');
-      const hospedagensData = JSON.parse(respostaHospedagens);
-      var token = localStorage.getItem("token");
+      </div>`
 
-      document.addEventListener('DOMContentLoaded', function () {
-
-        setTimeout(function () {
-          hospedagensData.forEach((card, index) => {
-
-            console.log('Processando Card ' + index + ':', card);
-            console.log("aqui funciona! 1")
-            const num = index + 1;
-            const cardDiv = document.querySelector('.cardDiv:nth-child(' + num + ')');
-
-            if (cardDiv) {
-              cardDiv.querySelector('.tituloHospedagem').textContent = card.titulo;
-              // cardDiv.querySelector('.imagemHospedagem').src = card.listImagens[0].imagem.dados; // primeiro item é alterado
-              cardDiv.querySelector('.tituloSuite').textContent = card.tipoQuarto;
-              cardDiv.querySelector('.infoBrisas').textContent = card.descricaoQuarto;
-              if(card.listExtras.length != 0){
-                cardDiv.querySelector('.listExtras').textContent = card.listExtras[0].nome; // primeiro item é alterado
-              }
-              cardDiv.querySelector('.botao input').setAttribute('data-card-id', card.id);
-
-              console.log(cardDiv.querySelector('.botao input').getAttribute('data-card-id'));
-              console.log("aqui funciona! 2")
-
-              // atualizar o número de unidades restantes
-              const quantidadeReservasElement = cardDiv.querySelector('.quantidadeReservasMudar');
-              if (quantidadeReservasElement) {
-                quantidadeReservasElement.innerHTML = card.quantidadeReservas;
-              }
-
-              console.log("aqui funciona! 3")
-
-              // selecionar a div de transporte correspondente
-              const existeVooOnibusDiv = cardDiv.querySelector('.bordaDatas');
-              const existeTransporteParagrafos = existeVooOnibusDiv.querySelectorAll('.existeTransporte');
-
-              if (existeVooOnibusDiv) {
-                if (!card.existeVoo) {
-                  existeTransporteParagrafos[0].innerHTML = "<b>Não</b> existe <b>voo</b> disponível.";
-                }
-
-                if (!card.existeOnibus) {
-                  existeTransporteParagrafos[1].innerHTML = "<b>Não</b> existe <b>ônibus</b> disponível.";
-                }
-              } else {
-                console.log('bordaDatas not found for num: ' + num);
-              }
-            } else {
-              console.log('CardDiv not found for num: ' + num);
-            }
-
-            // Esconder a tela de loading após processar o último card
-            if (index === hospedagensData.length - 1) {
-              console.log("aqui funciona! 5")
-              const loadingOverlay = document.getElementById('loading');
-              loadingOverlay.style.display = 'none';
-            }
-          });
-        }, 2000);
-
-      });
-
-      function getHospedagemDetails(button) {
-        const cardId = button.getAttribute('data-card-id');
-        const dataIdaUrl = localStorage.getItem('dataIdaUrl');
-        const dataIda = JSON.parse(dataIdaUrl);
-        const dataIdaFormatoCorreto = dataIda.split('/').join('-');
-
-        const dataVoltaUrl = localStorage.getItem('dataVoltaUrl');
-        const dataVolta = JSON.parse(dataVoltaUrl);
-        const dataVoltaFormatoCorreto = dataVolta.split('/').join('-');
-
-        // http://localhost:3189/api/hospedagem/${cardId}/${dataIdaFormatoCorreto}/${dataVoltaFormatoCorreto}/true
-
-        fetch(`http://localhost:3189/api/hospedagem/${cardId}/${dataIdaFormatoCorreto}/${dataVoltaFormatoCorreto}/true`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': "Bearer " + token
+          // Esconder a tela de loading após processar o último card
+          if (index === hospedagensData.length - 1) {
+            console.log("aqui funciona! 5")
+            const loadingOverlay = document.getElementById('loading');
+            loadingOverlay.style.display = 'none';
           }
-        })
-          .then(function (response) {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error('Erro na requisição: ' + response.status);
-            }
-          })
-          .then(function (data) {
+        });
+      }, 2000);
 
-            // const respostaDetalhesHospedagens = {
-            //   "hospedagem": {
-            //     "id": 1,
-            //     "titulo": "Brisas do Farol - Arraial do Cabo",
-            //     "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-            //     "tipoQuarto": "SUITE",
-            //     "descricaoQuarto": "Estúdio inteiro, 1 banheiro, 1 cozinha, 20m², 3 camas (2 de solteiro, 1 de casal).",
-            //     "voos": [
-            //       {
-            //         "nome": "LATAM",
-            //         "listDias": {
-            //           "POSTERIOR": [],
-            //           "ANTERIOR": [
-            //             {
-            //               "listHorarios": [
-            //                 {
-            //                   "id": 4,
-            //                   "horarioSaida": "07:00",
-            //                   "horarioChegada": "08:40"
-            //                 },
-            //                 {
-            //                   "id": 5,
-            //                   "horarioSaida": "07:40",
-            //                   "horarioChegada": "09:40"
-            //                 },
-            //                 {
-            //                   "id": 6,
-            //                   "horarioSaida": "10:00",
-            //                   "horarioChegada": "12:10"
-            //                 }
-            //               ],
-            //               "tipoRota": "VOLTA"
-            //             }
-            //           ],
-            //           "EXATA": [
-            //             {
-            //               "listHorarios": [
-            //                 {
-            //                   "id": 1,
-            //                   "horarioSaida": "07:00",
-            //                   "horarioChegada": "08:40"
-            //                 },
-            //                 {
-            //                   "id": 2,
-            //                   "horarioSaida": "07:40",
-            //                   "horarioChegada": "09:42"
-            //                 },
-            //                 {
-            //                   "id": 3,
-            //                   "horarioSaida": "10:00",
-            //                   "horarioChegada": "12:10"
-            //                 }
-            //               ],
-            //               "tipoRota": "IDA"
-            //             },
-            //             {
-            //               "listHorarios": [
-            //                 {
-            //                   "id": 4,
-            //                   "horarioSaida": "07:00",
-            //                   "horarioChegada": "08:42"
-            //                 },
-            //                 {
-            //                   "id": 5,
-            //                   "horarioSaida": "07:40",
-            //                   "horarioChegada": "09:43"
-            //                 },
-            //                 {
-            //                   "id": 6,
-            //                   "horarioSaida": "10:00",
-            //                   "horarioChegada": "12:10"
-            //                 }
-            //               ],
-            //               "tipoRota": "VOLTA"
-            //             }
-            //           ]
-            //         },
-            //         "escala": true,
-            //         "imagemCompanhiaAerea": {
-            //           "id": 1,
-            //           "nome": "foto-1",
-            //           "tipoMidia": "FOTO_PRINCIPAL",
-            //           "dados": "DADOSBASE64",
-            //           "byteArrayFrom64": "DADOSBASE64"
-            //         }
-            //       }
-            //     ],
-            //     "onibus": [
-            //       {
-            //         "listDias": {
-            //           "POSTERIOR": [],
-            //           "ANTERIOR": [
-            //             {
-            //               "listHorarios": [
-            //                 {
-            //                   "id": 4,
-            //                   "horarioSaida": "07:00",
-            //                   "horarioChegada": "08:40"
-            //                 },
-            //                 {
-            //                   "id": 5,
-            //                   "horarioSaida": "07:40",
-            //                   "horarioChegada": "09:40"
-            //                 },
-            //                 {
-            //                   "id": 6,
-            //                   "horarioSaida": "10:00",
-            //                   "horarioChegada": "12:10"
-            //                 }
-            //               ],
-            //               "tipoRota": "VOLTA"
-            //             }
-            //           ],
-            //           "EXATA": [
-            //             {
-            //               "listHorarios": [
-            //                 {
-            //                   "id": 1,
-            //                   "horarioSaida": "07:00",
-            //                   "horarioChegada": "08:40"
-            //                 },
-            //                 {
-            //                   "id": 2,
-            //                   "horarioSaida": "07:40",
-            //                   "horarioChegada": "09:42"
-            //                 },
-            //                 {
-            //                   "id": 3,
-            //                   "horarioSaida": "10:00",
-            //                   "horarioChegada": "12:10"
-            //                 }
-            //               ],
-            //               "tipoRota": "IDA",
-            //               "localSaida": "Lourdes",
-            //               "localChegada": "Praia dos Anjos",
-            //             },
-            //             {
-            //               "listHorarios": [
-            //                 {
-            //                   "id": 4,
-            //                   "horarioSaida": "07:00",
-            //                   "horarioChegada": "08:42"
-            //                 },
-            //                 {
-            //                   "id": 5,
-            //                   "horarioSaida": "07:40",
-            //                   "horarioChegada": "09:43"
-            //                 },
-            //                 {
-            //                   "id": 6,
-            //                   "horarioSaida": "10:00",
-            //                   "horarioChegada": "12:10"
-            //                 }
-            //               ],
-            //               "tipoRota": "VOLTA",
-            //               "localSaida": "Praia dos Anjos",
-            //               "localChegada": "Lagoinha",
-            //             }
-            //           ]
-            //         },
-            //       }
-            //     ],
-            //     "listExtras": [
-            //       {
-            //         "id": 1,
-            //         "nome": "extra principal AQUI"
-            //       },
-            //       {
-            //         "id": 2,
-            //         "nome": "extra principal AQUI"
-            //       },
-            //       {
-            //         "id": 3,
-            //         "nome": "extra principal AQUI"
-            //       },
-            //     ],
-            //     "listImagens": [
-            //       {
-            //         "id": 1,
-            //         "nome": "foto-1",
-            //         "tipoMidia": "FOTO_PRINCIPAL",
-            //         "dados": "DADOSBASE64",
-            //         "byteArrayFrom64": "DADOSBASE64"
-            //       }
-            //     ],
-            //     "checkIn": "13:00",
-            //     "checkOut": "20:00",
-            //     "endereco": {
-            //       "id": 1,
-            //       "cep": "39827000",
-            //       "pais": "Brasil",
-            //       "estado": "Minas Gerais",
-            //       "sigla": "MG",
-            //       "cidade": "Pote",
-            //       "bairro": "Centro",
-            //       "rua": "Benedito Valadares",
-            //       "numero": "172"
-            //     },
-            //     "listAvaliacoes": [],
-            //     "preco": 300.00,
-            //     "listProximidades": {
-            //       "Turisticos": [
-            //         {
-            //           "id": 1,
-            //           "nome": "corcovado",
-            //           "tipoProximidade": "TURISTICO",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //         {
-            //           "id": 2,
-            //           "nome": "cristo redentor",
-            //           "tipoProximidade": "TURISTICO",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //         {
-            //           "id": 3,
-            //           "nome": "et bilu",
-            //           "tipoProximidade": "TURISTICO",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //       ],
-            //       "Restaurantes": [
-            //         {
-            //           "id": 1,
-            //           "nome": "ja",
-            //           "tipoProximidade": "RESTAURANTE",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //         {
-            //           "id": 2,
-            //           "nome": "podi",
-            //           "tipoProximidade": "RESTAURANTE",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-                      
-            //         },
-            //         {
-            //           "id": 3,
-            //           "nome": "almosar",
-            //           "tipoProximidade": "RESTAURANTE",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //       ],
-            //       "Boates": [],
-            //       "Bares": [
-            //         {
-            //           "id": 1,
-            //           "nome": "barzinho",
-            //           "tipoProximidade": "BARES",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //         {
-            //           "id": 2,
-            //           "nome": "barzao",
-            //           "tipoProximidade": "BARES",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //         {
-            //           "id": 3,
-            //           "nome": "botecao",
-            //           "tipoProximidade": "BARES",
-            //           "foto": {
-            //             "id": 1,
-            //             "nome": "foto-1",
-            //             "tipoMidia": "FOTO_PRINCIPAL",
-            //             "dados": "./imagens/TESTE1.png",
-            //             "byteArrayFrom64": "DADOSBASE64"
-            //           },
-            //           "texto" : "baracunde barcunde eo",
-            //         },
-            //       ]
-            //     }
-            //   },
-            //   "avaliacoes": 1,
-            //   "classificacao": 10.0
-            // }
-            // Aqui você manipula a resposta do servidor
-            console.log('Resposta do servidor:', data);
+    });
 
-            console.log
-            // Armazena a resposta do servidor no localStorage
-            localStorage.setItem('respostaDetalhesHospedagens', JSON.stringify(data));
+    function getHospedagemDetailsAfterRedirectPage(button) {
+      const cardId = button.getAttribute('data-card-id');
+      const dataIdaUrl = localStorage.getItem('dataIdaUrl');
+      const dataIda = JSON.parse(dataIdaUrl);
+      const dataIdaFormatoCorreto = dataIda.split('/').join('-');
 
-            // Redireciona para outra página
-            window.location.href = '../pacote/index.html';
-          });
-      }
+      const dataVoltaUrl = localStorage.getItem('dataVoltaUrl');
+      const dataVolta = JSON.parse(dataVoltaUrl);
+      const dataVoltaFormatoCorreto = dataVolta.split('/').join('-');
+
+      // http://localhost:3189/api/hospedagem/${cardId}/${dataIdaFormatoCorreto}/${dataVoltaFormatoCorreto}/true
+      
+      localStorage.setItem('urlFindByIdHospedagem', `http://localhost:3189/api/hospedagem/${cardId}/${dataIdaFormatoCorreto}/${dataVoltaFormatoCorreto}/false`);
+      console.log("MANDADO PARA URL FINDBYIDOSPEDAGEM");
+      window.location.href = '../pacote/index.html';
+    }
 
 
-    </script>
+  </script>
 </body>
 
 </html>

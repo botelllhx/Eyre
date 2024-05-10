@@ -370,8 +370,12 @@ body {
 .fundoBrancoSuite {
   background-color: white;
   border-radius: 20px;
-  height: 100px;
   width: 100%;
+  max-height: 150px;
+  border: 10px solid white;
+  border-width: 10px 4px;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 .titulos {
@@ -983,7 +987,8 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
-  overflow: hidden; /* Evita a barra de rolagem duplicada */
+  overflow: hidden;
+  /* Evita a barra de rolagem duplicada */
 }
 
 .modal-content-avaliacoes {
@@ -991,8 +996,10 @@ body {
   width: 60%;
   max-width: 600px;
   margin: 3% auto;
-  max-height: 75%; /* Define a altura máxima do modal */
-  overflow-y: auto; /* Adicionar scroll vertical apenas quando necessário */
+  max-height: 75%;
+  /* Define a altura máxima do modal */
+  overflow-y: auto;
+  /* Adicionar scroll vertical apenas quando necessário */
   padding: 20px;
   border-radius: 8px;
   position: relative;
@@ -1011,7 +1018,8 @@ body {
 .review-item {
   padding: 15px;
   width: 500px;
-  background-color: #f5f5f5; /* Cor de fundo do "balão" */
+  background-color: #f5f5f5;
+  /* Cor de fundo do "balão" */
   margin-top: 20px;
   border-radius: 20px;
 }
@@ -1042,12 +1050,15 @@ body {
 .review-item .stars {
   display: inline-block;
   font-size: 20px;
-  color: #f39c12; /* Cor das estrelas */
+  color: #f39c12;
+  /* Cor das estrelas */
 }
 
 .review-item .review-text {
-  background-color: white; /* Fundo branco apenas para o texto da avaliação */
-  padding: 10px; /* Espaçamento interno para o texto de avaliação */
+  background-color: white;
+  /* Fundo branco apenas para o texto da avaliação */
+  padding: 10px;
+  /* Espaçamento interno para o texto de avaliação */
   border-radius: 10px;
   margin: 10px;
 }
@@ -1057,14 +1068,76 @@ body {
 }
 
 .modal::-webkit-scrollbar {
-  width: 6px; /* Largura da barra de rolagem (Chrome, Safari) */
+  width: 6px;
+  /* Largura da barra de rolagem (Chrome, Safari) */
 }
 
 .modal::-webkit-scrollbar-thumb {
-  background-color: #f39c12; /* Cor da barra de rolagem */
-  border-radius: 3px; /* Borda arredondada da barra de rolagem */
+  background-color: #f39c12;
+  /* Cor da barra de rolagem */
+  border-radius: 3px;
+  /* Borda arredondada da barra de rolagem */
 }
 
 .modal::-webkit-scrollbar-thumb:hover {
-  background-color: #d68910; /* Cor da barra de rolagem ao passar o mouse */
+  background-color: #d68910;
+  /* Cor da barra de rolagem ao passar o mouse */
+}
+
+/* loading */
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5%;
+}
+
+.loading-spinner img {
+  width: 200px;
+  height: 200px;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Nunito";
+}
+
+.loading-text::after {
+  content: '...';
+  animation: loading-text-animation 1.2s infinite steps(3);
+}
+
+@keyframes loading-text-animation {
+  0% {
+    content: '.';
+  }
+
+  33% {
+    content: '..';
+  }
+
+  66% {
+    content: '...';
+  }
+}
+
+.hidden {
+  display: none;
 }

@@ -32,15 +32,7 @@
                 <p class="titulo" id="titulo">Arraial do Cabo - Brisas do Farol</p>
                 <img src="./imagens/BrisasDoFarol.jpg" id="imagemPrincipal" class="imagem1">
                 <div class="fundoDescricao">
-                    <p class="descricao" id="descricao">Localizado em Arraial do Cabo e com a Praia Grande a cerca de
-                        600 metros, a
-                        propriedade está
-                        situada
-                        a 300 m da Praça da Independência, a 500 m do Estádio Hermenegildo Barcellos e a 400 m da
-                        Prefeitura
-                        de Arraial do Cabo. O Museu Oceanográfico fica a menos de 1 km de distância e a Igreja Nossa
-                        Senhora
-                        dos Remédios fica a 12 minutos a pé da pousada.</p>
+                    <p class="descricao" id="descricao"></p>
                 </div>
                 <div class="fotosBrisas">
                     <img src="./imagens/fotosbrisas.png" class="imgBrisas" onclick="abrirModal()">
@@ -50,17 +42,15 @@
                     <a class="anterior" onclick="retrocederImagem()">&#10094;</a>
                     <a class="proximo" onclick="avancarImagem()">&#10095;</a>
                     <div class="galeria">
-                        <img src="./imagens/BrisasDoFarol.jpg" class="modal-conteudo">
-                        <img src="./imagens/pousadaBrisasDoFarol.jpg" class="modal-conteudo">
+                        <img src="./imagens/BrisasDoFarol.jpg" class="modal-conteudo" id="imagemModal1">
+                        <img src="./imagens/pousadaBrisasDoFarol.jpg" class="modal-conteudo" id="imagemModal2">
                     </div>
                 </div>
             </div>
             <div class="direita">
                 <div class="elementos1">
                     <div class="divAvaliacoes">
-                        <p class="avaliacoes" id="avaliacoesClickable">Muito bom! <strong
-                                id="avaliacoesCount">729</strong>
-                            avaliações</p>
+                        <p class="avaliacoes" id="avaliacoesClickable"></p>
                         <div class="classificacao">
                             <h3 id="classificacao">8,0</h3>
                         </div>
@@ -289,16 +279,16 @@
         </div>
         <div class="alinharBotaoCategoriaLugares">
             <div class="divCategoriaLugares">
-                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('Turisticos')"
-                    id="TuristicosBotao">Turístico</button>
+                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('TURISTICO')"
+                    id="TURISTICOBotao">Turístico</button>
             </div>
             <div class="divCategoriaLugares">
-                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('Restaurantes')"
-                    id="RestaurantesBotao">Restaurantes</button>
+                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('RESTAURANTE')"
+                    id="RESTAURANTEBotao">Restaurantes</button>
             </div>
             <div class="divCategoriaLugares">
-                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('Bares')"
-                    id="BaresBotao">Bares</button>
+                <button class="botaoCategoriaLugares" onclick="toggleSelectionCategoria('BARES')"
+                    id="BARESBotao">Bares</button>
             </div>
         </div>
         <div>
@@ -311,50 +301,57 @@
                 </div>
             </div> -->
 
-            <div id="Turisticos" class="categoriaContent">
+            <div id="TURISTICO" class="categoriaContent">
                 <div class="restauranteContainer" onclick="abrirModal('turistico', 1)">
-                    <p class="tituloMangaraRestaurante" id="tituloTuristicos1">Turístico</p>
-                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemTuristicos1" data-categoria="Turístico" data-id="1">
+                    <p class="tituloMangaraRestaurante" id="tituloTURISTICO1">Turístico</p>
+                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemTURISTICO1"
+                        data-categoria="Turístico" data-id="1">
                 </div>
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloTuristicos2">Turístico</p>
-                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemTuristicos2">
+                    <p class="tituloMangaraRestaurante" id="tituloTURISTICO2">Turístico</p>
+                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemTURISTICO2">
                 </div>
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloTuristicos3">Turístico</p>
-                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemTuristicos3">
-                </div>
-            </div>
-            <div id="Restaurantes" class="categoriaContent">
-                <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloRestaurantes1">Mangará Restaurante</p>
-                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemRestaurantes1">
-                </div>
-                <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloRestaurantes2">Casa da Piedra</p>
-                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemRestaurantes2">
-                </div>
-                <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloRestaurantes3">Sol na Cozinha</p>
-                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemRestaurantes3">
+                    <p class="tituloMangaraRestaurante" id="tituloTURISTICO3">Turístico</p>
+                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemTURISTICO3">
                 </div>
             </div>
-            <div id="Bares" class="categoriaContent">
+            <div id="RESTAURANTE" class="categoriaContent">
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloBares1">Bares</p>
-                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemBares1">
+                    <p class="tituloMangaraRestaurante" id="tituloRESTAURANTE1">Mangará Restaurante</p>
+                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemRESTAURANTE1">
                 </div>
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloBares2">Bares</p>
-                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemBares2">
+                    <p class="tituloMangaraRestaurante" id="tituloRESTAURANTE2">Casa da Piedra</p>
+                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemRESTAURANTE2">
                 </div>
                 <div class="restauranteContainer">
-                    <p class="tituloMangaraRestaurante" id="tituloBares3">Bares</p>
-                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemBares3">
+                    <p class="tituloMangaraRestaurante" id="tituloRESTAURANTE3">Sol na Cozinha</p>
+                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemRESTAURANTE3">
+                </div>
+            </div>
+            <div id="BARES" class="categoriaContent">
+                <div class="restauranteContainer">
+                    <p class="tituloMangaraRestaurante" id="tituloBARES1">Bares</p>
+                    <img src="./imagens/mangaraRestaurante.jpg" class="imgMangaraRestaurante" id="imagemBARES1">
+                </div>
+                <div class="restauranteContainer">
+                    <p class="tituloMangaraRestaurante" id="tituloBARES2">Bares</p>
+                    <img src="./imagens/casaDaPiedra.jpg" class="imgMangaraRestaurante" id="imagemBARES2">
+                </div>
+                <div class="restauranteContainer">
+                    <p class="tituloMangaraRestaurante" id="tituloBARES3">Bares</p>
+                    <img src="./imagens/solNaCozinha.jpg" class="imgMangaraRestaurante" id="imagemBARES3">
                 </div>
             </div>
         </div>
         <div class="espaçamentoFimPagina">
+        </div>
+        <div id="loading" class="loading-overlay hidden">
+            <div class="loading-spinner">
+                <img src="./imagens/logoAnimada.gif" alt="Loading" />
+                <div class="loading-text">Carregando</div>
+            </div>
         </div>
     </div>
     </div>
@@ -481,7 +478,7 @@
                     btn.classList.remove("botaoAtivo");
                 }
 
-                const turisticoContent = document.getElementById("Turisticos");
+                const turisticoContent = document.getElementById("TURISTICO");
                 turisticoContent.style.display = "flex";
             }
 
@@ -509,221 +506,231 @@
         };
 
         document.addEventListener("DOMContentLoaded", function () {
-            const turisticoButton = document.getElementById("TuristicosBotao");
+            const turisticoButton = document.getElementById("TURISTICOBotao");
             turisticoButton.classList.add("botaoAtivo");
-            toggleSelectionCategoria("Turisticos");
+            toggleSelectionCategoria("TURISTICO");
         });
 
-        const respostaDetalhesHospedagens = localStorage.getItem('respostaDetalhesHospedagens');
-        const hospedagensData = JSON.parse(respostaDetalhesHospedagens);
+        // const respostaDetalhesHospedagens = localStorage.getItem('respostaDetalhesHospedagens');
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById("loading").classList.remove("hidden");
 
-            setTimeout(function () {
+        const urlFindByIdHospedagem = localStorage.getItem('urlFindByIdHospedagem');
+        var token = localStorage.getItem("token");
+        console.log(urlFindByIdHospedagem);
 
-                hos = hospedagensData.hospedagem;
-                document.getElementById("titulo").textContent = hos.titulo;
+        fetch(urlFindByIdHospedagem, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + token
+            }
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Erro na requisição: ' + response.status);
+                }
+            })
+            .then(function (data) {
+                // Aqui você manipula a resposta do servidor
+                console.log('Resposta do servidor:', data);
+                console.log("RETORNOOOOOOOOOOO");
+                preencherTelaHospedagem(data);
 
-                document.getElementById("tituloMapa").textContent = hos.titulo;
+                document.getElementById("loading").classList.add("hidden");
+            })
 
-                const endereco = hos.endereco;
-                const enderecoCompleto = `${endereco.rua}, ${endereco.numero}, ${endereco.bairro}, ${endereco.cidade}, ${endereco.estado}, ${endereco.pais}, ${endereco.cep}`;
-                console.log(enderecoCompleto);
+        function preencherTelaHospedagem(hospedagensData) {
+            hos = hospedagensData.hospedagem;
+            document.getElementById("titulo").textContent = hos.titulo;
+            console.log("AQUIB")
+            document.getElementById("tituloMapa").textContent = hos.titulo;
 
-                // Use a chave de API do Google Maps
-                const apiKey = '';
+            const endereco = hos.endereco;
+            const enderecoCompleto = `${endereco.rua}, ${endereco.numero}, ${endereco.bairro}, ${endereco.cidade}, ${endereco.estado}, ${endereco.pais}, ${endereco.cep}`;
+            console.log(enderecoCompleto);
 
-                // URL para a API de Geocodificação
-                const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(enderecoCompleto)}&key=${apiKey}`;
+            // Use a chave de API do Google Maps
+            const apiKey = 'AIzaSyAsTbKHpTgDtOjWySZ1Ox1mzmv4WeAB-yE';
 
-                // Faz a requisição para a API de Geocodificação
-                fetch(geocodingUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 'OK') {
-                            const location = data.results[0].geometry.location;
+            // URL para a API de Geocodificação
+            const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(enderecoCompleto)}&key=${apiKey}`;
 
-                            console.log(location)
+            // Faz a requisição para a API de Geocodificação
+            console.log("AQUIC");
+            fetch(geocodingUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'OK') {
+                        const location = data.results[0].geometry.location;
 
-                            // constrindo a url do iframe do maps com base nas coordenadas
-                            const mapIframeSrc = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${location.lat},${location.lng}`;
+                        console.log(location)
 
-                            // pega o elemento do iframe pelo ID
-                            const mapIframe = document.getElementById('mapIframe');
+                        // constrindo a url do iframe do maps com base nas coordenadas
+                        const mapIframeSrc = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${location.lat},${location.lng}`;
 
-                            // define o src do iframe com a URL pronta
-                            mapIframe.src = mapIframeSrc;
+                        // pega o elemento do iframe pelo ID
+                        const mapIframe = document.getElementById('mapIframe');
 
-                            // remove qualquer elemento de iframe anterior se existir
-                            while (mapIframe.firstChild) {
-                                mapIframe.removeChild(mapIframe.firstChild);
-                            }
+                        // define o src do iframe com a URL pronta
+                        mapIframe.src = mapIframeSrc;
 
-                            const iframe = document.createElement('iframe');
-                            iframe.src = mapIframeSrc;
-                            iframe.width = '600';
-                            iframe.height = '450';
-                            iframe.style.border = '0';
-                            iframe.allowfullscreen = '';
-                            iframe.loading = 'lazy';
-                            iframe.referrerpolicy = 'no-referrer-when-downgrade';
-
-                            mapIframe.appendChild(iframe);
+                        // remove qualquer elemento de iframe anterior se existir
+                        while (mapIframe.firstChild) {
+                            mapIframe.removeChild(mapIframe.firstChild);
                         }
-                    });
 
-                document.getElementById("descricao").textContent = hos.descricao;
-                document.getElementById("avaliacoesCount").textContent = hospedagensData.avaliacoes;
-                document.getElementById("classificacao").textContent = hospedagensData.classificacao;
-                document.getElementById("tipoQuarto").textContent = hos.tipoQuarto;
-                document.getElementById("descricaoQuarto").textContent = hos.descricaoQuarto;
-                // document.getElementById("imagemPrincipal").src = "data:image/png;base64," + hos.listImagens[0].dados;
+                        const iframe = document.createElement('iframe');
+                        iframe.src = mapIframeSrc;
+                        iframe.width = '600';
+                        iframe.height = '450';
+                        iframe.style.border = '0';
+                        iframe.allowfullscreen = '';
+                        iframe.loading = 'lazy';
+                        iframe.referrerpolicy = 'no-referrer-when-downgrade';
 
-                for (let i = 0; i < hos.listExtras.length; i++) {
-                    document.getElementById(`servico${i + 1}`).textContent = hos.listExtras[i].nome;
-                }
+                        mapIframe.appendChild(iframe);
+                    }
+                });
+            console.log("AQUID");
+            let avaliacaoEscrita = "";
+            hospedagensData.classificacao = (hospedagensData.classificacao) ? hospedagensData.classificacao : 0;
+            if (hospedagensData.classificacao >= 8) {
+                avaliacaoEscrita = "Excelente!";
+            } else if (hospedagensData.classificacao >= 6.5 && hospedagensData.classificacao < 8) {
+                avaliacaoEscrita = "Bom.";
+            } else if (hospedagensData.classificacao >= 4 && hospedagensData.classificacao < 6.5) {
+                avaliacaoEscrita = "Regular.";
+            } else if (hospedagensData.classificacao < 4) {
+                avaliacaoEscrita = "Ruim.";
+            }
+            console.log("AQUI");
+            document.getElementById("descricao").textContent = hos.descricao;
+            document.querySelector(".avaliacoes").innerHTML = `${avaliacaoEscrita} <strong id="avaliacoesCount">${hospedagensData.avaliacoes}</strong> avaliações`;
+            document.getElementById("classificacao").textContent = hospedagensData.classificacao;
+            document.getElementById("tipoQuarto").textContent = hos.tipoQuarto;
+            document.getElementById("descricaoQuarto").textContent = hos.descricaoQuarto;
 
-                document.getElementById("primeiraCondicao").textContent = hos.checkIn;
-                document.getElementById("segundaCondicao").textContent = hos.checkOut;
+            const listImagens = hos.listImagens;
 
-                function calcularDuracaoHorasMinutos(horarioSaida, horarioChegada) {
-                    const tempoSaida = new Date(`2000-01-01T${horarioSaida}`);
-                    const tempoChegada = new Date(`2000-01-01T${horarioChegada}`);
-                    const diferenca = Math.abs(tempoChegada - tempoSaida);
+            for (let i = 0; i < listImagens.length && i < 3; i++) {
 
-                    const horas = Math.floor(diferenca / 3600000); // 1 hora = 3600000 ms
-                    const minutos = Math.floor((diferenca % 3600000) / 60000); // 1 minuto = 60000 ms
+                console.log(i);
+                document.getElementById(i == 0 ? "imagemPrincipal" : "imagemModal" + i).src = "data:image/png;base64," + listImagens[i].dados;
 
-                    return `${horas}h ${minutos}m`;
-                }
+            }
 
-                // encontra os voos de ida e volta
-                // const voosIda = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "IDA").listHorarios;
-                const voosVolta = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "VOLTA").listHorarios;
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`servico${i + 1}`).textContent = hos.listExtras[i].nome;
+            }
+            console.log("AQUI2");
+            document.getElementById("primeiraCondicao").textContent = hos.checkIn;
+            document.getElementById("segundaCondicao").textContent = hos.checkOut;
 
-                // voos de ida
-                // for (let i = 0; i < voosIda.length && i < 2; i++) {
-                //     const indexIda = i + 1;
+            function calcularDuracaoHorasMinutos(horarioSaida, horarioChegada) {
+                const tempoSaida = new Date(`2000-01-01T${horarioSaida}`);
+                const tempoChegada = new Date(`2000-01-01T${horarioChegada}`);
+                const diferenca = Math.abs(tempoChegada - tempoSaida);
 
-                //     // Formatar o horário de saída e chegada para exibir apenas HH:mm
-                //     const horarioSaidaIda = voosIda[i].horarioSaida.substring(0, 5);
-                //     const horarioChegadaIda = voosIda[i].horarioChegada.substring(0, 5);
+                const horas = Math.floor(diferenca / 3600000); // 1 hora = 3600000 ms
+                const minutos = Math.floor((diferenca % 3600000) / 60000); // 1 minuto = 60000 ms
 
-                //     // preenche os html dos voos de ida
-                //     document.getElementById(`companhiaAerea${indexIda}`).textContent = hos.voos[0].nome;
-                //     document.getElementById(`horarioIda${indexIda}`).textContent = voosIda[i].horarioSaida;
-                //     document.getElementById(`horarioVolta${indexIda}`).textContent = voosIda[i].horarioChegada;
+                return `${horas}h ${minutos}m`;
+            }
+            console.log("AQUI3");
+            // encontra os voos de ida e volta
+            console.log(hos.voos[0].nome);
+            console.log(hos.voos[3].nome)
+            const voosIda = hos.voos[0].listDias.EXATA.find(voos => voos.tipoRota === "IDA").listHorarios;
+            const voosVolta = hos.voos[3].listDias.EXATA.find(voos => voos.tipoRota === "VOLTA").listHorarios;
+
+            // voos de ida
+            for (let i = 0; i < voosIda.length && i < 2; i++) {
+                const indexIda = i + 1;
+
+                // Formatar o horário de saída e chegada para exibir apenas HH:mm
+                const horarioSaidaIda = voosIda[i].horarioSaida.substring(0, 5);
+                const horarioChegadaIda = voosIda[i].horarioChegada.substring(0, 5);
+
+                // preenche os html dos voos de ida
+                document.getElementById(`companhiaAerea${indexIda}`).textContent = hos.voos[0].nome;
+                document.getElementById(`horarioIda${indexIda}`).textContent = voosIda[i].horarioSaida;
+                document.getElementById(`horarioVolta${indexIda}`).textContent = voosIda[i].horarioChegada;
 
                 //     // Calcular a duração do voo de ida e preencher
-                //     const duracaoVooElementIda = document.getElementById(`duracaoVoo${indexIda}`);
-                //     if (duracaoVooElementIda) {
-                //         const duracaoVooIda = calcularDuracaoHorasMinutos(voosIda[i].horarioSaida, voosIda[i].horarioChegada);
-                //         duracaoVooElementIda.textContent = duracaoVooIda;
-                //     }
-                // }
+                const duracaoVooElementIda = document.getElementById(`duracaoVoo${indexIda}`);
+                if (duracaoVooElementIda) {
+                    const duracaoVooIda = calcularDuracaoHorasMinutos(voosIda[i].horarioSaida, voosIda[i].horarioChegada);
+                    duracaoVooElementIda.textContent = duracaoVooIda;
+                }
+            }
+            console.log("AQUI4");
+            // voos de volta
+            for (let i = 0; i < voosVolta.length && i < 2; i++) {
+                const indexVolta = i + 3;
+                console.log(i)
+                const horarioSaidaVolta = voosVolta[i].horarioSaida.substring(0, 5);
+                const horarioChegadaVolta = voosVolta[i].horarioChegada.substring(0, 5);
 
-                // voos de volta
-                for (let i = 0; i < voosVolta.length && i < 2; i++) {
-                    const indexVolta = i + 3;
+                // preenche os html dos voos de volta
+                document.getElementById(`companhiaAerea${indexVolta}`).textContent = hos.voos[0].nome;
+                document.getElementById(`horarioIda${indexVolta}`).textContent = voosVolta[i].horarioSaida;
+                document.getElementById(`horarioVolta${indexVolta}`).textContent = voosVolta[i].horarioChegada;
 
-                    const horarioSaidaVolta = voosVolta[i].horarioSaida.substring(0, 5);
-                    const horarioChegadaVolta = voosVolta[i].horarioChegada.substring(0, 5);
+                const duracaoVooElementVolta = document.getElementById(`duracaoVoo${indexVolta}`);
+                if (duracaoVooElementVolta) {
+                    const duracaoVooVolta = calcularDuracaoHorasMinutos(voosVolta[i].horarioSaida, voosVolta[i].horarioChegada);
+                    duracaoVooElementVolta.textContent = duracaoVooVolta;
+                }
+            }
+            console.log("AQUI5");
+            // encontra os horários de ida e volta de ônibus
+            const onibusIda = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "IDA");
+            const onibusVolta = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "VOLTA");
 
-                    // preenche os html dos voos de volta
-                    document.getElementById(`companhiaAerea${indexVolta}`).textContent = hos.voos[0].nome;
-                    document.getElementById(`horarioIda${indexVolta}`).textContent = voosVolta[i].horarioSaida;
-                    document.getElementById(`horarioVolta${indexVolta}`).textContent = voosVolta[i].horarioChegada;
+            // // preenche os html dos onibus de ida
+            if (onibusIda) {
+                document.getElementById("primeiroHorarioEmbarque").textContent = onibusIda.listHorarios[0].horarioSaida;
+                document.getElementById("primeiroHorarioDesembarque").textContent = onibusIda.listHorarios[0].horarioChegada;
+                document.getElementById("primeiroLocalEmbarque").textContent = onibusIda.localSaida;
+                document.getElementById("primeiroLocalDesembarque").textContent = onibusIda.localChegada;
+            }
 
-                    const duracaoVooElementVolta = document.getElementById(`duracaoVoo${indexVolta}`);
-                    if (duracaoVooElementVolta) {
-                        const duracaoVooVolta = calcularDuracaoHorasMinutos(voosVolta[i].horarioSaida, voosVolta[i].horarioChegada);
-                        duracaoVooElementVolta.textContent = duracaoVooVolta;
+            // // preenche os html dos onibus de volta
+            if (onibusVolta) {
+                document.getElementById("segundoHorarioEmbarque").textContent = onibusVolta.listHorarios[0].horarioSaida;
+                document.getElementById("segundoHorarioDesembarque").textContent = onibusVolta.listHorarios[0].horarioChegada;
+                document.getElementById("segundoLocalEmbarque").textContent = onibusVolta.localSaida;
+                document.getElementById("segundoLocalDesembarque").textContent = onibusVolta.localChegada;
+            }
+
+            const infosProximidades = document.querySelectorAll(".categoriaContent");
+            for (const proximidadeCaixa of infosProximidades) {
+                const proximidades = hos.listProximidades[proximidadeCaixa.id];
+                if (proximidades) {
+
+                }
+                for (let i = 0; i < proximidades.length; i++) {
+                    console.log("i->" + i)
+                    const proximidade = proximidades[i];
+                    const tituloElement = document.getElementById(`titulo${proximidadeCaixa.id}${i + 1}`);
+                    const imagemElement = document.getElementById(`imagem${proximidadeCaixa.id}${i + 1}`);
+
+                    if (tituloElement) {
+                        tituloElement.textContent = proximidade.nome;
+                    }
+
+                    if (imagemElement) {
+                        imagemElement.src = "data:image/png;base64," + proximidade.foto.dados;
                     }
                 }
 
-                // encontra os horários de ida e volta de ônibus
-                // const onibusIda = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "IDA");
-                // const onibusVolta = hos.onibus[0].listDias.EXATA.find(onibus => onibus.tipoRota === "VOLTA");
+            }
 
-                // // preenche os html dos onibus de ida
-                // if (onibusIda) {
-                //     document.getElementById("primeiroHorarioEmbarque").textContent = onibusIda.listHorarios[0].horarioSaida;
-                //     document.getElementById("primeiroHorarioDesembarque").textContent = onibusIda.listHorarios[0].horarioChegada;
-                //     document.getElementById("primeiroLocalEmbarque").textContent = onibusIda.localSaida;
-                //     document.getElementById("primeiroLocalDesembarque").textContent = onibusIda.localChegada;
-                // }
-
-                // // preenche os html dos onibus de volta
-                // if (onibusVolta) {
-                //     document.getElementById("segundoHorarioEmbarque").textContent = onibusVolta.listHorarios[0].horarioSaida;
-                //     document.getElementById("segundoHorarioDesembarque").textContent = onibusVolta.listHorarios[0].horarioChegada;
-                //     document.getElementById("segundoLocalEmbarque").textContent = onibusVolta.localSaida;
-                //     document.getElementById("segundoLocalDesembarque").textContent = onibusVolta.localChegada;
-                // }
-
-                const infosProximidades = document.querySelectorAll(".categoriaContent");
-                for (const proximidadeCaixa of infosProximidades) {
-                    const proximidades = hos.listProximidades[proximidadeCaixa.id];
-                    for (let i = 0; i < proximidades.length; i++) {
-                        const proximidade = proximidades[i];
-                        const tituloElement = document.getElementById(`titulo${proximidadeCaixa.id}${i + 1}`);
-                        const imagemElement = document.getElementById(`imagem${proximidadeCaixa.id}${i + 1}`);
-
-                        if (tituloElement) {
-                            tituloElement.textContent = proximidade.nome;
-                        }
-
-                        if (imagemElement) {
-                            imagemElement.src = proximidade.foto.dados;
-                        }
-                    }
-
-                }
-
-            });
-        })
-
+        };
     </script>
-    <!-- <script>
-        // Função para abrir o modal com informações da categoria
-        function abrirModal(categoria, id) {
-            // Obtenha informações com base na categoria e no id
-            const proximidade = obterInformacoesCategoria(categoria, id);
-
-            // Preencha o modal com informações da categoria
-            const modalImage = document.getElementById("modalImage");
-            modalImage.src = proximidade.foto.dados;
-            modalImage.alt = proximidade.nome;
-
-            const modalText = document.getElementById("modalText");
-            modalText.innerHTML = `<h2>${proximidade.nome}</h2><p>${proximidade.descricao}</p>`;
-
-            // Exibir o modal
-            const modal = document.getElementById("myModal");
-            modal.style.display = "block";
-        }
-
-        // Função para fechar o modal
-        function fecharModal() {
-            const modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-
-        // Função para obter informações da categoria com base na categoria e no id
-        function obterInformacoesCategoria(categoria, id) {
-            // Substitua esta função para obter informações da categoria com base na categoria e no id
-            // Retorne as informações corretas
-            // Por exemplo:
-            const informacoes = {
-                nome: "Nome da Categoria",
-                descricao: "Descrição da Categoria",
-                foto: {
-                    dados: "./imagens/categoria.jpg"
-                }
-            };
-            return informacoes;
-        }
-    </script> -->
     <script src="./script.js"></script>
 </body>
 

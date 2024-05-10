@@ -62,7 +62,7 @@
       </div>
       <div aria-label="Clique aqui para acessar o perfil" class="acesso-perfil" data-balloon-length="medium"
         data-balloon-pos="down">
-        <a href="./loginCadastro/login.html">
+        <a href="./loginCadastro/login.html" id="mudarLinkIcone">
           <i class="fa-solid fa-user"></i>
         </a>
       </div>
@@ -361,8 +361,7 @@
       event.preventDefault();
       // Capturar os valores dos campos do formulário
       var orcamento = document.getElementById('orcamento').value;
-      var orcamentoFormatado = orcamento; // Substitua isso pela variável real do seu código
-      var orcamentoNumerico = parseFloat(orcamentoFormatado.replace("R$", "").replace(",", "").trim());
+      var orcamentoFormatado = parseFloat(orcamento.replace("R$", "").replace(".","").replace(",", ".").trim());
 
       var destino = document.getElementById('destino').value;
       var partida = document.getElementById('partida').value;
@@ -383,20 +382,35 @@
           "order": "id",
           "direction": "asc",
           "content": {
-            "orcamento": 1200,
-            "partida": {
-              "estado": "estado",
-              "cidade": "cidade"
-            },
-            "destino": {
-              "estado": "estado",
-              "cidade": "cidade"
-            },
-            "dataIda": "22/05/2023",
-            "dataVolta": "26/05/2023",
-            "diasAMais": true
+            "orcamento": orcamentoFormatado,
+            "partida": partida,
+            "destino": destino,
+            "dataIda": dataIda,
+            "dataVolta": dataVolta,
+            "diasAMais": false,
           }
         };
+
+        // var data = {
+        //   "page": 0,
+        //   "pageSize": 3,
+        //   "order": "id",
+        //   "direction": "asc",
+        //   "content": {
+        //     "orcamento": 1200,
+        //     "partida": {
+        //       "estado": "estado",
+        //       "cidade": "cidade"
+        //     },
+        //     "destino": {
+        //       "estado": "estado",
+        //       "cidade": "cidade"
+        //     },
+        //     "dataIda": "22/05/2023",
+        //     "dataVolta": "26/05/2023",
+        //     "diasAMais": true
+        //   }
+        // };
 
         localStorage.setItem('dataIdaUrl', JSON.stringify(data.content.dataIda));
 
@@ -549,15 +563,20 @@
     window.onload = function () {
       var email = localStorage.getItem('email');
       const nomeUsuario = localStorage.getItem('usuario');
-      const nomeUsuarioData = JSON.parse(nomeUsuario);
 
-      nom = nomeUsuarioData.nome;
+      if (nomeUsuario) { // Verifique se 'usuario' não é nulo
+        const nomeUsuarioData = JSON.parse(nomeUsuario);
+        nom = nomeUsuarioData.nome;
 
-      var botaoEntrarOuCadastrar = document.getElementById('entrarOuCadastrar');
+        var iconeBotaoEntrarOuCadastrar = document.getElementById('mudarLinkIcone');
+        var botaoEntrarOuCadastrar = document.getElementById('entrarOuCadastrar');
 
-      if (nom) {
-        botaoEntrarOuCadastrar.innerHTML = '<a href="./webPerfil/index.html"><h3>Olá, ' + nom + '</h3></a>';
+        if (nom) {
+          botaoEntrarOuCadastrar.innerHTML = '<a href="./webPerfil/index.html"><h3>Olá, ' + nom + '</h3></a>';
+          iconeBotaoEntrarOuCadastrar.innerHTML = '<a href="./webPerfil/index.html" id="mudarLinkIcone"><i class="fa-solid fa-user"></i></a>'
+        }
       } else {
+        var botaoEntrarOuCadastrar = document.getElementById('entrarOuCadastrar');
         botaoEntrarOuCadastrar.innerHTML = '<a href="./loginCadastro/login.html"><h3>Entre ou cadastre-se</h3></a>';
       }
     };

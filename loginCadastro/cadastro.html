@@ -44,7 +44,7 @@
                 <input type="email" id="email" name="email" placeholder="E-mail" required>
             </div>
             <div class="form-group">
-                <input type="text" name="telefone" id="telefoneInput" maxlength="14" placeholder="Telefone">
+                <input type="text" name="telefone" id="telefoneInput" maxlength="11" placeholder="Telefone">
             </div>
             <div class="password-container">
                 <input type="password" name="senha" id="password" placeholder="Senha" maxlength="12" required>
@@ -101,7 +101,13 @@
         const camposPreenchidos = camposObrigatorios.every(campo => dadosFormulario.get(campo) !== '');
 
         if (!camposPreenchidos) {
-            alert('Preencha todos os campos obrigatórios.');
+            Swal.fire({
+                icon: 'error', // Ícone de erro
+                title: 'Preencha todos os campos',
+                customClass: {
+                    confirmButton: 'botao-erro-customizado' // Nome da classe personalizada
+                }
+            });
             return; // Impede o envio da requisição
         }
 
@@ -110,7 +116,13 @@
         const confirmarSenha = dadosFormulario.get('confirmarSenha');
 
         if (senha !== confirmarSenha) {
-            alert('A senha e a confirmação de senha não coincidem.');
+            Swal.fire({
+                icon: 'error', // Ícone de erro
+                title: 'A senha e a confirmação de senha devem ser iguais',
+                customClass: {
+                    confirmButton: 'botao-erro-customizado' // Nome da classe personalizada
+                }
+            });
             return; // Impede o envio da requisição
         }
 

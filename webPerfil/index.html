@@ -1045,17 +1045,17 @@
 
     <script>
         window.onload = function () {
-      var email = localStorage.getItem('email');
-      const nomeUsuario = localStorage.getItem('usuario');
-      const nomeUsuarioData = JSON.parse(nomeUsuario);
+            var email = localStorage.getItem('email');
+            const nomeUsuario = localStorage.getItem('usuario');
+            const nomeUsuarioData = JSON.parse(nomeUsuario);
 
-      nom = nomeUsuarioData.nome;
+            nom = nomeUsuarioData.nome;
 
-      var botaoEntrarOuCadastrar = document.getElementById('entrarOuCadastrar');
+            var botaoEntrarOuCadastrar = document.getElementById('entrarOuCadastrar');
 
-      if (nom) {
-        botaoEntrarOuCadastrar.innerHTML = '<h3>Olá, ' + nom + '</h3>';
-      }
+            if (nom) {
+                botaoEntrarOuCadastrar.innerHTML = '<h3>Olá, ' + nom + '</h3>';
+            }
         };
     </script>
     <script>

@@ -48,7 +48,8 @@ body {
     font-family: "Nunito";
     color: #2970DB;
     position: absolute;
-    left: 156vh;
+    left: 157vh;
+   margin-left: 250px;
 }
 
 .entrarOuCadastrar a {
@@ -1036,6 +1037,7 @@ button.back-to-top.show:active {
     display: inline-block;
     padding: 8px;
     border-radius: 50%;
+    margin-left: 20px;
 }
 
 .acesso-perfil i {
